@@ -1,0 +1,56 @@
+{
+  "name": "Colorado Potato Beetle",
+  "scientific_name": "Leptinotarsa decemlineata",
+  "category": "insect",
+  "hosts": [
+    "potato",
+    "tomato"
+  ],
+  "transmission": [
+    "migration",
+    "soilborne"
+  ],
+  "envelope": {
+    "temp_min": 15,
+    "temp_opt": 26,
+    "temp_max": 32,
+    "min_humidity": 0,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 10,
+    "spread_rate": 0.5,
+    "overwintering": "adults_in_soil",
+    "survival_years": 1
+  },
+  "impact": {
+    "max_yield_loss": 0.6,
+    "growth_penalty": 0.5,
+    "quality_penalty": 0.0,
+    "can_kill_host": true,
+    "from_stage": 2,
+    "to_stage": 8,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 1,
+    "tillage_reduction": 0.2,
+    "resistant_varieties": false,
+    "methods": [
+      "Rotate fields far apart",
+      "Hand-pick adults and egg masses",
+      "Straw mulch",
+      "Bt tenebrionis"
+    ]
+  },
+  "symptoms": [
+    "Defoliated plants",
+    "Orange egg clusters under leaves",
+    "Striped yellow-and-black adults"
+  ],
+  "notes": "Famous for evolving resistance to almost every insecticide used against it."
+}

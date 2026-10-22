@@ -1,0 +1,51 @@
+{
+  "name": "Wheat Leaf Rust",
+  "scientific_name": "Puccinia triticina",
+  "category": "fungus",
+  "hosts": [
+    "common_wheat",
+    "durum_wheat"
+  ],
+  "transmission": [
+    "airborne_spores"
+  ],
+  "envelope": {
+    "temp_min": 10,
+    "temp_opt": 20,
+    "temp_max": 30,
+    "min_humidity": 80,
+    "leaf_wetness_hours": 3,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 8,
+    "spread_rate": 0.4,
+    "overwintering": "volunteer_wheat",
+    "survival_years": 0.3
+  },
+  "impact": {
+    "max_yield_loss": 0.4,
+    "growth_penalty": 0.3,
+    "quality_penalty": 0.2,
+    "can_kill_host": false,
+    "from_stage": 2,
+    "to_stage": 8,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 0,
+    "tillage_reduction": 0.2,
+    "resistant_varieties": true,
+    "methods": [
+      "Resistant cultivars (Lr genes)",
+      "Destroy volunteer wheat",
+      "Fungicide"
+    ]
+  },
+  "symptoms": [
+    "Small round orange pustules scattered on leaves"
+  ]
+}

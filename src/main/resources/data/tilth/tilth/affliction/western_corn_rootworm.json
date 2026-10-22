@@ -1,0 +1,51 @@
+{
+  "name": "Western Corn Rootworm",
+  "scientific_name": "Diabrotica virgifera virgifera",
+  "category": "insect",
+  "hosts": [
+    "maize"
+  ],
+  "transmission": [
+    "soilborne"
+  ],
+  "envelope": {
+    "temp_min": 12,
+    "temp_opt": 24,
+    "temp_max": 32,
+    "min_humidity": 0,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 14,
+    "spread_rate": 0.35,
+    "overwintering": "eggs_in_soil",
+    "survival_years": 1
+  },
+  "impact": {
+    "max_yield_loss": 0.4,
+    "growth_penalty": 0.4,
+    "quality_penalty": 0.0,
+    "can_kill_host": false,
+    "from_stage": 3,
+    "to_stage": 7,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 1,
+    "tillage_reduction": 0.0,
+    "resistant_varieties": true,
+    "methods": [
+      "Rotate maize with soybean",
+      "Bt rootworm hybrids"
+    ]
+  },
+  "symptoms": [
+    "Pruned roots",
+    "'Goose-necked' lodged plants"
+  ],
+  "notes": "A classic case for crop rotation; a rotation-resistant strain now lays eggs in soybean fields."
+}

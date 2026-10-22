@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/grass_block",
+  "render_type": "minecraft:cutout_mipped",
+  "textures": {
+    "particle": "tilth:block/sandy_loam_topsoil",
+    "bottom": "tilth:block/sandy_loam_topsoil",
+    "side": "tilth:block/sandy_loam_topsoil"
+  }
+}

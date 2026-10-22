@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:cotton_boll"
+    },
+    {
+      "item": "tilth:cotton_boll"
+    }
+  ],
+  "result": {
+    "id": "minecraft:string",
+    "count": 3
+  }
+}

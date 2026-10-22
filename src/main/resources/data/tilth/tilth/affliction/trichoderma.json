@@ -1,0 +1,50 @@
+{
+  "name": "Trichoderma",
+  "scientific_name": "Trichoderma harzianum",
+  "category": "symbiont",
+  "hosts": [
+    "*"
+  ],
+  "transmission": [
+    "soilborne"
+  ],
+  "envelope": {
+    "temp_min": 10,
+    "temp_opt": 25,
+    "temp_max": 35,
+    "min_humidity": 0,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 10,
+    "spread_rate": 0.3,
+    "overwintering": "soil",
+    "survival_years": 3
+  },
+  "impact": {
+    "max_yield_loss": 0.0,
+    "growth_penalty": 0.0,
+    "quality_penalty": 0.0,
+    "can_kill_host": false,
+    "from_stage": 0,
+    "to_stage": 9,
+    "benefit": 0.15
+  },
+  "control": {
+    "rotation_break_years": 0,
+    "tillage_reduction": 0.0,
+    "resistant_varieties": false,
+    "methods": [
+      "Organic matter and compost encourage it"
+    ]
+  },
+  "symptoms": [
+    "Suppresses Pythium, Rhizoctonia and other root pathogens"
+  ],
+  "beneficial": true,
+  "notes": "A soil fungus that parasitises other fungi; used as a biological control agent."
+}

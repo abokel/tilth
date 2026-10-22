@@ -1,0 +1,12 @@
+{
+  "type": "tilth:quality_campfire_cooking",
+  "category": "food",
+  "ingredient": {
+    "item": "tilth:uncooked_rice"
+  },
+  "result": {
+    "id": "tilth:cooked_rice"
+  },
+  "experience": 0.3,
+  "cookingtime": 600
+}

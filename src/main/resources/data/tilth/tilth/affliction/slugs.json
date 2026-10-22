@@ -1,0 +1,52 @@
+{
+  "name": "Slugs",
+  "scientific_name": "Deroceras reticulatum",
+  "category": "mollusc",
+  "hosts": [
+    "*"
+  ],
+  "transmission": [
+    "migration"
+  ],
+  "envelope": {
+    "temp_min": 5,
+    "temp_opt": 15,
+    "temp_max": 22,
+    "min_humidity": 90,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.85,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 7,
+    "spread_rate": 0.35,
+    "overwintering": "eggs_in_residue",
+    "survival_years": 1
+  },
+  "impact": {
+    "max_yield_loss": 0.25,
+    "growth_penalty": 0.3,
+    "quality_penalty": 0.2,
+    "can_kill_host": true,
+    "from_stage": 0,
+    "to_stage": 4,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 0,
+    "tillage_reduction": 0.4,
+    "resistant_varieties": false,
+    "methods": [
+      "Firm, fine seedbed",
+      "Tillage",
+      "Beetles and birds",
+      "Ferric phosphate bait"
+    ]
+  },
+  "symptoms": [
+    "Shredded leaves with slime trails",
+    "Hollowed seeds"
+  ]
+}

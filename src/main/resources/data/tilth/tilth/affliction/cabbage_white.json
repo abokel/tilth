@@ -1,0 +1,51 @@
+{
+  "name": "Cabbage White Butterfly",
+  "scientific_name": "Pieris rapae",
+  "category": "insect",
+  "hosts": [
+    "family:brassicaceae"
+  ],
+  "transmission": [
+    "migration"
+  ],
+  "envelope": {
+    "temp_min": 15,
+    "temp_opt": 24,
+    "temp_max": 30,
+    "min_humidity": 0,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 10,
+    "spread_rate": 0.4,
+    "overwintering": "pupae",
+    "survival_years": 0.5
+  },
+  "impact": {
+    "max_yield_loss": 0.3,
+    "growth_penalty": 0.3,
+    "quality_penalty": 0.4,
+    "can_kill_host": false,
+    "from_stage": 2,
+    "to_stage": 9,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 0,
+    "tillage_reduction": 0.0,
+    "resistant_varieties": false,
+    "methods": [
+      "Insect netting",
+      "Hand-pick caterpillars",
+      "Bt kurstaki"
+    ]
+  },
+  "symptoms": [
+    "Ragged holes in leaves",
+    "Green caterpillars and frass in heads"
+  ]
+}

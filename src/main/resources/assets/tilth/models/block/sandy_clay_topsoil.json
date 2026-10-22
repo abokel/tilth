@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "tilth:block/sandy_clay_topsoil"
+  }
+}

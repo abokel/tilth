@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "tilth:block/clay_loam_grass"
+    },
+    "snowy=true": {
+      "model": "tilth:block/clay_loam_grass_snow"
+    }
+  }
+}

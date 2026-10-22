@@ -1,0 +1,22 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:milled_rice"
+    },
+    {
+      "item": "tilth:milled_rice"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "id": "tilth:uncooked_rice",
+    "count": 1
+  }
+}

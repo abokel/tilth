@@ -1,0 +1,51 @@
+{
+  "name": "Damping-off",
+  "scientific_name": "Pythium spp.",
+  "category": "oomycete",
+  "hosts": [
+    "*"
+  ],
+  "transmission": [
+    "soilborne"
+  ],
+  "envelope": {
+    "temp_min": 10,
+    "temp_opt": 15,
+    "temp_max": 25,
+    "min_humidity": 0,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.9,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 3,
+    "spread_rate": 0.5,
+    "overwintering": "soil",
+    "survival_years": 5
+  },
+  "impact": {
+    "max_yield_loss": 1.0,
+    "growth_penalty": 0.8,
+    "quality_penalty": 0.0,
+    "can_kill_host": true,
+    "from_stage": 0,
+    "to_stage": 2,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 0,
+    "tillage_reduction": 0.0,
+    "resistant_varieties": false,
+    "methods": [
+      "Sow into warm, well-drained soil",
+      "Avoid overwatering seedbeds",
+      "Treated seed"
+    ]
+  },
+  "symptoms": [
+    "Seedlings collapse at the soil line",
+    "Seeds rot before emergence"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "name": "White Mold",
+  "scientific_name": "Sclerotinia sclerotiorum",
+  "category": "fungus",
+  "hosts": [
+    "soybean",
+    "common_bean",
+    "pea",
+    "chickpea",
+    "lentil",
+    "peanut",
+    "sunflower",
+    "lettuce",
+    "cabbage",
+    "carrot",
+    "potato",
+    "tomato"
+  ],
+  "transmission": [
+    "soilborne",
+    "airborne_spores"
+  ],
+  "envelope": {
+    "temp_min": 15,
+    "temp_opt": 20,
+    "temp_max": 25,
+    "min_humidity": 90,
+    "leaf_wetness_hours": 16,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 10,
+    "spread_rate": 0.35,
+    "overwintering": "sclerotia_in_soil",
+    "survival_years": 5
+  },
+  "impact": {
+    "max_yield_loss": 0.5,
+    "growth_penalty": 0.4,
+    "quality_penalty": 0.4,
+    "can_kill_host": true,
+    "from_stage": 5,
+    "to_stage": 8,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 3,
+    "tillage_reduction": 0.3,
+    "resistant_varieties": false,
+    "methods": [
+      "Rotate with cereals",
+      "Wider rows for airflow",
+      "Biological control (Coniothyrium minitans)"
+    ]
+  },
+  "symptoms": [
+    "Cottony white mould on stems",
+    "Hard black sclerotia inside stems"
+  ],
+  "notes": "Hundreds of host species: rotate with grasses, not with other broadleaf crops."
+}

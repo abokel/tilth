@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:wheat",
+    "tilth:durum_wheat",
+    "tilth:rye",
+    "tilth:oats",
+    "tilth:maize",
+    "tilth:paddy_rice"
+  ]
+}

@@ -1,0 +1,660 @@
+{
+  "values": {
+    "minecraft:apple": {
+      "carbohydrate": 15,
+      "fiber": 15,
+      "vitamin_a": 2,
+      "vitamin_c": 15
+    },
+    "minecraft:baked_potato": {
+      "carbohydrate": 35,
+      "protein": 8,
+      "fiber": 15,
+      "vitamin_c": 25,
+      "iron": 10
+    },
+    "minecraft:potato": {
+      "carbohydrate": 25,
+      "protein": 5,
+      "fiber": 10,
+      "vitamin_c": 20,
+      "iron": 5
+    },
+    "minecraft:poisonous_potato": {
+      "carbohydrate": 10
+    },
+    "minecraft:beef": {
+      "protein": 40,
+      "fat": 30,
+      "iron": 25
+    },
+    "minecraft:cooked_beef": {
+      "protein": 55,
+      "fat": 35,
+      "iron": 30
+    },
+    "minecraft:beetroot": {
+      "carbohydrate": 5,
+      "protein": 2,
+      "fiber": 8,
+      "vitamin_c": 5,
+      "iron": 3,
+      "calcium": 2
+    },
+    "minecraft:beetroot_soup": {
+      "carbohydrate": 20,
+      "protein": 5,
+      "fiber": 20,
+      "vitamin_a": 5,
+      "vitamin_c": 15,
+      "iron": 10,
+      "calcium": 5
+    },
+    "minecraft:bread": {
+      "carbohydrate": 45,
+      "protein": 12,
+      "fat": 3,
+      "fiber": 10,
+      "iron": 12,
+      "calcium": 5
+    },
+    "minecraft:carrot": {
+      "carbohydrate": 8,
+      "protein": 2,
+      "fiber": 10,
+      "vitamin_a": 120,
+      "vitamin_c": 8,
+      "iron": 2,
+      "calcium": 3
+    },
+    "minecraft:golden_carrot": {
+      "carbohydrate": 15,
+      "protein": 3,
+      "fiber": 10,
+      "vitamin_a": 150,
+      "vitamin_c": 10,
+      "iron": 10,
+      "calcium": 3
+    },
+    "minecraft:chicken": {
+      "protein": 35,
+      "fat": 10,
+      "iron": 5
+    },
+    "minecraft:cooked_chicken": {
+      "protein": 50,
+      "fat": 15,
+      "vitamin_a": 2,
+      "iron": 8,
+      "calcium": 2
+    },
+    "minecraft:cod": {
+      "protein": 30,
+      "fat": 3,
+      "iron": 3,
+      "calcium": 2
+    },
+    "minecraft:cooked_cod": {
+      "protein": 40,
+      "fat": 4,
+      "iron": 5,
+      "calcium": 3
+    },
+    "minecraft:salmon": {
+      "protein": 30,
+      "fat": 20,
+      "vitamin_a": 5,
+      "iron": 3,
+      "calcium": 2
+    },
+    "minecraft:cooked_salmon": {
+      "protein": 40,
+      "fat": 25,
+      "vitamin_a": 5,
+      "iron": 4,
+      "calcium": 3
+    },
+    "minecraft:mutton": {
+      "protein": 35,
+      "fat": 35,
+      "iron": 15
+    },
+    "minecraft:cooked_mutton": {
+      "protein": 45,
+      "fat": 40,
+      "iron": 20,
+      "calcium": 2
+    },
+    "minecraft:porkchop": {
+      "protein": 35,
+      "fat": 30,
+      "iron": 8
+    },
+    "minecraft:cooked_porkchop": {
+      "protein": 50,
+      "fat": 35,
+      "iron": 10,
+      "calcium": 2
+    },
+    "minecraft:rabbit": {
+      "protein": 35,
+      "fat": 5,
+      "iron": 15
+    },
+    "minecraft:cooked_rabbit": {
+      "protein": 45,
+      "fat": 8,
+      "iron": 18,
+      "calcium": 2
+    },
+    "minecraft:rabbit_stew": {
+      "carbohydrate": 25,
+      "protein": 40,
+      "fat": 10,
+      "fiber": 20,
+      "vitamin_a": 60,
+      "vitamin_c": 15,
+      "iron": 25,
+      "calcium": 5
+    },
+    "minecraft:mushroom_stew": {
+      "carbohydrate": 15,
+      "protein": 10,
+      "fat": 2,
+      "fiber": 15,
+      "vitamin_c": 5,
+      "iron": 10,
+      "calcium": 2
+    },
+    "minecraft:suspicious_stew": {
+      "carbohydrate": 15,
+      "protein": 10,
+      "fat": 2,
+      "fiber": 15,
+      "vitamin_c": 10,
+      "iron": 10,
+      "calcium": 2
+    },
+    "minecraft:cookie": {
+      "carbohydrate": 20,
+      "protein": 2,
+      "fat": 15,
+      "fiber": 2,
+      "iron": 3,
+      "calcium": 2
+    },
+    "minecraft:dried_kelp": {
+      "carbohydrate": 3,
+      "protein": 1,
+      "fiber": 3,
+      "vitamin_a": 5,
+      "iron": 5,
+      "calcium": 10
+    },
+    "minecraft:melon_slice": {
+      "carbohydrate": 8,
+      "protein": 1,
+      "fiber": 2,
+      "vitamin_a": 10,
+      "vitamin_c": 15
+    },
+    "minecraft:sweet_berries": {
+      "carbohydrate": 8,
+      "fiber": 8,
+      "vitamin_a": 2,
+      "vitamin_c": 25
+    },
+    "minecraft:glow_berries": {
+      "carbohydrate": 8,
+      "fiber": 6,
+      "vitamin_a": 2,
+      "vitamin_c": 20
+    },
+    "minecraft:pumpkin_pie": {
+      "carbohydrate": 35,
+      "protein": 8,
+      "fat": 20,
+      "fiber": 10,
+      "vitamin_a": 80,
+      "vitamin_c": 5,
+      "iron": 8,
+      "calcium": 10
+    },
+    "minecraft:honey_bottle": {
+      "carbohydrate": 40
+    },
+    "minecraft:chorus_fruit": {
+      "carbohydrate": 10,
+      "fiber": 10,
+      "vitamin_c": 5
+    },
+    "minecraft:golden_apple": {
+      "carbohydrate": 20,
+      "fiber": 15,
+      "vitamin_a": 2,
+      "vitamin_c": 20,
+      "iron": 30
+    },
+    "minecraft:enchanted_golden_apple": {
+      "carbohydrate": 50,
+      "protein": 50,
+      "fat": 50,
+      "fiber": 50,
+      "vitamin_a": 50,
+      "vitamin_c": 50,
+      "iron": 50,
+      "calcium": 50
+    },
+    "minecraft:milk_bucket": {
+      "carbohydrate": 15,
+      "protein": 30,
+      "fat": 25,
+      "vitamin_a": 20,
+      "vitamin_c": 2,
+      "calcium": 90
+    },
+    "minecraft:rotten_flesh": {
+      "protein": 15,
+      "fat": 10
+    },
+    "minecraft:spider_eye": {
+      "protein": 5
+    },
+    "minecraft:tropical_fish": {
+      "protein": 20,
+      "fat": 5,
+      "iron": 2,
+      "calcium": 2
+    },
+    "minecraft:pufferfish": {
+      "protein": 10,
+      "fat": 2
+    },
+    "tilth:tomato": {
+      "carbohydrate": 5,
+      "protein": 1,
+      "fiber": 8,
+      "vitamin_a": 20,
+      "vitamin_c": 35,
+      "iron": 3,
+      "calcium": 1
+    },
+    "tilth:lettuce": {
+      "carbohydrate": 2,
+      "protein": 1,
+      "fiber": 6,
+      "vitamin_a": 50,
+      "vitamin_c": 10,
+      "iron": 3,
+      "calcium": 3
+    },
+    "tilth:cabbage": {
+      "carbohydrate": 8,
+      "protein": 2,
+      "fiber": 15,
+      "vitamin_a": 2,
+      "vitamin_c": 60,
+      "iron": 3,
+      "calcium": 5
+    },
+    "tilth:onion": {
+      "carbohydrate": 8,
+      "protein": 1,
+      "fiber": 6,
+      "vitamin_c": 10,
+      "iron": 1,
+      "calcium": 2
+    },
+    "tilth:garlic": {
+      "carbohydrate": 3,
+      "protein": 1,
+      "fiber": 1,
+      "vitamin_c": 5,
+      "iron": 1,
+      "calcium": 2
+    },
+    "tilth:soybeans": {
+      "carbohydrate": 5,
+      "protein": 20,
+      "fat": 10,
+      "fiber": 10,
+      "vitamin_c": 2,
+      "iron": 15,
+      "calcium": 10
+    },
+    "tilth:peas": {
+      "carbohydrate": 10,
+      "protein": 10,
+      "fiber": 15,
+      "vitamin_a": 10,
+      "vitamin_c": 20,
+      "iron": 8,
+      "calcium": 2
+    },
+    "tilth:chickpeas": {
+      "carbohydrate": 12,
+      "protein": 12,
+      "fat": 3,
+      "fiber": 15,
+      "vitamin_c": 2,
+      "iron": 10,
+      "calcium": 4
+    },
+    "tilth:lentils": {
+      "carbohydrate": 12,
+      "protein": 15,
+      "fiber": 15,
+      "vitamin_c": 2,
+      "iron": 18,
+      "calcium": 2
+    },
+    "tilth:beans": {
+      "carbohydrate": 12,
+      "protein": 12,
+      "fiber": 15,
+      "iron": 10,
+      "calcium": 4
+    },
+    "tilth:peanuts": {
+      "carbohydrate": 4,
+      "protein": 15,
+      "fat": 25,
+      "fiber": 6,
+      "iron": 5,
+      "calcium": 2
+    },
+    "tilth:sunflower_seeds": {
+      "carbohydrate": 3,
+      "protein": 8,
+      "fat": 15,
+      "fiber": 6,
+      "iron": 5,
+      "calcium": 2
+    },
+    "tilth:maize": {
+      "carbohydrate": 15,
+      "protein": 3,
+      "fat": 1,
+      "fiber": 8,
+      "vitamin_a": 5,
+      "vitamin_c": 6,
+      "iron": 2
+    },
+    "tilth:sugar_beet": {
+      "carbohydrate": 15,
+      "protein": 1,
+      "fiber": 5
+    },
+    "tilth:rolled_oats": {
+      "carbohydrate": 20,
+      "protein": 8,
+      "fat": 3,
+      "fiber": 15,
+      "iron": 15,
+      "calcium": 2
+    },
+    "tilth:soy_milk": {
+      "carbohydrate": 5,
+      "protein": 20,
+      "fat": 8,
+      "fiber": 2,
+      "iron": 8,
+      "calcium": 5
+    },
+    "tilth:cooked_pasta": {
+      "carbohydrate": 45,
+      "protein": 12,
+      "fat": 2,
+      "fiber": 6,
+      "iron": 10,
+      "calcium": 2
+    },
+    "tilth:protein_pasta": {
+      "carbohydrate": 40,
+      "protein": 35,
+      "fat": 4,
+      "fiber": 15,
+      "iron": 20,
+      "calcium": 5
+    },
+    "tilth:pasta_marinara": {
+      "carbohydrate": 55,
+      "protein": 15,
+      "fat": 4,
+      "fiber": 15,
+      "vitamin_a": 25,
+      "vitamin_c": 25,
+      "iron": 15,
+      "calcium": 4
+    },
+    "tilth:rye_bread": {
+      "carbohydrate": 45,
+      "protein": 12,
+      "fat": 3,
+      "fiber": 25,
+      "iron": 14,
+      "calcium": 5
+    },
+    "tilth:cornbread": {
+      "carbohydrate": 40,
+      "protein": 10,
+      "fat": 15,
+      "fiber": 8,
+      "vitamin_a": 5,
+      "iron": 8,
+      "calcium": 15
+    },
+    "tilth:tortilla": {
+      "carbohydrate": 25,
+      "protein": 4,
+      "fat": 2,
+      "fiber": 8,
+      "iron": 5,
+      "calcium": 8
+    },
+    "tilth:burrito": {
+      "carbohydrate": 50,
+      "protein": 30,
+      "fat": 10,
+      "fiber": 30,
+      "vitamin_a": 15,
+      "vitamin_c": 20,
+      "iron": 25,
+      "calcium": 15
+    },
+    "tilth:porridge": {
+      "carbohydrate": 35,
+      "protein": 15,
+      "fat": 10,
+      "fiber": 20,
+      "vitamin_a": 5,
+      "iron": 20,
+      "calcium": 30
+    },
+    "tilth:cooked_rice": {
+      "carbohydrate": 45,
+      "protein": 8,
+      "fat": 1,
+      "fiber": 2,
+      "iron": 5,
+      "calcium": 1
+    },
+    "tilth:cooked_beans": {
+      "carbohydrate": 25,
+      "protein": 25,
+      "fat": 2,
+      "fiber": 35,
+      "vitamin_c": 2,
+      "iron": 25,
+      "calcium": 8
+    },
+    "tilth:rice_and_beans": {
+      "carbohydrate": 50,
+      "protein": 30,
+      "fat": 3,
+      "fiber": 30,
+      "vitamin_c": 2,
+      "iron": 25,
+      "calcium": 6
+    },
+    "tilth:baked_beans": {
+      "carbohydrate": 30,
+      "protein": 22,
+      "fat": 3,
+      "fiber": 30,
+      "vitamin_a": 10,
+      "vitamin_c": 10,
+      "iron": 20,
+      "calcium": 6
+    },
+    "tilth:lentil_soup": {
+      "carbohydrate": 30,
+      "protein": 30,
+      "fat": 3,
+      "fiber": 35,
+      "vitamin_a": 50,
+      "vitamin_c": 10,
+      "iron": 35,
+      "calcium": 5
+    },
+    "tilth:pea_soup": {
+      "carbohydrate": 30,
+      "protein": 25,
+      "fat": 3,
+      "fiber": 30,
+      "vitamin_a": 15,
+      "vitamin_c": 20,
+      "iron": 15,
+      "calcium": 4
+    },
+    "tilth:tomato_soup": {
+      "carbohydrate": 15,
+      "protein": 4,
+      "fat": 2,
+      "fiber": 10,
+      "vitamin_a": 40,
+      "vitamin_c": 50,
+      "iron": 8,
+      "calcium": 3
+    },
+    "tilth:onion_soup": {
+      "carbohydrate": 30,
+      "protein": 10,
+      "fat": 4,
+      "fiber": 12,
+      "vitamin_c": 10,
+      "iron": 8,
+      "calcium": 5
+    },
+    "tilth:tomato_sauce": {
+      "carbohydrate": 10,
+      "protein": 2,
+      "fat": 2,
+      "fiber": 8,
+      "vitamin_a": 30,
+      "vitamin_c": 30,
+      "iron": 6,
+      "calcium": 2
+    },
+    "tilth:hummus": {
+      "carbohydrate": 20,
+      "protein": 15,
+      "fat": 20,
+      "fiber": 20,
+      "vitamin_c": 5,
+      "iron": 15,
+      "calcium": 5
+    },
+    "tilth:garden_salad": {
+      "carbohydrate": 10,
+      "protein": 3,
+      "fiber": 20,
+      "vitamin_a": 120,
+      "vitamin_c": 45,
+      "iron": 6,
+      "calcium": 5
+    },
+    "tilth:coleslaw": {
+      "carbohydrate": 10,
+      "protein": 5,
+      "fat": 15,
+      "fiber": 20,
+      "vitamin_a": 60,
+      "vitamin_c": 50,
+      "iron": 4,
+      "calcium": 5
+    },
+    "tilth:tofu": {
+      "carbohydrate": 3,
+      "protein": 30,
+      "fat": 10,
+      "fiber": 2,
+      "iron": 25,
+      "calcium": 35
+    },
+    "tilth:popcorn": {
+      "carbohydrate": 15,
+      "protein": 3,
+      "fat": 2,
+      "fiber": 10
+    },
+    "tilth:roasted_maize": {
+      "carbohydrate": 25,
+      "protein": 5,
+      "fat": 2,
+      "fiber": 12,
+      "vitamin_a": 6,
+      "vitamin_c": 6,
+      "iron": 3
+    },
+    "tilth:fries": {
+      "carbohydrate": 35,
+      "protein": 4,
+      "fat": 20,
+      "fiber": 10,
+      "vitamin_c": 15,
+      "iron": 5
+    },
+    "tilth:roasted_sunflower_seeds": {
+      "carbohydrate": 4,
+      "protein": 12,
+      "fat": 25,
+      "fiber": 8,
+      "iron": 8,
+      "calcium": 3
+    },
+    "tilth:roasted_peanuts": {
+      "carbohydrate": 5,
+      "protein": 20,
+      "fat": 30,
+      "fiber": 8,
+      "iron": 6,
+      "calcium": 3
+    },
+    "tilth:garlic_bread": {
+      "carbohydrate": 45,
+      "protein": 10,
+      "fat": 20,
+      "fiber": 8,
+      "vitamin_c": 5,
+      "iron": 10,
+      "calcium": 5
+    },
+    "tilth:granola_bar": {
+      "carbohydrate": 35,
+      "protein": 12,
+      "fat": 15,
+      "fiber": 15,
+      "iron": 15,
+      "calcium": 4
+    },
+    "tilth:peanut_butter_sandwich": {
+      "carbohydrate": 45,
+      "protein": 25,
+      "fat": 30,
+      "fiber": 12,
+      "iron": 12,
+      "calcium": 6
+    }
+  }
+}

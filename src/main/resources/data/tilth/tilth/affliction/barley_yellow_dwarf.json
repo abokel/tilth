@@ -1,0 +1,59 @@
+{
+  "name": "Barley Yellow Dwarf",
+  "scientific_name": "Barley yellow dwarf virus (Luteoviridae)",
+  "category": "virus",
+  "hosts": [
+    "common_wheat",
+    "durum_wheat",
+    "barley",
+    "oats",
+    "rye",
+    "maize",
+    "rice",
+    "sorghum"
+  ],
+  "transmission": [
+    "insect_vector"
+  ],
+  "envelope": {
+    "temp_min": 10,
+    "temp_opt": 20,
+    "temp_max": 28,
+    "min_humidity": 0,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 14,
+    "spread_rate": 0.3,
+    "overwintering": "aphids_on_grasses",
+    "survival_years": 0.5
+  },
+  "impact": {
+    "max_yield_loss": 0.4,
+    "growth_penalty": 0.4,
+    "quality_penalty": 0.1,
+    "can_kill_host": false,
+    "from_stage": 1,
+    "to_stage": 6,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 0,
+    "tillage_reduction": 0.0,
+    "resistant_varieties": true,
+    "methods": [
+      "Delay autumn sowing until aphid flights end",
+      "Control aphids",
+      "Tolerant varieties"
+    ]
+  },
+  "symptoms": [
+    "Yellow to red-purple leaf tips",
+    "Stunting"
+  ],
+  "notes": "Spread only by aphids."
+}

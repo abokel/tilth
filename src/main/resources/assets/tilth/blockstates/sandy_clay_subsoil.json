@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "tilth:block/sandy_clay_subsoil"
+    }
+  }
+}

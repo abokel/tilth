@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "tilth:block/sand_grass"
+    },
+    "snowy=true": {
+      "model": "tilth:block/sand_grass_snow"
+    }
+  }
+}

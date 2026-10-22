@@ -1,0 +1,55 @@
+{
+  "name": "Common Scab",
+  "scientific_name": "Streptomyces scabiei",
+  "category": "bacterium",
+  "hosts": [
+    "potato",
+    "carrot",
+    "beetroot",
+    "sugar_beet"
+  ],
+  "transmission": [
+    "soilborne",
+    "seedborne"
+  ],
+  "envelope": {
+    "temp_min": 10,
+    "temp_opt": 22,
+    "temp_max": 30,
+    "min_humidity": 0,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 0.6,
+    "ph_min": 5.3,
+    "ph_max": 9.0
+  },
+  "lifecycle": {
+    "latent_days": 14,
+    "spread_rate": 0.25,
+    "overwintering": "soil",
+    "survival_years": 10
+  },
+  "impact": {
+    "max_yield_loss": 0.05,
+    "growth_penalty": 0.0,
+    "quality_penalty": 0.6,
+    "can_kill_host": false,
+    "from_stage": 4,
+    "to_stage": 9,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 3,
+    "tillage_reduction": 0.0,
+    "resistant_varieties": true,
+    "methods": [
+      "Keep soil pH below 5.3",
+      "Irrigate during tuber initiation",
+      "Avoid fresh manure and liming before potatoes"
+    ]
+  },
+  "symptoms": [
+    "Rough corky lesions on tuber and root skins"
+  ],
+  "notes": "A cosmetic disease that ruins market quality. Strongly suppressed by acidic soil."
+}

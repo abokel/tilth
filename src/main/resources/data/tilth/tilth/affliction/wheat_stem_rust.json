@@ -1,0 +1,57 @@
+{
+  "name": "Wheat Stem Rust",
+  "scientific_name": "Puccinia graminis f. sp. tritici",
+  "category": "fungus",
+  "hosts": [
+    "common_wheat",
+    "durum_wheat",
+    "barley",
+    "rye"
+  ],
+  "transmission": [
+    "airborne_spores"
+  ],
+  "envelope": {
+    "temp_min": 15,
+    "temp_opt": 25,
+    "temp_max": 35,
+    "min_humidity": 85,
+    "leaf_wetness_hours": 6,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 10,
+    "spread_rate": 0.45,
+    "overwintering": "alternate_host",
+    "survival_years": 0.5
+  },
+  "impact": {
+    "max_yield_loss": 0.7,
+    "growth_penalty": 0.4,
+    "quality_penalty": 0.5,
+    "can_kill_host": false,
+    "from_stage": 3,
+    "to_stage": 8,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 0,
+    "tillage_reduction": 0.1,
+    "resistant_varieties": true,
+    "methods": [
+      "Resistant cultivars (Sr genes)",
+      "Eradicate barberry, the alternate host",
+      "Early sowing",
+      "Fungicide at flag leaf"
+    ]
+  },
+  "symptoms": [
+    "Brick-red oval pustules on stems and leaf sheaths",
+    "Black overwintering spores late in the season",
+    "Shrivelled grain and lodging"
+  ],
+  "notes": "The Ug99 lineage, found in Uganda in 1999, defeated the widely used Sr31 resistance gene."
+}

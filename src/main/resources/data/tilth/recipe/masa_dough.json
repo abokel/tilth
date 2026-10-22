@@ -1,0 +1,22 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:cornmeal"
+    },
+    {
+      "item": "tilth:cornmeal"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "item": "tilth:wood_ash"
+    }
+  ],
+  "result": {
+    "id": "tilth:masa_dough",
+    "count": 2
+  }
+}

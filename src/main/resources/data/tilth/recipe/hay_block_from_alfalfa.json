@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "SSS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "tilth:alfalfa"
+    }
+  },
+  "result": {
+    "id": "minecraft:hay_block",
+    "count": 1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "tilth:vegetable_oil"
+    },
+    {
+      "item": "tilth:kitchen_knife"
+    }
+  ],
+  "result": {
+    "id": "tilth:raw_fries",
+    "count": 2
+  }
+}

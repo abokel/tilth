@@ -1,0 +1,12 @@
+{
+  "type": "tilth:quality_smelting",
+  "category": "food",
+  "ingredient": {
+    "item": "tilth:rye_dough"
+  },
+  "result": {
+    "id": "tilth:rye_bread"
+  },
+  "experience": 0.35,
+  "cookingtime": 200
+}

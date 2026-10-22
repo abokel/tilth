@@ -1,0 +1,6 @@
+{
+  "parent": "tilth:block/tall_cross",
+  "textures": {
+    "cross": "tilth:block/crop/sunflower_stage6"
+  }
+}

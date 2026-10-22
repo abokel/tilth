@@ -1,0 +1,52 @@
+{
+  "name": "Onion Downy Mildew",
+  "scientific_name": "Peronospora destructor",
+  "category": "oomycete",
+  "hosts": [
+    "onion",
+    "garlic"
+  ],
+  "transmission": [
+    "airborne_spores",
+    "seedborne"
+  ],
+  "envelope": {
+    "temp_min": 4,
+    "temp_opt": 13,
+    "temp_max": 22,
+    "min_humidity": 95,
+    "leaf_wetness_hours": 7,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 12,
+    "spread_rate": 0.4,
+    "overwintering": "infected_bulbs",
+    "survival_years": 1
+  },
+  "impact": {
+    "max_yield_loss": 0.5,
+    "growth_penalty": 0.4,
+    "quality_penalty": 0.3,
+    "can_kill_host": false,
+    "from_stage": 2,
+    "to_stage": 8,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 3,
+    "tillage_reduction": 0.3,
+    "resistant_varieties": false,
+    "methods": [
+      "Healthy sets",
+      "Wide spacing",
+      "Rotation"
+    ]
+  },
+  "symptoms": [
+    "Pale oval lesions with violet-grey fuzz on leaves"
+  ]
+}

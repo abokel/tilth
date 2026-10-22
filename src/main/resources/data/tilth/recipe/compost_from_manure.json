@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:manure"
+    },
+    {
+      "item": "tilth:straw"
+    },
+    {
+      "item": "tilth:straw"
+    },
+    {
+      "tag": "minecraft:dirt"
+    }
+  ],
+  "result": {
+    "id": "tilth:compost",
+    "count": 3
+  }
+}

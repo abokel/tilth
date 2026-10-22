@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:sugar_beet"
+    },
+    {
+      "item": "tilth:quern"
+    }
+  ],
+  "result": {
+    "id": "minecraft:sugar",
+    "count": 3
+  }
+}

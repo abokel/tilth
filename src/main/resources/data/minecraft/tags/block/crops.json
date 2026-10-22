@@ -1,0 +1,33 @@
+{
+  "replace": false,
+  "values": [
+    "tilth:common_wheat_crop",
+    "tilth:durum_wheat_crop",
+    "tilth:barley_crop",
+    "tilth:oats_crop",
+    "tilth:rye_crop",
+    "tilth:rice_crop",
+    "tilth:maize_crop",
+    "tilth:sorghum_crop",
+    "tilth:soybean_crop",
+    "tilth:pea_crop",
+    "tilth:chickpea_crop",
+    "tilth:lentil_crop",
+    "tilth:common_bean_crop",
+    "tilth:peanut_crop",
+    "tilth:alfalfa_crop",
+    "tilth:clover_crop",
+    "tilth:potato_crop",
+    "tilth:carrot_crop",
+    "tilth:beetroot_crop",
+    "tilth:sugar_beet_crop",
+    "tilth:onion_crop",
+    "tilth:garlic_crop",
+    "tilth:cabbage_crop",
+    "tilth:lettuce_crop",
+    "tilth:tomato_crop",
+    "tilth:sunflower_crop",
+    "tilth:flax_crop",
+    "tilth:cotton_crop"
+  ]
+}

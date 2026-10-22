@@ -1,0 +1,12 @@
+{
+  "type": "tilth:quality_smoking",
+  "category": "food",
+  "ingredient": {
+    "item": "tilth:wheat_dough"
+  },
+  "result": {
+    "id": "minecraft:bread"
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

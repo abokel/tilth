@@ -1,0 +1,22 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:tomato"
+    },
+    {
+      "item": "tilth:tomato"
+    },
+    {
+      "item": "tilth:tomato"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "id": "tilth:tomato_soup",
+    "count": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "tilth:quality_smelting",
+  "category": "food",
+  "ingredient": {
+    "item": "tilth:maize_seeds"
+  },
+  "result": {
+    "id": "tilth:popcorn"
+  },
+  "experience": 0.2,
+  "cookingtime": 200
+}

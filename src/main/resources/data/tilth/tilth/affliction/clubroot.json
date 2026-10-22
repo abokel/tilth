@@ -1,0 +1,55 @@
+{
+  "name": "Clubroot",
+  "scientific_name": "Plasmodiophora brassicae",
+  "category": "protist",
+  "hosts": [
+    "family:brassicaceae"
+  ],
+  "transmission": [
+    "soilborne",
+    "mechanical_contact"
+  ],
+  "envelope": {
+    "temp_min": 13,
+    "temp_opt": 23,
+    "temp_max": 30,
+    "min_humidity": 0,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.7,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 7.2
+  },
+  "lifecycle": {
+    "latent_days": 21,
+    "spread_rate": 0.4,
+    "overwintering": "resting_spores_in_soil",
+    "survival_years": 15
+  },
+  "impact": {
+    "max_yield_loss": 0.8,
+    "growth_penalty": 0.6,
+    "quality_penalty": 0.5,
+    "can_kill_host": true,
+    "from_stage": 1,
+    "to_stage": 7,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 5,
+    "tillage_reduction": 0.0,
+    "resistant_varieties": true,
+    "methods": [
+      "Lime to pH 7.2 or higher",
+      "Long rotation away from brassicas",
+      "Clean soil off boots and tools",
+      "Resistant varieties"
+    ]
+  },
+  "symptoms": [
+    "Swollen, club-shaped roots",
+    "Wilting on warm days despite moist soil",
+    "Stunting and yellowing"
+  ],
+  "notes": "Resting spores survive in soil for 15 years or more; liming is the classic control."
+}

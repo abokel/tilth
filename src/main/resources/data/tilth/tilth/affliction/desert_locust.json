@@ -1,0 +1,50 @@
+{
+  "name": "Desert Locust",
+  "scientific_name": "Schistocerca gregaria",
+  "category": "insect",
+  "hosts": [
+    "*"
+  ],
+  "transmission": [
+    "migration"
+  ],
+  "envelope": {
+    "temp_min": 25,
+    "temp_opt": 32,
+    "temp_max": 38,
+    "min_humidity": 0,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 14,
+    "spread_rate": 0.9,
+    "overwintering": "migration",
+    "survival_years": 0.0
+  },
+  "impact": {
+    "max_yield_loss": 1.0,
+    "growth_penalty": 0.9,
+    "quality_penalty": 0.0,
+    "can_kill_host": true,
+    "from_stage": 1,
+    "to_stage": 9,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 0,
+    "tillage_reduction": 0.0,
+    "resistant_varieties": false,
+    "methods": [
+      "Regional early warning",
+      "Targeted biopesticide (Metarhizium)"
+    ]
+  },
+  "symptoms": [
+    "Total defoliation as swarms pass"
+  ],
+  "notes": "Solitary grasshoppers turn gregarious after rains; a single swarm can eat as much as millions of people in a day."
+}

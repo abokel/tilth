@@ -1,0 +1,12 @@
+{
+  "type": "tilth:quality_campfire_cooking",
+  "category": "food",
+  "ingredient": {
+    "item": "tilth:soy_milk"
+  },
+  "result": {
+    "id": "tilth:tofu"
+  },
+  "experience": 0.3,
+  "cookingtime": 600
+}

@@ -1,0 +1,22 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:rolled_oats"
+    },
+    {
+      "item": "tilth:rolled_oats"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "id": "tilth:porridge",
+    "count": 1
+  }
+}

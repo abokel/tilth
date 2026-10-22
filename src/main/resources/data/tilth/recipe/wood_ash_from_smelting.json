@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "ingredient": {
+    "item": "minecraft:stick"
+  },
+  "result": {
+    "id": "tilth:wood_ash"
+  },
+  "experience": 0.05,
+  "cookingtime": 200
+}

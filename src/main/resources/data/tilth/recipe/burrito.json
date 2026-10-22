@@ -1,0 +1,25 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:tortilla"
+    },
+    {
+      "item": "tilth:tortilla"
+    },
+    {
+      "item": "tilth:cooked_rice"
+    },
+    {
+      "item": "tilth:cooked_beans"
+    },
+    {
+      "item": "tilth:tomato"
+    }
+  ],
+  "result": {
+    "id": "tilth:burrito",
+    "count": 2
+  }
+}

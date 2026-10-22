@@ -1,0 +1,25 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:chickpeas"
+    },
+    {
+      "item": "tilth:chickpeas"
+    },
+    {
+      "item": "tilth:garlic"
+    },
+    {
+      "item": "tilth:vegetable_oil"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "id": "tilth:hummus",
+    "count": 1
+  }
+}

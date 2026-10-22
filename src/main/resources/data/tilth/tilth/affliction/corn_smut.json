@@ -1,0 +1,51 @@
+{
+  "name": "Corn Smut",
+  "scientific_name": "Ustilago maydis",
+  "category": "fungus",
+  "hosts": [
+    "maize"
+  ],
+  "transmission": [
+    "airborne_spores",
+    "soilborne"
+  ],
+  "envelope": {
+    "temp_min": 26,
+    "temp_opt": 30,
+    "temp_max": 34,
+    "min_humidity": 0,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 10,
+    "spread_rate": 0.25,
+    "overwintering": "soil",
+    "survival_years": 3
+  },
+  "impact": {
+    "max_yield_loss": 0.1,
+    "growth_penalty": 0.05,
+    "quality_penalty": 0.4,
+    "can_kill_host": false,
+    "from_stage": 5,
+    "to_stage": 8,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 0,
+    "tillage_reduction": 0.2,
+    "resistant_varieties": true,
+    "methods": [
+      "Avoid wounding plants",
+      "Balanced fertility"
+    ]
+  },
+  "symptoms": [
+    "Large grey galls replacing kernels, bursting with black spores"
+  ],
+  "notes": "The galls are eaten as huitlacoche, a delicacy in Mexican cuisine."
+}

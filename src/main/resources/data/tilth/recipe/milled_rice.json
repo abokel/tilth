@@ -1,0 +1,19 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:paddy_rice"
+    },
+    {
+      "item": "tilth:paddy_rice"
+    },
+    {
+      "item": "tilth:quern"
+    }
+  ],
+  "result": {
+    "id": "tilth:milled_rice",
+    "count": 1
+  }
+}

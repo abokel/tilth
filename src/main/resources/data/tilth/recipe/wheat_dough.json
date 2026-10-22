@@ -1,0 +1,19 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:wheat_flour"
+    },
+    {
+      "item": "tilth:wheat_flour"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    }
+  ],
+  "result": {
+    "id": "tilth:wheat_dough",
+    "count": 2
+  }
+}

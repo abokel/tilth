@@ -1,0 +1,19 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "tilth:garlic"
+    },
+    {
+      "item": "tilth:vegetable_oil"
+    }
+  ],
+  "result": {
+    "id": "tilth:garlic_bread",
+    "count": 2
+  }
+}

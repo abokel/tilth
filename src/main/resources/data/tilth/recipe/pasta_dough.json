@@ -1,0 +1,19 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:durum_semolina"
+    },
+    {
+      "item": "tilth:durum_semolina"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    }
+  ],
+  "result": {
+    "id": "tilth:pasta_dough",
+    "count": 2
+  }
+}

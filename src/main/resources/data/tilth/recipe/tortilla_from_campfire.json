@@ -1,0 +1,12 @@
+{
+  "type": "tilth:quality_campfire_cooking",
+  "category": "food",
+  "ingredient": {
+    "item": "tilth:masa_dough"
+  },
+  "result": {
+    "id": "tilth:tortilla"
+  },
+  "experience": 0.3,
+  "cookingtime": 600
+}

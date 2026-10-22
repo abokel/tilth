@@ -1,0 +1,19 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:rye_flour"
+    },
+    {
+      "item": "tilth:rye_flour"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    }
+  ],
+  "result": {
+    "id": "tilth:rye_dough",
+    "count": 2
+  }
+}

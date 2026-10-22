@@ -1,0 +1,55 @@
+{
+  "name": "Powdery Mildew of Cereals",
+  "scientific_name": "Blumeria graminis",
+  "category": "fungus",
+  "hosts": [
+    "common_wheat",
+    "durum_wheat",
+    "barley",
+    "oats",
+    "rye"
+  ],
+  "transmission": [
+    "airborne_spores"
+  ],
+  "envelope": {
+    "temp_min": 5,
+    "temp_opt": 18,
+    "temp_max": 25,
+    "min_humidity": 70,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 7,
+    "spread_rate": 0.45,
+    "overwintering": "residue",
+    "survival_years": 0.5
+  },
+  "impact": {
+    "max_yield_loss": 0.25,
+    "growth_penalty": 0.3,
+    "quality_penalty": 0.1,
+    "can_kill_host": false,
+    "from_stage": 2,
+    "to_stage": 7,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 0,
+    "tillage_reduction": 0.2,
+    "resistant_varieties": true,
+    "methods": [
+      "Resistant cultivars",
+      "Avoid excessive nitrogen and dense stands",
+      "Fungicide"
+    ]
+  },
+  "symptoms": [
+    "White powdery fungal growth on upper leaf surfaces"
+  ],
+  "notes": "Unlike most leaf diseases it does not need free water; dry, mild, humid weather favours it."
+}

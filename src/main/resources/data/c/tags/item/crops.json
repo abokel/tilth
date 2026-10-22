@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "tilth:durum_wheat",
+    "tilth:barley",
+    "tilth:oats",
+    "tilth:rye",
+    "tilth:paddy_rice",
+    "tilth:maize",
+    "tilth:sorghum",
+    "tilth:soybeans",
+    "tilth:peas",
+    "tilth:chickpeas",
+    "tilth:lentils",
+    "tilth:beans",
+    "tilth:peanuts",
+    "tilth:alfalfa",
+    "tilth:clover",
+    "tilth:sugar_beet",
+    "tilth:onion",
+    "tilth:garlic",
+    "tilth:cabbage",
+    "tilth:lettuce",
+    "tilth:tomato",
+    "tilth:sunflower_seeds",
+    "tilth:flax",
+    "tilth:cotton_boll"
+  ]
+}

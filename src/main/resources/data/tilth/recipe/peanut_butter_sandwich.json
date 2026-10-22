@@ -1,0 +1,16 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "tilth:peanut_butter"
+    }
+  ],
+  "result": {
+    "id": "tilth:peanut_butter_sandwich",
+    "count": 2
+  }
+}

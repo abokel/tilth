@@ -1,0 +1,12 @@
+{
+  "type": "tilth:quality_campfire_cooking",
+  "category": "food",
+  "ingredient": {
+    "item": "tilth:raw_pasta"
+  },
+  "result": {
+    "id": "tilth:cooked_pasta"
+  },
+  "experience": 0.3,
+  "cookingtime": 600
+}

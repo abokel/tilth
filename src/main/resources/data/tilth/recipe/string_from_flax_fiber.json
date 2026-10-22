@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:flax_fiber"
+    },
+    {
+      "item": "tilth:flax_fiber"
+    },
+    {
+      "item": "tilth:flax_fiber"
+    }
+  ],
+  "result": {
+    "id": "minecraft:string",
+    "count": 2
+  }
+}

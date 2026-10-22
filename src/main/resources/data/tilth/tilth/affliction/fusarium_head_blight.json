@@ -1,0 +1,61 @@
+{
+  "name": "Fusarium Head Blight (Scab)",
+  "scientific_name": "Fusarium graminearum",
+  "category": "fungus",
+  "hosts": [
+    "common_wheat",
+    "durum_wheat",
+    "barley",
+    "oats",
+    "rye",
+    "maize"
+  ],
+  "transmission": [
+    "crop_residue",
+    "airborne_spores",
+    "rain_splash"
+  ],
+  "envelope": {
+    "temp_min": 15,
+    "temp_opt": 27,
+    "temp_max": 32,
+    "min_humidity": 90,
+    "leaf_wetness_hours": 24,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 5,
+    "spread_rate": 0.5,
+    "overwintering": "residue",
+    "survival_years": 2
+  },
+  "impact": {
+    "max_yield_loss": 0.5,
+    "growth_penalty": 0.1,
+    "quality_penalty": 0.8,
+    "can_kill_host": false,
+    "from_stage": 6,
+    "to_stage": 7,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 2,
+    "tillage_reduction": 0.6,
+    "resistant_varieties": true,
+    "methods": [
+      "Do not sow wheat into maize residue",
+      "Plough under infected residue",
+      "Fungicide at anthesis",
+      "Moderately resistant cultivars"
+    ]
+  },
+  "symptoms": [
+    "Bleached spikelets during grain fill",
+    "Pink-orange spore masses at glume bases",
+    "Shrivelled 'tombstone' kernels"
+  ],
+  "notes": "Contaminates grain with the mycotoxin deoxynivalenol (DON, 'vomitoxin')."
+}

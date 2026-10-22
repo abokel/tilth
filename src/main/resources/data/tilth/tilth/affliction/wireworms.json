@@ -1,0 +1,52 @@
+{
+  "name": "Wireworms",
+  "scientific_name": "Elateridae (click beetle larvae)",
+  "category": "insect",
+  "hosts": [
+    "*"
+  ],
+  "transmission": [
+    "soilborne"
+  ],
+  "envelope": {
+    "temp_min": 10,
+    "temp_opt": 18,
+    "temp_max": 25,
+    "min_humidity": 0,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 21,
+    "spread_rate": 0.2,
+    "overwintering": "larvae_in_soil",
+    "survival_years": 4
+  },
+  "impact": {
+    "max_yield_loss": 0.3,
+    "growth_penalty": 0.3,
+    "quality_penalty": 0.3,
+    "can_kill_host": false,
+    "from_stage": 0,
+    "to_stage": 4,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 2,
+    "tillage_reduction": 0.4,
+    "resistant_varieties": false,
+    "methods": [
+      "Avoid planting into freshly broken grass sod",
+      "Cultivate in late summer",
+      "Bait stations"
+    ]
+  },
+  "symptoms": [
+    "Gaps in rows",
+    "Holes bored in seeds and tubers"
+  ],
+  "notes": "Worst in the first years after ploughing up old pasture."
+}

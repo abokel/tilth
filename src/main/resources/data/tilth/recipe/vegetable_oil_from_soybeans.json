@@ -1,0 +1,28 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:soybeans"
+    },
+    {
+      "item": "tilth:soybeans"
+    },
+    {
+      "item": "tilth:soybeans"
+    },
+    {
+      "item": "tilth:soybeans"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "tilth:quern"
+    }
+  ],
+  "result": {
+    "id": "tilth:vegetable_oil",
+    "count": 1
+  }
+}

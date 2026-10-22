@@ -1,0 +1,12 @@
+{
+  "type": "tilth:quality_campfire_cooking",
+  "category": "food",
+  "ingredient": {
+    "item": "tilth:soaked_beans"
+  },
+  "result": {
+    "id": "tilth:cooked_beans"
+  },
+  "experience": 0.3,
+  "cookingtime": 600
+}

@@ -1,0 +1,22 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:lettuce"
+    },
+    {
+      "item": "tilth:tomato"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "id": "tilth:garden_salad",
+    "count": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:flax"
+    },
+    {
+      "item": "tilth:kitchen_knife"
+    }
+  ],
+  "result": {
+    "id": "tilth:flax_fiber",
+    "count": 2
+  }
+}

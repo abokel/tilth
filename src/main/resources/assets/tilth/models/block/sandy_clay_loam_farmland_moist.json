@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_farmland",
+  "textures": {
+    "dirt": "tilth:block/sandy_clay_loam_topsoil",
+    "top": "tilth:block/sandy_clay_loam_farmland_moist"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "tilth:quality_smoking",
+  "category": "food",
+  "ingredient": {
+    "item": "tilth:maize"
+  },
+  "result": {
+    "id": "tilth:roasted_maize"
+  },
+  "experience": 0.3,
+  "cookingtime": 100
+}

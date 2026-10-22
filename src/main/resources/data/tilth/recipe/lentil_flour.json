@@ -1,0 +1,19 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:lentils"
+    },
+    {
+      "item": "tilth:lentils"
+    },
+    {
+      "item": "tilth:quern"
+    }
+  ],
+  "result": {
+    "id": "tilth:lentil_flour",
+    "count": 1
+  }
+}

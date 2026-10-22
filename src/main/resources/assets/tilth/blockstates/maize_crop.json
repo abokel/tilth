@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "tilth:block/crop/maize_stage0"
+    },
+    "stage=1": {
+      "model": "tilth:block/crop/maize_stage1"
+    },
+    "stage=2": {
+      "model": "tilth:block/crop/maize_stage2"
+    },
+    "stage=3": {
+      "model": "tilth:block/crop/maize_stage3"
+    },
+    "stage=4": {
+      "model": "tilth:block/crop/maize_stage4"
+    },
+    "stage=5": {
+      "model": "tilth:block/crop/maize_stage5"
+    },
+    "stage=6": {
+      "model": "tilth:block/crop/maize_stage6"
+    },
+    "stage=7": {
+      "model": "tilth:block/crop/maize_stage7"
+    },
+    "stage=8": {
+      "model": "tilth:block/crop/maize_stage8"
+    },
+    "stage=9": {
+      "model": "tilth:block/crop/maize_stage9"
+    }
+  }
+}

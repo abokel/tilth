@@ -1,0 +1,12 @@
+{
+  "type": "tilth:quality_smelting",
+  "category": "food",
+  "ingredient": {
+    "item": "tilth:raw_protein_pasta"
+  },
+  "result": {
+    "id": "tilth:protein_pasta"
+  },
+  "experience": 0.35,
+  "cookingtime": 200
+}

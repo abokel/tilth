@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:gunpowder"
+    },
+    {
+      "item": "minecraft:gunpowder"
+    },
+    {
+      "item": "tilth:quern"
+    }
+  ],
+  "result": {
+    "id": "tilth:elemental_sulfur",
+    "count": 1
+  }
+}

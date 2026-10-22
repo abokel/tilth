@@ -1,0 +1,12 @@
+{
+  "type": "tilth:quality_smelting",
+  "category": "food",
+  "ingredient": {
+    "item": "tilth:cornbread_batter"
+  },
+  "result": {
+    "id": "tilth:cornbread"
+  },
+  "experience": 0.35,
+  "cookingtime": 200
+}

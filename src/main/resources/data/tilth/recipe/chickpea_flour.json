@@ -1,0 +1,19 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:chickpeas"
+    },
+    {
+      "item": "tilth:chickpeas"
+    },
+    {
+      "item": "tilth:quern"
+    }
+  ],
+  "result": {
+    "id": "tilth:chickpea_flour",
+    "count": 1
+  }
+}

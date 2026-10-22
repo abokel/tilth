@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "tilth:maize",
+    "tilth:barley",
+    "tilth:sugar_beet",
+    "tilth:soybeans",
+    "tilth:peanuts"
+  ]
+}

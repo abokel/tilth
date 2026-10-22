@@ -1,0 +1,22 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:peas"
+    },
+    {
+      "item": "tilth:peas"
+    },
+    {
+      "item": "tilth:onion"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "id": "tilth:pea_soup",
+    "count": 1
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "particle": "tilth:block/clay_loam_topsoil",
+    "bottom": "tilth:block/clay_loam_topsoil",
+    "side": "tilth:block/clay_loam_grass_snow",
+    "top": "minecraft:block/grass_block_top"
+  }
+}

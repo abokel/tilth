@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "tilth:block/silt_loam_subsoil"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "name": "Root-knot Nematode",
+  "scientific_name": "Meloidogyne spp.",
+  "category": "nematode",
+  "hosts": [
+    "tomato",
+    "carrot",
+    "potato",
+    "lettuce",
+    "peanut",
+    "soybean",
+    "cotton"
+  ],
+  "transmission": [
+    "soilborne"
+  ],
+  "envelope": {
+    "temp_min": 20,
+    "temp_opt": 28,
+    "temp_max": 33,
+    "min_humidity": 0,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 25,
+    "spread_rate": 0.35,
+    "overwintering": "soil",
+    "survival_years": 3
+  },
+  "impact": {
+    "max_yield_loss": 0.4,
+    "growth_penalty": 0.3,
+    "quality_penalty": 0.5,
+    "can_kill_host": false,
+    "from_stage": 1,
+    "to_stage": 9,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 2,
+    "tillage_reduction": 0.0,
+    "resistant_varieties": true,
+    "methods": [
+      "Rotation with grasses",
+      "Solarisation",
+      "Resistant varieties (Mi gene in tomato)"
+    ]
+  },
+  "symptoms": [
+    "Galls on roots",
+    "Forked, hairy carrots"
+  ],
+  "notes": "Thrives in warm, sandy soils."
+}

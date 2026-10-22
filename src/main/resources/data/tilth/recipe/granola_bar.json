@@ -1,0 +1,22 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:rolled_oats"
+    },
+    {
+      "item": "tilth:rolled_oats"
+    },
+    {
+      "item": "minecraft:honey_bottle"
+    },
+    {
+      "item": "tilth:peanuts"
+    }
+  ],
+  "result": {
+    "id": "tilth:granola_bar",
+    "count": 3
+  }
+}

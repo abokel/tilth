@@ -1,0 +1,16 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:cooked_beans"
+    },
+    {
+      "item": "tilth:tomato_sauce"
+    }
+  ],
+  "result": {
+    "id": "tilth:baked_beans",
+    "count": 2
+  }
+}

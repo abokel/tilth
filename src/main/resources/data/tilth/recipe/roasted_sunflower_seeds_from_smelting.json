@@ -1,0 +1,12 @@
+{
+  "type": "tilth:quality_smelting",
+  "category": "food",
+  "ingredient": {
+    "item": "tilth:sunflower_seeds"
+  },
+  "result": {
+    "id": "tilth:roasted_sunflower_seeds"
+  },
+  "experience": 0.2,
+  "cookingtime": 200
+}

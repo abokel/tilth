@@ -1,0 +1,56 @@
+{
+  "name": "Gray Mold",
+  "scientific_name": "Botrytis cinerea",
+  "category": "fungus",
+  "hosts": [
+    "tomato",
+    "lettuce",
+    "pea",
+    "common_bean",
+    "sunflower",
+    "onion",
+    "cabbage"
+  ],
+  "transmission": [
+    "airborne_spores"
+  ],
+  "envelope": {
+    "temp_min": 15,
+    "temp_opt": 20,
+    "temp_max": 25,
+    "min_humidity": 90,
+    "leaf_wetness_hours": 8,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 5,
+    "spread_rate": 0.45,
+    "overwintering": "residue",
+    "survival_years": 1
+  },
+  "impact": {
+    "max_yield_loss": 0.3,
+    "growth_penalty": 0.2,
+    "quality_penalty": 0.5,
+    "can_kill_host": false,
+    "from_stage": 5,
+    "to_stage": 9,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 0,
+    "tillage_reduction": 0.2,
+    "resistant_varieties": false,
+    "methods": [
+      "Ventilation",
+      "Remove infected tissue",
+      "Avoid late overhead watering"
+    ]
+  },
+  "symptoms": [
+    "Fuzzy grey spore masses on flowers, fruit and leaves"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "tilth:block/sand_subsoil"
+    }
+  }
+}

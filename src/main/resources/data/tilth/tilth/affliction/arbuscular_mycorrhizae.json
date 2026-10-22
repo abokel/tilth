@@ -1,0 +1,61 @@
+{
+  "name": "Arbuscular Mycorrhizal Fungi",
+  "scientific_name": "Glomeromycota",
+  "category": "symbiont",
+  "hosts": [
+    "family:poaceae",
+    "family:fabaceae",
+    "family:solanaceae",
+    "family:amaryllidaceae",
+    "family:apiaceae",
+    "family:asteraceae",
+    "family:linaceae",
+    "family:malvaceae"
+  ],
+  "transmission": [
+    "soilborne",
+    "root_contact"
+  ],
+  "envelope": {
+    "temp_min": 10,
+    "temp_opt": 25,
+    "temp_max": 35,
+    "min_humidity": 0,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 30,
+    "spread_rate": 0.3,
+    "overwintering": "spores_and_hyphae_in_soil",
+    "survival_years": 2
+  },
+  "impact": {
+    "max_yield_loss": 0.0,
+    "growth_penalty": 0.0,
+    "quality_penalty": 0.0,
+    "can_kill_host": false,
+    "from_stage": 1,
+    "to_stage": 9,
+    "benefit": 0.3
+  },
+  "control": {
+    "rotation_break_years": 0,
+    "tillage_reduction": 0.4,
+    "resistant_varieties": false,
+    "methods": [
+      "Reduced tillage",
+      "Avoid long bare fallows",
+      "Avoid very high phosphorus"
+    ]
+  },
+  "symptoms": [
+    "Better phosphorus and zinc uptake",
+    "Improved drought tolerance"
+  ],
+  "beneficial": true,
+  "notes": "Brassicas and beets are non-hosts, so a cabbage or sugar beet crop lets the network decline."
+}

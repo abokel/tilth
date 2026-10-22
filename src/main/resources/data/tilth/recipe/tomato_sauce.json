@@ -1,0 +1,25 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:tomato"
+    },
+    {
+      "item": "tilth:tomato"
+    },
+    {
+      "item": "tilth:onion"
+    },
+    {
+      "item": "tilth:garlic"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "id": "tilth:tomato_sauce",
+    "count": 1
+  }
+}

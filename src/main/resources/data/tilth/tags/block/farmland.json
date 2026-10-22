@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "tilth:sand_farmland",
+    "tilth:loamy_sand_farmland",
+    "tilth:sandy_loam_farmland",
+    "tilth:loam_farmland",
+    "tilth:silt_loam_farmland",
+    "tilth:silt_farmland",
+    "tilth:sandy_clay_loam_farmland",
+    "tilth:clay_loam_farmland",
+    "tilth:silty_clay_loam_farmland",
+    "tilth:sandy_clay_farmland",
+    "tilth:silty_clay_farmland",
+    "tilth:clay_farmland",
+    "tilth:peat_farmland"
+  ]
+}

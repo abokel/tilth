@@ -1,0 +1,19 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:durum_semolina"
+    },
+    {
+      "item": "tilth:chickpea_flour"
+    },
+    {
+      "item": "minecraft:egg"
+    }
+  ],
+  "result": {
+    "id": "tilth:protein_pasta_dough",
+    "count": 2
+  }
+}

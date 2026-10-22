@@ -1,0 +1,12 @@
+{
+  "type": "tilth:quality_smoking",
+  "category": "food",
+  "ingredient": {
+    "item": "tilth:peanuts"
+  },
+  "result": {
+    "id": "tilth:roasted_peanuts"
+  },
+  "experience": 0.2,
+  "cookingtime": 100
+}

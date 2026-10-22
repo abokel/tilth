@@ -1,0 +1,53 @@
+{
+  "name": "Tomato Mosaic",
+  "scientific_name": "Tomato mosaic virus (Tobamovirus)",
+  "category": "virus",
+  "hosts": [
+    "tomato"
+  ],
+  "transmission": [
+    "mechanical_contact",
+    "seedborne"
+  ],
+  "envelope": {
+    "temp_min": 15,
+    "temp_opt": 25,
+    "temp_max": 32,
+    "min_humidity": 0,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 10,
+    "spread_rate": 0.3,
+    "overwintering": "seed_and_residue",
+    "survival_years": 2
+  },
+  "impact": {
+    "max_yield_loss": 0.25,
+    "growth_penalty": 0.2,
+    "quality_penalty": 0.3,
+    "can_kill_host": false,
+    "from_stage": 1,
+    "to_stage": 9,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 2,
+    "tillage_reduction": 0.4,
+    "resistant_varieties": true,
+    "methods": [
+      "Resistant varieties (Tm-2 genes)",
+      "Wash hands and tools",
+      "Clean seed"
+    ]
+  },
+  "symptoms": [
+    "Light and dark green mottling of leaves",
+    "Fruit with internal browning"
+  ],
+  "notes": "One of the most stable viruses known; survives for years in dried plant debris."
+}

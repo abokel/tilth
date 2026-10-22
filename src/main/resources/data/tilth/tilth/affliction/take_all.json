@@ -1,0 +1,56 @@
+{
+  "name": "Take-all",
+  "scientific_name": "Gaeumannomyces tritici",
+  "category": "fungus",
+  "hosts": [
+    "common_wheat",
+    "durum_wheat",
+    "barley"
+  ],
+  "transmission": [
+    "soilborne",
+    "crop_residue"
+  ],
+  "envelope": {
+    "temp_min": 10,
+    "temp_opt": 18,
+    "temp_max": 25,
+    "min_humidity": 0,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.6,
+    "soil_moisture_max": 2.0,
+    "ph_min": 6.0,
+    "ph_max": 8.5
+  },
+  "lifecycle": {
+    "latent_days": 14,
+    "spread_rate": 0.3,
+    "overwintering": "residue",
+    "survival_years": 1
+  },
+  "impact": {
+    "max_yield_loss": 0.5,
+    "growth_penalty": 0.4,
+    "quality_penalty": 0.3,
+    "can_kill_host": true,
+    "from_stage": 1,
+    "to_stage": 8,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 1,
+    "tillage_reduction": 0.3,
+    "resistant_varieties": false,
+    "methods": [
+      "One-year break with a non-grass crop",
+      "Avoid over-liming",
+      "Ammonium rather than nitrate nitrogen",
+      "Take-all decline after continuous wheat"
+    ]
+  },
+  "symptoms": [
+    "Stunted patches with white, empty heads ('whiteheads')",
+    "Black, rotted roots and stem bases"
+  ],
+  "notes": "Worse in alkaline, freshly limed, loose or waterlogged soils."
+}

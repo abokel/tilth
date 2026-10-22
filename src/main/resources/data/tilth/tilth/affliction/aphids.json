@@ -1,0 +1,52 @@
+{
+  "name": "Aphids",
+  "scientific_name": "Aphidoidea",
+  "category": "insect",
+  "hosts": [
+    "*"
+  ],
+  "transmission": [
+    "migration"
+  ],
+  "envelope": {
+    "temp_min": 10,
+    "temp_opt": 22,
+    "temp_max": 30,
+    "min_humidity": 0,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 7,
+    "spread_rate": 0.5,
+    "overwintering": "eggs_on_woody_hosts",
+    "survival_years": 0.5
+  },
+  "impact": {
+    "max_yield_loss": 0.2,
+    "growth_penalty": 0.2,
+    "quality_penalty": 0.1,
+    "can_kill_host": false,
+    "from_stage": 1,
+    "to_stage": 8,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 0,
+    "tillage_reduction": 0.0,
+    "resistant_varieties": false,
+    "methods": [
+      "Conserve lady beetles, lacewings and hoverflies",
+      "Insecticidal soap",
+      "Avoid excess nitrogen"
+    ]
+  },
+  "symptoms": [
+    "Curled leaves",
+    "Sticky honeydew and sooty mould"
+  ],
+  "notes": "Vectors of many plant viruses, including barley yellow dwarf."
+}

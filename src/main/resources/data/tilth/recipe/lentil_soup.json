@@ -1,0 +1,25 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:lentils"
+    },
+    {
+      "item": "tilth:lentils"
+    },
+    {
+      "item": "tilth:onion"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "id": "tilth:lentil_soup",
+    "count": 1
+  }
+}

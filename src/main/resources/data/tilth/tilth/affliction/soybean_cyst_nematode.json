@@ -1,0 +1,53 @@
+{
+  "name": "Soybean Cyst Nematode",
+  "scientific_name": "Heterodera glycines",
+  "category": "nematode",
+  "hosts": [
+    "soybean",
+    "common_bean"
+  ],
+  "transmission": [
+    "soilborne",
+    "mechanical_contact"
+  ],
+  "envelope": {
+    "temp_min": 15,
+    "temp_opt": 25,
+    "temp_max": 30,
+    "min_humidity": 0,
+    "leaf_wetness_hours": 0,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 6.0,
+    "ph_max": 9.0
+  },
+  "lifecycle": {
+    "latent_days": 25,
+    "spread_rate": 0.3,
+    "overwintering": "cysts_in_soil",
+    "survival_years": 10
+  },
+  "impact": {
+    "max_yield_loss": 0.3,
+    "growth_penalty": 0.3,
+    "quality_penalty": 0.0,
+    "can_kill_host": false,
+    "from_stage": 1,
+    "to_stage": 8,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 2,
+    "tillage_reduction": 0.0,
+    "resistant_varieties": true,
+    "methods": [
+      "Rotate with non-hosts (maize, wheat)",
+      "Resistant varieties (PI 88788, Peking)"
+    ]
+  },
+  "symptoms": [
+    "Stunted, yellow patches",
+    "Tiny white-to-brown cysts on roots"
+  ],
+  "notes": "Often causes yield loss with no visible symptoms."
+}

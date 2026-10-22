@@ -1,0 +1,25 @@
+{
+  "type": "tilth:quality_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:peanuts"
+    },
+    {
+      "item": "tilth:peanuts"
+    },
+    {
+      "item": "tilth:peanuts"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "tilth:quern"
+    }
+  ],
+  "result": {
+    "id": "tilth:peanut_butter",
+    "count": 1
+  }
+}
