@@ -147,7 +147,8 @@ Neither is required, but both make the mod much easier to learn:
 - **[JEI](https://modrinth.com/mod/jei)** shows every Tilth recipe, including the quality-aware ones, plus three Tilth tabs: **Growing** (seed, harvest, temperatures, degree-days, pH, nutrient demand), **Tillage** (which tool turns which soil into which farmland) and **Soil Amendments** (what each fertiliser does per dose). Soils, tools, manure and straw have information pages.
 
 ## Documentation
-- **[Field Guide online](docs/index.md):** the same content as the in-game book, as a website in `docs/` (a [Just the Docs](https://just-the-docs.com/) site that GitHub Pages can publish from the `/docs` folder).
+- **[Website](https://abokel.github.io/tilth/):** the Field Guide online, with the same content as the in-game book. GitHub Pages builds it from `docs/` (a [Just the Docs](https://just-the-docs.com/) site).
+- **[Wiki](https://github.com/abokel/tilth/wiki):** the same guide as GitHub wiki pages.
 - **[Changelog](CHANGELOG.md):** what changed in each release.
 - **[Design notes](docs/DESIGN.md):** how the simulation works, for contributors.
 
