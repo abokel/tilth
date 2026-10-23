@@ -6,7 +6,7 @@ nav_order: 23
 
 # Sugar Beet
 
-> **Sugar Beet**  
+> **Sugar Beet Seeds**  
 > **Sugar Beet** (_Beta vulgaris (sugar beet)_), beet family.
 
 - **Cool-season:** sow as soon as the ground thaws. Sprouts after 120 °C·d above 3 °C.

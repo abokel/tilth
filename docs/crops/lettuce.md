@@ -6,7 +6,7 @@ nav_order: 27
 
 # Lettuce
 
-> **Lettuce**  
+> **Lettuce Seeds**  
 > **Lettuce** (_Lactuca sativa_), daisy family.
 
 - **Cool-season:** sow as soon as the ground thaws. Sprouts after 50 °C·d above 4 °C.

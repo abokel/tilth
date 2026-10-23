@@ -6,7 +6,7 @@ nav_order: 9
 
 # Rice
 
-> **Rice**  
+> **Paddy Rice**  
 > **Rice** (_Oryza sativa_), grass family.
 
 - **Warm-season:** sow after the last frost, into warm soil. Sprouts after 60 °C·d above 10 °C.

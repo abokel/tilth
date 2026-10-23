@@ -26,4 +26,5 @@ This site has the same content as the in-game **Tilth Field Guide**, which is av
 
 - [Changelog](changelog.html)
 - [Design notes: how the models work](DESIGN.html)
+- [Wiki](https://github.com/abokel/tilth/wiki)
 - [Source code](https://github.com/abokel/tilth)

@@ -6,7 +6,7 @@ nav_order: 16
 
 # Common Bean
 
-> **Common Bean**  
+> **Dry Beans**  
 > **Common Bean** (_Phaseolus vulgaris_), legume family.
 
 - **Warm-season:** sow after the last frost, into warm soil. Sprouts after 50 °C·d above 10 °C.

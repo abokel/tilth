@@ -6,7 +6,7 @@ nav_order: 7
 
 # Oats
 
-> **Oats**  
+> **Oat Seeds**  
 > **Oats** (_Avena sativa_), grass family.
 
 - **Cool-season:** sow as soon as the ground thaws. Sprouts after 100 °C·d above 0 °C.

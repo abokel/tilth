@@ -6,7 +6,7 @@ nav_order: 19
 
 # Red Clover
 
-> **Red Clover**  
+> **Clover Seeds**  
 > **Red Clover** (_Trifolium pratense_), legume family.
 
 - **Cool-season:** sow as soon as the ground thaws. Sprouts after 60 °C·d above 4 °C.

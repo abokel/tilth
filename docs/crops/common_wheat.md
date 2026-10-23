@@ -6,7 +6,7 @@ nav_order: 4
 
 # Common Wheat
 
-> **Common Wheat**  
+> **Wheat Seeds**  
 > **Common Wheat** (_Triticum aestivum_), grass family.
 
 - **Cool-season:** sow as soon as the ground thaws. Sprouts after 100 °C·d above 0 °C.

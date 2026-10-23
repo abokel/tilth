@@ -6,7 +6,7 @@ nav_order: 8
 
 # Rye
 
-> **Rye**  
+> **Rye Seeds**  
 > **Rye** (_Secale cereale_), grass family.
 
 - **Cool-season:** sow as soon as the ground thaws. Sprouts after 100 °C·d above 0 °C.

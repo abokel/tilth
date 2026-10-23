@@ -6,7 +6,7 @@ nav_order: 17
 
 # Peanut
 
-> **Peanut**  
+> **Peanuts**  
 > **Peanut** (_Arachis hypogaea_), legume family.
 
 - **Warm-season:** sow after the last frost, into warm soil. Sprouts after 70 °C·d above 10 °C.

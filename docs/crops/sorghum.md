@@ -6,7 +6,7 @@ nav_order: 11
 
 # Sorghum
 
-> **Sorghum**  
+> **Sorghum Seeds**  
 > **Sorghum** (_Sorghum bicolor_), grass family.
 
 - **Warm-season:** sow after the last frost, into warm soil. Sprouts after 60 °C·d above 10 °C.

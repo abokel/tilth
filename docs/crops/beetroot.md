@@ -6,7 +6,7 @@ nav_order: 22
 
 # Beetroot
 
-> **Beetroot**  
+> **Beetroot Seeds**  
 > **Beetroot** (_Beta vulgaris (table beet)_), beet family.
 
 - **Cool-season:** sow as soon as the ground thaws. Sprouts after 110 °C·d above 4 °C.

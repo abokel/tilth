@@ -6,7 +6,7 @@ nav_order: 13
 
 # Field Pea
 
-> **Field Pea**  
+> **Field Peas**  
 > **Field Pea** (_Pisum sativum_), legume family.
 
 - **Cool-season:** sow as soon as the ground thaws. Sprouts after 80 °C·d above 4 °C.

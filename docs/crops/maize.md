@@ -6,7 +6,7 @@ nav_order: 10
 
 # Maize
 
-> **Maize**  
+> **Seed Corn**  
 > **Maize** (_Zea mays_), grass family.
 
 - **Warm-season:** sow after the last frost, into warm soil. Sprouts after 60 °C·d above 10 °C.

@@ -6,7 +6,7 @@ nav_order: 5
 
 # Durum Wheat
 
-> **Durum Wheat**  
+> **Durum Wheat Seeds**  
 > **Durum Wheat** (_Triticum turgidum subsp. durum_), grass family.
 
 - **Cool-season:** sow as soon as the ground thaws. Sprouts after 110 °C·d above 0 °C.

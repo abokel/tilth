@@ -6,7 +6,7 @@ nav_order: 12
 
 # Soybean
 
-> **Soybean**  
+> **Soybeans**  
 > **Soybean** (_Glycine max_), legume family.
 
 - **Warm-season:** sow after the last frost, into warm soil. Sprouts after 50 °C·d above 10 °C.

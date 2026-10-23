@@ -6,7 +6,7 @@ nav_order: 14
 
 # Chickpea
 
-> **Chickpea**  
+> **Chickpeas**  
 > **Chickpea** (_Cicer arietinum_), legume family.
 
 - **Cool-season:** sow as soon as the ground thaws. Sprouts after 80 °C·d above 5 °C.

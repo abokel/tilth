@@ -6,7 +6,7 @@ nav_order: 24
 
 # Onion
 
-> **Onion**  
+> **Onion Seeds**  
 > **Onion** (_Allium cepa_), onion family.
 
 - **Warm-season:** sow after the last frost, into warm soil. Sprouts after 110 °C·d above 6 °C.

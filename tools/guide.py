@@ -16,6 +16,8 @@ from guide_content import BOOK, CATEGORIES, craft, spot, text
 MOD = "tilth"
 BOOK_ID = "field_guide"
 REPO_URL = "https://github.com/abokel/tilth"
+SITE_URL = "https://abokel.github.io/tilth/"
+WIKI_URL = REPO_URL + "/wiki"
 
 FAMILY_NAMES = {
     "POACEAE": "grass family", "FABACEAE": "legume family", "SOLANACEAE": "nightshade family",
@@ -363,7 +365,7 @@ def md_pages(pages, names, recipes):
         if kind == "text":
             out.append(md_text(p["text"]))
         elif kind == "spotlight":
-            out.append(f"> **{p.get('title') or names.item(p['item'])}**  \n> " + md_text(p["text"]).replace("\n", "\n> "))
+            out.append(f"> **{names.item(p['item'])}**  \n> " + md_text(p["text"]).replace("\n", "\n> "))
         elif kind in ("crafting", "smelting"):
             r = recipes.get(p["recipe"])
             if r:
@@ -383,6 +385,8 @@ def write_docs(docs_dir, cats, names, changelog_md):
         shutil.rmtree(os.path.join(docs_dir, cat["id"]), ignore_errors=True)
     write_text(os.path.join(docs_dir, "_config.yml"),
                "title: Tilth\n"
+               "url: https://abokel.github.io\n"
+               "baseurl: /tilth\n"
                "description: Realistic agronomy for Minecraft (NeoForge 1.21.1)\n"
                "remote_theme: just-the-docs/just-the-docs@v0.10.1\n"
                "plugins:\n  - jekyll-remote-theme\n"
@@ -396,7 +400,8 @@ def write_docs(docs_dir, cats, names, changelog_md):
                "---\ntitle: Home\nnav_order: 1\n---\n\n# Tilth: Realistic Agronomy\n\n" + BOOK["landing"] + "\n\n"
                "This site has the same content as the in-game **Tilth Field Guide**, which is available when Patchouli "
                "is installed.\n\n## Contents\n\n" + toc + "\n\n## More\n\n- [Changelog](changelog.html)\n"
-               "- [Design notes: how the models work](DESIGN.html)\n- [Source code](" + REPO_URL + ")\n")
+               "- [Design notes: how the models work](DESIGN.html)\n- [Wiki](" + WIKI_URL + ")\n"
+               "- [Source code](" + REPO_URL + ")\n")
     write_text(os.path.join(docs_dir, "changelog.md"), "---\ntitle: Changelog\nnav_order: 98\n---\n\n" + changelog_md)
     for ci, cat in enumerate(cats):
         listing = "\n".join(f"- [{e['name']}]({e['id']}.html)" for e in cat["entries"])
@@ -409,25 +414,47 @@ def write_docs(docs_dir, cats, names, changelog_md):
                        + md_pages(e["pages"], names, recipes))
 
 
-def wiki_name(cat, e=None):
-    s = cat["name"] if e is None else f"{cat['name']} - {e['name']}"
-    return re.sub(r"[^A-Za-z0-9 \-]", "", s).replace(" ", "-")
+def wiki_slug(title):
+    """GitHub wiki page names: the file name is the title, with hyphens shown as spaces."""
+    s = re.sub(r"[^A-Za-z0-9 ]", "", title.replace("&", "and"))
+    return re.sub(r" +", "-", s.strip())
+
+
+def wiki_names(cats):
+    """Entries are named by their own title, unless that clashes with another page."""
+    taken = {"Home", "Changelog", "_Sidebar"} | {wiki_slug(c["name"]) for c in cats}
+    counts = {}
+    for c in cats:
+        for e in c["entries"]:
+            counts[wiki_slug(e["name"])] = counts.get(wiki_slug(e["name"]), 0) + 1
+    out = {}
+    for c in cats:
+        for e in c["entries"]:
+            slug = wiki_slug(e["name"])
+            if slug in taken or counts[slug] > 1:
+                slug = wiki_slug(f"{e['name']} {c['name']}")
+            out[(c["id"], e["id"])] = slug
+    return out
 
 
 def write_wiki(wiki_dir, cats, names, changelog_md):
     recipes = recipe_lookup()
+    pages = wiki_names(cats)
     sidebar = ["**[Home](Home)**", ""]
-    home = ["# Tilth: Realistic Agronomy", "", BOOK["landing"], "", "## Contents", ""]
+    home = ["# Tilth: Realistic Agronomy", "", BOOK["landing"], "",
+            f"The same guide is also a [website]({SITE_URL}) and an in-game book (the Tilth Field Guide, with Patchouli).",
+            "", "## Contents", ""]
     for cat in cats:
-        sidebar.append(f"**[{cat['name']}]({wiki_name(cat)})**")
-        home.append(f"- [{cat['name']}]({wiki_name(cat)}) - {cat['description']}")
-        lines = [f"# {cat['name']}", "", cat["description"], ""]
+        cat_page = wiki_slug(cat["name"])
+        sidebar.append(f"**[{cat['name']}]({cat_page})**")
+        home.append(f"- [{cat['name']}]({cat_page}) - {cat['description']}")
+        lines = [cat["description"], ""]
         for e in cat["entries"]:
-            sidebar.append(f"- [{e['name']}]({wiki_name(cat, e)})")
-            lines.append(f"- [{e['name']}]({wiki_name(cat, e)})")
-            write_text(os.path.join(wiki_dir, wiki_name(cat, e) + ".md"),
-                       f"# {e['name']}\n\n" + md_pages(e["pages"], names, recipes))
-        write_text(os.path.join(wiki_dir, wiki_name(cat) + ".md"), "\n".join(lines) + "\n")
+            page = pages[(cat["id"], e["id"])]
+            sidebar.append(f"- [{e['name']}]({page})")
+            lines.append(f"- [{e['name']}]({page})")
+            write_text(os.path.join(wiki_dir, page + ".md"), md_pages(e["pages"], names, recipes))
+        write_text(os.path.join(wiki_dir, cat_page + ".md"), "\n".join(lines) + "\n")
         sidebar.append("")
     sidebar.append("**[Changelog](Changelog)**")
     home += ["", "See also the [Changelog](Changelog) and the [repository](" + REPO_URL + ")."]

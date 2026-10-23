@@ -6,7 +6,7 @@ nav_order: 18
 
 # Alfalfa
 
-> **Alfalfa**  
+> **Alfalfa Seeds**  
 > **Alfalfa** (_Medicago sativa_), legume family.
 
 - **Cool-season:** sow as soon as the ground thaws. Sprouts after 70 °C·d above 5 °C.

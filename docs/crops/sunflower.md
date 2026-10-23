@@ -6,7 +6,7 @@ nav_order: 29
 
 # Sunflower
 
-> **Sunflower**  
+> **Sunflower Seeds**  
 > **Sunflower** (_Helianthus annuus_), daisy family.
 
 - **Warm-season:** sow after the last frost, into warm soil. Sprouts after 80 °C·d above 6 °C.

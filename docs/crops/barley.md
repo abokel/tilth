@@ -6,7 +6,7 @@ nav_order: 6
 
 # Barley
 
-> **Barley**  
+> **Barley Seeds**  
 > **Barley** (_Hordeum vulgare_), grass family.
 
 - **Cool-season:** sow as soon as the ground thaws. Sprouts after 100 °C·d above 0 °C.

@@ -6,7 +6,7 @@ nav_order: 31
 
 # Cotton
 
-> **Cotton**  
+> **Cotton Seeds**  
 > **Cotton** (_Gossypium hirsutum_), mallow family.
 
 - **Warm-season:** sow after the last frost, into warm soil. Sprouts after 40 °C·d above 15.5 °C.

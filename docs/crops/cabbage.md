@@ -6,7 +6,7 @@ nav_order: 26
 
 # Cabbage
 
-> **Cabbage**  
+> **Cabbage Seeds**  
 > **Cabbage** (_Brassica oleracea var. capitata_), cabbage family.
 
 - **Cool-season:** sow as soon as the ground thaws. Sprouts after 80 °C·d above 4 °C.

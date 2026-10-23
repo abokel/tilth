@@ -6,7 +6,7 @@ nav_order: 30
 
 # Flax
 
-> **Flax**  
+> **Flax Seeds**  
 > **Flax** (_Linum usitatissimum_), flax family.
 
 - **Cool-season:** sow as soon as the ground thaws. Sprouts after 90 °C·d above 3 °C.

@@ -1,4 +1,6 @@
 title: Tilth
+url: https://abokel.github.io
+baseurl: /tilth
 description: Realistic agronomy for Minecraft (NeoForge 1.21.1)
 remote_theme: just-the-docs/just-the-docs@v0.10.1
 plugins:

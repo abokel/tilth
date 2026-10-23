@@ -6,7 +6,7 @@ nav_order: 28
 
 # Tomato
 
-> **Tomato**  
+> **Tomato Seeds**  
 > **Tomato** (_Solanum lycopersicum_), nightshade family.
 
 - **Warm-season:** sow after the last frost, into warm soil. Sprouts after 70 °C·d above 10 °C.
