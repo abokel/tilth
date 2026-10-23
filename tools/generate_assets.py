@@ -19,6 +19,7 @@ from plants import draw_plant, draw_dead_crop  # noqa: E402
 from icons import ICONS, effect_icon, plow_texture  # noqa: E402
 from data_tables import (CROPS, SOILS, FOOD_NUTRITION, AFFLICTIONS, RECIPES_SHAPED, RECIPES_SHAPELESS,  # noqa: E402
                          RECIPES_COOKING, NAMES, EFFECTS, TAGS)
+import guide  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RES = os.path.join(ROOT, "src", "main", "resources")
@@ -173,6 +174,7 @@ def gen_soils(lang):
             "dirt": f"{MOD}:block/{top_name}", "top": f"{MOD}:block/{farm}_moist"}})
         blockstate(farm, {"variants": {f"moisture={m}": {"model": f"{MOD}:block/{farm}" + ("_moist" if m >= 5 else "")}
                                        for m in range(8)}})
+        model(f"item/{farm}", {"parent": f"{MOD}:block/{farm}"})
         loot(farm, self_drop(farm, top_name))
         lang[f"block.{MOD}.{farm}"] = f"{label} Farmland"
 
@@ -280,6 +282,9 @@ def gen_misc_textures(lang):
         save(effect_icon(color, symbol), "mob_effect", eid + ".png")
         lang[f"effect.{MOD}.{eid}"] = label
     lang["itemGroup.tilth"] = "Tilth: Realistic Agronomy"
+    lang["jei.tilth.crop"] = "Growing (Tilth)"
+    lang["jei.tilth.tillage"] = "Tillage"
+    lang["jei.tilth.amendment"] = "Soil Amendments"
 
 
 # ============================================================================ data
@@ -312,6 +317,12 @@ def gen_recipes():
             write_json(os.path.join(rdir, f"{name}_from_{kind}.json"), {
                 "type": rtype, "category": "food", "ingredient": ing(ingredient), "result": {"id": res(result)},
                 "experience": xp, "cookingtime": time})
+    # The Field Guide exists only when Patchouli is installed.
+    write_json(os.path.join(rdir, "field_guide.json"), {
+        "neoforge:conditions": [{"type": "neoforge:mod_loaded", "modid": "patchouli"}],
+        "type": "minecraft:crafting_shapeless", "category": "misc",
+        "ingredients": [{"item": "minecraft:book"}, {"tag": "c:seeds"}],
+        "result": {"id": "patchouli:guide_book", "components": {"patchouli:book": f"{MOD}:field_guide"}}})
 
 
 def gen_tags():
@@ -392,7 +403,10 @@ def main():
     gen_afflictions()
     lang = dict(sorted(lang.items()))
     write_json(os.path.join(ASSETS, "lang", "en_us.json"), lang)
-    print(f"Generated {len(lang)} lang entries, {len(CROPS)} crops x 10 stages, {len(AFFLICTIONS)} afflictions.")
+    wiki_dir = sys.argv[sys.argv.index("--wiki") + 1] if "--wiki" in sys.argv else None
+    entries = guide.generate(ROOT, lang, wiki_dir)
+    print(f"Generated {len(lang)} lang entries, {len(CROPS)} crops x 10 stages, {len(AFFLICTIONS)} afflictions, "
+          f"{entries} guide entries (Patchouli book + docs site" + (" + wiki" if wiki_dir else "") + ").")
 
 
 if __name__ == "__main__":

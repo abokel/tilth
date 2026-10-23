@@ -89,6 +89,8 @@ public final class TilthConfig {
     // ------------------------------------------------------------------ debug
     public static final ModConfigSpec.IntValue DEBUG_PERMISSION;
     public static final ModConfigSpec.IntValue HUD_INTERVAL;
+    // ------------------------------------------------------------------ integrations
+    public static final ModConfigSpec.BooleanValue GIVE_GUIDE;
 
     static {
         B.comment("Calendar. Agronomy runs on a real 365-day calendar; a Minecraft day covers 365/(12*daysPerMonth) real days.").push("calendar");
@@ -226,6 +228,11 @@ public final class TilthConfig {
                 .defineInRange("commandPermissionLevel", 2, 0, 4);
         HUD_INTERVAL = B.comment("Ticks between debug HUD refreshes.")
                 .defineInRange("hudInterval", 10, 1, 200);
+        B.pop();
+
+        B.comment("Integrations with optional mods.").push("integrations");
+        GIVE_GUIDE = B.comment("Give each player the Tilth Field Guide (a Patchouli book) the first time they join. Needs Patchouli.")
+                .define("giveFieldGuideOnFirstJoin", true);
         B.pop();
     }
 

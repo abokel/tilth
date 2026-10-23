@@ -1,0 +1,20 @@
+{
+  "name": "Black Rot of Crucifers",
+  "icon": "minecraft:rotten_flesh",
+  "category": "tilth:afflictions",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Black Rot of Crucifers$() ($(o)Xanthomonas campestris pv. campestris$()), bacterium.$(br2)$(li)$(thing)Hosts:$() brassicaceae.$(li)$(thing)Spreads:$() seedborne, rain splash, crop residue."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Favoured by$() 15-35 °C (best 27 °C), humidity above 85%, 4 h of wet leaves."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 1 years (residue).$(li)$(thing)Damage:$() up to 50% yield.$(li)$(thing)Control:$() Hot-water treated seed; Rotation; Avoid overhead irrigation."
+    }
+  ]
+}

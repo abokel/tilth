@@ -1,0 +1,24 @@
+{
+  "name": "White Mold",
+  "icon": "minecraft:brown_mushroom",
+  "category": "tilth:afflictions",
+  "sortnum": 30,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)White Mold$() ($(o)Sclerotinia sclerotiorum$()), fungus.$(br2)$(li)$(thing)Hosts:$() soybean, common bean, pea, chickpea, lentil, peanut, sunflower, lettuce, cabbage, carrot, potato, tomato.$(li)$(thing)Spreads:$() soilborne, airborne spores."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Favoured by$() 15-25 °C (best 20 °C), humidity above 90%, 16 h of wet leaves."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 5 years (sclerotia in soil).$(li)$(thing)Damage:$() up to 50% yield, can kill the plant.$(li)$(thing)Control:$() Rotate with cereals; Wider rows for airflow; Biological control (Coniothyrium minitans)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Hundreds of host species: rotate with grasses, not with other broadleaf crops."
+    }
+  ]
+}

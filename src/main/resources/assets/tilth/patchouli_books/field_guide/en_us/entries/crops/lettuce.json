@@ -1,0 +1,22 @@
+{
+  "name": "Lettuce",
+  "icon": "tilth:lettuce_seeds",
+  "category": "tilth:crops",
+  "sortnum": 26,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:lettuce_seeds",
+      "title": "Lettuce",
+      "text": "$(thing)Lettuce$() ($(o)Lactuca sativa$()), daisy family."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Cool-season:$() sow as soon as the ground thaws. Sprouts after 50 °C·d above 4 °C.$(li)Ripens after $(thing)650 °C·d$(). Best near 18 °C; stops above 28 °C.$(li)$(thing)Frost$() kills it below -3 °C (-2 °C in flower)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Soil pH$() 6-7 (tolerates 5.5-7.8). Roots 0.4 m. Some tolerance of wet soil.$(li)$(thing)Feeds on$() N 90, P 15, K 120 kg/ha per crop.$(li)$(thing)Yield$() when well grown: about 312 cwt/ac (35 t/ha).$(li)$(thing)Harvest:$() Lettuce and Lettuce Seeds."
+    }
+  ]
+}

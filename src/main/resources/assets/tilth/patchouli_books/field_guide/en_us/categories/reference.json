@@ -1,0 +1,6 @@
+{
+  "name": "Commands & Config",
+  "description": "Every /tilth command and the most useful config options.",
+  "icon": "minecraft:command_block",
+  "sortnum": 9
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Root-knot Nematode",
+  "icon": "minecraft:string",
+  "category": "tilth:afflictions",
+  "sortnum": 21,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Root-knot Nematode$() ($(o)Meloidogyne spp.$()), nematode.$(br2)$(li)$(thing)Hosts:$() tomato, carrot, potato, lettuce, peanut, soybean, cotton.$(li)$(thing)Spreads:$() soilborne.$(li)$(thing)Favoured by$() 20-33 °C (best 28 °C)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 3 years (soil).$(li)$(thing)Damage:$() up to 40% yield.$(li)$(thing)Control:$() Rotation with grasses; Solarisation; Resistant varieties (Mi gene in tomato).$(br2)Thrives in warm, sandy soils."
+    }
+  ]
+}

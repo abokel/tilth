@@ -1,0 +1,24 @@
+{
+  "name": "Staking a Field",
+  "icon": "tilth:surveyors_chain",
+  "category": "tilth:plots",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Hold the $(thing)Surveyor's Chain$() and right-click the corner blocks of your field in order, walking around it. Any shape works: rectangles, L-shapes, a field following a river. Sneak and right-click a block to remove the last stake."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Sneak and use the chain in the air$() to record the plot. Rename the chain in an anvil first to name the plot."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "While you hold the chain, stakes and plot boundaries are shown in particles. Use it in the air without sneaking to see which plot you are standing in."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:surveyors_chain"
+    }
+  ]
+}

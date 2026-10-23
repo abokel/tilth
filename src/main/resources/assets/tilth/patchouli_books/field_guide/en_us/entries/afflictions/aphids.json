@@ -1,0 +1,20 @@
+{
+  "name": "Aphids",
+  "icon": "minecraft:spider_eye",
+  "category": "tilth:afflictions",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Aphids$() ($(o)Aphidoidea$()), insect.$(br2)$(li)$(thing)Hosts:$() all crops.$(li)$(thing)Spreads:$() migration.$(li)$(thing)Favoured by$() 10-30 °C (best 22 °C)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 0.5 years (eggs on woody hosts).$(li)$(thing)Damage:$() up to 20% yield.$(li)$(thing)Control:$() Conserve lady beetles, lacewings and hoverflies; Insecticidal soap; Avoid excess nitrogen."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Vectors of many plant viruses, including barley yellow dwarf."
+    }
+  ]
+}

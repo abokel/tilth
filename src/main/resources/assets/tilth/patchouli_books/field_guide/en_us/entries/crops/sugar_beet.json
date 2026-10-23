@@ -1,0 +1,22 @@
+{
+  "name": "Sugar Beet",
+  "icon": "tilth:sugar_beet_seeds",
+  "category": "tilth:crops",
+  "sortnum": 22,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:sugar_beet_seeds",
+      "title": "Sugar Beet",
+      "text": "$(thing)Sugar Beet$() ($(o)Beta vulgaris (sugar beet)$()), beet family."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Cool-season:$() sow as soon as the ground thaws. Sprouts after 120 °C·d above 3 °C.$(li)Ripens after $(thing)2200 °C·d$(). Best near 20 °C; stops above 33 °C.$(li)$(thing)Frost$() kills it below -4 °C (-3 °C in flower)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Soil pH$() 6.5-8 (tolerates 6-8.5). Roots 1 m. Some tolerance of wet soil.$(li)$(thing)Feeds on$() N 180, P 30, K 250 kg/ha per crop.$(li)$(thing)Yield$() when well grown: about 27 tons/ac (60 t/ha).$(li)$(thing)Harvest:$() Sugar Beet and Sugar Beet Seeds."
+    }
+  ]
+}

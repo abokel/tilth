@@ -1,0 +1,24 @@
+{
+  "name": "How Crops Grow",
+  "icon": "minecraft:wheat_seeds",
+  "category": "tilth:crops",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Crops develop on $(thing)growing degree days$(): each day adds its average temperature above the crop's base temperature. Wheat counts from 0 °C, maize from 10 °C. Warm weather speeds them, cold weather stops them."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Seeds need warm, moist soil to sprout. Warm-season seed sitting in cold, wet soil for weeks will $(thing)rot$().$(br2)The ten visible stages follow the $(thing)BBCH scale$() used by agronomists: emergence, leaves, tillering, stem elongation, heading, flowering, grain fill, ripening, ripe."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Each day the crop grows as fast as its scarcest resource allows: water, a nutrient, pH or light, adjusted for temperature, compaction and disease. Right-click a crop to see what is limiting it."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Frost$() kills tender crops (tomato, beans, maize) just below 0 °C. Hardy crops such as rye and garlic survive deep frost, though all crops are most sensitive while flowering. $(thing)Heat$() above about 32-38 °C at flowering sterilises grain."
+    }
+  ]
+}

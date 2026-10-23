@@ -1,0 +1,6 @@
+{
+  "name": "Surveying Plots",
+  "description": "Stake out fields of any shape and measure them in acres.",
+  "icon": "tilth:surveyors_chain",
+  "sortnum": 7
+}

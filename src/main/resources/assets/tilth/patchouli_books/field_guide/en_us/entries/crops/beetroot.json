@@ -1,0 +1,22 @@
+{
+  "name": "Beetroot",
+  "icon": "minecraft:beetroot_seeds",
+  "category": "tilth:crops",
+  "sortnum": 21,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:beetroot_seeds",
+      "title": "Beetroot",
+      "text": "$(thing)Beetroot$() ($(o)Beta vulgaris (table beet)$()), beet family."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Cool-season:$() sow as soon as the ground thaws. Sprouts after 110 °C·d above 4 °C.$(li)Ripens after $(thing)1000 °C·d$(). Best near 20 °C; stops above 32 °C.$(li)$(thing)Frost$() kills it below -3 °C (-2 °C in flower)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Soil pH$() 6-7.5 (tolerates 5.5-8). Roots 0.6 m. Some tolerance of wet soil.$(li)$(thing)Feeds on$() N 110, P 18, K 160 kg/ha per crop.$(li)$(thing)Yield$() when well grown: about 268 cwt/ac (30 t/ha).$(li)$(thing)Harvest:$() Beetroot and Beetroot Seeds."
+    }
+  ]
+}

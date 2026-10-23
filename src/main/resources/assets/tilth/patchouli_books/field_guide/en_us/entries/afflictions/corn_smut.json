@@ -1,0 +1,16 @@
+{
+  "name": "Corn Smut",
+  "icon": "minecraft:brown_mushroom",
+  "category": "tilth:afflictions",
+  "sortnum": 9,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Corn Smut$() ($(o)Ustilago maydis$()), fungus.$(br2)$(li)$(thing)Hosts:$() maize.$(li)$(thing)Spreads:$() airborne spores, soilborne.$(li)$(thing)Favoured by$() 26-34 °C (best 30 °C)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 3 years (soil).$(li)$(thing)Damage:$() up to 10% yield.$(li)$(thing)Control:$() Avoid wounding plants; Balanced fertility.$(br2)The galls are eaten as huitlacoche, a delicacy in Mexican cuisine."
+    }
+  ]
+}

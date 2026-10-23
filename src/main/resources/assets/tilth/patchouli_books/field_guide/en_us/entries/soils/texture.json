@@ -1,0 +1,36 @@
+{
+  "name": "Soil Texture",
+  "icon": "tilth:loam_topsoil",
+  "category": "tilth:soils",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Soil is a mix of $(thing)sand$() (gritty, drains fast, holds little), $(thing)silt$() (smooth, holds water well) and $(thing)clay$() (sticky, holds water and nutrients but drains slowly). The mix decides the texture class, one of the twelve USDA classes, plus $(thing)peat$()."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:sand_topsoil",
+      "text": "$(thing)Sand and loamy sand$() warm up early and are easy to work, but dry out fast, lose nitrogen to leaching and need frequent manure."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:loam_topsoil",
+      "text": "$(thing)Loams$() (loam, silt loam, sandy loam) are the best all-round farm soils: good water, good drainage and good fertility."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:clay_topsoil",
+      "text": "$(thing)Clays$() hold the most water and nutrients but stay wet and cold in spring, compact easily and smear if worked wet."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:peat",
+      "text": "$(thing)Peat$() is half organic matter. It forms in cold, wet hollows, holds huge amounts of water and is naturally very acidic."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Texture also sets how far water seeps sideways from a ditch or pond: about two blocks through sand and up to five or six through silts, clays and peat. Fine soils draw water by capillarity."
+    }
+  ]
+}

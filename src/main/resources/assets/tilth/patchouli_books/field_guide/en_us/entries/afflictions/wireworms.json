@@ -1,0 +1,16 @@
+{
+  "name": "Wireworms",
+  "icon": "minecraft:spider_eye",
+  "category": "tilth:afflictions",
+  "sortnum": 31,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Wireworms$() ($(o)Elateridae (click beetle larvae)$()), insect.$(br2)$(li)$(thing)Hosts:$() all crops.$(li)$(thing)Spreads:$() soilborne.$(li)$(thing)Favoured by$() 10-25 °C (best 18 °C)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 4 years (larvae in soil).$(li)$(thing)Damage:$() up to 30% yield.$(li)$(thing)Control:$() Avoid planting into freshly broken grass sod; Cultivate in late summer; Bait stations.$(br2)Worst in the first years after ploughing up old pasture."
+    }
+  ]
+}

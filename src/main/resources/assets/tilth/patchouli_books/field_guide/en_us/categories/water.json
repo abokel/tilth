@@ -1,0 +1,6 @@
+{
+  "name": "Water",
+  "description": "Finite water, irrigation, the water table, ponds and evaporation.",
+  "icon": "minecraft:water_bucket",
+  "sortnum": 3
+}

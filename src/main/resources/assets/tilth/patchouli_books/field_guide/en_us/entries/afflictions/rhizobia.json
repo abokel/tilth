@@ -1,0 +1,20 @@
+{
+  "name": "Rhizobia (Nodule Bacteria)",
+  "icon": "minecraft:glow_lichen",
+  "category": "tilth:afflictions",
+  "sortnum": 20,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Rhizobia (Nodule Bacteria)$() ($(o)Rhizobium, Bradyrhizobium and Sinorhizobium spp.$()), symbiont.$(br2)$(li)$(thing)Hosts:$() fabaceae.$(li)$(thing)Spreads:$() soilborne, seedborne."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Favoured by$() 10-35 °C (best 25 °C), pH below 8.5, pH above 5.5."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 5 years (soil).$(li)$(thing)Benefit:$() +80% to its host.$(li)$(thing)Control:$() Inoculate seed when a legume is new to the field; Lime acid soils above pH 6.$(br2)Fix atmospheric nitrogen for the legume; the residue then feeds the next crop."
+    }
+  ]
+}

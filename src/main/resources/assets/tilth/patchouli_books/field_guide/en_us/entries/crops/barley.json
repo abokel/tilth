@@ -1,0 +1,22 @@
+{
+  "name": "Barley",
+  "icon": "tilth:barley_seeds",
+  "category": "tilth:crops",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:barley_seeds",
+      "title": "Barley",
+      "text": "$(thing)Barley$() ($(o)Hordeum vulgare$()), grass family."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Cool-season:$() sow as soon as the ground thaws. Sprouts after 100 °C·d above 0 °C.$(li)Ripens after $(thing)1250 °C·d$(). Best near 20 °C; stops above 34 °C.$(li)$(thing)Frost$() kills it below -10 °C (-2 °C in flower)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Soil pH$() 6.2-8 (tolerates 5.5-8.8). Roots 1.3 m. Dislikes waterlogging.$(li)$(thing)Feeds on$() N 95, P 17, K 85 kg/ha per crop.$(li)$(thing)Yield$() when well grown: about 74 bu/ac (4 t/ha).$(li)$(thing)Harvest:$() Barley and Barley Seeds."
+    }
+  ]
+}

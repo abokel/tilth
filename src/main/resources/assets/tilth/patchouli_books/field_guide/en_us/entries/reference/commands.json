@@ -1,0 +1,24 @@
+{
+  "name": "Commands",
+  "icon": "minecraft:command_block",
+  "category": "tilth:reference",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Look things up:$()$(li)/tilth calendar$(li)/tilth climate$(li)/tilth soil$(li)/tilth catena$(li)/tilth water$(li)/tilth crop$(li)/tilth diet$(li)/tilth plot ...$(li)/tilth affliction ..."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Most act on the block you look at."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Debugging$() (operators):$(li)/tilth time skip <days>$(li)/tilth time set <month> <day>$(li)/tilth soil set <property> <value>$(li)/tilth soil amend <type>$(li)/tilth crop setstage|grow|kill$(li)/tilth fillfield <crop> <radius>"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)/tilth debug hud"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "The Affliction Model",
+  "icon": "minecraft:fermented_spider_eye",
+  "category": "tilth:afflictions",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Thirty-one organisms are modelled from real plant pathology: rusts, blights, scab, clubroot, viruses, aphids, beetles, rootworm, nematodes, slugs, and helpful mycorrhizae, rhizobia and Trichoderma."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Each one has its hosts, the weather it likes (temperature, humidity, hours of wet leaves), soil conditions, how it spreads, how long it survives without a host, the damage it does and how farmers control it.$(br2)They are $(thing)off by default$() while their visuals are made."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Turn them on with afflictions.enabled in the config. $(thing)/tilth affliction list$() and $(thing)info$() describe each organism, $(thing)risk$() shows today's infection risk for the crop you are looking at, and $(thing)infect$() / $(thing)clear$() let you test them."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Rotation is the main defence. Soil- and residue-borne organisms build up when the same host is grown again before they die out. Ploughing buries residue-borne ones."
+    }
+  ]
+}

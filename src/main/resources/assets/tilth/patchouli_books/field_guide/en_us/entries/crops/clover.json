@@ -1,0 +1,26 @@
+{
+  "name": "Red Clover",
+  "icon": "tilth:clover_seeds",
+  "category": "tilth:crops",
+  "sortnum": 18,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:clover_seeds",
+      "title": "Red Clover",
+      "text": "$(thing)Red Clover$() ($(o)Trifolium pratense$()), legume family."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Cool-season:$() sow as soon as the ground thaws. Sprouts after 60 °C·d above 4 °C.$(li)Ripens after $(thing)600 °C·d$(). Best near 22 °C; stops above 33 °C.$(li)$(thing)Frost$() kills it below -15 °C (-3 °C in flower)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Soil pH$() 6-7 (tolerates 5.5-7.8). Roots 0.8 m. Some tolerance of wet soil.$(li)$(thing)Feeds on$() N 60, P 6, K 50 kg/ha per crop; fixes about 80% of its own nitrogen.$(li)$(thing)Yield$() when well grown: about 1 tons/ac (2 t/ha)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Harvest:$() Red Clover Hay and Clover Seeds. Regrows after cutting."
+    }
+  ]
+}

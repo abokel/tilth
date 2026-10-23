@@ -1,0 +1,16 @@
+{
+  "name": "Cabbage White Butterfly",
+  "icon": "minecraft:spider_eye",
+  "category": "tilth:afflictions",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Cabbage White Butterfly$() ($(o)Pieris rapae$()), insect.$(br2)$(li)$(thing)Hosts:$() brassicaceae.$(li)$(thing)Spreads:$() migration.$(li)$(thing)Favoured by$() 15-30 °C (best 24 °C)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 0.5 years (pupae).$(li)$(thing)Damage:$() up to 30% yield.$(li)$(thing)Control:$() Insect netting; Hand-pick caterpillars; Bt kurstaki."
+    }
+  ]
+}

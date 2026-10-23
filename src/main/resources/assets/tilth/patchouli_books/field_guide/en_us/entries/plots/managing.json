@@ -1,0 +1,16 @@
+{
+  "name": "Managing Plots",
+  "icon": "minecraft:writable_book",
+  "category": "tilth:plots",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)/tilth plot list$() shows every plot. $(thing)here$() and $(thing)info <name>$() describe one, $(thing)rename$() and $(thing)delete$() manage them, and $(thing)addmember$() / $(thing)removemember$() share them."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Plot protection (only owners and members may build or harvest inside) is available but off by default: set plots.protection in the config."
+    }
+  ]
+}

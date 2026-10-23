@@ -1,0 +1,22 @@
+{
+  "name": "Peanut",
+  "icon": "tilth:peanuts",
+  "category": "tilth:crops",
+  "sortnum": 16,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:peanuts",
+      "title": "Peanut",
+      "text": "$(thing)Peanut$() ($(o)Arachis hypogaea$()), legume family."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Warm-season:$() sow after the last frost, into warm soil. Sprouts after 70 °C·d above 10 °C.$(li)Ripens after $(thing)1700 °C·d$(). Best near 30 °C; stops above 40 °C.$(li)$(thing)Frost$() kills it below -0.5 °C (0 °C in flower)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Soil pH$() 5.8-6.8 (tolerates 5-7.5). Roots 0.8 m. Dislikes waterlogging.$(li)$(thing)Feeds on$() N 160, P 15, K 60 kg/ha per crop; fixes about 65% of its own nitrogen.$(li)$(thing)Yield$() when well grown: about 3123 lb/ac (3.5 t/ha).$(li)$(thing)Harvest:$() Peanuts."
+    }
+  ]
+}

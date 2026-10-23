@@ -194,5 +194,8 @@
   "item.tilth.wheat_dough": "Wheat Dough",
   "item.tilth.wheat_flour": "Wheat Flour",
   "item.tilth.wood_ash": "Wood Ash",
-  "itemGroup.tilth": "Tilth: Realistic Agronomy"
+  "itemGroup.tilth": "Tilth: Realistic Agronomy",
+  "jei.tilth.amendment": "Soil Amendments",
+  "jei.tilth.crop": "Growing (Tilth)",
+  "jei.tilth.tillage": "Tillage"
 }

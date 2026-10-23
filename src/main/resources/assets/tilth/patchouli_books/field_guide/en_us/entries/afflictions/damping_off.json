@@ -1,0 +1,16 @@
+{
+  "name": "Damping-off",
+  "icon": "minecraft:poisonous_potato",
+  "category": "tilth:afflictions",
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Damping-off$() ($(o)Pythium spp.$()), oomycete.$(br2)$(li)$(thing)Hosts:$() all crops.$(li)$(thing)Spreads:$() soilborne.$(li)$(thing)Favoured by$() 10-25 °C (best 15 °C)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 5 years (soil).$(li)$(thing)Damage:$() up to 100% yield, can kill the plant.$(li)$(thing)Control:$() Sow into warm, well-drained soil; Avoid overwatering seedbeds; Treated seed."
+    }
+  ]
+}

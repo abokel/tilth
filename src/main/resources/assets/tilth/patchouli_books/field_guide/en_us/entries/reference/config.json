@@ -1,0 +1,16 @@
+{
+  "name": "Configuration",
+  "icon": "minecraft:comparator",
+  "category": "tilth:reference",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "config/tilth-common.toml (also Mods > Tilth > Config):$(li)$(thing)calendar:$() days per month, start month.$(li)$(thing)climate:$() temperature offset, rain, latitude bands.$(li)$(thing)water:$() source rules, ponds, puddles, evaporation."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)soil:$() worldgen, morphing, erosion, leaching, trampling.$(li)$(thing)crops:$() growth speed, yield, frost and drought deaths, bone meal.$(li)$(thing)diet$(), $(thing)plots$(), $(thing)livestock$() (manure), and $(thing)afflictions$()."
+    }
+  ]
+}

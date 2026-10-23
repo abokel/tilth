@@ -1,0 +1,24 @@
+{
+  "name": "Wheat Stem Rust",
+  "icon": "minecraft:brown_mushroom",
+  "category": "tilth:afflictions",
+  "sortnum": 29,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Wheat Stem Rust$() ($(o)Puccinia graminis f. sp. tritici$()), fungus.$(br2)$(li)$(thing)Hosts:$() common wheat, durum wheat, barley, rye.$(li)$(thing)Spreads:$() airborne spores."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Favoured by$() 15-35 °C (best 25 °C), humidity above 85%, 6 h of wet leaves."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 0.5 years (alternate host).$(li)$(thing)Damage:$() up to 70% yield.$(li)$(thing)Control:$() Resistant cultivars (Sr genes); Eradicate barberry, the alternate host; Early sowing; Fungicide at flag leaf."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The Ug99 lineage, found in Uganda in 1999, defeated the widely used Sr31 resistance gene."
+    }
+  ]
+}

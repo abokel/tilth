@@ -1,0 +1,16 @@
+{
+  "name": "Onion Downy Mildew",
+  "icon": "minecraft:poisonous_potato",
+  "category": "tilth:afflictions",
+  "sortnum": 18,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Onion Downy Mildew$() ($(o)Peronospora destructor$()), oomycete.$(br2)$(li)$(thing)Hosts:$() onion, garlic.$(li)$(thing)Spreads:$() airborne spores, seedborne.$(li)$(thing)Favoured by$() 4-22 °C (best 13 °C), humidity above 95%, 7 h of wet leaves."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 1 years (infected bulbs).$(li)$(thing)Damage:$() up to 50% yield.$(li)$(thing)Control:$() Healthy sets; Wide spacing; Rotation."
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Crops",
+  "description": "How crops grow, when to plant, harvest and quality, and every crop in detail.",
+  "icon": "tilth:durum_wheat",
+  "sortnum": 4
+}

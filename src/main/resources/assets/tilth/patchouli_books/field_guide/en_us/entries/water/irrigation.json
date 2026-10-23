@@ -1,0 +1,24 @@
+{
+  "name": "Irrigation & Water Table",
+  "icon": "minecraft:bucket",
+  "category": "tilth:water",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Fields draw water three ways:$(li)$(thing)Rain:$() what doesn't run off a slope soaks in.$(li)$(thing)Seepage$() from nearby water: two blocks through sand, four through loam, five or more through silt, clay and peat."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Capillary rise$() from a shallow water table."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The water table is shallow in valleys and near rivers and deep on hilltops, so lower slopes stay moist through dry spells.$(br2)Crops use water fastest when the weather is hot, dry and windy, and when they are fully grown."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Rice$() grows best flooded: plant it with water directly beside the block. Other crops drown if the soil stays saturated for too long."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "Your First Field",
+  "icon": "tilth:durum_wheat_seeds",
+  "category": "tilth:getting_started",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)1. Choose ground.$() Gentle lower slopes (footslopes) and level ground usually have the deepest, best-watered soil. Thin, stony soils sit on hilltops and steep slopes. Loam and silt loam are the easiest soils to farm."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:soil_probe",
+      "text": "$(thing)2. Test the soil.$() Right-click any soil with the Soil Probe for a full report: texture, pH, nutrients and water."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:soil_probe"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)3. Till.$() Use a hoe for single blocks, the Ard for a three-block strip, or a Moldboard Plough behind a horse for whole fields. Avoid working wet clay: it smears into clods.$(br2)$(thing)4. Check the date$() with /tilth calendar. The year starts in early spring."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)5. Sow at the right time.$() Cool-season crops (wheat, barley, peas, cabbage) go in as soon as the ground thaws. Warm-season crops (maize, beans, tomato) wait until after the last frost. Vanilla wheat seeds, potatoes, carrots and beetroot seeds plant the realistic crop on Tilth farmland."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)6. Watch it grow.$() Right-click a crop with an empty hand to see its growth stage, how far it is to maturity and what is holding it back: water, a nutrient, pH, light or the weather.$(br2)$(thing)7. Feed the soil.$() Spread manure or compost, and lime acidic ground."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)8. Harvest when ripe$() (the last stage, golden for grains). The harvest tells you the yield in real units, bushels per acre for grain, and grades the produce from Poor to Premium. Leave the straw or residue on the field to return organic matter, then rotate to a different crop."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Hoe & Ard",
+  "icon": "tilth:ard",
+  "category": "tilth:tillage",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A $(thing)hoe$() tills one block. Tilling vanilla dirt or grass gives farmland of whatever soil the terrain implies there."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:ard",
+      "text": "The $(thing)Ard$() is the oldest plough: a pointed beam dragged by hand. It stirs a three-block strip ahead of you without turning the soil over. That is quick, but it buries little residue and loosens compaction only partly."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:ard"
+    }
+  ]
+}

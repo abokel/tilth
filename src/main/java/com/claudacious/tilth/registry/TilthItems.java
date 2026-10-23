@@ -64,6 +64,9 @@ public final class TilthItems {
         for (DeferredBlock<?> b : TilthBlocks.GRASS.values()) {
             ITEMS.registerSimpleBlockItem(b);
         }
+        for (DeferredBlock<?> b : TilthBlocks.FARMLAND.values()) {
+            ITEMS.registerSimpleBlockItem(b);
+        }
         ITEMS.registerSimpleBlockItem(TilthBlocks.GLEY);
         for (CropSpecies sp : Crops.all()) {
             registerCropItem(sp, sp.seedItem, true);

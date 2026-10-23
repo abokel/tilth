@@ -42,3 +42,7 @@ repo/
 ### Tilth dev runs ###
 run-server/
 run-client-join/
+
+### Python ###
+__pycache__/
+*.pyc

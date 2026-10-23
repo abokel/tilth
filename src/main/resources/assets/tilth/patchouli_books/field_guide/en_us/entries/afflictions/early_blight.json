@@ -1,0 +1,16 @@
+{
+  "name": "Early Blight",
+  "icon": "minecraft:brown_mushroom",
+  "category": "tilth:afflictions",
+  "sortnum": 12,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Early Blight$() ($(o)Alternaria solani$()), fungus.$(br2)$(li)$(thing)Hosts:$() potato, tomato.$(li)$(thing)Spreads:$() crop residue, airborne spores, rain splash.$(li)$(thing)Favoured by$() 15-32 °C (best 26 °C), humidity above 80%, 6 h of wet leaves."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 1 years (residue).$(li)$(thing)Damage:$() up to 30% yield.$(li)$(thing)Control:$() Two-year rotation away from nightshades; Plough under residue; Avoid plant stress (water, nitrogen); Fungicide."
+    }
+  ]
+}

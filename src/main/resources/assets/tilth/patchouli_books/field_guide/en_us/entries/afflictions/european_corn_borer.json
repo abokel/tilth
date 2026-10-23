@@ -1,0 +1,16 @@
+{
+  "name": "European Corn Borer",
+  "icon": "minecraft:spider_eye",
+  "category": "tilth:afflictions",
+  "sortnum": 13,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)European Corn Borer$() ($(o)Ostrinia nubilalis$()), insect.$(br2)$(li)$(thing)Hosts:$() maize, sorghum.$(li)$(thing)Spreads:$() migration, crop residue.$(li)$(thing)Favoured by$() 15-32 °C (best 25 °C)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 1 years (larvae in stalks).$(li)$(thing)Damage:$() up to 20% yield.$(li)$(thing)Control:$() Plough down maize stalks; Bt hybrids; Trichogramma wasps."
+    }
+  ]
+}

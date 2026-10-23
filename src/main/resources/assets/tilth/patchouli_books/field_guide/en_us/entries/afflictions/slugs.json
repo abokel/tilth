@@ -1,0 +1,16 @@
+{
+  "name": "Slugs",
+  "icon": "minecraft:slime_ball",
+  "category": "tilth:afflictions",
+  "sortnum": 22,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Slugs$() ($(o)Deroceras reticulatum$()), mollusc.$(br2)$(li)$(thing)Hosts:$() all crops.$(li)$(thing)Spreads:$() migration.$(li)$(thing)Favoured by$() 5-22 °C (best 15 °C), humidity above 90%."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 1 years (eggs in residue).$(li)$(thing)Damage:$() up to 25% yield, can kill the plant.$(li)$(thing)Control:$() Firm, fine seedbed; Tillage; Beetles and birds; Ferric phosphate bait."
+    }
+  ]
+}

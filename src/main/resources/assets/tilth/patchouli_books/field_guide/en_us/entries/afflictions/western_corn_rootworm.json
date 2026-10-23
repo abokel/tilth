@@ -1,0 +1,16 @@
+{
+  "name": "Western Corn Rootworm",
+  "icon": "minecraft:spider_eye",
+  "category": "tilth:afflictions",
+  "sortnum": 27,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Western Corn Rootworm$() ($(o)Diabrotica virgifera virgifera$()), insect.$(br2)$(li)$(thing)Hosts:$() maize.$(li)$(thing)Spreads:$() soilborne.$(li)$(thing)Favoured by$() 12-32 °C (best 24 °C)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 1 years (eggs in soil).$(li)$(thing)Damage:$() up to 40% yield.$(li)$(thing)Control:$() Rotate maize with soybean; Bt rootworm hybrids.$(br2)A classic case for crop rotation; a rotation-resistant strain now lays eggs in soybean fields."
+    }
+  ]
+}

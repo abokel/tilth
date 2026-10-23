@@ -1,0 +1,24 @@
+{
+  "name": "Late Blight",
+  "icon": "minecraft:poisonous_potato",
+  "category": "tilth:afflictions",
+  "sortnum": 16,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Late Blight$() ($(o)Phytophthora infestans$()), oomycete.$(br2)$(li)$(thing)Hosts:$() potato, tomato.$(li)$(thing)Spreads:$() airborne spores, rain splash, seedborne."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Favoured by$() 10-25 °C (best 18 °C), humidity above 90%, 10 h of wet leaves."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 0.2 years (infected tubers).$(li)$(thing)Damage:$() up to 100% yield, can kill the plant.$(li)$(thing)Control:$() Certified disease-free seed potatoes; Destroy cull piles and volunteers; Protectant fungicide programme; Resistant varieties."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Caused the Irish Potato Famine of 1845-1849."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Deficiencies",
+  "icon": "minecraft:rotten_flesh",
+  "category": "tilth:food",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Scurvy$() (vitamin C): wounds heal at half speed and you mine slower.$(li)$(thing)Anemia$() (iron): you move slower.$(li)$(thing)Night Blindness$() (vitamin A): darkness closes in.$(li)$(thing)Brittle Bones$() (calcium): falls hurt 50% more."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Protein Deficiency:$() weaker attacks.$(li)$(thing)Low Energy$() (carbohydrate or fat): slower, and you tire faster.$(li)$(thing)Digestive Distress$() (fibre): you get hungry faster.$(li)$(thing)Malnourished:$() an overall poor diet costs two hearts."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Milk does not cure them: only eating the missing nutrient does."
+    }
+  ]
+}

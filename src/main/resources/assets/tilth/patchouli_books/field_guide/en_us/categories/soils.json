@@ -1,0 +1,6 @@
+{
+  "name": "Soils",
+  "description": "Texture, horizons, the hillslope catena, and how soil changes over time.",
+  "icon": "tilth:loam_topsoil",
+  "sortnum": 1
+}

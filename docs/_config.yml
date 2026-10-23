@@ -1,0 +1,12 @@
+title: Tilth
+description: Realistic agronomy for Minecraft (NeoForge 1.21.1)
+remote_theme: just-the-docs/just-the-docs@v0.10.1
+plugins:
+  - jekyll-remote-theme
+search_enabled: true
+heading_anchors: true
+aux_links:
+  "Tilth on GitHub": "https://github.com/abokel/tilth"
+footer_content: "Generated from tools/guide_content.py, the same source as the in-game Field Guide."
+exclude:
+  - wiki/

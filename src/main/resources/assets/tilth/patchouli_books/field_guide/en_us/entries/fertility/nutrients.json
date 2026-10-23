@@ -1,0 +1,24 @@
+{
+  "name": "Nutrients",
+  "icon": "tilth:manure",
+  "category": "tilth:fertility",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Plants take six nutrients from the soil:$(li)$(thing)Nitrogen (N):$() leaves and protein. Mobile: washes out with drainage, worst in sand.$(li)$(thing)Phosphorus (P):$() roots and seed. Locked up in very acid or very alkaline soil."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Potassium (K):$() water use and quality. Held by clay."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Sulfur, Calcium, Magnesium:$() needed in smaller amounts; calcium matters for peanuts and tomatoes.$(br2)Growth is limited by whichever nutrient is shortest (Liebig's law of the minimum). Adding more of the others does nothing."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Each crop needs a different amount: maize and cabbage are heavy feeders, while legumes make most of their own nitrogen. Micronutrients (iron, zinc, manganese) become scarce above pH 7.5, and sensitive crops then yellow."
+    }
+  ]
+}

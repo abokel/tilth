@@ -1,0 +1,22 @@
+{
+  "name": "Tomato",
+  "icon": "tilth:tomato_seeds",
+  "category": "tilth:crops",
+  "sortnum": 27,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:tomato_seeds",
+      "title": "Tomato",
+      "text": "$(thing)Tomato$() ($(o)Solanum lycopersicum$()), nightshade family."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Warm-season:$() sow after the last frost, into warm soil. Sprouts after 70 °C·d above 10 °C.$(li)Ripens after $(thing)1250 °C·d$(). Best near 25 °C; stops above 35 °C.$(li)$(thing)Frost$() kills it below 0 °C (0.5 °C in flower)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Soil pH$() 6-6.8 (tolerates 5.5-7.5). Roots 1 m. Dislikes waterlogging.$(li)$(thing)Feeds on$() N 150, P 25, K 250 kg/ha per crop.$(li)$(thing)Yield$() when well grown: about 27 tons/ac (60 t/ha).$(li)$(thing)Harvest:$() Tomato and Tomato Seeds. Regrows after cutting."
+    }
+  ]
+}

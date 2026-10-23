@@ -1,0 +1,35 @@
+{
+  "name": "Tools of the Trade",
+  "icon": "tilth:quern",
+  "category": "tilth:getting_started",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:quern",
+      "text": "The $(thing)Quern$() grinds grain into flour, oilseeds into oil and limestone into lime. It stays in the crafting grid and wears out slowly."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:quern"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:kitchen_knife",
+      "text": "The $(thing)Kitchen Knife$() cuts dough into pasta, potatoes into fries and flax into fibre. Make it from flint or iron."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:kitchen_knife_flint"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:surveyors_chain",
+      "text": "The $(thing)Surveyor's Chain$() stakes out field plots of any shape and measures them in acres. See Surveying Plots."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:surveyors_chain"
+    }
+  ]
+}

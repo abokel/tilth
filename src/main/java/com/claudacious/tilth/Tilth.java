@@ -2,6 +2,7 @@ package com.claudacious.tilth;
 
 import com.claudacious.tilth.command.DebugHud;
 import com.claudacious.tilth.command.TilthCommands;
+import com.claudacious.tilth.compat.FieldGuide;
 import com.claudacious.tilth.diet.DietEvents;
 import com.claudacious.tilth.event.FarmingEvents;
 import com.claudacious.tilth.plot.PlotEvents;
@@ -76,6 +77,7 @@ public final class Tilth {
         game.addListener(DietEvents::onHeal);
         game.addListener(DietEvents::onIncomingDamage);
         game.addListener(DebugHud::onPlayerTick);
+        game.addListener(FieldGuide::onPlayerLoggedIn);
     }
 
     private static void onServerStopped(ServerStoppedEvent event) {

@@ -1,0 +1,16 @@
+{
+  "name": "Crop Rotation",
+  "icon": "tilth:clover",
+  "category": "tilth:fertility",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Farmland remembers its last six crops. Rotating crop families breaks the cycles of soil-borne diseases and pests (take-all in wheat, rootworm in maize, clubroot in cabbage)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "A classic rotation is $(thing)grain → legume → root crop → grain$(). Legumes leave nitrogen behind. Root crops loosen the soil. Grasses after grasses invite disease.$(br2)Cover crops of clover over winter protect and feed the soil."
+    }
+  ]
+}

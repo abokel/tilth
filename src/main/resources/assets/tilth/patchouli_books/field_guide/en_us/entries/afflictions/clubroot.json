@@ -1,0 +1,20 @@
+{
+  "name": "Clubroot",
+  "icon": "minecraft:clay_ball",
+  "category": "tilth:afflictions",
+  "sortnum": 6,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Clubroot$() ($(o)Plasmodiophora brassicae$()), protist.$(br2)$(li)$(thing)Hosts:$() brassicaceae.$(li)$(thing)Spreads:$() soilborne, mechanical contact.$(li)$(thing)Favoured by$() 13-30 °C (best 23 °C), pH below 7.2."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 15 years (resting spores in soil).$(li)$(thing)Damage:$() up to 80% yield, can kill the plant.$(li)$(thing)Control:$() Lime to pH 7.2 or higher; Long rotation away from brassicas; Clean soil off boots and tools; Resistant varieties."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Resting spores survive in soil for 15 years or more; liming is the classic control."
+    }
+  ]
+}

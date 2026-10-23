@@ -1,0 +1,20 @@
+{
+  "name": "Common Scab",
+  "icon": "minecraft:rotten_flesh",
+  "category": "tilth:afflictions",
+  "sortnum": 8,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Common Scab$() ($(o)Streptomyces scabiei$()), bacterium.$(br2)$(li)$(thing)Hosts:$() potato, carrot, beetroot, sugar beet.$(li)$(thing)Spreads:$() soilborne, seedborne.$(li)$(thing)Favoured by$() 10-30 °C (best 22 °C), pH above 5.3."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 10 years (soil).$(li)$(thing)Damage:$() up to 5% yield.$(li)$(thing)Control:$() Keep soil pH below 5.3; Irrigate during tuber initiation; Avoid fresh manure and liming before potatoes."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "A cosmetic disease that ruins market quality. Strongly suppressed by acidic soil."
+    }
+  ]
+}

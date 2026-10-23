@@ -1,0 +1,20 @@
+{
+  "name": "Acres & Areas",
+  "icon": "minecraft:map",
+  "category": "tilth:plots",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "One block is one square metre, so an acre is about 4,047 blocks. A 64 by 64 field (four by four chunks) is almost exactly one acre."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The area counts every block inside or on the boundary, so staking the corners of a 10 by 10 field gives exactly 100 m²."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Gunter's chain, 66 feet long, was the surveyor's tool that defined the acre: ten square chains.$(br2)$(thing)/tilth plot info$() reports a plot's area, perimeter, average soil test and the crops growing in it."
+    }
+  ]
+}

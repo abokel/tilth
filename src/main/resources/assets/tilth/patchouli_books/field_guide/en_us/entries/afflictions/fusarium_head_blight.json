@@ -1,0 +1,24 @@
+{
+  "name": "Fusarium Head Blight (Scab)",
+  "icon": "minecraft:brown_mushroom",
+  "category": "tilth:afflictions",
+  "sortnum": 14,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Fusarium Head Blight (Scab)$() ($(o)Fusarium graminearum$()), fungus.$(br2)$(li)$(thing)Hosts:$() common wheat, durum wheat, barley, oats, rye, maize.$(li)$(thing)Spreads:$() crop residue, airborne spores, rain splash."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Favoured by$() 15-32 °C (best 27 °C), humidity above 90%, 24 h of wet leaves."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 2 years (residue).$(li)$(thing)Damage:$() up to 50% yield.$(li)$(thing)Control:$() Do not sow wheat into maize residue; Plough under infected residue; Fungicide at anthesis; Moderately resistant cultivars."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Contaminates grain with the mycotoxin deoxynivalenol (DON, 'vomitoxin')."
+    }
+  ]
+}

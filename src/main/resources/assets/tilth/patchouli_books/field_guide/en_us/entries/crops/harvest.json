@@ -1,0 +1,20 @@
+{
+  "name": "Harvest & Quality",
+  "icon": "minecraft:wheat",
+  "category": "tilth:crops",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Harvest when the crop reaches its final stage: right-click it, or break it. Alfalfa and clover are cut at early bloom and regrow, and tomatoes give several pickings. Crops left standing long after ripening shatter and rot."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The harvest message shows the yield in real units: bushels per acre for grain, hundredweight or tons for vegetables, bales for cotton. Produce is graded $(thing)Poor, Fair, Good, Excellent or Premium$() by how well the crop was fed, watered and kept healthy."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The grade carries through milling and cooking. Premium food gives 20% more nutrition, Poor food 20% less. Cereals also give $(thing)straw$(), useful for compost, hay or mulch."
+    }
+  ]
+}

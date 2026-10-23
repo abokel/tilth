@@ -1,0 +1,20 @@
+{
+  "name": "Reading a Soil Test",
+  "icon": "tilth:soil_probe",
+  "category": "tilth:soils",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The probe reports nutrients in $(thing)ppm$() in the top 20 cm, as a soil laboratory does. Rough guides:$(li)$(thing)N$() (nitrate): under 10 low, 20-40 optimum.$(li)$(thing)P$(): under 10 low, 20-40 optimum.$(li)$(thing)K$(): under 90 low, 130-200 optimum."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)pH$(): 6.0-7.0 suits most crops.$(li)$(thing)Organic matter$(): 3% or more is healthy. It feeds nitrogen and holds water.$(li)$(thing)CEC$(): higher means the soil holds nutrients and resists pH change."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Water$() is shown as the volume fraction $(thing)θ$() next to field capacity (full after drainage) and wilting point (empty to plants). $(thing)Compaction$() above about 40% restricts roots and drainage; ploughing breaks it up."
+    }
+  ]
+}

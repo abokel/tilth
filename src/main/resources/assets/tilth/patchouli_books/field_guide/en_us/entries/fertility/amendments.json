@@ -1,0 +1,40 @@
+{
+  "name": "Amendments",
+  "icon": "tilth:compost",
+  "category": "tilth:fertility",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:manure",
+      "text": "$(thing)Manure$() is dropped by cows, pigs, sheep, goats, chickens and horses. It supplies nitrogen, phosphorus, potassium and organic matter."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:compost",
+      "text": "$(thing)Compost$() is slower and gentler. It builds organic matter and supplies balanced nutrients."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:compost_from_manure"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:bone_meal",
+      "text": "$(thing)Bone meal$() is a phosphorus and calcium fertiliser here. It no longer makes crops grow instantly (configurable)."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:wood_ash",
+      "text": "$(thing)Wood Ash$(), from burning sticks, adds potassium and calcium and raises pH."
+    },
+    {
+      "type": "patchouli:smelting",
+      "recipe": "tilth:wood_ash_from_smelting"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Right-click farmland (or a crop on it) with an amendment to spread one dose per block. Alfalfa and clover hay work as $(thing)green manure$(): nitrogen-rich residue for the next crop."
+    }
+  ]
+}

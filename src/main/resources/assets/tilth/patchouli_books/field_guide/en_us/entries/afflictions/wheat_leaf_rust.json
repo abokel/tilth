@@ -1,0 +1,16 @@
+{
+  "name": "Wheat Leaf Rust",
+  "icon": "minecraft:brown_mushroom",
+  "category": "tilth:afflictions",
+  "sortnum": 28,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Wheat Leaf Rust$() ($(o)Puccinia triticina$()), fungus.$(br2)$(li)$(thing)Hosts:$() common wheat, durum wheat.$(li)$(thing)Spreads:$() airborne spores.$(li)$(thing)Favoured by$() 10-30 °C (best 20 °C), humidity above 80%, 3 h of wet leaves."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 0.3 years (volunteer wheat).$(li)$(thing)Damage:$() up to 40% yield.$(li)$(thing)Control:$() Resistant cultivars (Lr genes); Destroy volunteer wheat; Fungicide."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Durum Wheat",
+  "icon": "tilth:durum_wheat_seeds",
+  "category": "tilth:crops",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:durum_wheat_seeds",
+      "title": "Durum Wheat",
+      "text": "$(thing)Durum Wheat$() ($(o)Triticum turgidum subsp. durum$()), grass family."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Cool-season:$() sow as soon as the ground thaws. Sprouts after 110 °C·d above 0 °C.$(li)Ripens after $(thing)1600 °C·d$(). Best near 24 °C; stops above 36 °C.$(li)$(thing)Frost$() kills it below -10 °C (-2 °C in flower)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Soil pH$() 6-8 (tolerates 5.5-8.5). Roots 1.5 m. Some tolerance of wet soil.$(li)$(thing)Feeds on$() N 110, P 18, K 75 kg/ha per crop.$(li)$(thing)Yield$() when well grown: about 45 bu/ac (3 t/ha).$(li)$(thing)Harvest:$() Durum Wheat and Durum Wheat Seeds."
+    }
+  ]
+}

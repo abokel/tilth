@@ -1,0 +1,22 @@
+{
+  "name": "Soybean",
+  "icon": "tilth:soybeans",
+  "category": "tilth:crops",
+  "sortnum": 11,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:soybeans",
+      "title": "Soybean",
+      "text": "$(thing)Soybean$() ($(o)Glycine max$()), legume family."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Warm-season:$() sow after the last frost, into warm soil. Sprouts after 50 °C·d above 10 °C.$(li)Ripens after $(thing)1250 °C·d$(). Best near 28 °C; stops above 40 °C.$(li)$(thing)Frost$() kills it below -1.5 °C (-1 °C in flower)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Soil pH$() 6-7 (tolerates 5.2-8). Roots 1 m. Some tolerance of wet soil.$(li)$(thing)Feeds on$() N 230, P 25, K 120 kg/ha per crop; fixes about 60% of its own nitrogen.$(li)$(thing)Yield$() when well grown: about 45 bu/ac (3 t/ha).$(li)$(thing)Harvest:$() Soybeans."
+    }
+  ]
+}

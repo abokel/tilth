@@ -1,0 +1,20 @@
+{
+  "name": "Northern Corn Leaf Blight",
+  "icon": "minecraft:brown_mushroom",
+  "category": "tilth:afflictions",
+  "sortnum": 17,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Northern Corn Leaf Blight$() ($(o)Exserohilum turcicum$()), fungus.$(br2)$(li)$(thing)Hosts:$() maize, sorghum.$(li)$(thing)Spreads:$() crop residue, airborne spores."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Favoured by$() 18-27 °C (best 24 °C), humidity above 85%, 6 h of wet leaves."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 1 years (residue).$(li)$(thing)Damage:$() up to 40% yield.$(li)$(thing)Control:$() Rotation; Plough down residue; Resistant hybrids (Ht genes)."
+    }
+  ]
+}

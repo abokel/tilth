@@ -1,0 +1,22 @@
+{
+  "name": "Common Bean",
+  "icon": "tilth:beans",
+  "category": "tilth:crops",
+  "sortnum": 15,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:beans",
+      "title": "Common Bean",
+      "text": "$(thing)Common Bean$() ($(o)Phaseolus vulgaris$()), legume family."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Warm-season:$() sow after the last frost, into warm soil. Sprouts after 50 °C·d above 10 °C.$(li)Ripens after $(thing)950 °C·d$(). Best near 25 °C; stops above 35 °C.$(li)$(thing)Frost$() kills it below -0.5 °C (0 °C in flower)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Soil pH$() 6-7 (tolerates 5.3-7.8). Roots 0.9 m. Dislikes waterlogging.$(li)$(thing)Feeds on$() N 120, P 15, K 80 kg/ha per crop; fixes about 40% of its own nitrogen.$(li)$(thing)Yield$() when well grown: about 18 cwt/ac (2 t/ha).$(li)$(thing)Harvest:$() Dry Beans."
+    }
+  ]
+}

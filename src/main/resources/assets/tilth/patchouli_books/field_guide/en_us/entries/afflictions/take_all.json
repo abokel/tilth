@@ -1,0 +1,20 @@
+{
+  "name": "Take-all",
+  "icon": "minecraft:brown_mushroom",
+  "category": "tilth:afflictions",
+  "sortnum": 24,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Take-all$() ($(o)Gaeumannomyces tritici$()), fungus.$(br2)$(li)$(thing)Hosts:$() common wheat, durum wheat, barley.$(li)$(thing)Spreads:$() soilborne, crop residue.$(li)$(thing)Favoured by$() 10-25 °C (best 18 °C), pH below 8.5, pH above 6."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 1 years (residue).$(li)$(thing)Damage:$() up to 50% yield, can kill the plant.$(li)$(thing)Control:$() One-year break with a non-grass crop; Avoid over-liming; Ammonium rather than nitrate nitrogen; Take-all decline after continuous wheat."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Worse in alkaline, freshly limed, loose or waterlogged soils."
+    }
+  ]
+}

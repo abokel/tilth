@@ -1,0 +1,12 @@
+{
+  "name": "Tilth Field Guide",
+  "subtitle": "Realistic Agronomy",
+  "landing_text": "A practical handbook for farming the way the land actually works: soils that belong to their hillside, water that runs out, crops that follow the seasons and a diet that needs variety. New here? Start with Getting Started, then Your First Field.",
+  "version": 1,
+  "creative_tab": "tilth:tilth",
+  "book_texture": "patchouli:textures/gui/book_green.png",
+  "model": "patchouli:book_green",
+  "show_progress": false,
+  "use_resource_pack": true,
+  "i18n": false
+}

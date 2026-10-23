@@ -19,6 +19,11 @@ sourceSets.main.resources {
 }
 
 repositories {
+    maven {
+        // JEI and Patchouli
+        name = 'BlameJared'
+        url = 'https://maven.blamejared.com/'
+    }
 }
 
 base {
@@ -84,6 +89,12 @@ configurations {
 }
 
 dependencies {
+    // Optional integrations: compiled against JEI's API; JEI and Patchouli are only present at dev runtime.
+    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+    localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    localRuntime "vazkii.patchouli:Patchouli:${patchouli_version}"
+
     // Pure-Java simulation code (soil, climate, crops, plots) is unit tested without launching Minecraft.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.3'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

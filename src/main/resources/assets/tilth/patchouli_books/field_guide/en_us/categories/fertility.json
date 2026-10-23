@@ -1,0 +1,6 @@
+{
+  "name": "Fertility",
+  "description": "Nutrients, pH, organic matter, amendments and rotation.",
+  "icon": "tilth:compost",
+  "sortnum": 2
+}

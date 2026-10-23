@@ -1,3 +1,8 @@
+---
+title: Design Notes
+nav_order: 99
+---
+
 # Tilth design notes
 
 How the simulation works and how it connects to the game.

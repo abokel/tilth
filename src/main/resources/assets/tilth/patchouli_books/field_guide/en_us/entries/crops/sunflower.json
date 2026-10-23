@@ -1,0 +1,22 @@
+{
+  "name": "Sunflower",
+  "icon": "tilth:sunflower_seeds",
+  "category": "tilth:crops",
+  "sortnum": 28,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:sunflower_seeds",
+      "title": "Sunflower",
+      "text": "$(thing)Sunflower$() ($(o)Helianthus annuus$()), daisy family."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Warm-season:$() sow after the last frost, into warm soil. Sprouts after 80 °C·d above 6 °C.$(li)Ripens after $(thing)1500 °C·d$(). Best near 25 °C; stops above 38 °C.$(li)$(thing)Frost$() kills it below -3 °C (-2 °C in flower)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Soil pH$() 6-7.5 (tolerates 5.5-8.5). Roots 1.2 m. Dislikes waterlogging.$(li)$(thing)Feeds on$() N 110, P 22, K 150 kg/ha per crop.$(li)$(thing)Yield$() when well grown: about 2230 lb/ac (2.5 t/ha).$(li)$(thing)Harvest:$() Sunflower Seeds. Grows two blocks tall."
+    }
+  ]
+}

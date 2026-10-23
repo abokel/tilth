@@ -1,0 +1,47 @@
+{
+  "name": "The Kitchen",
+  "icon": "tilth:durum_semolina",
+  "category": "tilth:food",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Grind grain into flour with the quern, mix doughs with a water bucket, cut pasta and fries with the knife, then cook them in a furnace, smoker or campfire. Better ingredients make better food: the grade carries through."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:durum_semolina",
+      "text": "Durum wheat is the pasta wheat."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:pasta_dough"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:protein_pasta_dough_chickpea",
+      "text": "Chickpea or lentil flour turns pasta into a protein meal."
+    },
+    {
+      "type": "patchouli:smelting",
+      "recipe": "tilth:protein_pasta_from_smelting"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:masa_dough",
+      "text": "Cornmeal cooked with wood ash (nixtamalisation) becomes masa for tortillas."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:burrito"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:hummus"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:lentil_soup"
+    }
+  ]
+}

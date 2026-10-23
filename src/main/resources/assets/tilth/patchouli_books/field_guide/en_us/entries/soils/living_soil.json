@@ -1,0 +1,24 @@
+{
+  "name": "Living Soil",
+  "icon": "tilth:silt_loam_grass",
+  "category": "tilth:soils",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Soil you move does not stay the same. Over time it adapts to its new place:$(li)Subsoil kept wet turns into gley; gley that drains turns back.$(li)Subsoil exposed to sky and plants slowly becomes topsoil."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)Topsoil buried under rock becomes subsoil."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)Waterlogged topsoil in a cool, wet climate builds up peat.$(li)Bare topsoil on a slope loses its fine particles in heavy rain, coarsening by one class, and the fines settle in the hollow below."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Grass and crops protect soil from erosion. Plough across slopes, not down them."
+    }
+  ]
+}

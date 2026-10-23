@@ -1,0 +1,20 @@
+{
+  "name": "Desert Locust",
+  "icon": "minecraft:spider_eye",
+  "category": "tilth:afflictions",
+  "sortnum": 11,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Desert Locust$() ($(o)Schistocerca gregaria$()), insect.$(br2)$(li)$(thing)Hosts:$() all crops.$(li)$(thing)Spreads:$() migration.$(li)$(thing)Favoured by$() 25-38 °C (best 32 °C)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 0 years (migration).$(li)$(thing)Damage:$() up to 100% yield, can kill the plant.$(li)$(thing)Control:$() Regional early warning; Targeted biopesticide (Metarhizium)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Solitary grasshoppers turn gregarious after rains; a single swarm can eat as much as millions of people in a day."
+    }
+  ]
+}

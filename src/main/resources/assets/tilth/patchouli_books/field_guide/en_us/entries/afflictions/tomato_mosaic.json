@@ -1,0 +1,16 @@
+{
+  "name": "Tomato Mosaic",
+  "icon": "minecraft:fermented_spider_eye",
+  "category": "tilth:afflictions",
+  "sortnum": 25,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Tomato Mosaic$() ($(o)Tomato mosaic virus (Tobamovirus)$()), virus.$(br2)$(li)$(thing)Hosts:$() tomato.$(li)$(thing)Spreads:$() mechanical contact, seedborne.$(li)$(thing)Favoured by$() 15-32 °C (best 25 °C)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 2 years (seed and residue).$(li)$(thing)Damage:$() up to 25% yield.$(li)$(thing)Control:$() Resistant varieties (Tm-2 genes); Wash hands and tools; Clean seed.$(br2)One of the most stable viruses known; survives for years in dried plant debris."
+    }
+  ]
+}

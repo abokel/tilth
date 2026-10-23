@@ -1,0 +1,21 @@
+{
+  "name": "Horizons & Profiles",
+  "icon": "tilth:loam_subsoil",
+  "category": "tilth:soils",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Dig down and the soil changes. $(thing)Topsoil$() (the A horizon) is dark with humus and full of roots. $(thing)Subsoil$() (the B horizon) is lighter, often redder or yellower, and holds clay washed down from above. Below that lies weathered rock."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:gley",
+      "text": "Where the ground stays waterlogged, iron in the subsoil is chemically reduced and turns grey-blue with rusty mottles: $(thing)gley$(). It marks poorly drained land."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Topsoil is thin on hilltops and steep slopes, where it washes away, and deep on footslopes and valley floors, where it collects. Tilling subsoil gives poor farmland: little humus, little nitrogen."
+    }
+  ]
+}

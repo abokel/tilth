@@ -1,0 +1,20 @@
+{
+  "name": "Colorado Potato Beetle",
+  "icon": "minecraft:spider_eye",
+  "category": "tilth:afflictions",
+  "sortnum": 7,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Colorado Potato Beetle$() ($(o)Leptinotarsa decemlineata$()), insect.$(br2)$(li)$(thing)Hosts:$() potato, tomato.$(li)$(thing)Spreads:$() migration, soilborne.$(li)$(thing)Favoured by$() 15-32 °C (best 26 °C)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 1 years (adults in soil).$(li)$(thing)Damage:$() up to 60% yield, can kill the plant.$(li)$(thing)Control:$() Rotate fields far apart; Hand-pick adults and egg masses; Straw mulch; Bt tenebrionis."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Famous for evolving resistance to almost every insecticide used against it."
+    }
+  ]
+}

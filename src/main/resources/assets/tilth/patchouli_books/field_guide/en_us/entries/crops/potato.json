@@ -1,0 +1,22 @@
+{
+  "name": "Potato",
+  "icon": "minecraft:potato",
+  "category": "tilth:crops",
+  "sortnum": 19,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:potato",
+      "title": "Potato",
+      "text": "$(thing)Potato$() ($(o)Solanum tuberosum$()), nightshade family."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Warm-season:$() sow after the last frost, into warm soil. Sprouts after 150 °C·d above 7 °C.$(li)Ripens after $(thing)1100 °C·d$(). Best near 18 °C; stops above 30 °C.$(li)$(thing)Frost$() kills it below -1.5 °C (-1.5 °C in flower)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Soil pH$() 5-6.5 (tolerates 4.5-7.5). Roots 0.5 m. Dislikes waterlogging.$(li)$(thing)Feeds on$() N 150, P 25, K 220 kg/ha per crop.$(li)$(thing)Yield$() when well grown: about 312 cwt/ac (35 t/ha).$(li)$(thing)Harvest:$() Potato."
+    }
+  ]
+}

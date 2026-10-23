@@ -1,0 +1,20 @@
+{
+  "name": "Barley Yellow Dwarf",
+  "icon": "minecraft:fermented_spider_eye",
+  "category": "tilth:afflictions",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Barley Yellow Dwarf$() ($(o)Barley yellow dwarf virus (Luteoviridae)$()), virus.$(br2)$(li)$(thing)Hosts:$() common wheat, durum wheat, barley, oats, rye, maize, rice, sorghum.$(li)$(thing)Spreads:$() insect vector."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Favoured by$() 10-28 °C (best 20 °C)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 0.5 years (aphids on grasses).$(li)$(thing)Damage:$() up to 40% yield.$(li)$(thing)Control:$() Delay autumn sowing until aphid flights end; Control aphids; Tolerant varieties.$(br2)Spread only by aphids."
+    }
+  ]
+}

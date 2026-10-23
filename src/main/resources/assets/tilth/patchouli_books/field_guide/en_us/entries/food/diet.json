@@ -1,0 +1,16 @@
+{
+  "name": "Your Diet",
+  "icon": "minecraft:bread",
+  "category": "tilth:food",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Your body keeps stores of eight nutrients: carbohydrate, protein, fat, fibre, vitamin A, vitamin C, iron and calcium. Energy runs out within a day or two, while vitamins A, iron and calcium last many days. Check yours with $(thing)/tilth diet$()."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Every food tooltip shows what it provides (hold Shift for the full list). Eat a variety: grains for energy, legumes and meat for protein and iron, vegetables for vitamins, milk and tofu for calcium.$(br2)A balanced diet makes you $(thing)Well Nourished$(): two extra hearts."
+    }
+  ]
+}

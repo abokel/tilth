@@ -1,0 +1,20 @@
+{
+  "name": "Drought & Waterlogging",
+  "icon": "minecraft:dead_bush",
+  "category": "tilth:water",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "When roots cannot draw enough water, growth slows. Prolonged drought (about two weeks with almost no available water) kills a crop."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Stress at $(thing)flowering$() costs the most yield: the same drought at tillering costs far less."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Waterlogged soil suffocates roots, and nitrogen is lost to the air (denitrification). Clay depressions and toeslopes are most at risk. Plant water-tolerant crops there, such as rice, clover and sorghum, or drain them."
+    }
+  ]
+}

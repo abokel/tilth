@@ -1,0 +1,20 @@
+{
+  "name": "Powdery Mildew of Cereals",
+  "icon": "minecraft:brown_mushroom",
+  "category": "tilth:afflictions",
+  "sortnum": 19,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Powdery Mildew of Cereals$() ($(o)Blumeria graminis$()), fungus.$(br2)$(li)$(thing)Hosts:$() common wheat, durum wheat, barley, oats, rye.$(li)$(thing)Spreads:$() airborne spores.$(li)$(thing)Favoured by$() 5-25 °C (best 18 °C), humidity above 70%."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 0.5 years (residue).$(li)$(thing)Damage:$() up to 25% yield.$(li)$(thing)Control:$() Resistant cultivars; Avoid excessive nitrogen and dense stands; Fungicide."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Unlike most leaf diseases it does not need free water; dry, mild, humid weather favours it."
+    }
+  ]
+}

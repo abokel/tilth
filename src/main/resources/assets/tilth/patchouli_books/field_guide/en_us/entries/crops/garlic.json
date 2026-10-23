@@ -1,0 +1,22 @@
+{
+  "name": "Garlic",
+  "icon": "tilth:garlic",
+  "category": "tilth:crops",
+  "sortnum": 24,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:garlic",
+      "title": "Garlic",
+      "text": "$(thing)Garlic$() ($(o)Allium sativum$()), onion family."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Cool-season:$() sow as soon as the ground thaws. Sprouts after 130 °C·d above 0 °C.$(li)Ripens after $(thing)1700 °C·d$(). Best near 18 °C; stops above 30 °C.$(li)$(thing)Frost$() kills it below -15 °C (-4 °C in flower)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Soil pH$() 6-7.5 (tolerates 5.5-8). Roots 0.4 m. Dislikes waterlogging.$(li)$(thing)Feeds on$() N 120, P 22, K 110 kg/ha per crop.$(li)$(thing)Yield$() when well grown: about 89 cwt/ac (10 t/ha).$(li)$(thing)Harvest:$() Garlic."
+    }
+  ]
+}

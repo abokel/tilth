@@ -1,0 +1,32 @@
+{
+  "name": "The Catena",
+  "icon": "minecraft:grass_block",
+  "category": "tilth:soils",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A $(thing)catena$() is the chain of soils down a hillside. Water, dissolved minerals and fine particles all move downhill, so position on the slope decides the soil."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Summit:$() stable, moderately deep, well drained.$(li)$(thing)Shoulder:$() the most eroded: thin, sandy, low in organic matter.$(li)$(thing)Backslope:$() steep and thin.$(li)$(thing)Footslope:$() deeper, receives soil from above."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Toeslope:$() deep, fine-textured, rich in humus."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Depression:$() a hollow with no outlet. Wet, clayey and gleyed; in cold climates it fills with peat.$(li)$(thing)Floodplain:$() silty river sediment over a shallow water table."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The parent material (wind-blown loess, glacial till, river alluvium, lake clay, dune sand) sets the starting texture."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Use $(thing)/tilth catena$() anywhere to see the slope, curvature, relief, hillslope position and the soil profile the land implies. Worldgen builds every new chunk this way."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "Organic Matter & Residue",
+  "icon": "tilth:straw",
+  "category": "tilth:fertility",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Humus (soil organic matter) slowly breaks down and releases nitrogen. This happens fastest in warm, moist soil and right after tillage, which brings a short flush of fertility."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Crop residue left on the field becomes new humus over time."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Residue type matters. $(thing)Straw$() is low in nitrogen, so soil microbes borrow nitrogen from the soil to digest it, and the next crop may go short. $(thing)Legume residue$() (clover, alfalfa, beans) is rich in nitrogen and gives it back."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Mulch left on the surface protects soil from drying out. Ploughed in, residue decomposes much faster."
+    }
+  ]
+}

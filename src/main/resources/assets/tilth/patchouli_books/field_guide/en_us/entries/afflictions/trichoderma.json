@@ -1,0 +1,16 @@
+{
+  "name": "Trichoderma",
+  "icon": "minecraft:glow_lichen",
+  "category": "tilth:afflictions",
+  "sortnum": 26,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Trichoderma$() ($(o)Trichoderma harzianum$()), symbiont.$(br2)$(li)$(thing)Hosts:$() all crops.$(li)$(thing)Spreads:$() soilborne.$(li)$(thing)Favoured by$() 10-35 °C (best 25 °C)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Survives$() 3 years (soil).$(li)$(thing)Benefit:$() +15% to its host.$(li)$(thing)Control:$() Organic matter and compost encourage it.$(br2)A soil fungus that parasitises other fungi; used as a biological control agent."
+    }
+  ]
+}
