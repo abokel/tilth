@@ -1,0 +1,6 @@
+{
+  "parent": "tilth:block/bushy_cross",
+  "textures": {
+    "cross": "tilth:block/crop/radish_stage2_chlorotic"
+  }
+}

@@ -18,6 +18,14 @@
     },
     {
       "type": "patchouli:text",
+      "text": "To see what is attacking a crop, cut a $(thing)Plant Sample$() from it with the $(thing)Kitchen Knife$() (right-click the crop), hold the sample in your off hand and use a $(thing)Microscope$(). It shows the organism magnified, with its symptoms and how to control it."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:microscope"
+    },
+    {
+      "type": "patchouli:text",
       "text": "Rotation is the main defence. Soil- and residue-borne organisms build up when the same host is grown again before they die out. Ploughing buries residue-borne ones."
     }
   ]

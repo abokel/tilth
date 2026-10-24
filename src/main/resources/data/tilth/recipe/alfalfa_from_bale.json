@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:alfalfa_bale"
+    }
+  ],
+  "result": {
+    "id": "tilth:alfalfa",
+    "count": 9
+  }
+}

@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "tilth:block/peat"
-    }
+    "": [
+      {
+        "model": "tilth:block/peat"
+      },
+      {
+        "model": "tilth:block/peat",
+        "y": 90
+      },
+      {
+        "model": "tilth:block/peat",
+        "y": 180
+      },
+      {
+        "model": "tilth:block/peat",
+        "y": 270
+      }
+    ]
   }
 }

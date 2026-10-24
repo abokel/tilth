@@ -14,6 +14,10 @@
     },
     {
       "type": "patchouli:text",
+      "text": "The land shows the season. Oak and birch leaves turn gold, orange and red through autumn and hang brown through winter; grass yellows and browns. In winter, snow settles wherever it is below freezing and ponds freeze over, then thaw in spring."
+    },
+    {
+      "type": "patchouli:text",
       "text": "Use $(thing)/tilth calendar$() for the date and $(thing)/tilth climate$() for the local climate, today's weather and degree days.$(br2)The days and month length are configurable. Shorter months make crops grow faster in play time."
     }
   ]

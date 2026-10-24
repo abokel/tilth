@@ -2,7 +2,7 @@
   "name": "Potato",
   "icon": "minecraft:potato",
   "category": "tilth:crops",
-  "sortnum": 19,
+  "sortnum": 20,
   "pages": [
     {
       "type": "patchouli:spotlight",

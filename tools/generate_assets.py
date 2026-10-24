@@ -20,6 +20,9 @@ from icons import ICONS, effect_icon, plow_texture  # noqa: E402
 from data_tables import (CROPS, SOILS, FOOD_NUTRITION, AFFLICTIONS, RECIPES_SHAPED, RECIPES_SHAPELESS,  # noqa: E402
                          RECIPES_COOKING, NAMES, EFFECTS, TAGS)
 import guide  # noqa: E402
+import extras  # noqa: E402
+import conditions  # noqa: E402
+import lighting  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RES = os.path.join(ROOT, "src", "main", "resources")
@@ -36,6 +39,14 @@ def write_json(path, obj):
 
 
 def save(img, *parts):
+    """Writes a texture, lit for depth: relief on block faces, rim light on items, sun and shade on crops."""
+    name = parts[-1]
+    if parts[0] == "item":
+        img = lighting.sprite(img)
+    elif parts[0] == "block" and len(parts) > 2 and parts[1] == "crop":
+        img = lighting.plant(img)
+    elif parts[0] == "block" and img.w == 16 and img.h == 16 and lighting.fully_opaque(img) and "lab" not in name:
+        img = lighting.surface(img)
     path = os.path.join(ASSETS, "textures", *parts)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     img.save(path)
@@ -51,6 +62,11 @@ def blockstate(name, obj):
 
 def loot(name, obj):
     write_json(os.path.join(DATA, MOD, "loot_table", "blocks", name + ".json"), obj)
+
+
+def rotations(model_id):
+    """Four random rotations of a model, so a field of the same block does not show a repeating pattern."""
+    return [{"model": model_id}] + [{"model": model_id, "y": r} for r in (90, 180, 270)]
 
 
 def self_drop(block, item=None):
@@ -137,7 +153,7 @@ def gen_soils(lang):
         top_img = soil_texture(tid, base, sand, clay, "topsoil")
         save(top_img, "block", top_name + ".png")
         model(f"block/{top_name}", {"parent": "minecraft:block/cube_all", "textures": {"all": f"{MOD}:block/{top_name}"}})
-        blockstate(top_name, {"variants": {"": {"model": f"{MOD}:block/{top_name}"}}})
+        blockstate(top_name, {"variants": {"": rotations(f"{MOD}:block/{top_name}")}})
         model(f"item/{top_name}", {"parent": f"{MOD}:block/{top_name}"})
         loot(top_name, self_drop(top_name))
         lang[f"block.{MOD}.{top_name}"] = "Peat" if organic else f"{label} Topsoil"
@@ -146,7 +162,7 @@ def gen_soils(lang):
             sub = f"{tid}_subsoil"
             save(soil_texture(tid, base, sand, clay, "subsoil"), "block", sub + ".png")
             model(f"block/{sub}", {"parent": "minecraft:block/cube_all", "textures": {"all": f"{MOD}:block/{sub}"}})
-            blockstate(sub, {"variants": {"": {"model": f"{MOD}:block/{sub}"}}})
+            blockstate(sub, {"variants": {"": rotations(f"{MOD}:block/{sub}")}})
             model(f"item/{sub}", {"parent": f"{MOD}:block/{sub}"})
             loot(sub, self_drop(sub))
             lang[f"block.{MOD}.{sub}"] = f"{label} Subsoil"
@@ -172,8 +188,17 @@ def gen_soils(lang):
             "dirt": f"{MOD}:block/{top_name}", "top": f"{MOD}:block/{farm}"}})
         model(f"block/{farm}_moist", {"parent": "minecraft:block/template_farmland", "textures": {
             "dirt": f"{MOD}:block/{top_name}", "top": f"{MOD}:block/{farm}_moist"}})
-        blockstate(farm, {"variants": {f"moisture={m}": {"model": f"{MOD}:block/{farm}" + ("_moist" if m >= 5 else "")}
-                                       for m in range(8)}})
+        save(conditions.cracked(farmland_top(top_img, False)), "block", farm + "_cracked.png")
+        save(conditions.soggy(farmland_top(top_img, True)), "block", farm + "_soggy.png")
+        for variant in ("cracked", "soggy"):
+            model(f"block/{farm}_{variant}", {"parent": "minecraft:block/template_farmland", "textures": {
+                "dirt": f"{MOD}:block/{top_name}", "top": f"{MOD}:block/{farm}_{variant}"}})
+        variants = {}
+        for m in range(8):
+            for wet in ("false", "true"):
+                suffix = "_soggy" if wet == "true" else "_cracked" if m <= 1 else "_moist" if m >= 5 else ""
+                variants[f"moisture={m},soggy={wet}"] = {"model": f"{MOD}:block/{farm}{suffix}"}
+        blockstate(farm, {"variants": variants})
         model(f"item/{farm}", {"parent": f"{MOD}:block/{farm}"})
         loot(farm, self_drop(farm, top_name))
         lang[f"block.{MOD}.{farm}"] = f"{label} Farmland"
@@ -181,7 +206,7 @@ def gen_soils(lang):
     gley = soil_texture("gley", (112, 120, 124), 6, 47, "gley")
     save(gley, "block", "gley.png")
     model("block/gley", {"parent": "minecraft:block/cube_all", "textures": {"all": f"{MOD}:block/gley"}})
-    blockstate("gley", {"variants": {"": {"model": f"{MOD}:block/gley"}}})
+    blockstate("gley", {"variants": {"": rotations(f"{MOD}:block/gley")}})
     model("item/gley", {"parent": f"{MOD}:block/gley"})
     loot("gley", self_drop("gley"))
     lang[f"block.{MOD}.gley"] = "Gley (Waterlogged Subsoil)"
@@ -200,23 +225,35 @@ def gen_crops(lang):
             {"from": [8, 0, 0.8], "to": [8, 32, 15.2], "rotation": {"origin": [8, 8, 8], "axis": "y", "angle": 45, "rescale": True},
              "shade": False, "faces": {"west": {"uv": [0, 0, 16, 16], "texture": "#cross"}, "east": {"uv": [0, 0, 16, 16], "texture": "#cross"}}}
         ]})
+    plane = lambda frm, to, rot, faces: {"from": frm, "to": to, "shade": False,
+                                         **({"rotation": {"origin": [8, 8, 8], "axis": "y", "angle": 45, "rescale": True}} if rot else {}),
+                                         "faces": {f: {"uv": [0, 0, 16, 16], "texture": "#cross"} for f in faces}}
+    model("block/bushy_cross", {
+        "ambientocclusion": False, "render_type": "minecraft:cutout", "textures": {"particle": "#cross"},
+        "elements": [plane([0.8, 0, 8], [15.2, 16, 8], True, ("north", "south")),
+                     plane([8, 0, 0.8], [8, 16, 15.2], True, ("east", "west")),
+                     plane([1.5, 0, 8], [14.5, 15, 8], False, ("north", "south")),
+                     plane([8, 0, 1.5], [8, 15, 14.5], False, ("east", "west"))]})
     for crop in CROPS:
         cid = crop["id"]
         variants = {}
         for stage in range(10):
             tall = crop.get("tall_from", -1) >= 0 and stage >= crop["tall_from"]
-            img = draw_plant(crop, stage, tall)
-            tex = f"{cid}_stage{stage}"
-            save(img, "block", "crop", tex + ".png")
-            if tall:
-                model(f"block/crop/{tex}", {"parent": f"{MOD}:block/tall_cross", "textures": {"cross": f"{MOD}:block/crop/{tex}"}})
-            elif crop["form"] == "cereal":
-                model(f"block/crop/{tex}", {"parent": "minecraft:block/crop", "render_type": "minecraft:cutout",
-                                            "textures": {"crop": f"{MOD}:block/crop/{tex}"}})
-            else:
-                model(f"block/crop/{tex}", {"parent": "minecraft:block/cross", "render_type": "minecraft:cutout",
-                                            "textures": {"cross": f"{MOD}:block/crop/{tex}"}})
-            variants[f"stage={stage}"] = {"model": f"{MOD}:block/crop/{tex}"}
+            plant = draw_plant(crop, stage, tall)
+            for cond in conditions.CONDITIONS:
+                own = cond == "healthy" or stage > 0
+                tex = f"{cid}_stage{stage}" + ("" if not own or cond == "healthy" else "_" + cond)
+                if own:
+                    save(conditions.apply(plant, cond, f"{cid}{stage}"), "block", "crop", tex + ".png")
+                    if tall:
+                        model(f"block/crop/{tex}", {"parent": f"{MOD}:block/tall_cross", "textures": {"cross": f"{MOD}:block/crop/{tex}"}})
+                    elif crop["form"] == "cereal":
+                        model(f"block/crop/{tex}", {"parent": "minecraft:block/crop", "render_type": "minecraft:cutout",
+                                                    "textures": {"crop": f"{MOD}:block/crop/{tex}"}})
+                    else:
+                        model(f"block/crop/{tex}", {"parent": f"{MOD}:block/bushy_cross",
+                                                    "textures": {"cross": f"{MOD}:block/crop/{tex}"}})
+                variants[f"condition={cond},stage={stage}"] = {"model": f"{MOD}:block/crop/{tex}"}
         blockstate(f"{cid}_crop", {"variants": variants})
         lang[f"block.{MOD}.{cid}_crop"] = crop["name"] + " Crop"
 
@@ -341,7 +378,8 @@ def gen_tags():
         write_json(os.path.join(DATA, ns, "tags", kind, name + ".json"), {"replace": False, "values": values})
 
     tag("minecraft", "block", "dirt", blocks["topsoil"] + blocks["subsoil"] + blocks["grass"])
-    tag("minecraft", "block", "mineable/shovel", all_soil + blocks["farmland"])
+    tag("minecraft", "block", "mineable/shovel", all_soil + blocks["farmland"] + [f"{MOD}:manure_layer"])
+    tag("minecraft", "block", "mineable/hoe", [f"{MOD}:alfalfa_bale"])
     tag("minecraft", "block", "crops", blocks["crops"])
     for t in ("animals_spawnable_on", "valid_spawn", "wolves_spawnable_on", "rabbits_spawnable_on", "foxes_spawnable_on",
               "goats_spawnable_on", "parrots_spawnable_on"):
@@ -397,6 +435,8 @@ def main():
     gen_misc_textures(lang)
     gen_recipes()
     gen_tags()
+    extras.generate(lang, {"save": save, "model": model, "blockstate": blockstate, "loot": loot, "self_drop": self_drop,
+                                  "afflictions": AFFLICTIONS, "data": DATA})
     gen_worldgen()
     gen_loot_modifiers()
     gen_data_maps()

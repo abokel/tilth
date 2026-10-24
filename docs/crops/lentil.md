@@ -1,7 +1,7 @@
 ---
 title: "Lentil"
 parent: Crops
-nav_order: 15
+nav_order: 16
 ---
 
 # Lentil

@@ -8,7 +8,8 @@ import java.util.Map;
 
 /** Body nutrient stores of a player, each 0 (depleted) to 1 (full). Stored as a player attachment. */
 public final class PlayerDiet {
-    public static final double START_LEVEL = 0.75;
+    /** New players start fully nourished. */
+    public static final double START_LEVEL = 1.0;
     public static final Codec<PlayerDiet> CODEC = Codec.unboundedMap(Codec.STRING, Codec.DOUBLE).xmap(PlayerDiet::fromMap, PlayerDiet::toMap);
 
     private final double[] levels = new double[DietNutrient.values().length];

@@ -2,7 +2,7 @@
   "name": "Lentil",
   "icon": "tilth:lentils",
   "category": "tilth:crops",
-  "sortnum": 14,
+  "sortnum": 15,
   "pages": [
     {
       "type": "patchouli:spotlight",

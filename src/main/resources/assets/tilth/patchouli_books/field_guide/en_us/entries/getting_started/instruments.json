@@ -1,0 +1,26 @@
+{
+  "name": "Field Instruments",
+  "icon": "tilth:thermometer",
+  "category": "tilth:getting_started",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:thermometer",
+      "text": "Hold the $(thing)Thermometer$() to read the air temperature: coldest at dawn, warmest in mid-afternoon. Use it for today's low and high, a frost warning and tomorrow's forecast."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:thermometer"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:moisture_meter",
+      "text": "Push the $(thing)Soil Moisture Meter$() into soil, farmland or a crop's roots: water content, how much plants can still draw, whether it is waterlogged, and how many mm of water would refill the root zone."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:moisture_meter"
+    }
+  ]
+}

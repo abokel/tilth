@@ -304,7 +304,7 @@ public final class CropGrowthModel {
             produce = 1;
         }
         double residue = sp.residueKgM2 * (0.4 + 0.6 * Math.min(1.0, cs.biomass));
-        return new HarvestResult(produce, seeds, grade(cs), kgPerM2, sp.yieldUnit.perAcre(kgPerM2, sp.unitWeightLb), residue,
+        return new HarvestResult(produce, seeds, Math.min(sp.maxGrade, grade(cs)), kgPerM2, sp.yieldUnit.perAcre(kgPerM2, sp.unitWeightLb), residue,
                 sp.residueNPercent);
     }
 

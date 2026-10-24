@@ -8,19 +8,28 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.saveddata.SavedData;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.UUID;
 
-/** All plots in one dimension. */
+/**
+ * All plots in one dimension. Plots are indexed by the chunks their bounding boxes cover, so finding the plot
+ * at a block (done on every till, break, place and right-click) only tests the few plots near it, and by
+ * lower-case name.
+ */
 public final class PlotData extends SavedData {
     public static final SavedData.Factory<PlotData> FACTORY = new SavedData.Factory<>(PlotData::new, PlotData::load);
     private final List<Plot> plots = new ArrayList<>();
+    private final Map<Long, List<Plot>> byChunk = new HashMap<>();
+    private final Map<String, Plot> byName = new HashMap<>();
 
     public static PlotData get(ServerLevel level) {
         return level.getDataStorage().computeIfAbsent(FACTORY, "tilth_plots");
@@ -30,7 +39,7 @@ public final class PlotData extends SavedData {
         PlotData d = new PlotData();
         ListTag list = tag.getList("plots", Tag.TAG_COMPOUND);
         for (int i = 0; i < list.size(); i++) {
-            d.plots.add(Plot.load(list.getCompound(i)));
+            d.add(Plot.load(list.getCompound(i)));
         }
         return d;
     }
@@ -45,6 +54,20 @@ public final class PlotData extends SavedData {
         return tag;
     }
 
+    private void add(Plot p) {
+        plots.add(p);
+        byName.put(normalise(p.name()), p);
+        forEachChunk(p, key -> byChunk.computeIfAbsent(key, k -> new ArrayList<>(2)).add(p));
+    }
+
+    private static void forEachChunk(Plot p, java.util.function.LongConsumer action) {
+        for (int cx = p.minX() >> 4; cx <= p.maxX() >> 4; cx++) {
+            for (int cz = p.minZ() >> 4; cz <= p.maxZ() >> 4; cz++) {
+                action.accept(ChunkPos.asLong(cx, cz));
+            }
+        }
+    }
+
     public List<Plot> all() {
         return List.copyOf(plots);
     }
@@ -55,9 +78,12 @@ public final class PlotData extends SavedData {
 
     @Nullable
     public Plot at(int x, int z) {
-        for (Plot p : plots) {
-            if (p.contains(x, z)) {
-                return p;
+        List<Plot> near = byChunk.get(ChunkPos.asLong(x >> 4, z >> 4));
+        if (near != null) {
+            for (Plot p : near) {
+                if (p.contains(x, z)) {
+                    return p;
+                }
             }
         }
         return null;
@@ -65,12 +91,7 @@ public final class PlotData extends SavedData {
 
     @Nullable
     public Plot byName(String name) {
-        for (Plot p : plots) {
-            if (p.name().equalsIgnoreCase(name)) {
-                return p;
-            }
-        }
-        return null;
+        return byName.get(normalise(name));
     }
 
     public String nextName() {
@@ -83,13 +104,12 @@ public final class PlotData extends SavedData {
 
     public Plot create(String name, Player owner, List<PolygonMath.Vertex> vertices, ServerLevel level) {
         String unique = name;
-        int suffix = 2;
-        while (byName(unique) != null) {
-            unique = name + " " + suffix++;
+        for (int suffix = Math.max(2, plots.size()); byName(unique) != null; suffix++) {
+            unique = name + " " + suffix;
         }
         Plot p = new Plot(UUID.randomUUID(), unique, owner.getUUID(), owner.getGameProfile().getName(), vertices, new HashSet<>(),
                 TilthCalendar.today(level));
-        plots.add(p);
+        add(p);
         setDirty();
         return p;
     }
@@ -97,12 +117,22 @@ public final class PlotData extends SavedData {
     public boolean remove(Plot plot) {
         boolean removed = plots.remove(plot);
         if (removed) {
+            byName.values().remove(plot);
+            forEachChunk(plot, key -> {
+                List<Plot> list = byChunk.get(key);
+                if (list != null && list.remove(plot) && list.isEmpty()) {
+                    byChunk.remove(key);
+                }
+            });
             setDirty();
         }
         return removed;
     }
 
+    /** Call after renaming or editing a plot. */
     public void changed() {
+        byName.clear();
+        plots.forEach(p -> byName.put(normalise(p.name()), p));
         setDirty();
     }
 

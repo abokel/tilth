@@ -20,4 +20,7 @@ Soil is a mix of **sand** (gritty, drains fast, holds little), **silt** (smooth,
 > **Peat**  
 > **Peat** is half organic matter. It forms in cold, wet hollows, holds huge amounts of water and is naturally very acidic.
 
+> **Peat Brick**  
+> Dug peat breaks into four **Cut Peat**: a fuel that burns half as long as coal. Dry it in a furnace into **Peat Bricks**, which burn as long as charcoal.
+
 Texture also sets how far water seeps sideways from a ditch or pond: about two blocks through sand and up to five or six through silts, clays and peat. Fine soils draw water by capillarity.

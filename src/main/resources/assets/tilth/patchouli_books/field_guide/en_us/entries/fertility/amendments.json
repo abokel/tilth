@@ -6,8 +6,12 @@
   "pages": [
     {
       "type": "patchouli:spotlight",
-      "item": "tilth:manure",
-      "text": "$(thing)Manure$() is dropped by cows, pigs, sheep, goats, chickens and horses. It supplies nitrogen, phosphorus, potassium and organic matter."
+      "item": "tilth:slurry_bucket",
+      "text": "$(thing)Slurry$() is manure mixed with water. Animals leave dung on the ground in layers: $(thing)shovel$() it up, then craft four manure with a water bucket into a $(thing)Bucket of Slurry$()."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Pour slurry on farmland for one dose on every block of a 3x3 patch, or load buckets into the fertiliser spreader (nine doses each). It supplies nitrogen, phosphorus, potassium and organic matter.$(br2)Dung left lying slowly rots into the ground beneath it."
     },
     {
       "type": "patchouli:spotlight",

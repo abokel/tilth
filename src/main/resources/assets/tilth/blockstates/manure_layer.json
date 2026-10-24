@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "layers=1": {
+      "model": "tilth:block/manure_layer_1"
+    },
+    "layers=2": {
+      "model": "tilth:block/manure_layer_2"
+    },
+    "layers=3": {
+      "model": "tilth:block/manure_layer_3"
+    },
+    "layers=4": {
+      "model": "tilth:block/manure_layer_4"
+    },
+    "layers=5": {
+      "model": "tilth:block/manure_layer_5"
+    },
+    "layers=6": {
+      "model": "tilth:block/manure_layer_6"
+    },
+    "layers=7": {
+      "model": "tilth:block/manure_layer_7"
+    },
+    "layers=8": {
+      "model": "tilth:block/manure_layer_8"
+    }
+  }
+}

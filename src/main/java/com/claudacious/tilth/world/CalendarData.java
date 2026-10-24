@@ -31,6 +31,10 @@ public final class CalendarData extends SavedData {
         return tag;
     }
 
+    public long offsetTicks() {
+        return offsetTicks;
+    }
+
     public void addOffset(long ticks) {
         offsetTicks += ticks;
         setDirty();

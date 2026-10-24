@@ -1,5 +1,6 @@
 package com.claudacious.tilth.event;
 
+import com.claudacious.tilth.plot.PlotRules;
 import com.claudacious.tilth.TilthConfig;
 import com.claudacious.tilth.block.PendingTill;
 import com.claudacious.tilth.block.TilthCropBlock;
@@ -59,6 +60,10 @@ public final class FarmingEvents {
         }
         BlockState original = event.getState();
         BlockPos pos = event.getPos();
+        if (!event.isSimulated() && !PlotRules.mayFarm(event.getPlayer(), level, pos)) {
+            event.setCanceled(true);
+            return;
+        }
         if (!level.getBlockState(pos.above()).isAir() || event.getContext().getClickedFace() == Direction.DOWN) {
             return;
         }
@@ -115,12 +120,16 @@ public final class FarmingEvents {
             return;
         }
         int interval = TilthConfig.MANURE_INTERVAL.getAsInt();
-        if (interval <= 0 || !(animal instanceof Cow || animal instanceof Pig || animal instanceof Sheep || animal instanceof Goat
+        // With husbandry on, manure comes from Livestock and depends on the animal's condition.
+        if (TilthConfig.LIVESTOCK.getAsBoolean() || interval <= 0 || !(animal instanceof Cow || animal instanceof Pig || animal instanceof Sheep || animal instanceof Goat
                 || animal instanceof Chicken || animal instanceof AbstractHorse)) {
             return;
         }
         if (animal.getRandom().nextInt(interval) == 0) {
-            animal.spawnAtLocation(new ItemStack(TilthItems.MANURE.get()));
+            if (!(animal.level() instanceof net.minecraft.server.level.ServerLevel server)
+                    || !com.claudacious.tilth.block.ManureLayerBlock.deposit(server, animal.blockPosition())) {
+                animal.spawnAtLocation(new ItemStack(TilthItems.MANURE.get()));
+            }
         }
     }
 }

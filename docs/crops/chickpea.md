@@ -1,7 +1,7 @@
 ---
 title: "Chickpea"
 parent: Crops
-nav_order: 14
+nav_order: 15
 ---
 
 # Chickpea

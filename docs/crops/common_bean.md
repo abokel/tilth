@@ -1,7 +1,7 @@
 ---
 title: "Common Bean"
 parent: Crops
-nav_order: 16
+nav_order: 17
 ---
 
 # Common Bean

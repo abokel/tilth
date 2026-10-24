@@ -2,7 +2,7 @@
   "name": "Common Bean",
   "icon": "tilth:beans",
   "category": "tilth:crops",
-  "sortnum": 15,
+  "sortnum": 16,
   "pages": [
     {
       "type": "patchouli:spotlight",

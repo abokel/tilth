@@ -1,0 +1,6 @@
+{
+  "parent": "tilth:block/tall_cross",
+  "textures": {
+    "cross": "tilth:block/crop/maize_stage7_frosted"
+  }
+}

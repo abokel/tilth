@@ -1,10 +1,17 @@
 package com.claudacious.tilth;
 
+import com.claudacious.tilth.network.SexSync;
+import com.claudacious.tilth.livestock.Breeding;
 import com.claudacious.tilth.command.DebugHud;
 import com.claudacious.tilth.command.TilthCommands;
 import com.claudacious.tilth.compat.FieldGuide;
 import com.claudacious.tilth.diet.DietEvents;
 import com.claudacious.tilth.event.FarmingEvents;
+import com.claudacious.tilth.event.StarterKit;
+import com.claudacious.tilth.livestock.Livestock;
+import com.claudacious.tilth.network.CalendarSync;
+import com.claudacious.tilth.network.WeatherSync;
+import com.claudacious.tilth.world.WinterWeather;
 import com.claudacious.tilth.plot.PlotEvents;
 import com.claudacious.tilth.registry.TilthAttachments;
 import com.claudacious.tilth.registry.TilthBlockEntities;
@@ -54,6 +61,9 @@ public final class Tilth {
         TilthMisc.TABS.register(modBus);
         modBus.addListener(TilthMisc::registerDataMaps);
         modBus.addListener(TilthMisc::registerDatapackRegistries);
+        modBus.addListener(CalendarSync::register);
+        modBus.addListener(WeatherSync::register);
+        modBus.addListener(SexSync::register);
         modBus.addListener(ModConfigEvent.Loading.class, TilthConfig::onLoad);
         modBus.addListener(ModConfigEvent.Reloading.class, TilthConfig::onLoad);
         container.registerConfig(ModConfig.Type.COMMON, TilthConfig.SPEC);
@@ -78,6 +88,15 @@ public final class Tilth {
         game.addListener(DietEvents::onIncomingDamage);
         game.addListener(DebugHud::onPlayerTick);
         game.addListener(FieldGuide::onPlayerLoggedIn);
+        game.addListener(StarterKit::onPlayerLoggedIn);
+        game.addListener(Livestock::onEntityTick);
+        game.addListener(Livestock::onInteract);
+        game.addListener(Livestock::onDrops);
+        game.addListener(Breeding::onJoin);
+        game.addListener(Breeding::onStartTracking);
+        game.addListener(Breeding::onBabySpawn);
+        game.addListener(CalendarSync::onPlayerLoggedIn);
+        game.addListener(WinterWeather::onLevelTick);
     }
 
     private static void onServerStopped(ServerStoppedEvent event) {

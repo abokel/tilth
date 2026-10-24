@@ -1,7 +1,7 @@
 ---
 title: "Barley"
 parent: Crops
-nav_order: 6
+nav_order: 7
 ---
 
 # Barley

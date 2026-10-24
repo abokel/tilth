@@ -101,6 +101,14 @@ public final class Crops {
             .temps(4, 20, 32, 26).gdd(110, 1000).frost(-3, -2).heat(32).ph(6.0, 7.5, 5.5, 8.0)
             .water(0.5, 1.05, 0.95, 0.6, 0.5, 0.2).uptake(110, 18, 160, 12, 25, 18)
             .yield(30, HUNDREDWEIGHT, 0).items("minecraft:beetroot", 2, "minecraft:beetroot_seeds", 2).residue(0.1, 2.5).build());
+    /**
+     * Starter crop. Deliberately unrealistic: it ripens in about two or three game days in any mild
+     * weather, tolerates poor soil and light frost, but yields little and never grades above 2.
+     */
+    public static final CropSpecies RADISH = register(CropSpecies.builder("radish", "Radish", "Raphanus sativus", BRASSICACEAE, ROOT)
+            .temps(2, 20, 34, 28).gdd(20, 130).frost(-6, -5).heat(34).ph(5.5, 7.5, 4.5, 8.5)
+            .water(0.7, 0.9, 0.85, 0.3, 0.6, 0.35).uptake(25, 5, 35, 5, 8, 3)
+            .yield(6, HUNDREDWEIGHT, 0).items("tilth:radish", 2, "tilth:radish_seeds", 2).residue(0.05, 2.5).maxGrade(2).build());
     public static final CropSpecies SUGAR_BEET = register(CropSpecies.builder("sugar_beet", "Sugar Beet", "Beta vulgaris (sugar beet)", AMARANTHACEAE, ROOT)
             .temps(3, 20, 33, 26).gdd(120, 2200).frost(-4, -3).heat(33).ph(6.5, 8.0, 6.0, 8.5)
             .water(0.35, 1.2, 0.7, 1.0, 0.55, 0.2).uptake(180, 30, 250, 20, 40, 30)

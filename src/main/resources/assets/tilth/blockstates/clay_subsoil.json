@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "tilth:block/clay_subsoil"
-    }
+    "": [
+      {
+        "model": "tilth:block/clay_subsoil"
+      },
+      {
+        "model": "tilth:block/clay_subsoil",
+        "y": 90
+      },
+      {
+        "model": "tilth:block/clay_subsoil",
+        "y": 180
+      },
+      {
+        "model": "tilth:block/clay_subsoil",
+        "y": 270
+      }
+    ]
   }
 }

@@ -2,7 +2,7 @@
   "name": "Garlic",
   "icon": "tilth:garlic",
   "category": "tilth:crops",
-  "sortnum": 24,
+  "sortnum": 26,
   "pages": [
     {
       "type": "patchouli:spotlight",

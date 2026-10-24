@@ -1,10 +1,13 @@
 package com.claudacious.tilth.registry;
 
+import net.minecraft.world.level.block.HayBlock;
+import com.claudacious.tilth.block.ManureLayerBlock;
 import com.claudacious.tilth.Tilth;
 import com.claudacious.tilth.block.DeadCropBlock;
 import com.claudacious.tilth.block.PuddleBlock;
 import com.claudacious.tilth.block.SoilBlock;
 import com.claudacious.tilth.block.SoilGrassBlock;
+import com.claudacious.tilth.block.SoilLabBlock;
 import com.claudacious.tilth.block.TilthCropBlock;
 import com.claudacious.tilth.block.TilthFarmlandBlock;
 import com.claudacious.tilth.sim.crop.CropSpecies;
@@ -35,6 +38,13 @@ public final class TilthBlocks {
     public static final DeferredBlock<SoilBlock> GLEY;
     public static final DeferredBlock<DeadCropBlock> DEAD_CROP;
     public static final DeferredBlock<PuddleBlock> PUDDLE;
+    public static final DeferredBlock<HayBlock> ALFALFA_BALE = BLOCKS.register("alfalfa_bale",
+            () -> new HayBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.HAY_BLOCK).mapColor(MapColor.COLOR_LIGHT_GREEN)));
+    public static final DeferredBlock<ManureLayerBlock> MANURE_LAYER = BLOCKS.register("manure_layer",
+            () -> new ManureLayerBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).replaceable().strength(0.2f)
+                    .sound(SoundType.MUD).randomTicks().pushReaction(PushReaction.DESTROY)));
+    public static final DeferredBlock<SoilLabBlock> SOIL_LAB = BLOCKS.register("soil_lab",
+            () -> new SoilLabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(2.0f).sound(SoundType.WOOD).noOcclusion()));
 
     static {
         for (SoilTexture t : SoilTexture.values()) {

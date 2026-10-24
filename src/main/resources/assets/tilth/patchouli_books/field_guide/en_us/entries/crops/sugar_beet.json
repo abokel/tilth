@@ -2,7 +2,7 @@
   "name": "Sugar Beet",
   "icon": "tilth:sugar_beet_seeds",
   "category": "tilth:crops",
-  "sortnum": 22,
+  "sortnum": 24,
   "pages": [
     {
       "type": "patchouli:spotlight",

@@ -1,0 +1,10 @@
+{
+  "values": {
+    "tilth:cut_peat": {
+      "burn_time": 800
+    },
+    "tilth:peat_brick": {
+      "burn_time": 1600
+    }
+  }
+}

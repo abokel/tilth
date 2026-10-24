@@ -6,12 +6,58 @@ All notable changes to Tilth are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+- **Radish**, a starter crop: ripens in two or three game days in almost any weather and soil, but yields little
+  and never grades above Fair. New players get eight seeds, and grass often drops more.
+- **Soil Lab** block. The probe's sneak-use takes a soil sample; the lab analyses it and returns a written
+  Soil Test Report with every measurement plus lime and fertiliser advice.
+- **Fertilizer Spreader**, a horse-drawn implement that spreads manure, compost, lime, ash, sulfur, bone meal or
+  straw over a three-block swath, under growing crops too.
+- **Soil Survey** ledger: file lab results from across a plot into one book. It shows plot averages and ranges,
+  a whole-plot plan with lime and fertiliser totals for the plot's area (doses and spreader loads), spots that need
+  separate treatment, how many samples the plot needs, and rotation advice from the crop history.
+- **Thermometer** (hold it for the air temperature now; use it for today's range, frost risk and tomorrow's
+  forecast) and **Soil Moisture Meter** (water content, plant-available water, waterlogging and how much to irrigate).
+- **Microscope** and **Plant Samples**: cut a sample from a crop with the kitchen knife and look at the organisms
+  on it, with a magnified view of each of the 31 diseases, pests and symbionts.
+- **Peat fuel:** peat breaks into four Cut Peat (fuel, half a coal); dried in a furnace they become Peat Bricks
+  (as good as charcoal). Silk touch still takes the block.
+- **Alfalfa Hay Bale**: richer feed than grass hay (more condition per meal, more meals per bale).
+- **Manure on the ground:** animals leave dung in layers like snow. Shovel it up, mix four with a water bucket into
+  a Bucket of Slurry, then pour it on farmland (3x3) or load the spreader (nine doses a bucket). Dung left lying
+  slowly rots into the soil.
+- **Sexes and breeding:** every farm animal is male or female, and males look it (bull nose ring and horns, ram
+  horns, boar tusks, rooster comb and tail). Only pairs breed; sheep and goats only in autumn; mammals carry
+  their young for two to four days before giving birth, with litters for pigs and twins for sheep and goats.
+- **Livestock husbandry:** animals have a body condition fed by grazing, hay bales and hand feeding. It decides
+  breeding, milk (once a day), eggs, wool regrowth, manure, and meat yield and quality. Winter needs hay.
+  `/tilth animal <target>` shows it.
+- **Visible symptoms:** crops yellow when short of nitrogen, purple when short of phosphorus, wilt in drought and
+  brown after frost. Farmland cracks when dry and shows standing water when saturated.
+- **Seasons you can see:** oak and birch leaves colour through autumn and brown in winter, grass yellows, snow
+  falls (drawn as snow, not rain, whenever the Tilth climate is freezing), settles, ponds freeze, and everything
+  thaws in spring.
+- **Jade and WTHIT** tooltips for crops (growth stage, ripeness, what is wrong), farmland (texture, moisture)
+  and animals (sex, condition, and how long until a pregnant female gives birth).
+- Option `plots.farmOnlyInPlots`: ground can only be tilled inside a surveyed plot by its owner or members.
+- `/tilth bench plots <count>` for testing plot lookups at scale; `/tilth fillfield` now takes a radius up to 64.
+
+### Changed
+- **Water is infinite by default**, as in vanilla. Finite water is still available through `water.sourceCreation`
+  and `water.evaporation`. Existing config files keep their old values.
+- New players start with **full nutrition**.
+- The **Soil Probe** has 63 uses. Its quick field test shows feel, moisture, a pH strip and compaction; nutrient
+  levels now come from the Soil Lab.
+- Ploughs (and the spreader) can only be pulled by a horse, donkey or mule, and are worked from the saddle:
+  right-click to hitch, right-click again to lower or raise, and right-click on foot to unhitch.
+- Textures have more depth: lit edges and shading on items, relief on soil, sunlit crop tops, fuller four-plane
+  crop models, and randomly rotated soil blocks.
+
 ### Planned
 - Pumps and wells for irrigation.
-- Visual symptoms for diseases and pests, so they can be enabled by default.
 - Seed genetics and saved seed; disease-resistant cultivars.
 - A multi-layer soil profile under each block; rainfall-intensity erosion.
-- Seed drills, harrows and harvesters; Jade/WTHIT tooltips.
+- Seed drills, harrows and harvesters.
 
 ## [0.1.0] - 2026-10-22
 

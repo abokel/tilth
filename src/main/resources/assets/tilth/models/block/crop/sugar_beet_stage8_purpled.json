@@ -1,0 +1,6 @@
+{
+  "parent": "tilth:block/bushy_cross",
+  "textures": {
+    "cross": "tilth:block/crop/sugar_beet_stage8_purpled"
+  }
+}

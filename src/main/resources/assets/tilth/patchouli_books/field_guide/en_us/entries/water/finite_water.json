@@ -1,12 +1,12 @@
 {
-  "name": "Finite Water",
+  "name": "Ponds & Finite Water",
   "icon": "minecraft:water_bucket",
   "category": "tilth:water",
   "sortnum": 0,
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Water is a resource. Outside oceans and rivers, two water sources no longer create a third, so a bucket taken is a bucket gone. Small ponds slowly evaporate in dry, hot weather. Lakes, and ponds below the water table, persist."
+      "text": "By default water behaves as in vanilla: two sources make a third. For a harder game, set $(thing)water.sourceCreation$() to INFINITE$(o)BIOMES$()ONLY so that only oceans and rivers regenerate, and turn on $(thing)water.evaporation$() so small ponds dry up in hot weather."
     },
     {
       "type": "patchouli:text",

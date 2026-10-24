@@ -10,7 +10,11 @@
     },
     {
       "type": "patchouli:text",
-      "text": "$(li)Chickpea$(li)Common Wheat$(li)Durum Wheat$(li)Field Pea$(li)Flax$(li)Garlic$(li)Lentil$(li)Lettuce$(li)Oats$(li)Red Clover$(li)Rye$(li)Sugar Beet"
+      "text": "$(li)Chickpea$(li)Common Wheat$(li)Durum Wheat$(li)Field Pea$(li)Flax$(li)Garlic$(li)Lentil$(li)Lettuce$(li)Oats$(li)Radish$(li)Red Clover$(li)Rye"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)Sugar Beet"
     },
     {
       "type": "patchouli:text",

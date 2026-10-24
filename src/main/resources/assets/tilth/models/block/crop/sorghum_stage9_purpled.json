@@ -1,0 +1,6 @@
+{
+  "parent": "tilth:block/tall_cross",
+  "textures": {
+    "cross": "tilth:block/crop/sorghum_stage9_purpled"
+  }
+}

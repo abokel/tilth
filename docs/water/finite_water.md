@@ -1,12 +1,12 @@
 ---
-title: "Finite Water"
+title: "Ponds & Finite Water"
 parent: Water
 nav_order: 1
 ---
 
-# Finite Water
+# Ponds & Finite Water
 
-Water is a resource. Outside oceans and rivers, two water sources no longer create a third, so a bucket taken is a bucket gone. Small ponds slowly evaporate in dry, hot weather. Lakes, and ponds below the water table, persist.
+By default water behaves as in vanilla: two sources make a third. For a harder game, set **water.sourceCreation** to INFINITE_BIOMES_ONLY so that only oceans and rivers regenerate, and turn on **water.evaporation** so small ponds dry up in hot weather.
 
 Rain refills the land. During rain, water runs to the lowest point of each hollow. A closed hollow on slow-draining ground (clay, compacted soil, rock) fills block by block into a **pond**. Flat, poorly drained ground collects **puddles**.
 

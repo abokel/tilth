@@ -2,7 +2,7 @@
   "name": "Beetroot",
   "icon": "minecraft:beetroot_seeds",
   "category": "tilth:crops",
-  "sortnum": 21,
+  "sortnum": 22,
   "pages": [
     {
       "type": "patchouli:spotlight",

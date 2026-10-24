@@ -32,6 +32,7 @@ import net.minecraft.world.level.block.piston.MovingPistonBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -46,6 +47,8 @@ import org.jetbrains.annotations.Nullable;
  */
 public class TilthFarmlandBlock extends Block implements EntityBlock, SoilLike {
     public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE;
+    /** Saturated ground: water stands in the furrows. */
+    public static final BooleanProperty SOGGY = BooleanProperty.create("soggy");
     public static final MapCodec<TilthFarmlandBlock> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
             Codec.STRING.fieldOf("texture").forGetter(b -> b.texture.id()),
             propertiesCodec()
@@ -57,7 +60,7 @@ public class TilthFarmlandBlock extends Block implements EntityBlock, SoilLike {
     public TilthFarmlandBlock(SoilTexture texture, Properties properties) {
         super(properties);
         this.texture = texture;
-        registerDefaultState(stateDefinition.any().setValue(MOISTURE, 0));
+        registerDefaultState(stateDefinition.any().setValue(MOISTURE, 0).setValue(SOGGY, false));
     }
 
     @Override
@@ -77,7 +80,7 @@ public class TilthFarmlandBlock extends Block implements EntityBlock, SoilLike {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(MOISTURE);
+        builder.add(MOISTURE, SOGGY);
     }
 
     @Override

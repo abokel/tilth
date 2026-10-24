@@ -22,6 +22,7 @@ nav_order: 2
 - Lentil
 - Lettuce
 - Oats
+- Radish
 - Red Clover
 - Rye
 - Sugar Beet

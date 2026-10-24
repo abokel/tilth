@@ -1,5 +1,6 @@
 package com.claudacious.tilth.registry;
 
+import com.claudacious.tilth.quality.ConsumingShapelessRecipe;
 import com.claudacious.tilth.Tilth;
 import com.claudacious.tilth.affliction.Affliction;
 import com.claudacious.tilth.diet.DietEffect;
@@ -39,6 +40,8 @@ public final class TilthMisc {
             () -> new CatenaSoilFeature(NoneFeatureConfiguration.CODEC));
 
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, Tilth.MOD_ID);
+    public static final DeferredHolder<RecipeSerializer<?>, ConsumingShapelessRecipe.Serializer> CONSUMING_SHAPELESS =
+            RECIPE_SERIALIZERS.register("consuming_shapeless", ConsumingShapelessRecipe.Serializer::new);
     public static final DeferredHolder<RecipeSerializer<?>, QualityShapelessRecipe.Serializer> QUALITY_SHAPELESS =
             RECIPE_SERIALIZERS.register("quality_shapeless", QualityShapelessRecipe.Serializer::new);
     public static final DeferredHolder<RecipeSerializer<?>, SimpleCookingSerializer<QualityCookingRecipes.Smelting>> QUALITY_SMELTING =

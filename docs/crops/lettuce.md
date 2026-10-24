@@ -1,7 +1,7 @@
 ---
 title: "Lettuce"
 parent: Crops
-nav_order: 27
+nav_order: 29
 ---
 
 # Lettuce

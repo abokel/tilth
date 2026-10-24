@@ -71,6 +71,7 @@ public final class TilthConfig {
     public static final ModConfigSpec.BooleanValue BONE_MEAL_GROWS_CROPS;
     public static final ModConfigSpec.BooleanValue REDIRECT_VANILLA_SEEDS;
     public static final ModConfigSpec.BooleanValue GRASS_DROPS_SEEDS;
+    public static final ModConfigSpec.IntValue STARTER_SEEDS;
     public static final ModConfigSpec.BooleanValue CROPS_NEED_LIGHT;
     // ------------------------------------------------------------------ diet
     public static final ModConfigSpec.BooleanValue DIET;
@@ -79,10 +80,13 @@ public final class TilthConfig {
     // ------------------------------------------------------------------ plots
     public static final ModConfigSpec.DoubleValue METRES_PER_BLOCK;
     public static final ModConfigSpec.BooleanValue PLOT_PROTECTION;
+    public static final ModConfigSpec.BooleanValue FARM_ONLY_IN_PLOTS;
     public static final ModConfigSpec.IntValue MAX_PLOT_VERTICES;
     public static final ModConfigSpec.IntValue MAX_PLOTS_PER_PLAYER;
     // ------------------------------------------------------------------ livestock
     public static final ModConfigSpec.IntValue MANURE_INTERVAL;
+    public static final ModConfigSpec.BooleanValue LIVESTOCK;
+    public static final ModConfigSpec.DoubleValue LIVESTOCK_APPETITE;
     // ------------------------------------------------------------------ afflictions
     public static final ModConfigSpec.BooleanValue AFFLICTIONS;
     public static final ModConfigSpec.DoubleValue AFFLICTION_PRESSURE;
@@ -91,9 +95,15 @@ public final class TilthConfig {
     public static final ModConfigSpec.IntValue HUD_INTERVAL;
     // ------------------------------------------------------------------ integrations
     public static final ModConfigSpec.BooleanValue GIVE_GUIDE;
+    public static final ModConfigSpec.BooleanValue SEASONAL_COLORS;
+    public static final ModConfigSpec.BooleanValue WINTER_SNOW;
 
     static {
         B.comment("Calendar. Agronomy runs on a real 365-day calendar; a Minecraft day covers 365/(12*daysPerMonth) real days.").push("calendar");
+        SEASONAL_COLORS = B.comment("Leaves and grass change colour with the season (autumn colours, brown winter leaves). Client side.")
+                .define("seasonalColors", true);
+        WINTER_SNOW = B.comment("Snow settles and ponds freeze wherever the Tilth climate is below freezing, then thaw in spring.")
+                .define("winterSnowAndIce", true);
         DAYS_PER_MONTH = B.comment("Minecraft days per calendar month (6 -> a 72-day year, each game day ~5 real days).")
                 .defineInRange("daysPerMonth", 6, 1, 90);
         START_MONTH = B.comment("Month a new world starts in (1 = January). March gives time to prepare for spring sowing.")
@@ -115,9 +125,10 @@ public final class TilthConfig {
                 .defineInRange("latitudeDegrees", 40.0, 0.0, 66.0);
         B.pop();
 
-        B.comment("Water. Finite water, ponds forming in undrainable hollows, evaporation.").push("water");
-        SOURCE_MODE = B.comment("When two water sources may create a third. VANILLA, NEVER, INFINITE_BIOMES_ONLY or INFINITE_BIOMES_BELOW_SEA_LEVEL.")
-                .defineEnum("sourceCreation", SourceMode.INFINITE_BIOMES_ONLY);
+        B.comment("Water. Optional finite water, ponds forming in undrainable hollows, evaporation.").push("water");
+        SOURCE_MODE = B.comment("When two water sources may create a third. VANILLA (infinite water, the default), NEVER, INFINITE_BIOMES_ONLY or "
+                        + "INFINITE_BIOMES_BELOW_SEA_LEVEL. The last three make water finite outside the listed biomes.")
+                .defineEnum("sourceCreation", SourceMode.VANILLA);
         INFINITE_BIOMES = B.comment("Biomes (ids) or biome tags (#ids) treated as effectively infinite water bodies.")
                 .defineListAllowEmpty("infiniteWaterBiomes", List.of("#minecraft:is_ocean", "#minecraft:is_river"), () -> "#minecraft:is_ocean",
                         o -> o instanceof String s && !s.isBlank());
@@ -125,8 +136,8 @@ public final class TilthConfig {
                 .define("ponds", true);
         PUDDLES = B.comment("Heavy rain leaves shallow puddles on poorly drained or compacted ground.")
                 .define("puddles", true);
-        EVAPORATION = B.comment("Small, isolated water bodies outside infinite biomes slowly evaporate in dry weather.")
-                .define("evaporation", true);
+        EVAPORATION = B.comment("Small, isolated water bodies outside infinite biomes slowly evaporate in dry weather. Pairs with finite water.")
+                .define("evaporation", false);
         SURFACE_WATER_INTERVAL = B.comment("Ticks between surface-water passes.")
                 .defineInRange("surfaceWaterInterval", 20, 1, 12000);
         SURFACE_WATER_SAMPLES = B.comment("Random columns examined around each player per pass.")
@@ -192,6 +203,8 @@ public final class TilthConfig {
                 .define("redirectVanillaSeeds", true);
         GRASS_DROPS_SEEDS = B.comment("Breaking grass can drop seeds of crops suited to the local climate.")
                 .define("grassDropsSeeds", true);
+        STARTER_SEEDS = B.comment("Radish seeds (the fast, low-yield starter crop) given to each player on first join. 0 disables.")
+                .defineInRange("starterRadishSeeds", 8, 0, 64);
         CROPS_NEED_LIGHT = B.comment("Crops grow slowly without sunlight (strong artificial light gives partial growth).")
                 .define("cropsNeedLight", true);
         B.pop();
@@ -209,11 +222,18 @@ public final class TilthConfig {
                 .defineInRange("metresPerBlock", 1.0, 0.01, 1000.0);
         PLOT_PROTECTION = B.comment("Only a plot's owner and members may break, place or harvest inside it.")
                 .define("protection", false);
+        FARM_ONLY_IN_PLOTS = B.comment("Ground can only be tilled inside a surveyed plot, by its owner or members. Creative players are exempt.")
+                .define("farmOnlyInPlots", false);
         MAX_PLOT_VERTICES = B.defineInRange("maxVertices", 64, 3, 1024);
         MAX_PLOTS_PER_PLAYER = B.defineInRange("maxPlotsPerPlayer", 64, 1, 10000);
         B.pop();
 
         B.comment("Livestock.").push("livestock");
+        LIVESTOCK = B.comment("Farm animals have a body condition fed by grazing, hay bales and hand feeding. It decides breeding, milk, "
+                        + "eggs, wool regrowth, manure and meat yield and quality.")
+                .define("husbandry", true);
+        LIVESTOCK_APPETITE = B.comment("Multiplier on how fast animals lose condition (1 = from top condition to starving in about two game days).")
+                .defineInRange("appetiteMultiplier", 1.0, 0.0, 10.0);
         MANURE_INTERVAL = B.comment("Average ticks between manure drops from each adult farm animal. 0 disables.")
                 .defineInRange("manureInterval", 9600, 0, 1000000);
         B.pop();

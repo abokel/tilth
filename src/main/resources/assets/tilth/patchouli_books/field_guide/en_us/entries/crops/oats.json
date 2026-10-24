@@ -2,7 +2,7 @@
   "name": "Oats",
   "icon": "tilth:oat_seeds",
   "category": "tilth:crops",
-  "sortnum": 6,
+  "sortnum": 7,
   "pages": [
     {
       "type": "patchouli:spotlight",

@@ -1,12 +1,21 @@
 package com.claudacious.tilth.registry;
 
+import com.claudacious.tilth.item.SlurryBucketItem;
+import com.claudacious.tilth.item.ManureItem;
 import com.claudacious.tilth.Tilth;
 import com.claudacious.tilth.item.AmendmentItem;
 import com.claudacious.tilth.item.ArdItem;
 import com.claudacious.tilth.item.CraftingToolItem;
 import com.claudacious.tilth.item.DrinkItem;
-import com.claudacious.tilth.item.PlowItem;
+import com.claudacious.tilth.item.ImplementItem;
+import com.claudacious.tilth.item.KnifeItem;
+import com.claudacious.tilth.item.MicroscopeItem;
+import com.claudacious.tilth.item.PlantSampleItem;
 import com.claudacious.tilth.item.SoilProbeItem;
+import com.claudacious.tilth.item.SoilSampleItem;
+import com.claudacious.tilth.item.SoilSurveyItem;
+import com.claudacious.tilth.item.ThermometerItem;
+import com.claudacious.tilth.item.MoistureMeterItem;
 import com.claudacious.tilth.item.SurveyorsChainItem;
 import com.claudacious.tilth.sim.crop.CropSpecies;
 import com.claudacious.tilth.sim.crop.Crops;
@@ -34,6 +43,7 @@ public final class TilthItems {
     static {
         RAW_FOOD.put("tomato", food(2, 0.3f));
         RAW_FOOD.put("lettuce", food(1, 0.3f));
+        RAW_FOOD.put("radish", food(1, 0.3f));
         RAW_FOOD.put("cabbage", food(2, 0.4f));
         RAW_FOOD.put("onion", food(1, 0.2f));
         RAW_FOOD.put("garlic", food(1, 0.2f));
@@ -68,6 +78,8 @@ public final class TilthItems {
             ITEMS.registerSimpleBlockItem(b);
         }
         ITEMS.registerSimpleBlockItem(TilthBlocks.GLEY);
+        ITEMS.registerSimpleBlockItem(TilthBlocks.SOIL_LAB);
+        ITEMS.registerSimpleBlockItem(TilthBlocks.ALFALFA_BALE);
         for (CropSpecies sp : Crops.all()) {
             registerCropItem(sp, sp.seedItem, true);
             if (!sp.seedIsProduce()) {
@@ -78,14 +90,29 @@ public final class TilthItems {
 
     // ------------------------------------------------------------------ tools
     public static final DeferredItem<CraftingToolItem> QUERN = ITEMS.register("quern", () -> new CraftingToolItem(new Item.Properties().durability(256)));
-    public static final DeferredItem<CraftingToolItem> KITCHEN_KNIFE = ITEMS.register("kitchen_knife", () -> new CraftingToolItem(new Item.Properties().durability(160)));
-    public static final DeferredItem<SoilProbeItem> SOIL_PROBE = ITEMS.register("soil_probe", () -> new SoilProbeItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<KnifeItem> KITCHEN_KNIFE = ITEMS.register("kitchen_knife", () -> new KnifeItem(new Item.Properties().durability(160)));
+    public static final DeferredItem<PlantSampleItem> PLANT_SAMPLE = ITEMS.register("plant_sample", () -> new PlantSampleItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<MicroscopeItem> MICROSCOPE = ITEMS.register("microscope", () -> new MicroscopeItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<SoilProbeItem> SOIL_PROBE = ITEMS.register("soil_probe", () -> new SoilProbeItem(new Item.Properties().durability(63)));
+    public static final DeferredItem<SoilSampleItem> SOIL_SAMPLE = ITEMS.register("soil_sample", () -> new SoilSampleItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<SoilSurveyItem> SOIL_SURVEY = ITEMS.register("soil_survey", () -> new SoilSurveyItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<ThermometerItem> THERMOMETER = ITEMS.register("thermometer", () -> new ThermometerItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<MoistureMeterItem> MOISTURE_METER = ITEMS.register("moisture_meter", () -> new MoistureMeterItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<SurveyorsChainItem> SURVEYORS_CHAIN = ITEMS.register("surveyors_chain", () -> new SurveyorsChainItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<ArdItem> ARD = ITEMS.register("ard", () -> new ArdItem(new Item.Properties().durability(200)));
-    public static final DeferredItem<PlowItem> PLOW = ITEMS.register("plow", () -> new PlowItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<ImplementItem> PLOW = ITEMS.register("plow", () -> new ImplementItem(new Item.Properties().stacksTo(1),
+            TilthEntities.PLOW, "Three-bottom moldboard plough", "Right-click while riding a horse, donkey or mule to hitch it",
+            "Right-click again from the saddle to lower or raise it"));
+    public static final DeferredItem<ImplementItem> SPREADER = ITEMS.register("spreader", () -> new ImplementItem(new Item.Properties().stacksTo(1),
+            TilthEntities.SPREADER, "Horse-drawn fertiliser spreader", "Right-click with fertiliser to fill the hopper",
+            "Hitch it while riding; right-click again to open the hopper"));
 
     // ------------------------------------------------------------------ soil amendments
-    public static final DeferredItem<AmendmentItem> MANURE = amendment("manure", Amendment.MANURE);
+    public static final DeferredItem<ManureItem> MANURE = ITEMS.register("manure", () -> new ManureItem(new Item.Properties()));
+    public static final DeferredItem<SlurryBucketItem> SLURRY_BUCKET = ITEMS.register("slurry_bucket",
+            () -> new SlurryBucketItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> CUT_PEAT = simple("cut_peat");
+    public static final DeferredItem<Item> PEAT_BRICK = simple("peat_brick");
     public static final DeferredItem<AmendmentItem> COMPOST = amendment("compost", Amendment.COMPOST);
     public static final DeferredItem<AmendmentItem> WOOD_ASH = amendment("wood_ash", Amendment.WOOD_ASH);
     public static final DeferredItem<AmendmentItem> AGRICULTURAL_LIME = amendment("agricultural_lime", Amendment.AGRICULTURAL_LIME);

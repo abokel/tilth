@@ -1,0 +1,25 @@
+{
+  "name": "Animal Condition",
+  "icon": "minecraft:lead",
+  "category": "tilth:livestock",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Cows, sheep, goats, pigs, chickens and horses each have a $(thing)condition$(), from starving to top condition. It falls steadily, from top condition to starving in about two days without food."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Animals put on condition by $(thing)grazing$() grass (heavy grazing wears pasture down to bare soil), by eating from a $(thing)hay bale$() within two blocks (a bale feeds about ten meals), or when you feed them by hand: wheat, hay, oats, barley, maize, alfalfa or clover."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:alfalfa_bale",
+      "text": "An $(thing)Alfalfa Hay Bale$() (nine alfalfa) is far richer than grass hay: each meal does half again as much good, and a bale lasts about fourteen meals."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Grass barely grows in cold weather, so in winter grazing gives little and animals need hay. Use $(thing)/tilth animal @n$() or Jade to see an animal's condition."
+    }
+  ]
+}

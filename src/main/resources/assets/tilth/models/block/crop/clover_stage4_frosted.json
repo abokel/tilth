@@ -1,0 +1,6 @@
+{
+  "parent": "tilth:block/bushy_cross",
+  "textures": {
+    "cross": "tilth:block/crop/clover_stage4_frosted"
+  }
+}

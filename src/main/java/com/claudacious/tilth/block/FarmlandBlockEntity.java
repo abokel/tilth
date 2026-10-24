@@ -229,9 +229,12 @@ public class FarmlandBlockEntity extends BlockEntity {
         Hydraulics h = hydraulics();
         double rel = Noise.clamp((soil.moisture - h.wiltingPoint()) / Math.max(0.01, h.fieldCapacity() - h.wiltingPoint()), 0, 1);
         int moisture = (int) Math.round(7 * rel);
+        boolean soggy = soil.moisture >= h.saturation() - 0.03 || soil.waterloggedDays > 0;
         BlockState state = getBlockState();
-        if (state.hasProperty(TilthFarmlandBlock.MOISTURE) && state.getValue(TilthFarmlandBlock.MOISTURE) != moisture) {
-            level.setBlock(worldPosition, state.setValue(TilthFarmlandBlock.MOISTURE, moisture), Block.UPDATE_CLIENTS);
+        if (state.hasProperty(TilthFarmlandBlock.MOISTURE)
+                && (state.getValue(TilthFarmlandBlock.MOISTURE) != moisture || state.getValue(TilthFarmlandBlock.SOGGY) != soggy)) {
+            level.setBlock(worldPosition, state.setValue(TilthFarmlandBlock.MOISTURE, moisture).setValue(TilthFarmlandBlock.SOGGY, soggy),
+                    Block.UPDATE_CLIENTS);
         }
     }
 

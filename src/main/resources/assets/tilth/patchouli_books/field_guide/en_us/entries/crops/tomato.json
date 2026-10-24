@@ -2,7 +2,7 @@
   "name": "Tomato",
   "icon": "tilth:tomato_seeds",
   "category": "tilth:crops",
-  "sortnum": 27,
+  "sortnum": 29,
   "pages": [
     {
       "type": "patchouli:spotlight",

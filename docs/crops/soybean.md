@@ -1,7 +1,7 @@
 ---
 title: "Soybean"
 parent: Crops
-nav_order: 12
+nav_order: 13
 ---
 
 # Soybean

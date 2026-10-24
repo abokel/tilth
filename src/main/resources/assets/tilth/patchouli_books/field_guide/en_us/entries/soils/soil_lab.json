@@ -1,0 +1,25 @@
+{
+  "name": "The Soil Lab",
+  "icon": "tilth:soil_lab",
+  "category": "tilth:soils",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:soil_lab",
+      "text": "The $(thing)Soil Lab$() is a bench of glassware and reagents. In the field the probe can only tell you how the soil feels, how wet it is and its rough pH."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:soil_lab"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Sneak and right-click$() soil or farmland with the probe to take a $(thing)Soil Sample$(). Use the sample on the lab; after twenty seconds, right-click the lab to collect a written $(thing)Soil Test Report$()."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The report has every measurement, the date and place the sample was taken, and advice: how much lime to add, which nutrients are short and what supplies them. Each probe use wears the probe a little; it lasts 63 uses."
+    }
+  ]
+}

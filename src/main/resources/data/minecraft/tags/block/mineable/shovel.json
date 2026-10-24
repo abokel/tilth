@@ -52,6 +52,7 @@
     "tilth:sandy_clay_farmland",
     "tilth:silty_clay_farmland",
     "tilth:clay_farmland",
-    "tilth:peat_farmland"
+    "tilth:peat_farmland",
+    "tilth:manure_layer"
   ]
 }

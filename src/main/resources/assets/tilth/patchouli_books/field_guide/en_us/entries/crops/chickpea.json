@@ -2,7 +2,7 @@
   "name": "Chickpea",
   "icon": "tilth:chickpeas",
   "category": "tilth:crops",
-  "sortnum": 13,
+  "sortnum": 14,
   "pages": [
     {
       "type": "patchouli:spotlight",

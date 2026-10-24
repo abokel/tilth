@@ -39,7 +39,7 @@ Each day the field goes through:
 Amendments: compost, manure (dropped by livestock), bone meal (P and Ca rather than instant growth), wood ash, agricultural lime, elemental sulfur, straw mulch, and green manure (alfalfa, clover).
 
 ### Water
-- **Finite water.** Two sources no longer create a third except in oceans and rivers. The mode and the infinite biomes are configurable.
+- **Optional finite water.** Off by default. When enabled, two sources no longer create a third except in oceans and rivers; the mode and the infinite biomes are configurable.
 - **Ponds and puddles.** Rain runs downhill to the bottom of the local hollow. If the hollow is closed and the ground drains slowly, it fills layer by layer into a pond and stops at the spill point. Flat, poorly drained or compacted ground gets puddles.
 - **Evaporation.** Small isolated water bodies shrink from their edges in dry weather, scaled by the day's evapotranspiration. Lakes, and ponds fed by groundwater, persist.
 - **Soil hydrology.** Each field runs a daily root-zone water balance:
@@ -76,8 +76,27 @@ Amendments: compost, manure (dropped by livestock), bone meal (P and Ca rather t
 ### Tillage
 - **Hoe**: one block, shallow.
 - **Ard** (scratch plough): a three-block strip in front of you, by hand.
-- **Moldboard plough** (an entity). Hitch it to the horse, donkey or mule you are riding, or drag it yourself. Sneak and right-click to lower the shares, and it turns a three-block swath as it moves. Draft resistance slows whatever is pulling it.
+- **Moldboard plough** (an entity). Hitch it to the horse, donkey or mule you are riding (it is too heavy to pull by hand), then right-click it again from the saddle to lower the shares, and it turns a three-block swath as it moves. Draft resistance slows whatever is pulling it.
+- **Fertilizer spreader** (an entity). Load its hopper with up to 128 of one fertiliser or amendment, hitch it the same way, and open it: it spreads one dose on every block of a three-block swath, under growing crops too.
 - **Each implement buries residue, loosens compaction and triggers a mineralisation flush differently.** Ploughing wet clay smears it into clods.
+
+### Soil lab and microscope
+- The **Soil Probe** (63 uses) gives a field test: how the soil feels, its moisture, a pH strip and compaction. Sneak-use it to take a **soil sample**.
+- The **Soil Lab** analyses a sample in twenty seconds and returns a written **Soil Test Report**: every nutrient, pH, organic matter, CEC, water and structure, plus how much lime to add and which nutrients are short.
+- A **Soil Survey** collects lab results from across a plot: plot averages and ranges, a whole-plot plan with lime and fertiliser totals for its area (doses and spreader loads), spots that need separate treatment, sampling advice and rotation advice.
+- The **Thermometer** shows the air temperature now (lowest at dawn, highest mid-afternoon), today's range, frost risk and tomorrow's forecast. The **Soil Moisture Meter** reads water content, plant-available water and how much to irrigate.
+- Cut a **plant sample** from a crop with the kitchen knife and look at it under the **Microscope**: a magnified view of each organism on it (all 31 have their own image), with symptoms and control.
+
+### Seeing your farm
+- Crops show what they lack: **yellow** leaves when short of nitrogen, **purple** when short of phosphorus, **wilting** in drought and **browned edges** after frost.
+- Farmland **cracks** when dry and shows **standing water** when saturated.
+- **Seasons:** oak and birch leaves turn gold, orange and red through autumn and hang brown through winter; grass yellows and browns. Snow settles and ponds freeze wherever the Tilth climate is below freezing, and thaw in spring.
+
+### Livestock
+- Cows, sheep, goats, pigs, chickens and horses have a **body condition**. It falls over about two game days and rises with **grazing** (heavy grazing wears pasture to bare soil), **hay bales** within two blocks, and hand feeding. Grass barely grows in cold weather, so winter needs hay.
+- Every animal is **male or female**, and males look it: bull nose ring and heavy horns, ram horns, boar tusks, rooster comb and tail. Only pairs breed, sheep and goats only in autumn, and mammals carry their young for two to four days before giving birth (litters for pigs, twins for sheep and goats).
+- **Alfalfa hay bales** feed better than grass hay. Animals leave **manure** on the ground in layers: shovel it up and mix it with water into **slurry** to spread by hand or with the spreader.
+- Condition decides **breeding** (thin animals turn feed into condition instead), **milk** (once a day, not when thin), **eggs**, **wool** regrowth, **manure**, and **meat** yield and quality (Poor to Premium).
 
 ### Diet and food
 - **Eight nutrients:** carbohydrate, protein, fat, fiber, vitamin A, vitamin C, iron and calcium.
@@ -142,8 +161,9 @@ The risk engine combines today's weather with **field history** (inoculum builds
 6. Water matters. Fields within reach of water get seepage; sand reaches two blocks, clay and peat up to five or six.
 
 ### Optional companions
-Neither is required, but both make the mod much easier to learn:
+None is required, but they make the mod much easier to learn:
 - **[Patchouli](https://modrinth.com/mod/patchouli)** adds the **Tilth Field Guide**, an in-game book with 91 entries: a walkthrough for your first season, every soil, every crop with its planting window, fertility, water, tillage, food and the disease and pest models. Each player gets one the first time they join (`integrations.giveFieldGuideOnFirstJoin`); craft another from a book and any seeds.
+- **[Jade](https://modrinth.com/mod/jade)** or **[WTHIT](https://modrinth.com/mod/wthit)** show what you look at: a crop's growth stage, how close it is to ripe and what is wrong with it, the soil's texture and moisture, and an animal's sex, condition and, if she is pregnant, when she is due.
 - **[JEI](https://modrinth.com/mod/jei)** shows every Tilth recipe, including the quality-aware ones, plus three Tilth tabs: **Growing** (seed, harvest, temperatures, degree-days, pH, nutrient demand), **Tillage** (which tool turns which soil into which farmland) and **Soil Amendments** (what each fertiliser does per dose). Soils, tools, manure and straw have information pages.
 
 ## Documentation
@@ -184,11 +204,11 @@ All settings are in `config/tilth-common.toml`, and also in the in-game Mods →
 | Soil | catena worldgen, morphing, erosion, vanilla conversion, mineralisation, leaching, pH drift, root-zone depth, trampling, catch-up limit |
 | Crops | growth rate, yield, nutrient demand, frost/drought/waterlogging deaths, bone meal behaviour, seed redirection, light requirement |
 | Diet | on/off, effects, decay |
-| Plots | metres per block, protection, limits |
-| Livestock | manure interval |
+| Plots | metres per block, protection, farm only inside plots, limits |
+| Livestock | husbandry on/off, appetite, manure interval |
 | Afflictions | on/off, pressure |
 | Debug | command permission level |
-| Integrations | give the Field Guide on first join |
+| Integrations | give the Field Guide on first join, seasonal colours, winter snow and ice |
 
 ## Building from source
 Requirements: a JDK 17+ to run Gradle. The Java 21 toolchain is downloaded automatically.
@@ -236,7 +256,7 @@ JEI and Patchouli are only needed at compile time (JEI's API) and in the dev run
 - **Disease visuals:** symptoms on crops, so afflictions can be enabled by default; plus disease resistance through seed genetics and saved seed.
 - **Deeper soil:** a multi-layer profile under each block, and erosion and deposition tied to rainfall intensity.
 - **Machinery:** seed drills, harrows and harvesting.
-- **Integrations:** Jade/WTHIT tooltips for soil and crops.
+- **Integrations:** Jade/WTHIT tooltips for soil, crops and animals.
 
 ## License
 All Rights Reserved (default; change `mod_license` in `gradle.properties` and add a LICENSE file if you want to open-source it).

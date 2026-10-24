@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,working=false": {
+      "model": "tilth:block/soil_lab"
+    },
+    "facing=north,working=true": {
+      "model": "tilth:block/soil_lab_working"
+    },
+    "facing=east,working=false": {
+      "model": "tilth:block/soil_lab",
+      "y": 90
+    },
+    "facing=east,working=true": {
+      "model": "tilth:block/soil_lab_working",
+      "y": 90
+    },
+    "facing=south,working=false": {
+      "model": "tilth:block/soil_lab",
+      "y": 180
+    },
+    "facing=south,working=true": {
+      "model": "tilth:block/soil_lab_working",
+      "y": 180
+    },
+    "facing=west,working=false": {
+      "model": "tilth:block/soil_lab",
+      "y": 270
+    },
+    "facing=west,working=true": {
+      "model": "tilth:block/soil_lab_working",
+      "y": 270
+    }
+  }
+}

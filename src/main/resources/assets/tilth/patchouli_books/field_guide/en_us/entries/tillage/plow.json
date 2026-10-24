@@ -18,11 +18,11 @@
     },
     {
       "type": "patchouli:text",
-      "text": "$(thing)To plough:$() place it, mount a horse, donkey or mule, and right-click the plough to hitch it. You can also hitch it to yourself on foot, but it is slow work.$(br2)$(thing)Sneak and right-click$() to lower or raise the shares. Lowered, it tills everything it is dragged over."
+      "text": "$(thing)To plough:$() place it, mount a horse, donkey or mule, and right-click the plough to hitch it. It is far too heavy to pull by hand.$(br2)$(thing)Right-click it again from the saddle$() to lower or raise the shares. Lowered, it tills everything it is dragged over."
     },
     {
       "type": "patchouli:text",
-      "text": "Draft resistance slows whatever is pulling. Raise the shares to travel, and right-click again to unhitch.$(br2)Ploughing destroys crops in its path and turns them into residue. Hit the plough to pick it up."
+      "text": "Draft resistance slows whatever is pulling. Raise the shares to travel. To unhitch, get down and right-click the plough.$(br2)Ploughing destroys crops in its path and turns them into residue. Hit the plough to pick it up."
     }
   ]
 }

@@ -5,13 +5,18 @@
   "sortnum": 1,
   "pages": [
     {
+      "type": "patchouli:spotlight",
+      "item": "tilth:radish_seeds",
+      "text": "$(thing)Start with radishes.$() You begin with a handful of radish seeds, and breaking grass finds more. Radishes grow in almost any soil and ripen in two or three days, but the harvest is small and never better than Fair. They tide you over while you learn the real crops."
+    },
+    {
       "type": "patchouli:text",
       "text": "$(thing)1. Choose ground.$() Gentle lower slopes (footslopes) and level ground usually have the deepest, best-watered soil. Thin, stony soils sit on hilltops and steep slopes. Loam and silt loam are the easiest soils to farm."
     },
     {
       "type": "patchouli:spotlight",
       "item": "tilth:soil_probe",
-      "text": "$(thing)2. Test the soil.$() Right-click any soil with the Soil Probe for a full report: texture, pH, nutrients and water."
+      "text": "$(thing)2. Test the soil.$() Right-click soil with the Soil Probe for a field test: texture, moisture, a pH strip and compaction. Sneak and right-click to take a sample for a Soil Lab, which measures the nutrients."
     },
     {
       "type": "patchouli:crafting",
@@ -27,7 +32,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "$(thing)6. Watch it grow.$() Right-click a crop with an empty hand to see its growth stage, how far it is to maturity and what is holding it back: water, a nutrient, pH, light or the weather.$(br2)$(thing)7. Feed the soil.$() Spread manure or compost, and lime acidic ground."
+      "text": "$(thing)6. Watch it grow.$() Right-click a crop with an empty hand to see its growth stage, how far it is to maturity and what is holding it back: water, a nutrient, pH, light or the weather.$(br2)$(thing)7. Feed the soil.$() Spread slurry or compost, and lime acidic ground."
     },
     {
       "type": "patchouli:text",

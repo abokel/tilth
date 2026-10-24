@@ -29,6 +29,11 @@
       "text": "$(thing)Peat$() is half organic matter. It forms in cold, wet hollows, holds huge amounts of water and is naturally very acidic."
     },
     {
+      "type": "patchouli:spotlight",
+      "item": "tilth:peat_brick",
+      "text": "Dug peat breaks into four $(thing)Cut Peat$(): a fuel that burns half as long as coal. Dry it in a furnace into $(thing)Peat Bricks$(), which burn as long as charcoal."
+    },
+    {
       "type": "patchouli:text",
       "text": "Texture also sets how far water seeps sideways from a ditch or pond: about two blocks through sand and up to five or six through silts, clays and peat. Fine soils draw water by capillarity."
     }

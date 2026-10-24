@@ -40,6 +40,8 @@ CROPS = [
          leaf=(90, 160, 60), root=(240, 130, 40), seed_color=(150, 120, 70)),
     dict(id="beetroot", name="Beetroot", form="root", produce="minecraft:beetroot", seed="minecraft:beetroot_seeds",
          leaf=(80, 130, 60), root=(140, 30, 50), stem=(160, 40, 60), seed_color=(120, 70, 50)),
+    dict(id="radish", name="Radish", form="root", produce="tilth:radish", seed="tilth:radish_seeds",
+         leaf=(95, 165, 70), root=(214, 52, 72), seed_color=(140, 95, 60)),
     dict(id="sugar_beet", name="Sugar Beet", form="root", produce="tilth:sugar_beet", seed="tilth:sugar_beet_seeds",
          leaf=(70, 140, 60), root=(235, 225, 200), seed_color=(150, 120, 80)),
     dict(id="onion", name="Onion", form="bulb", produce="tilth:onion", seed="tilth:onion_seeds",
@@ -108,10 +110,10 @@ EFFECTS = {
 
 # ---------------------------------------------------------------------------- item tags
 SEEDS = ["durum_wheat_seeds", "barley_seeds", "oat_seeds", "rye_seeds", "paddy_rice", "maize_seeds", "sorghum_seeds",
-         "alfalfa_seeds", "clover_seeds", "sugar_beet_seeds", "onion_seeds", "cabbage_seeds", "lettuce_seeds",
+         "alfalfa_seeds", "clover_seeds", "sugar_beet_seeds", "onion_seeds", "cabbage_seeds", "lettuce_seeds", "radish_seeds",
          "tomato_seeds", "flax_seeds", "cotton_seeds", "sunflower_seeds"]
 PRODUCE = ["durum_wheat", "barley", "oats", "rye", "paddy_rice", "maize", "sorghum", "soybeans", "peas", "chickpeas",
-           "lentils", "beans", "peanuts", "alfalfa", "clover", "sugar_beet", "onion", "garlic", "cabbage", "lettuce", "tomato",
+           "lentils", "beans", "peanuts", "alfalfa", "clover", "sugar_beet", "onion", "garlic", "cabbage", "lettuce", "radish", "tomato",
            "sunflower_seeds", "flax", "cotton_boll"]
 FORAGE = ["barley", "oats", "alfalfa", "clover", "sorghum"]
 TAGS = {
@@ -122,9 +124,10 @@ TAGS = {
     ("minecraft", "llama_food"): ["alfalfa", "clover"],
     ("minecraft", "pig_food"): ["maize", "barley", "sugar_beet", "soybeans", "peanuts"],
     ("minecraft", "chicken_food"): SEEDS + ["sorghum"],
-    ("minecraft", "rabbit_food"): ["lettuce", "cabbage"],
+    ("minecraft", "rabbit_food"): ["lettuce", "cabbage", "radish"],
     ("c", "seeds"): SEEDS + ["soybeans", "peas", "chickpeas", "lentils", "beans", "peanuts", "garlic"],
     ("c", "crops"): PRODUCE,
+    ("tilth", "fodder"): ["alfalfa", "clover", "oats", "barley", "maize", "sorghum", "minecraft:wheat", "minecraft:hay_block", "straw"],
     ("tilth", "milling_grains"): ["minecraft:wheat", "durum_wheat", "rye", "oats", "maize", "paddy_rice"],
 }
 
@@ -135,6 +138,14 @@ RECIPES_SHAPED = [
     ("kitchen_knife_flint", ["F", "/"], {"F": "minecraft:flint", "/": "minecraft:stick"}, "kitchen_knife", 1),
     ("kitchen_knife_iron", ["I", "/"], {"I": "minecraft:iron_ingot", "/": "minecraft:stick"}, "kitchen_knife", 1),
     ("soil_probe", ["I", "I", "/"], {"I": "minecraft:iron_ingot", "/": "minecraft:stick"}, "soil_probe", 1),
+    ("microscope", [" G ", " I ", "CIC"], {"G": "minecraft:glass_pane", "I": "minecraft:iron_ingot", "C": "minecraft:copper_ingot"},
+     "microscope", 1),
+    ("thermometer", ["G", "G", "R"], {"G": "minecraft:glass_pane", "R": "minecraft:redstone"}, "thermometer", 1),
+    ("moisture_meter", [" C ", "I I"], {"C": "minecraft:copper_ingot", "I": "minecraft:iron_ingot"}, "moisture_meter", 1),
+    ("spreader", ["P P", "PHP", "/I/"], {"P": "#minecraft:planks", "H": "minecraft:hopper", "I": "minecraft:iron_ingot",
+                                         "/": "minecraft:stick"}, "spreader", 1),
+    ("soil_lab", ["BCB", "PPP", "/ /"], {"B": "minecraft:glass_bottle", "C": "minecraft:copper_ingot", "P": "#minecraft:planks",
+                                          "/": "minecraft:stick"}, "soil_lab", 1),
     ("ard", ["  /", " / ", "LF "], {"/": "minecraft:stick", "L": "#minecraft:logs", "F": "minecraft:flint"}, "ard", 1),
     ("plow", ["  /", "LLL", "II "], {"/": "minecraft:stick", "L": "#minecraft:logs", "I": "minecraft:iron_ingot"}, "plow", 1),
     ("hay_block_from_straw", ["SSS", "SSS", "SSS"], {"S": "straw"}, "minecraft:hay_block", 1),
@@ -144,6 +155,7 @@ RECIPES_SHAPED = [
 
 RECIPES_SHAPELESS = [
     # name, ingredients, result, count, keeps quality
+    ("soil_survey", ["minecraft:book", "minecraft:ink_sac", "minecraft:paper"], "soil_survey", 1, False),
     ("surveyors_chain", ["minecraft:chain", "minecraft:chain", "minecraft:stick", "minecraft:stick", "minecraft:paper"], "surveyors_chain", 1, False),
     # milling with the quern
     ("wheat_flour", ["minecraft:wheat", "quern"], "wheat_flour", 1, True),
@@ -287,6 +299,7 @@ FOOD_NUTRITION = {
     "sunflower_seeds": p(3, 8, 15, 6, 0, 0, 5, 2),
     "maize": p(15, 3, 1, 8, 5, 6, 2),
     "sugar_beet": p(15, 1, 0, 5),
+    "radish": p(2, 1, 0, 4, 0, 25, 1, 2),
     "rolled_oats": p(20, 8, 3, 15, 0, 0, 15, 2),
     # Tilth dishes
     "soy_milk": p(5, 20, 8, 2, 0, 0, 8, 5),

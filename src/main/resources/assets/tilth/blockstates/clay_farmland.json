@@ -1,28 +1,52 @@
 {
   "variants": {
-    "moisture=0": {
+    "moisture=0,soggy=false": {
+      "model": "tilth:block/clay_farmland_cracked"
+    },
+    "moisture=0,soggy=true": {
+      "model": "tilth:block/clay_farmland_soggy"
+    },
+    "moisture=1,soggy=false": {
+      "model": "tilth:block/clay_farmland_cracked"
+    },
+    "moisture=1,soggy=true": {
+      "model": "tilth:block/clay_farmland_soggy"
+    },
+    "moisture=2,soggy=false": {
       "model": "tilth:block/clay_farmland"
     },
-    "moisture=1": {
+    "moisture=2,soggy=true": {
+      "model": "tilth:block/clay_farmland_soggy"
+    },
+    "moisture=3,soggy=false": {
       "model": "tilth:block/clay_farmland"
     },
-    "moisture=2": {
+    "moisture=3,soggy=true": {
+      "model": "tilth:block/clay_farmland_soggy"
+    },
+    "moisture=4,soggy=false": {
       "model": "tilth:block/clay_farmland"
     },
-    "moisture=3": {
-      "model": "tilth:block/clay_farmland"
+    "moisture=4,soggy=true": {
+      "model": "tilth:block/clay_farmland_soggy"
     },
-    "moisture=4": {
-      "model": "tilth:block/clay_farmland"
-    },
-    "moisture=5": {
+    "moisture=5,soggy=false": {
       "model": "tilth:block/clay_farmland_moist"
     },
-    "moisture=6": {
+    "moisture=5,soggy=true": {
+      "model": "tilth:block/clay_farmland_soggy"
+    },
+    "moisture=6,soggy=false": {
       "model": "tilth:block/clay_farmland_moist"
     },
-    "moisture=7": {
+    "moisture=6,soggy=true": {
+      "model": "tilth:block/clay_farmland_soggy"
+    },
+    "moisture=7,soggy=false": {
       "model": "tilth:block/clay_farmland_moist"
+    },
+    "moisture=7,soggy=true": {
+      "model": "tilth:block/clay_farmland_soggy"
     }
   }
 }

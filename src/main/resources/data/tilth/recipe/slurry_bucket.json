@@ -1,0 +1,25 @@
+{
+  "type": "tilth:consuming_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "item": "tilth:manure"
+    },
+    {
+      "item": "tilth:manure"
+    },
+    {
+      "item": "tilth:manure"
+    },
+    {
+      "item": "tilth:manure"
+    }
+  ],
+  "result": {
+    "id": "tilth:slurry_bucket",
+    "count": 1
+  }
+}

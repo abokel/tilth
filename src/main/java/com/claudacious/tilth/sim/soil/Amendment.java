@@ -15,6 +15,7 @@ public enum Amendment {
     AGRICULTURAL_LIME("Agricultural Lime", 0, 0, 0, 0, 200, 15, 0.60, 0.00, 0.00, 0.0),
     SULFUR("Elemental Sulfur", 0, 0,   0,  40,   0,   0, -0.40, 0.00, 0.00, 0.0),
     STRAW("Straw",           0,   0,   3,   0,   0,   0, 0.00, 0.00, 0.40, 0.6),
+    SLURRY("Slurry",          7,   3,   7,   1,   4,   1, 0.00, 0.08, 0.00, 0.0),
     GREEN_MANURE("Green Manure", 0, 0, 0,   0,   0,   0, 0.00, 0.00, 0.30, 3.0);
 
     private final String displayName;
@@ -42,6 +43,22 @@ public enum Amendment {
         this.organicMatter = organicMatter;
         this.residue = residue;
         this.residueN = residueN;
+    }
+
+    public double n() {
+        return n;
+    }
+
+    public double p() {
+        return p;
+    }
+
+    public double k() {
+        return k;
+    }
+
+    public double phDelta() {
+        return phDelta;
     }
 
     public String displayName() {

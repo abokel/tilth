@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "tilth:block/gley"
-    }
+    "": [
+      {
+        "model": "tilth:block/gley"
+      },
+      {
+        "model": "tilth:block/gley",
+        "y": 90
+      },
+      {
+        "model": "tilth:block/gley",
+        "y": 180
+      },
+      {
+        "model": "tilth:block/gley",
+        "y": 270
+      }
+    ]
   }
 }

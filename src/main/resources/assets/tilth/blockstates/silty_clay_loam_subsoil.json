@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "tilth:block/silty_clay_loam_subsoil"
-    }
+    "": [
+      {
+        "model": "tilth:block/silty_clay_loam_subsoil"
+      },
+      {
+        "model": "tilth:block/silty_clay_loam_subsoil",
+        "y": 90
+      },
+      {
+        "model": "tilth:block/silty_clay_loam_subsoil",
+        "y": 180
+      },
+      {
+        "model": "tilth:block/silty_clay_loam_subsoil",
+        "y": 270
+      }
+    ]
   }
 }

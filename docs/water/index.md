@@ -6,8 +6,8 @@ has_children: true
 
 # Water
 
-Finite water, irrigation, the water table, ponds and evaporation.
+Irrigation, the water table, ponds, and optional finite water.
 
-- [Finite Water](finite_water.html)
+- [Ponds & Finite Water](finite_water.html)
 - [Irrigation & Water Table](irrigation.html)
 - [Drought & Waterlogging](drought.html)

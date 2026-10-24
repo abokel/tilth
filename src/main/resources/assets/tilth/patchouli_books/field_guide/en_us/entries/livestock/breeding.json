@@ -1,0 +1,20 @@
+{
+  "name": "Sexes & Breeding",
+  "icon": "minecraft:wheat",
+  "category": "tilth:livestock",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Every animal is $(thing)male or female$(). Males show it: bulls have a nose ring and heavy horns, rams curled horns, boars tusks, roosters a tall comb and a tail plume. Jade and /tilth animal tell you too."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Only a $(thing)male and a female$() will breed, and both must be in good condition. $(thing)Sheep and goats$() only come into season in autumn, from September to December."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Mammals carry their young before giving birth: about $(thing)four days$() for mares, $(thing)three$() for cows and $(thing)two$() for ewes, nannies and sows. Sows have litters of two to four; ewes and nannies often twins. Giving birth costs the mother condition."
+    }
+  ]
+}

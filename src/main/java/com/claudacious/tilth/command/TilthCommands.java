@@ -88,7 +88,8 @@ public final class TilthCommands {
                         .then(argument("amendment", StringArgumentType.word())
                                 .suggests((c, b) -> SharedSuggestionProvider.suggest(Arrays.stream(Amendment.values())
                                         .map(a -> a.name().toLowerCase(Locale.ROOT)), b))
-                                .executes(TilthCommands::soilAmend))));
+                                .executes(TilthCommands::soilAmend)))
+                .then(literal("sample").requires(TilthCommands::op).executes(TilthCommands::soilSample)));
         root.then(report("crop", Reports::crop)
                 .then(literal("setstage").requires(TilthCommands::op)
                         .then(argument("stage", IntegerArgumentType.integer(0, 9)).executes(TilthCommands::cropSetStage)))
@@ -109,8 +110,19 @@ public final class TilthCommands {
                         .then(argument("nutrient", StringArgumentType.word())
                                 .suggests((c, b) -> SharedSuggestionProvider.suggest(Arrays.stream(DietNutrient.values()).map(DietNutrient::id), b))
                                 .then(argument("value", DoubleArgumentType.doubleArg(0, 1)).executes(TilthCommands::dietSet)))));
+        root.then(literal("animal").then(argument("target", EntityArgument.entity()).executes(TilthCommands::animalShow)
+                .then(literal("set").requires(TilthCommands::op)
+                        .then(argument("condition", DoubleArgumentType.doubleArg(0, 1)).executes(TilthCommands::animalSet)))
+                .then(literal("birth").requires(TilthCommands::op).executes(TilthCommands::animalBirth))
+                .then(literal("sex").requires(TilthCommands::op)
+                        .then(literal("female").executes(ctx -> animalSex(ctx, true)))
+                        .then(literal("male").executes(ctx -> animalSex(ctx, false))))));
         root.then(literal("plot")
                 .then(literal("list").executes(TilthCommands::plotList))
+                .then(literal("createrect").requires(TilthCommands::op)
+                        .then(argument("x1", IntegerArgumentType.integer()).then(argument("z1", IntegerArgumentType.integer())
+                                .then(argument("x2", IntegerArgumentType.integer()).then(argument("z2", IntegerArgumentType.integer())
+                                        .then(argument("name", StringArgumentType.greedyString()).executes(TilthCommands::plotCreateRect)))))))
                 .then(literal("here").executes(ctx -> plotInfo(ctx, null)))
                 .then(literal("info").then(argument("name", StringArgumentType.greedyString()).suggests(TilthCommands::suggestPlots)
                         .executes(ctx -> plotInfo(ctx, StringArgumentType.getString(ctx, "name")))))
@@ -133,7 +145,9 @@ public final class TilthCommands {
         root.then(literal("fillfield").requires(TilthCommands::op)
                 .then(argument("species", StringArgumentType.word())
                         .suggests((c, b) -> SharedSuggestionProvider.suggest(Crops.map().keySet(), b))
-                        .then(argument("radius", IntegerArgumentType.integer(1, 16)).executes(TilthCommands::fillField))));
+                        .then(argument("radius", IntegerArgumentType.integer(1, 64)).executes(TilthCommands::fillField))));
+        root.then(literal("bench").requires(TilthCommands::op)
+                .then(literal("plots").then(argument("count", IntegerArgumentType.integer(1, 20000)).executes(Bench::plots))));
         d.register(root);
     }
 
@@ -219,6 +233,17 @@ public final class TilthCommands {
         SoilChemistry.clamp(s);
         farmland.setChanged();
         ctx.getSource().sendSuccess(() -> Component.literal("Set " + property + " = " + value), true);
+        return 1;
+    }
+
+    private static int soilSample(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+        ServerPlayer player = ctx.getSource().getPlayerOrException();
+        net.minecraft.world.item.ItemStack sample = com.claudacious.tilth.item.SoilSampleItem.take(ctx.getSource().getLevel(), target(ctx),
+                com.claudacious.tilth.registry.TilthItems.SOIL_SAMPLE.get());
+        if (!player.getInventory().add(sample)) {
+            player.drop(sample, false);
+        }
+        ctx.getSource().sendSuccess(() -> Component.literal("Gave a soil sample of the block you look at"), false);
         return 1;
     }
 
@@ -337,6 +362,88 @@ public final class TilthCommands {
     }
 
     // ------------------------------------------------------------------ diet
+
+    private static int animalShow(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+        if (!(EntityArgument.getEntity(ctx, "target") instanceof net.minecraft.world.entity.animal.Animal animal)
+                || !com.claudacious.tilth.livestock.Livestock.isLivestock(animal)) {
+            ctx.getSource().sendFailure(Component.literal("Not a farm animal"));
+            return 0;
+        }
+        com.claudacious.tilth.livestock.LivestockState s = com.claudacious.tilth.livestock.Livestock.state(animal);
+        long sinceMilked = animal.level().getGameTime() - s.lastMilked;
+        ctx.getSource().sendSuccess(() -> Reports.header(animal.getName().getString()), false);
+        ctx.getSource().sendSuccess(() -> Reports.line("Condition", String.format("%.0f%% (%s)", s.condition * 100, s.describe())), false);
+        ctx.getSource().sendSuccess(() -> Reports.line("Sex", s.sex == com.claudacious.tilth.livestock.LivestockState.UNKNOWN ? "unknown"
+                : com.claudacious.tilth.livestock.Breeding.sexName(animal, s.female())), false);
+        ctx.getSource().sendSuccess(() -> Reports.line("Breeds", s.condition >= 0.55 ? "yes" : "no, too thin"), false);
+        if (s.pregnant()) {
+            ctx.getSource().sendSuccess(() -> Reports.line("Pregnant", String.format("due in %.1f days",
+                    Math.max(0, s.due - animal.level().getGameTime()) / 24000.0)), false);
+        }
+        if (animal instanceof net.minecraft.world.entity.animal.Cow || animal instanceof net.minecraft.world.entity.animal.goat.Goat) {
+            ctx.getSource().sendSuccess(() -> Reports.line("Milk", s.male() ? "none (males give no milk)" : s.condition < 0.4 ? "dry (too thin)"
+                    : sinceMilked < 24000 ? "milked today" : "ready"), false);
+        }
+        return 1;
+    }
+
+    /** Testing: brings a pregnant animal to term now. */
+    private static int animalBirth(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+        if (!(EntityArgument.getEntity(ctx, "target") instanceof net.minecraft.world.entity.animal.Animal animal)) {
+            return 0;
+        }
+        com.claudacious.tilth.livestock.LivestockState s = com.claudacious.tilth.livestock.Livestock.state(animal);
+        if (!s.pregnant()) {
+            ctx.getSource().sendFailure(Component.literal("Not pregnant"));
+            return 0;
+        }
+        s.due = animal.level().getGameTime();
+        animal.setData(com.claudacious.tilth.registry.TilthAttachments.LIVESTOCK.get(), s);
+        ctx.getSource().sendSuccess(() -> Component.literal("Due now; she gives birth at her next check (within 10 seconds)"), true);
+        return 1;
+    }
+
+    private static int animalSex(CommandContext<CommandSourceStack> ctx, boolean female) throws CommandSyntaxException {
+        if (!(EntityArgument.getEntity(ctx, "target") instanceof net.minecraft.world.entity.animal.Animal animal)) {
+            return 0;
+        }
+        com.claudacious.tilth.livestock.LivestockState s = com.claudacious.tilth.livestock.Livestock.state(animal);
+        s.sex = female ? com.claudacious.tilth.livestock.LivestockState.FEMALE : com.claudacious.tilth.livestock.LivestockState.MALE;
+        animal.setData(com.claudacious.tilth.registry.TilthAttachments.LIVESTOCK.get(), s);
+        com.claudacious.tilth.livestock.Breeding.sync(animal);
+        ctx.getSource().sendSuccess(() -> Component.literal("Now a " + com.claudacious.tilth.livestock.Breeding.sexName(animal, female)), true);
+        return 1;
+    }
+
+    private static int animalSet(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+        if (!(EntityArgument.getEntity(ctx, "target") instanceof net.minecraft.world.entity.animal.Animal animal)) {
+            return 0;
+        }
+        com.claudacious.tilth.livestock.LivestockState s = com.claudacious.tilth.livestock.Livestock.state(animal);
+        s.condition = DoubleArgumentType.getDouble(ctx, "condition");
+        animal.setData(com.claudacious.tilth.registry.TilthAttachments.LIVESTOCK.get(), s);
+        ctx.getSource().sendSuccess(() -> Component.literal(String.format("Condition set to %.0f%%", s.condition * 100)), true);
+        return 1;
+    }
+
+    /** Op shortcut for testing: a rectangular plot without walking the corners with the surveyor's chain. */
+    private static int plotCreateRect(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+        ServerPlayer player = ctx.getSource().getPlayerOrException();
+        int x1 = IntegerArgumentType.getInteger(ctx, "x1");
+        int z1 = IntegerArgumentType.getInteger(ctx, "z1");
+        int x2 = IntegerArgumentType.getInteger(ctx, "x2");
+        int z2 = IntegerArgumentType.getInteger(ctx, "z2");
+        List<com.claudacious.tilth.sim.plot.PolygonMath.Vertex> vs = List.of(
+                new com.claudacious.tilth.sim.plot.PolygonMath.Vertex(Math.min(x1, x2), Math.min(z1, z2)),
+                new com.claudacious.tilth.sim.plot.PolygonMath.Vertex(Math.max(x1, x2), Math.min(z1, z2)),
+                new com.claudacious.tilth.sim.plot.PolygonMath.Vertex(Math.max(x1, x2), Math.max(z1, z2)),
+                new com.claudacious.tilth.sim.plot.PolygonMath.Vertex(Math.min(x1, x2), Math.max(z1, z2)));
+        com.claudacious.tilth.plot.Plot p = com.claudacious.tilth.plot.PlotData.get(ctx.getSource().getLevel())
+                .create(StringArgumentType.getString(ctx, "name"), player, vs, ctx.getSource().getLevel());
+        ctx.getSource().sendSuccess(() -> Component.literal("Created plot \"" + p.name() + "\" of "
+                + com.claudacious.tilth.sim.plot.PolygonMath.formatArea(p.areaSquareMetres())), true);
+        return 1;
+    }
 
     private static int dietShow(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
         ServerPlayer player = ctx.getSource().getPlayerOrException();

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "tilth:block/alfalfa_bale"
+    },
+    "axis=z": {
+      "model": "tilth:block/alfalfa_bale_horizontal",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "tilth:block/alfalfa_bale_horizontal",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

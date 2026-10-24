@@ -76,6 +76,7 @@ final class JeiRecipes {
             }
         }
         out.add(new AmendmentRecipe(new ItemStack(Items.BONE_MEAL), Amendment.BONE_MEAL));
+        out.add(new AmendmentRecipe(new ItemStack(TilthItems.SLURRY_BUCKET.get()), Amendment.SLURRY));
         return out;
     }
 
@@ -105,8 +106,8 @@ final class JeiRecipes {
                 "The scratch plough: right-click soil to till a three-block strip in front of you. Shallow: it buries little "
                         + "residue and only partly loosens compaction."));
         r.addItemStackInfo(new ItemStack(TilthItems.PLOW.get()), Component.literal(
-                "Place it, then right-click it while riding a horse, donkey or mule to hitch it (or hitch it to yourself). "
-                        + "Sneak and right-click to lower the shares: it turns a three-block swath as it is pulled. Avoid wet clay."));
+                "Place it, then right-click it while riding a horse, donkey or mule to hitch it. Right-click it again from "
+                        + "the saddle to lower the shares: it turns a three-block swath as it is pulled. Avoid wet clay."));
         r.addItemStackInfo(new ItemStack(TilthItems.SURVEYORS_CHAIN.get()), Component.literal(
                 "Right-click the corner blocks of a field in order, then sneak and use it in the air to record a plot. "
                         + "Areas are measured in acres; boundaries show in particles while you hold the chain."));
@@ -114,7 +115,8 @@ final class JeiRecipes {
                 Component.literal("Kitchen tools stay in the crafting grid and wear out slowly. The quern mills grain, oilseeds "
                         + "and limestone; the knife cuts pasta, fries and flax."));
         r.addItemStackInfo(new ItemStack(TilthItems.MANURE.get()), Component.literal(
-                "Cows, pigs, sheep, goats, chickens and horses leave manure behind. Spread it on farmland, or compost it with straw."));
+                "Farm animals leave dung in layers on the ground. Shovel it up, then mix four with a water bucket into slurry to "
+                        + "spread, or compost it with straw."));
         r.addItemStackInfo(new ItemStack(TilthItems.STRAW.get()), Component.literal(
                 "Straw from cereal harvests. Spread it as mulch to keep soil moist (it ties up a little nitrogen while it "
                         + "decays), compost it, or bale it into hay."));

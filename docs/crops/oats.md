@@ -1,7 +1,7 @@
 ---
 title: "Oats"
 parent: Crops
-nav_order: 7
+nav_order: 8
 ---
 
 # Oats

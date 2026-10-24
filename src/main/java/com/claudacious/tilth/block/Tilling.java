@@ -1,6 +1,7 @@
 package com.claudacious.tilth.block;
 
 import com.claudacious.tilth.TilthConfig;
+import com.claudacious.tilth.plot.PlotRules;
 import com.claudacious.tilth.registry.TilthBlocks;
 import com.claudacious.tilth.sim.soil.SoilHorizon;
 import com.claudacious.tilth.sim.soil.SoilTexture;
@@ -39,7 +40,7 @@ public final class Tilling {
      */
     public static boolean till(ServerLevel level, BlockPos pos, Tillage.Implement implement, @Nullable Player player) {
         BlockState state = level.getBlockState(pos);
-        if (!isTillable(state)) {
+        if (!isTillable(state) || !PlotRules.mayFarm(player, level, pos)) {
             return false;
         }
         BlockPos above = pos.above();

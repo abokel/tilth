@@ -14,7 +14,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "Tilled soil remembers its $(thing)nutrients$(), $(thing)pH$(), $(thing)organic matter$(), moisture and compaction, and every crop draws on them. Water is $(thing)finite$(): two sources no longer make a third outside oceans and rivers."
+      "text": "Tilled soil remembers its $(thing)nutrients$(), $(thing)pH$(), $(thing)organic matter$(), moisture and compaction, and every crop draws on them. Rain fills hollows into $(thing)ponds$(), and water can optionally be made finite in the config."
     },
     {
       "type": "patchouli:text",

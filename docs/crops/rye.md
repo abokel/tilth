@@ -1,7 +1,7 @@
 ---
 title: "Rye"
 parent: Crops
-nav_order: 8
+nav_order: 9
 ---
 
 # Rye

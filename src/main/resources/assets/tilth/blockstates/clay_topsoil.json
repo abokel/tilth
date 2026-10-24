@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "tilth:block/clay_topsoil"
-    }
+    "": [
+      {
+        "model": "tilth:block/clay_topsoil"
+      },
+      {
+        "model": "tilth:block/clay_topsoil",
+        "y": 90
+      },
+      {
+        "model": "tilth:block/clay_topsoil",
+        "y": 180
+      },
+      {
+        "model": "tilth:block/clay_topsoil",
+        "y": 270
+      }
+    ]
   }
 }

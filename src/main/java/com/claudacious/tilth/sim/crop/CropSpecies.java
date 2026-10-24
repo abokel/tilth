@@ -46,6 +46,8 @@ public final class CropSpecies {
     public final double residueKgM2;
     public final double residueNPercent;
     public final boolean needsFlooding;
+    /** Best harvest grade (1-5) the crop can reach. */
+    public final int maxGrade;
 
     private CropSpecies(Builder b) {
         this.id = b.id;
@@ -91,6 +93,7 @@ public final class CropSpecies {
         this.residueKgM2 = b.residueKg;
         this.residueNPercent = b.residueN;
         this.needsFlooding = b.flooded;
+        this.maxGrade = b.maxGrade;
     }
 
     public static Builder builder(String id, String name, String scientificName, CropFamily family, GrowthForm form) {
@@ -199,6 +202,7 @@ public final class CropSpecies {
         private int tallFromStage = -1;
         private double residueKg = 0.2, residueN = 1.0;
         private boolean flooded;
+        private int maxGrade = 5;
 
         private Builder(String id, String name, String scientificName, CropFamily family, GrowthForm form) {
             this.id = id;
@@ -301,6 +305,11 @@ public final class CropSpecies {
 
         public Builder tall(int fromStage) {
             this.tallFromStage = fromStage;
+            return this;
+        }
+
+        public Builder maxGrade(int grade) {
+            this.maxGrade = grade;
             return this;
         }
 

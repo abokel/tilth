@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "tilth:block/sandy_loam_topsoil"
-    }
+    "": [
+      {
+        "model": "tilth:block/sandy_loam_topsoil"
+      },
+      {
+        "model": "tilth:block/sandy_loam_topsoil",
+        "y": 90
+      },
+      {
+        "model": "tilth:block/sandy_loam_topsoil",
+        "y": 180
+      },
+      {
+        "model": "tilth:block/sandy_loam_topsoil",
+        "y": 270
+      }
+    ]
   }
 }

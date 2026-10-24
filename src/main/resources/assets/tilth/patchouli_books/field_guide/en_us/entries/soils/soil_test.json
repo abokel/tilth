@@ -2,11 +2,11 @@
   "name": "Reading a Soil Test",
   "icon": "tilth:soil_probe",
   "category": "tilth:soils",
-  "sortnum": 4,
+  "sortnum": 6,
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The probe reports nutrients in $(thing)ppm$() in the top 20 cm, as a soil laboratory does. Rough guides:$(li)$(thing)N$() (nitrate): under 10 low, 20-40 optimum.$(li)$(thing)P$(): under 10 low, 20-40 optimum.$(li)$(thing)K$(): under 90 low, 130-200 optimum."
+      "text": "The lab reports nutrients in $(thing)ppm$() in the top 20 cm, as a real soil laboratory does. Rough guides:$(li)$(thing)N$() (nitrate): under 10 low, 20-40 optimum.$(li)$(thing)P$(): under 10 low, 20-40 optimum.$(li)$(thing)K$(): under 90 low, 130-200 optimum."
     },
     {
       "type": "patchouli:text",

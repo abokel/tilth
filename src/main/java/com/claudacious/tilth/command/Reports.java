@@ -2,6 +2,7 @@ package com.claudacious.tilth.command;
 
 import com.claudacious.tilth.TilthConfig;
 import com.claudacious.tilth.block.CropBlockEntity;
+import com.claudacious.tilth.block.DeadCropBlock;
 import com.claudacious.tilth.block.FarmlandBlockEntity;
 import com.claudacious.tilth.block.SoilLike;
 import com.claudacious.tilth.block.TilthCropBlock;
@@ -16,6 +17,7 @@ import com.claudacious.tilth.sim.crop.Bbch;
 import com.claudacious.tilth.sim.crop.CropGrowthModel;
 import com.claudacious.tilth.sim.crop.CropSpecies;
 import com.claudacious.tilth.sim.crop.CropState;
+import com.claudacious.tilth.sim.soil.Amendment;
 import com.claudacious.tilth.sim.soil.Hydraulics;
 import com.claudacious.tilth.sim.soil.Nutrient;
 import com.claudacious.tilth.sim.soil.SoilHorizon;
@@ -33,9 +35,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /** Human-readable reports shared by commands, the soil probe and the debug HUD. */
 public final class Reports {
@@ -57,19 +61,19 @@ public final class Reports {
 
     // ------------------------------------------------------------------ ratings (typical extension ranges)
 
-    static String rateN(double ppm) {
+    public static String rateN(double ppm) {
         return ppm < 10 ? "low" : ppm < 20 ? "medium" : ppm < 40 ? "optimum" : "high";
     }
 
-    static String rateP(double ppm) {
+    public static String rateP(double ppm) {
         return ppm < 10 ? "low" : ppm < 20 ? "medium" : ppm < 40 ? "optimum" : "high";
     }
 
-    static String rateK(double ppm) {
+    public static String rateK(double ppm) {
         return ppm < 90 ? "low" : ppm < 130 ? "medium" : ppm < 200 ? "optimum" : "high";
     }
 
-    static String ratePh(double ph) {
+    public static String ratePh(double ph) {
         if (ph < 5.0) {
             return "strongly acid";
         }
@@ -127,6 +131,99 @@ public final class Reports {
         return out;
     }
 
+    /** The soil a reading is about: the clicked block, or the one under a crop, snow layer or plant on it. */
+    public static BlockPos soilUnder(ServerLevel level, BlockPos pos) {
+        return sampleAt(level, pos) == null && sampleAt(level, pos.below()) != null ? pos.below() : pos;
+    }
+
+    /** Texture and soil state at a position: farmland, or the undisturbed estimate for a soil block. */
+    @Nullable
+    public static Map.Entry<SoilTexture, SoilState> sampleAt(ServerLevel level, BlockPos pos) {
+        if (level.getBlockEntity(pos) instanceof FarmlandBlockEntity farmland) {
+            farmland.advance(level);
+            return Map.entry(farmland.texture(), farmland.soil());
+        }
+        if (level.getBlockState(pos).getBlock() instanceof SoilLike soil) {
+            return Map.entry(soil.texture(), SoilService.baseline(level, pos, soil.texture(), soil.horizon()));
+        }
+        return null;
+    }
+
+    /** What the soil probe can tell in the field: feel, moisture, a pH strip and resistance. Nutrients need the lab. */
+    public static List<Component> fieldTest(ServerLevel level, BlockPos pos) {
+        List<Component> out = new ArrayList<>();
+        BlockPos soilPos = pos;
+        if (level.getBlockState(pos).getBlock() instanceof TilthCropBlock) {
+            out.addAll(crop(level, pos));
+            soilPos = pos.below();
+        } else {
+            soilPos = soilUnder(level, pos);
+        }
+        Map.Entry<SoilTexture, SoilState> sample = sampleAt(level, soilPos);
+        if (sample == null) {
+            out.add(Component.literal("The probe finds no soil here.").withStyle(ChatFormatting.GRAY));
+            return out;
+        }
+        SoilTexture tex = sample.getKey();
+        SoilState st = sample.getValue();
+        Hydraulics h = tex.hydraulics(st.organicMatter);
+        double avail = (st.moisture - h.wiltingPoint()) / Math.max(0.01, h.fieldCapacity() - h.wiltingPoint());
+        String feel = tex.clay() >= 40 ? "sticky and plastic" : tex.sand() >= 70 ? "gritty, falls apart" : tex.silt() >= 50 ? "smooth and silky"
+                : "crumbly";
+        String moisture = st.moisture >= h.saturation() - 0.02 ? "saturated" : avail > 1.0 ? "wet" : avail > 0.5 ? "moist"
+                : avail > 0.15 ? "drying" : "dry";
+        String resistance = st.compaction > 0.5 ? "hard (compacted)" : st.compaction > 0.3 ? "firm" : "loose";
+        out.add(header("Field test: " + tex.displayName()));
+        out.add(line("Feel", feel + " (" + tex.displayName().toLowerCase() + ")"));
+        out.add(line("Moisture", moisture + String.format(", about %.0f%% of available water", 100 * Math.max(0, Math.min(1.2, avail)))));
+        out.add(line("pH strip", String.format("about %.1f (%s)", Math.round(st.ph * 2) / 2.0, ratePh(st.ph))));
+        out.add(line("Penetrometer", resistance));
+        out.add(note("Nutrients need a lab: sneak and use the probe to take a sample to a Soil Lab."));
+        return out;
+    }
+
+    /** The full analysis a Soil Lab returns for a sample, with fertiliser and lime advice. */
+    public static List<Component> labReport(ServerLevel level, BlockPos pos) {
+        BlockPos soilPos = soilUnder(level, pos);
+        List<Component> out = new ArrayList<>(soil(level, soilPos));
+        Map.Entry<SoilTexture, SoilState> sample = sampleAt(level, soilPos);
+        if (sample != null) {
+            out.add(header("Recommendations"));
+            out.addAll(recommendations(sample.getKey(), sample.getValue()));
+        }
+        return out;
+    }
+
+    public static List<Component> recommendations(SoilTexture tex, SoilState s) {
+        List<Component> out = new ArrayList<>();
+        if (s.ph < 6.0) {
+            int doses = (int) Math.ceil((6.5 - s.ph) / Amendment.AGRICULTURAL_LIME.phDelta());
+            out.add(note(String.format("Acidic: about %d dose%s of Agricultural Lime per block to reach pH 6.5.", doses, doses == 1 ? "" : "s")));
+        } else if (s.ph > 7.8) {
+            int doses = (int) Math.ceil((s.ph - 7.0) / -Amendment.SULFUR.phDelta());
+            out.add(note(String.format("Alkaline: about %d dose%s of Elemental Sulfur per block to reach pH 7.", doses, doses == 1 ? "" : "s")));
+        }
+        if (s.nitrogen < 20) {
+            out.add(note("Nitrogen " + rateN(s.nitrogen) + ": spread slurry or compost, or grow a legume (peas, beans, clover) first."));
+        }
+        if (s.phosphorus < 20) {
+            out.add(note("Phosphorus " + rateP(s.phosphorus) + ": bone meal or slurry."));
+        }
+        if (s.potassium < 130) {
+            out.add(note("Potassium " + rateK(s.potassium) + ": wood ash or compost."));
+        }
+        if (s.organicMatter < 2.0) {
+            out.add(note(String.format("Organic matter is low (%.1f%%): leave residue on the field and add compost.", s.organicMatter)));
+        }
+        if (s.compaction > 0.4) {
+            out.add(note("Compacted: plough when the soil is dry and keep traffic off it."));
+        }
+        if (out.isEmpty()) {
+            out.add(note("In good order for most crops. Retest after the next harvest."));
+        }
+        return out;
+    }
+
     private static void describeState(List<Component> out, SoilTexture tex, SoilState s) {
         Hydraulics h = tex.hydraulics(s.organicMatter);
         out.add(line("Texture", String.format("%d%% sand / %d%% silt / %d%% clay, hydrologic group %c",
@@ -178,7 +275,7 @@ public final class Reports {
         double yf = CropGrowthModel.yieldFactor(cs);
         double perAcre = sp.yieldUnit.perAcre(sp.referenceYield / 10.0 * yf, sp.unitWeightLb);
         out.add(line("Outlook", String.format("yield potential %.0f%% (~%.1f %s), quality %s",
-                100 * yf, perAcre, sp.yieldUnit.label(), Quality.name(CropGrowthModel.grade(cs)))));
+                100 * yf, perAcre, sp.yieldUnit.label(), Quality.name(Math.min(sp.maxGrade, CropGrowthModel.grade(cs))))));
         if (sp.isLegume()) {
             out.add(line("Nitrogen fixed", String.format("%.0f kg/ha", cs.fixedNitrogen)));
         }

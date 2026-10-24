@@ -1,12 +1,12 @@
 ---
 title: "Reading a Soil Test"
 parent: Soils
-nav_order: 5
+nav_order: 7
 ---
 
 # Reading a Soil Test
 
-The probe reports nutrients in **ppm** in the top 20 cm, as a soil laboratory does. Rough guides:
+The lab reports nutrients in **ppm** in the top 20 cm, as a real soil laboratory does. Rough guides:
 - **N** (nitrate): under 10 low, 20-40 optimum.
 - **P**: under 10 low, 20-40 optimum.
 - **K**: under 90 low, 130-200 optimum.

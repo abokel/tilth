@@ -2,7 +2,7 @@
   "name": "Durum Wheat",
   "icon": "tilth:durum_wheat_seeds",
   "category": "tilth:crops",
-  "sortnum": 4,
+  "sortnum": 5,
   "pages": [
     {
       "type": "patchouli:spotlight",

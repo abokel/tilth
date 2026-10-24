@@ -1,0 +1,7 @@
+{
+  "tilth:field": {
+    "initializer": "com.claudacious.tilth.compat.wthit.TilthWthitPlugin",
+    "side": "*",
+    "required": ["tilth"]
+  }
+}

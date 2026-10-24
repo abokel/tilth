@@ -24,6 +24,16 @@ repositories {
         name = 'BlameJared'
         url = 'https://maven.blamejared.com/'
     }
+    maven {
+        name = 'Modrinth'
+        url = 'https://api.modrinth.com/maven'
+        content { includeGroup 'maven.modrinth' }
+    }
+    maven {
+        name = 'WTHIT'
+        url = 'https://maven4.bai.lol'
+        content { includeGroup 'mcp.mobius.waila'; includeGroup 'lol.bai' }
+    }
 }
 
 base {
@@ -94,6 +104,15 @@ dependencies {
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
     localRuntime "vazkii.patchouli:Patchouli:${patchouli_version}"
+    compileOnly "maven.modrinth:jade:${jade_version}"
+    compileOnly "mcp.mobius.waila:wthit-api:${wthit_version}"
+    // Dev runs load one look-at overlay: Jade by default, WTHIT with -Poverlay=wthit.
+    if (project.findProperty("overlay") == "wthit") {
+        localRuntime "mcp.mobius.waila:wthit:${wthit_version}"
+        localRuntime "lol.bai:badpackets:neo-0.8.1"
+    } else {
+        localRuntime "maven.modrinth:jade:${jade_version}"
+    }
 
     // Pure-Java simulation code (soil, climate, crops, plots) is unit tested without launching Minecraft.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.3'

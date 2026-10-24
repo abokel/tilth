@@ -14,12 +14,13 @@ This site has the same content as the in-game **Tilth Field Guide**, which is av
 - [Getting Started](getting_started/) - What Tilth changes, your first field step by step, the calendar and the tools.
 - [Soils](soils/) - Texture, horizons, the hillslope catena, and how soil changes over time.
 - [Fertility](fertility/) - Nutrients, pH, organic matter, amendments and rotation.
-- [Water](water/) - Finite water, irrigation, the water table, ponds and evaporation.
+- [Water](water/) - Irrigation, the water table, ponds, and optional finite water.
 - [Crops](crops/) - How crops grow, when to plant, harvest and quality, and every crop in detail.
 - [Tillage](tillage/) - Hoe, ard and moldboard plough, compaction and working wet soil.
 - [Food & Diet](food/) - Nutrition, deficiencies, quality and the new kitchen recipes.
 - [Surveying Plots](plots/) - Stake out fields of any shape and measure them in acres.
 - [Diseases & Pests](afflictions/) - Fungi, oomycetes, bacteria, viruses, insects, nematodes and helpful soil life.
+- [Livestock](livestock/) - Animal condition, grazing, hay, sexes, breeding, milk, eggs and meat.
 - [Commands & Config](reference/) - Every /tilth command and the most useful config options.
 
 ## More

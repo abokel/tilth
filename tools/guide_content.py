@@ -52,18 +52,23 @@ CATEGORIES = [
                      "nutrients.\n\nCrops grow on **thermal time**: warmth, not ticks. A cold spring slows them, a frost can "
                      "kill them, and each crop has its own season."),
                 text("Tilled soil remembers its **nutrients**, **pH**, **organic matter**, moisture and compaction, and "
-                     "every crop draws on them. Water is **finite**: two sources no longer make a third outside oceans and "
-                     "rivers.\n\nYour own body needs a varied **diet**, and well-grown food is more nourishing."),
+                     "every crop draws on them. Rain fills hollows into **ponds**, and water can optionally be made finite in "
+                     "the config.\n\nYour own body needs a varied **diet**, and well-grown food is more nourishing."),
                 text("Nothing here is meant to be a grind: every rate is in the config, and the commands under "
                      "**/tilth** let you inspect everything. If something surprises you, look at it with the Soil "
                      "Probe or **/tilth crop**: the reason is always shown."),
             ]},
             {"id": "first_field", "name": "Your First Field", "icon": "tilth:durum_wheat_seeds", "pages": [
+                spot("tilth:radish_seeds", "**Start with radishes.** You begin with a handful of radish seeds, and "
+                                           "breaking grass finds more. Radishes grow in almost any soil and ripen in "
+                                           "two or three days, but the harvest is small and never better than Fair. "
+                                           "They tide you over while you learn the real crops."),
                 text("**1. Choose ground.** Gentle lower slopes (footslopes) and level ground usually have the deepest, "
                      "best-watered soil. Thin, stony soils sit on hilltops and steep slopes. Loam and silt loam are the "
                      "easiest soils to farm."),
-                spot("tilth:soil_probe", "**2. Test the soil.** Right-click any soil with the Soil Probe for a full report: "
-                                         "texture, pH, nutrients and water."),
+                spot("tilth:soil_probe", "**2. Test the soil.** Right-click soil with the Soil Probe for a field test: "
+                                         "texture, moisture, a pH strip and compaction. Sneak and right-click to take a "
+                                         "sample for a Soil Lab, which measures the nutrients."),
                 craft("tilth:soil_probe"),
                 text("**3. Till.** Use a hoe for single blocks, the Ard for a three-block strip, or a Moldboard Plough "
                      "behind a horse for whole fields. Avoid working wet clay: it smears into clods.\n\n**4. Check the "
@@ -73,7 +78,7 @@ CATEGORIES = [
                      "seeds, potatoes, carrots and beetroot seeds plant the realistic crop on Tilth farmland."),
                 text("**6. Watch it grow.** Right-click a crop with an empty hand to see its growth stage, how far it is "
                      "to maturity and what is holding it back: water, a nutrient, pH, light or the weather.\n\n**7. "
-                     "Feed the soil.** Spread manure or compost, and lime acidic ground."),
+                     "Feed the soil.** Spread slurry or compost, and lime acidic ground."),
                 text("**8. Harvest when ripe** (the last stage, golden for grains). The harvest tells you the yield in "
                      "real units, bushels per acre for grain, and grades the produce from Poor to Premium. Leave the "
                      "straw or residue on the field to return organic matter, then rotate to a different crop."),
@@ -85,9 +90,22 @@ CATEGORIES = [
                 text("Each biome has a real-world climate: plains are like the US Corn Belt, deserts like the Sonoran, "
                      "jungles like the Amazon, taiga like inland Canada. Weather varies from day to day, with cold "
                      "snaps, heat waves, rain and snow, and it is colder at altitude."),
+                text("The land shows the season. Oak and birch leaves turn gold, orange and red through autumn and hang "
+                     "brown through winter; grass yellows and browns. In winter, snow settles wherever it is below "
+                     "freezing and ponds freeze over, then thaw in spring."),
                 text("Use **/tilth calendar** for the date and **/tilth climate** for the local climate, today's weather "
                      "and degree days.\n\nThe days and month length are configurable. Shorter months make crops grow "
                      "faster in play time."),
+            ]},
+            {"id": "instruments", "name": "Field Instruments", "icon": "tilth:thermometer", "pages": [
+                spot("tilth:thermometer", "Hold the **Thermometer** to read the air temperature: coldest at dawn, warmest "
+                                          "in mid-afternoon. Use it for today's low and high, a frost warning and "
+                                          "tomorrow's forecast."),
+                craft("tilth:thermometer"),
+                spot("tilth:moisture_meter", "Push the **Soil Moisture Meter** into soil, farmland or a crop's roots: water "
+                                             "content, how much plants can still draw, whether it is waterlogged, and how "
+                                             "many mm of water would refill the root zone."),
+                craft("tilth:moisture_meter"),
             ]},
             {"id": "tools", "name": "Tools of the Trade", "icon": "tilth:quern", "pages": [
                 spot("tilth:quern", "The **Quern** grinds grain into flour, oilseeds into oil and limestone into lime. "
@@ -118,6 +136,8 @@ CATEGORIES = [
                                            "compact easily and smear if worked wet."),
                 spot("tilth:peat", "**Peat** is half organic matter. It forms in cold, wet hollows, holds huge amounts of "
                                    "water and is naturally very acidic."),
+                spot("tilth:peat_brick", "Dug peat breaks into four **Cut Peat**: a fuel that burns half as long as coal. "
+                                         "Dry it in a furnace into **Peat Bricks**, which burn as long as charcoal."),
                 text("Texture also sets how far water seeps sideways from a ditch or pond: about two blocks through sand "
                      "and up to five or six through silts, clays and peat. Fine soils draw water by capillarity."),
             ]},
@@ -151,8 +171,30 @@ CATEGORIES = [
                      "fine particles in heavy rain, coarsening by one class, and the fines settle in the hollow below.\n"
                      "\nGrass and crops protect soil from erosion. Plough across slopes, not down them."),
             ]},
+            {"id": "soil_lab", "name": "The Soil Lab", "icon": "tilth:soil_lab", "pages": [
+                spot("tilth:soil_lab", "The **Soil Lab** is a bench of glassware and reagents. In the field the probe "
+                                       "can only tell you how the soil feels, how wet it is and its rough pH."),
+                craft("tilth:soil_lab"),
+                text("**Sneak and right-click** soil or farmland with the probe to take a **Soil Sample**. Use the sample "
+                     "on the lab; after twenty seconds, right-click the lab to collect a written **Soil Test Report**."),
+                text("The report has every measurement, the date and place the sample was taken, and advice: how much "
+                     "lime to add, which nutrients are short and what supplies them. Each probe use wears the probe a "
+                     "little; it lasts 63 uses."),
+            ]},
+            {"id": "soil_survey", "name": "Surveying a Whole Plot", "icon": "tilth:soil_survey", "pages": [
+                spot("tilth:soil_survey", "One sample tells you about one spot. A **Soil Survey** collects samples from "
+                                          "across a plot and plans for the whole field."),
+                text("**To file a result:** when the lab has finished, right-click it holding the survey instead of "
+                     "collecting the report. Or hold the survey with a Soil Test Report in your other hand and use it.\n\n"
+                     "A survey belongs to the plot of its first sample; retesting a spot replaces the old result."),
+                text("**Use the survey** to read it:\n- **Plot averages** and the range across samples.\n- **Plot plan:** "
+                     "lime and fertiliser per block, and totals for the plot's area in doses and spreader loads."),
+                text("- **Spots & advice:** samples that differ from the rest and need their own treatment, how many more "
+                     "samples a plot that size needs (about one per 1,000 blocks), and rotation advice from the crop "
+                     "history.\n- A page for every sample."),
+            ]},
             {"id": "soil_test", "name": "Reading a Soil Test", "icon": "tilth:soil_probe", "pages": [
-                text("The probe reports nutrients in **ppm** in the top 20 cm, as a soil laboratory does. Rough guides:\n"
+                text("The lab reports nutrients in **ppm** in the top 20 cm, as a real soil laboratory does. Rough guides:\n"
                      "- **N** (nitrate): under 10 low, 20-40 optimum.\n- **P**: under 10 low, 20-40 optimum.\n- **K**: under "
                      "90 low, 130-200 optimum."),
                 text("- **pH**: 6.0-7.0 suits most crops.\n- **Organic matter**: 3% or more is healthy. It feeds nitrogen "
@@ -201,8 +243,12 @@ CATEGORIES = [
                      "faster."),
             ]},
             {"id": "amendments", "name": "Amendments", "icon": "tilth:compost", "pages": [
-                spot("tilth:manure", "**Manure** is dropped by cows, pigs, sheep, goats, chickens and horses. It supplies "
-                                     "nitrogen, phosphorus, potassium and organic matter."),
+                spot("tilth:slurry_bucket", "**Slurry** is manure mixed with water. Animals leave dung on the ground in "
+                                            "layers: **shovel** it up, then craft four manure with a water bucket into a "
+                                            "**Bucket of Slurry**."),
+                text("Pour slurry on farmland for one dose on every block of a 3x3 patch, or load buckets into the "
+                     "fertiliser spreader (nine doses each). It supplies nitrogen, phosphorus, potassium and organic "
+                     "matter.\n\nDung left lying slowly rots into the ground beneath it."),
                 spot("tilth:compost", "**Compost** is slower and gentler. It builds organic matter and supplies "
                                       "balanced nutrients."),
                 craft("tilth:compost_from_manure"),
@@ -224,12 +270,12 @@ CATEGORIES = [
     },
     {
         "id": "water", "name": "Water", "icon": "minecraft:water_bucket",
-        "description": "Finite water, irrigation, the water table, ponds and evaporation.",
+        "description": "Irrigation, the water table, ponds, and optional finite water.",
         "entries": [
-            {"id": "finite_water", "name": "Finite Water", "icon": "minecraft:water_bucket", "pages": [
-                text("Water is a resource. Outside oceans and rivers, two water sources no longer create a third, so a "
-                     "bucket taken is a bucket gone. Small ponds slowly evaporate in dry, hot weather. Lakes, and ponds "
-                     "below the water table, persist."),
+            {"id": "finite_water", "name": "Ponds & Finite Water", "icon": "minecraft:water_bucket", "pages": [
+                text("By default water behaves as in vanilla: two sources make a third. For a harder game, set "
+                     "**water.sourceCreation** to INFINITE_BIOMES_ONLY so that only oceans and rivers regenerate, and "
+                     "turn on **water.evaporation** so small ponds dry up in hot weather."),
                 text("Rain refills the land. During rain, water runs to the lowest point of each hollow. A closed hollow "
                      "on slow-draining ground (clay, compacted soil, rock) fills block by block into a **pond**. Flat, "
                      "poorly drained ground collects **puddles**."),
@@ -274,6 +320,14 @@ CATEGORIES = [
                      "about 32-38 °C at flowering sterilises grain."),
             ]},
             {"id": "planting_calendar", "name": "Planting Calendar", "icon": "minecraft:clock", "pages": "PLANTING"},
+            {"id": "symptoms", "name": "Reading Your Crops", "icon": "minecraft:spyglass", "pages": [
+                text("Crops show what they lack:\n- **Yellow leaves**, the lower ones first: short of nitrogen (or sulfur "
+                     "or magnesium).\n- **Purple leaves**: short of phosphorus, often in cold, wet springs.\n- **Dull, "
+                     "drooping leaves**: short of water."),
+                text("- **Brown, water-soaked edges**: frost damage.\n\nThe ground shows its water too: dry farmland "
+                     "cracks, and saturated farmland goes dark with water standing in the furrows. With Jade or WTHIT "
+                     "installed, looking at a crop tells you the same in words."),
+            ]},
             {"id": "harvest", "name": "Harvest & Quality", "icon": "minecraft:wheat", "pages": [
                 text("Harvest when the crop reaches its final stage: right-click it, or break it. Alfalfa and clover are "
                      "cut at early bloom and regrow, and tomatoes give several pickings. Crops left standing long after "
@@ -304,11 +358,20 @@ CATEGORIES = [
                                      "breaks compaction."),
                 craft("tilth:plow"),
                 text("**To plough:** place it, mount a horse, donkey or mule, and right-click the plough to hitch it. "
-                     "You can also hitch it to yourself on foot, but it is slow work.\n\n**Sneak and right-click** to "
-                     "lower or raise the shares. Lowered, it tills everything it is dragged over."),
-                text("Draft resistance slows whatever is pulling. Raise the shares to travel, and right-click again to "
-                     "unhitch.\n\nPloughing destroys crops in its path and turns them into residue. Hit the plough to "
-                     "pick it up."),
+                     "It is far too heavy to pull by hand.\n\n**Right-click it again from the saddle** to lower or "
+                     "raise the shares. Lowered, it tills everything it is dragged over."),
+                text("Draft resistance slows whatever is pulling. Raise the shares to travel. To unhitch, get down and "
+                     "right-click the plough.\n\nPloughing destroys crops in its path and turns them into residue. Hit "
+                     "the plough to pick it up."),
+            ]},
+            {"id": "spreader", "name": "Fertilizer Spreader", "icon": "tilth:spreader", "pages": [
+                entity("tilth:spreader", "A horse-drawn broadcast spreader with a spinning disc."),
+                craft("tilth:spreader"),
+                text("**Load it** by right-clicking with manure, compost, lime, wood ash, sulfur, bone meal or straw. "
+                     "The hopper holds 128 of one kind.\n\nHitch it like the plough, then **right-click it again from "
+                     "the saddle** to open or close the hopper."),
+                text("Pulled across a field, it spreads one dose on every block of a three-block swath, under growing "
+                     "crops too. Opening or closing it tells you what is left. Break it to get the load back."),
             ]},
             {"id": "compaction", "name": "Compaction & Wet Clay", "icon": "tilth:clay_farmland", "pages": [
                 text("Feet, hooves and landing on farmland compact it, and wet soil compacts far more. Compacted soil "
@@ -398,11 +461,48 @@ CATEGORIES = [
                 text("Turn them on with afflictions.enabled in the config. **/tilth affliction list** and **info** "
                      "describe each organism, **risk** shows today's infection risk for the crop you are looking at, "
                      "and **infect** / **clear** let you test them."),
+                text("To see what is attacking a crop, cut a **Plant Sample** from it with the **Kitchen Knife** "
+                     "(right-click the crop), hold the sample in your off hand and use a **Microscope**. It shows the "
+                     "organism magnified, with its symptoms and how to control it."),
+                craft("tilth:microscope"),
                 text("Rotation is the main defence. Soil- and residue-borne organisms build up when the same host is "
                      "grown again before they die out. Ploughing buries residue-borne ones."),
             ]},
         ],
         "auto": "AFFLICTIONS",
+    },
+    {
+        "id": "livestock", "name": "Livestock", "icon": "minecraft:wheat",
+        "description": "Animal condition, grazing, hay, sexes, breeding, milk, eggs and meat.",
+        "entries": [
+            {"id": "condition", "name": "Animal Condition", "icon": "minecraft:lead", "pages": [
+                text("Cows, sheep, goats, pigs, chickens and horses each have a **condition**, from starving to top "
+                     "condition. It falls steadily, from top condition to starving in about two days without food."),
+                text("Animals put on condition by **grazing** grass (heavy grazing wears pasture down to bare soil), by "
+                     "eating from a **hay bale** within two blocks (a bale feeds about ten meals), or when you feed them "
+                     "by hand: wheat, hay, oats, barley, maize, alfalfa or clover."),
+                spot("tilth:alfalfa_bale", "An **Alfalfa Hay Bale** (nine alfalfa) is far richer than grass hay: each meal "
+                                           "does half again as much good, and a bale lasts about fourteen meals."),
+                text("Grass barely grows in cold weather, so in winter grazing gives little and animals need hay. Use "
+                     "**/tilth animal @n** or Jade to see an animal's condition."),
+            ]},
+            {"id": "produce", "name": "Milk, Eggs & Meat", "icon": "minecraft:milk_bucket", "pages": [
+                text("- **Breeding:** a thin animal puts feed into condition instead of breeding.\n- **Milk:** cows "
+                     "and nannies give milk once a day, and only when not thin.\n- **Eggs:** thin hens stop laying; "
+                     "roosters never lay."),
+                text("- **Wool:** sheep regrow wool by grazing.\n- **Manure:** well-fed animals leave dung on the ground "
+                     "to shovel up.\n- **Meat:** yield and quality follow condition, from a scrap of Poor meat to Premium cuts."),
+            ]},
+            {"id": "breeding", "name": "Sexes & Breeding", "icon": "minecraft:wheat", "pages": [
+                text("Every animal is **male or female**. Males show it: bulls have a nose ring and heavy horns, rams "
+                     "curled horns, boars tusks, roosters a tall comb and a tail plume. Jade and /tilth animal tell you too."),
+                text("Only a **male and a female** will breed, and both must be in good condition. **Sheep and goats** only "
+                     "come into season in autumn, from September to December."),
+                text("Mammals carry their young before giving birth: about **four days** for mares, **three** for cows and "
+                     "**two** for ewes, nannies and sows. Sows have litters of two to four; ewes and nannies often twins. "
+                     "Giving birth costs the mother condition."),
+            ]},
+        ],
     },
     {
         "id": "reference", "name": "Commands & Config", "icon": "minecraft:command_block",

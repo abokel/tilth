@@ -2,7 +2,7 @@
   "name": "Barley",
   "icon": "tilth:barley_seeds",
   "category": "tilth:crops",
-  "sortnum": 5,
+  "sortnum": 6,
   "pages": [
     {
       "type": "patchouli:spotlight",

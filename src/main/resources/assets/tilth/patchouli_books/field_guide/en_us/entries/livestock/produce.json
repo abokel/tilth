@@ -1,0 +1,16 @@
+{
+  "name": "Milk, Eggs & Meat",
+  "icon": "minecraft:milk_bucket",
+  "category": "tilth:livestock",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Breeding:$() a thin animal puts feed into condition instead of breeding.$(li)$(thing)Milk:$() cows and nannies give milk once a day, and only when not thin.$(li)$(thing)Eggs:$() thin hens stop laying; roosters never lay."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Wool:$() sheep regrow wool by grazing.$(li)$(thing)Manure:$() well-fed animals leave dung on the ground to shovel up.$(li)$(thing)Meat:$() yield and quality follow condition, from a scrap of Poor meat to Premium cuts."
+    }
+  ]
+}

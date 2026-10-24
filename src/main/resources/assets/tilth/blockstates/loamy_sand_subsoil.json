@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "tilth:block/loamy_sand_subsoil"
-    }
+    "": [
+      {
+        "model": "tilth:block/loamy_sand_subsoil"
+      },
+      {
+        "model": "tilth:block/loamy_sand_subsoil",
+        "y": 90
+      },
+      {
+        "model": "tilth:block/loamy_sand_subsoil",
+        "y": 180
+      },
+      {
+        "model": "tilth:block/loamy_sand_subsoil",
+        "y": 270
+      }
+    ]
   }
 }

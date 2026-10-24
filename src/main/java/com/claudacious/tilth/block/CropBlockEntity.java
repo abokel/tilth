@@ -82,8 +82,10 @@ public class CropBlockEntity extends BlockEntity {
             return;
         }
         int stage = species().visualStage(crop);
-        if (state.getValue(TilthCropBlock.STAGE) != stage) {
-            level.setBlock(worldPosition, state.setValue(TilthCropBlock.STAGE, stage), Block.UPDATE_CLIENTS);
+        CropCondition condition = CropCondition.of(crop);
+        if (state.getValue(TilthCropBlock.STAGE) != stage || state.getValue(TilthCropBlock.CONDITION) != condition) {
+            level.setBlock(worldPosition, state.setValue(TilthCropBlock.STAGE, stage).setValue(TilthCropBlock.CONDITION, condition),
+                    Block.UPDATE_CLIENTS);
         }
         setChanged();
     }

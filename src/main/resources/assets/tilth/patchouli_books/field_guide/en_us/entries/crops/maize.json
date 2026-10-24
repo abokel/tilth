@@ -2,7 +2,7 @@
   "name": "Maize",
   "icon": "tilth:maize_seeds",
   "category": "tilth:crops",
-  "sortnum": 9,
+  "sortnum": 10,
   "pages": [
     {
       "type": "patchouli:spotlight",

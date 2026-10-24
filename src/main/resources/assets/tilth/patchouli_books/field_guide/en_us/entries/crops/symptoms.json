@@ -1,0 +1,20 @@
+{
+  "name": "Reading Your Crops",
+  "icon": "minecraft:spyglass",
+  "category": "tilth:crops",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Crops show what they lack:$(li)$(thing)Yellow leaves$(), the lower ones first: short of nitrogen (or sulfur or magnesium).$(li)$(thing)Purple leaves$(): short of phosphorus, often in cold, wet springs."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Dull, drooping leaves$(): short of water."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(li)$(thing)Brown, water-soaked edges$(): frost damage.$(br2)The ground shows its water too: dry farmland cracks, and saturated farmland goes dark with water standing in the furrows. With Jade or WTHIT installed, looking at a crop tells you the same in words."
+    }
+  ]
+}

@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "tilth:block/silty_clay_topsoil"
-    }
+    "": [
+      {
+        "model": "tilth:block/silty_clay_topsoil"
+      },
+      {
+        "model": "tilth:block/silty_clay_topsoil",
+        "y": 90
+      },
+      {
+        "model": "tilth:block/silty_clay_topsoil",
+        "y": 180
+      },
+      {
+        "model": "tilth:block/silty_clay_topsoil",
+        "y": 270
+      }
+    ]
   }
 }

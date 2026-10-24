@@ -53,7 +53,9 @@ public class GrassSeedModifier extends LootModifier {
         if (suited.isEmpty()) {
             return loot;
         }
-        CropSpecies pick = suited.get(context.getRandom().nextInt(suited.size()));
+        // The starter radish turns up in a third of finds so new players can always get a crop going.
+        CropSpecies pick = suited.contains(Crops.RADISH) && context.getRandom().nextFloat() < 0.33f
+                ? Crops.RADISH : suited.get(context.getRandom().nextInt(suited.size()));
         loot.add(new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(pick.seedItem))));
         return loot;
     }

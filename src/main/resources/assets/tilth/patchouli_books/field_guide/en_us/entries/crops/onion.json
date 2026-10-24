@@ -2,7 +2,7 @@
   "name": "Onion",
   "icon": "tilth:onion_seeds",
   "category": "tilth:crops",
-  "sortnum": 23,
+  "sortnum": 25,
   "pages": [
     {
       "type": "patchouli:spotlight",

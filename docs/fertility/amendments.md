@@ -6,8 +6,12 @@ nav_order: 4
 
 # Amendments
 
-> **Manure**  
-> **Manure** is dropped by cows, pigs, sheep, goats, chickens and horses. It supplies nitrogen, phosphorus, potassium and organic matter.
+> **Bucket of Slurry**  
+> **Slurry** is manure mixed with water. Animals leave dung on the ground in layers: **shovel** it up, then craft four manure with a water bucket into a **Bucket of Slurry**.
+
+Pour slurry on farmland for one dose on every block of a 3x3 patch, or load buckets into the fertiliser spreader (nine doses each). It supplies nitrogen, phosphorus, potassium and organic matter.
+
+Dung left lying slowly rots into the ground beneath it.
 
 > **Compost**  
 > **Compost** is slower and gentler. It builds organic matter and supplies balanced nutrients.

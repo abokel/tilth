@@ -2,7 +2,7 @@
   "name": "Flax",
   "icon": "tilth:flax_seeds",
   "category": "tilth:crops",
-  "sortnum": 29,
+  "sortnum": 31,
   "pages": [
     {
       "type": "patchouli:spotlight",

@@ -1,7 +1,7 @@
 ---
 title: "Garlic"
 parent: Crops
-nav_order: 25
+nav_order: 27
 ---
 
 # Garlic

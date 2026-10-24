@@ -385,6 +385,14 @@
       "protein": 1,
       "fiber": 5
     },
+    "tilth:radish": {
+      "carbohydrate": 2,
+      "protein": 1,
+      "fiber": 4,
+      "vitamin_c": 25,
+      "iron": 1,
+      "calcium": 2
+    },
     "tilth:rolled_oats": {
       "carbohydrate": 20,
       "protein": 8,

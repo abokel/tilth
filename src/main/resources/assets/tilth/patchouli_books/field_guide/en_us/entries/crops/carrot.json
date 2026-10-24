@@ -2,7 +2,7 @@
   "name": "Carrot",
   "icon": "minecraft:carrot",
   "category": "tilth:crops",
-  "sortnum": 20,
+  "sortnum": 21,
   "pages": [
     {
       "type": "patchouli:spotlight",

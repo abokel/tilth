@@ -1,0 +1,28 @@
+{
+  "name": "Fertilizer Spreader",
+  "icon": "tilth:spreader",
+  "category": "tilth:tillage",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:entity",
+      "entity": "tilth:spreader",
+      "scale": 0.8,
+      "offset": 0.3,
+      "rotate": true,
+      "text": "A horse-drawn broadcast spreader with a spinning disc."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "tilth:spreader"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Load it$() by right-clicking with manure, compost, lime, wood ash, sulfur, bone meal or straw. The hopper holds 128 of one kind.$(br2)Hitch it like the plough, then $(thing)right-click it again from the saddle$() to open or close the hopper."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Pulled across a field, it spreads one dose on every block of a three-block swath, under growing crops too. Opening or closing it tells you what is left. Break it to get the load back."
+    }
+  ]
+}

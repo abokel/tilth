@@ -465,8 +465,10 @@ def write_wiki(wiki_dir, cats, names, changelog_md):
 
 def generate(root, lang, wiki_dir=None):
     crops = parse_crops(os.path.join(root, "src", "main", "java", "com", "claudacious", "tilth", "sim", "crop", "Crops.java"))
-    if len(crops) != 28:
-        raise SystemExit(f"Expected 28 crops parsed from Crops.java, got {len(crops)}")
+    expected = open(os.path.join(root, "src", "main", "java", "com", "claudacious", "tilth", "sim", "crop", "Crops.java"),
+                    encoding="utf-8").read().count("CropSpecies.builder(")
+    if len(crops) != expected:
+        raise SystemExit(f"Expected {expected} crops parsed from Crops.java, got {len(crops)}")
     names = Names(lang)
     cats = build_categories(crops, names)
     write_patchouli(os.path.join(root, "src", "main", "resources"), cats)

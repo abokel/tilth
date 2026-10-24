@@ -42,14 +42,17 @@ public final class TilthClient {
         modBus.addListener(TilthClient::itemColors);
         modBus.addListener(TilthClient::renderers);
         modBus.addListener(TilthClient::layers);
+        modBus.addListener(ClientWeather::register);
+        modBus.addListener((EntityRenderersEvent.RegisterLayerDefinitions e) -> MaleFeaturesLayer.layers(e));
+        modBus.addListener((EntityRenderersEvent.AddLayers e) -> MaleFeaturesLayer.addLayers(e));
+        NeoForge.EVENT_BUS.addListener(ClientSexes::clear);
         NeoForge.EVENT_BUS.addListener(TilthClient::tooltip);
         NeoForge.EVENT_BUS.addListener(TilthClient::fog);
+        NeoForge.EVENT_BUS.addListener(SeasonalColors::onClientTick);
     }
 
     private static void blockColors(RegisterColorHandlersEvent.Block event) {
-        Block[] grass = TilthBlocks.GRASS.values().stream().map(b -> (Block) b.get()).toArray(Block[]::new);
-        event.register((state, level, pos, tint) -> level != null && pos != null
-                ? BiomeColors.getAverageGrassColor(level, pos) : GrassColor.getDefaultColor(), grass);
+        SeasonalColors.register(event);
     }
 
     private static void itemColors(RegisterColorHandlersEvent.Item event) {
@@ -59,10 +62,12 @@ public final class TilthClient {
 
     private static void renderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(TilthEntities.PLOW.get(), PlowRenderer::new);
+        event.registerEntityRenderer(TilthEntities.SPREADER.get(), SpreaderRenderer::new);
     }
 
     private static void layers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(PlowModel.LAYER, PlowModel::createLayer);
+        event.registerLayerDefinition(SpreaderModel.LAYER, SpreaderModel::createLayer);
     }
 
     private static void tooltip(ItemTooltipEvent event) {

@@ -3,6 +3,7 @@ package com.claudacious.tilth.registry;
 import com.claudacious.tilth.Tilth;
 import com.claudacious.tilth.block.SoilMemory;
 import com.claudacious.tilth.diet.PlayerDiet;
+import com.claudacious.tilth.livestock.LivestockState;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
@@ -17,6 +18,9 @@ public final class TilthAttachments {
 
     public static final Supplier<AttachmentType<SoilMemory>> SOIL_MEMORY = ATTACHMENTS.register("soil_memory",
             () -> AttachmentType.builder(() -> new SoilMemory()).serialize(SoilMemory.CODEC).build());
+
+    public static final Supplier<AttachmentType<LivestockState>> LIVESTOCK = ATTACHMENTS.register("livestock",
+            () -> AttachmentType.builder(() -> new LivestockState()).serialize(LivestockState.CODEC).build());
 
     private TilthAttachments() {
     }

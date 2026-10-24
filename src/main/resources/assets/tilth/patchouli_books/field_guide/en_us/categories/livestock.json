@@ -1,0 +1,6 @@
+{
+  "name": "Livestock",
+  "description": "Animal condition, grazing, hay, sexes, breeding, milk, eggs and meat.",
+  "icon": "minecraft:wheat",
+  "sortnum": 9
+}

@@ -1,34 +1,154 @@
 {
   "variants": {
-    "stage=0": {
+    "condition=healthy,stage=0": {
       "model": "tilth:block/crop/garlic_stage0"
     },
-    "stage=1": {
+    "condition=chlorotic,stage=0": {
+      "model": "tilth:block/crop/garlic_stage0"
+    },
+    "condition=purpled,stage=0": {
+      "model": "tilth:block/crop/garlic_stage0"
+    },
+    "condition=wilted,stage=0": {
+      "model": "tilth:block/crop/garlic_stage0"
+    },
+    "condition=frosted,stage=0": {
+      "model": "tilth:block/crop/garlic_stage0"
+    },
+    "condition=healthy,stage=1": {
       "model": "tilth:block/crop/garlic_stage1"
     },
-    "stage=2": {
+    "condition=chlorotic,stage=1": {
+      "model": "tilth:block/crop/garlic_stage1_chlorotic"
+    },
+    "condition=purpled,stage=1": {
+      "model": "tilth:block/crop/garlic_stage1_purpled"
+    },
+    "condition=wilted,stage=1": {
+      "model": "tilth:block/crop/garlic_stage1_wilted"
+    },
+    "condition=frosted,stage=1": {
+      "model": "tilth:block/crop/garlic_stage1_frosted"
+    },
+    "condition=healthy,stage=2": {
       "model": "tilth:block/crop/garlic_stage2"
     },
-    "stage=3": {
+    "condition=chlorotic,stage=2": {
+      "model": "tilth:block/crop/garlic_stage2_chlorotic"
+    },
+    "condition=purpled,stage=2": {
+      "model": "tilth:block/crop/garlic_stage2_purpled"
+    },
+    "condition=wilted,stage=2": {
+      "model": "tilth:block/crop/garlic_stage2_wilted"
+    },
+    "condition=frosted,stage=2": {
+      "model": "tilth:block/crop/garlic_stage2_frosted"
+    },
+    "condition=healthy,stage=3": {
       "model": "tilth:block/crop/garlic_stage3"
     },
-    "stage=4": {
+    "condition=chlorotic,stage=3": {
+      "model": "tilth:block/crop/garlic_stage3_chlorotic"
+    },
+    "condition=purpled,stage=3": {
+      "model": "tilth:block/crop/garlic_stage3_purpled"
+    },
+    "condition=wilted,stage=3": {
+      "model": "tilth:block/crop/garlic_stage3_wilted"
+    },
+    "condition=frosted,stage=3": {
+      "model": "tilth:block/crop/garlic_stage3_frosted"
+    },
+    "condition=healthy,stage=4": {
       "model": "tilth:block/crop/garlic_stage4"
     },
-    "stage=5": {
+    "condition=chlorotic,stage=4": {
+      "model": "tilth:block/crop/garlic_stage4_chlorotic"
+    },
+    "condition=purpled,stage=4": {
+      "model": "tilth:block/crop/garlic_stage4_purpled"
+    },
+    "condition=wilted,stage=4": {
+      "model": "tilth:block/crop/garlic_stage4_wilted"
+    },
+    "condition=frosted,stage=4": {
+      "model": "tilth:block/crop/garlic_stage4_frosted"
+    },
+    "condition=healthy,stage=5": {
       "model": "tilth:block/crop/garlic_stage5"
     },
-    "stage=6": {
+    "condition=chlorotic,stage=5": {
+      "model": "tilth:block/crop/garlic_stage5_chlorotic"
+    },
+    "condition=purpled,stage=5": {
+      "model": "tilth:block/crop/garlic_stage5_purpled"
+    },
+    "condition=wilted,stage=5": {
+      "model": "tilth:block/crop/garlic_stage5_wilted"
+    },
+    "condition=frosted,stage=5": {
+      "model": "tilth:block/crop/garlic_stage5_frosted"
+    },
+    "condition=healthy,stage=6": {
       "model": "tilth:block/crop/garlic_stage6"
     },
-    "stage=7": {
+    "condition=chlorotic,stage=6": {
+      "model": "tilth:block/crop/garlic_stage6_chlorotic"
+    },
+    "condition=purpled,stage=6": {
+      "model": "tilth:block/crop/garlic_stage6_purpled"
+    },
+    "condition=wilted,stage=6": {
+      "model": "tilth:block/crop/garlic_stage6_wilted"
+    },
+    "condition=frosted,stage=6": {
+      "model": "tilth:block/crop/garlic_stage6_frosted"
+    },
+    "condition=healthy,stage=7": {
       "model": "tilth:block/crop/garlic_stage7"
     },
-    "stage=8": {
+    "condition=chlorotic,stage=7": {
+      "model": "tilth:block/crop/garlic_stage7_chlorotic"
+    },
+    "condition=purpled,stage=7": {
+      "model": "tilth:block/crop/garlic_stage7_purpled"
+    },
+    "condition=wilted,stage=7": {
+      "model": "tilth:block/crop/garlic_stage7_wilted"
+    },
+    "condition=frosted,stage=7": {
+      "model": "tilth:block/crop/garlic_stage7_frosted"
+    },
+    "condition=healthy,stage=8": {
       "model": "tilth:block/crop/garlic_stage8"
     },
-    "stage=9": {
+    "condition=chlorotic,stage=8": {
+      "model": "tilth:block/crop/garlic_stage8_chlorotic"
+    },
+    "condition=purpled,stage=8": {
+      "model": "tilth:block/crop/garlic_stage8_purpled"
+    },
+    "condition=wilted,stage=8": {
+      "model": "tilth:block/crop/garlic_stage8_wilted"
+    },
+    "condition=frosted,stage=8": {
+      "model": "tilth:block/crop/garlic_stage8_frosted"
+    },
+    "condition=healthy,stage=9": {
       "model": "tilth:block/crop/garlic_stage9"
+    },
+    "condition=chlorotic,stage=9": {
+      "model": "tilth:block/crop/garlic_stage9_chlorotic"
+    },
+    "condition=purpled,stage=9": {
+      "model": "tilth:block/crop/garlic_stage9_purpled"
+    },
+    "condition=wilted,stage=9": {
+      "model": "tilth:block/crop/garlic_stage9_wilted"
+    },
+    "condition=frosted,stage=9": {
+      "model": "tilth:block/crop/garlic_stage9_frosted"
     }
   }
 }

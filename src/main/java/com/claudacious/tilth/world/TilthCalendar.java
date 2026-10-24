@@ -1,5 +1,6 @@
 package com.claudacious.tilth.world;
 
+import com.claudacious.tilth.network.CalendarSync;
 import com.claudacious.tilth.sim.calendar.CalendarMath;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -62,6 +63,7 @@ public final class TilthCalendar {
 
     public static void skipRealDays(MinecraftServer server, double realDays) {
         data(server).addOffset(math.ticksForRealDays(realDays));
+        CalendarSync.sendToAll(server);
     }
 
     public static boolean rainedOn(Level level, long day) {
@@ -74,6 +76,7 @@ public final class TilthCalendar {
             long skipped = event.getNewTime() - level.getDayTime();
             if (skipped > 0) {
                 data(level.getServer()).addOffset(skipped);
+                CalendarSync.sendToAll(level.getServer());
             }
         }
     }

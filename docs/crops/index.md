@@ -10,6 +10,7 @@ How crops grow, when to plant, harvest and quality, and every crop in detail.
 
 - [How Crops Grow](how_crops_grow.html)
 - [Planting Calendar](planting_calendar.html)
+- [Reading Your Crops](symptoms.html)
 - [Harvest & Quality](harvest.html)
 - [Common Wheat](common_wheat.html)
 - [Durum Wheat](durum_wheat.html)
@@ -30,6 +31,7 @@ How crops grow, when to plant, harvest and quality, and every crop in detail.
 - [Potato](potato.html)
 - [Carrot](carrot.html)
 - [Beetroot](beetroot.html)
+- [Radish](radish.html)
 - [Sugar Beet](sugar_beet.html)
 - [Onion](onion.html)
 - [Garlic](garlic.html)

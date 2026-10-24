@@ -2,7 +2,7 @@
   "name": "Alfalfa",
   "icon": "tilth:alfalfa_seeds",
   "category": "tilth:crops",
-  "sortnum": 17,
+  "sortnum": 18,
   "pages": [
     {
       "type": "patchouli:spotlight",

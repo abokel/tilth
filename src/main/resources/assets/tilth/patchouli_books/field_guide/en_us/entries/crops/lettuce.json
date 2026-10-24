@@ -2,7 +2,7 @@
   "name": "Lettuce",
   "icon": "tilth:lettuce_seeds",
   "category": "tilth:crops",
-  "sortnum": 26,
+  "sortnum": 28,
   "pages": [
     {
       "type": "patchouli:spotlight",

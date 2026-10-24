@@ -2,7 +2,7 @@
   "name": "Red Clover",
   "icon": "tilth:clover_seeds",
   "category": "tilth:crops",
-  "sortnum": 18,
+  "sortnum": 19,
   "pages": [
     {
       "type": "patchouli:spotlight",

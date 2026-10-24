@@ -10,7 +10,7 @@ Farming in Tilth follows real agronomy. Every block of ground has a **soil textu
 
 Crops grow on **thermal time**: warmth, not ticks. A cold spring slows them, a frost can kill them, and each crop has its own season.
 
-Tilled soil remembers its **nutrients**, **pH**, **organic matter**, moisture and compaction, and every crop draws on them. Water is **finite**: two sources no longer make a third outside oceans and rivers.
+Tilled soil remembers its **nutrients**, **pH**, **organic matter**, moisture and compaction, and every crop draws on them. Rain fills hollows into **ponds**, and water can optionally be made finite in the config.
 
 Your own body needs a varied **diet**, and well-grown food is more nourishing.
 
