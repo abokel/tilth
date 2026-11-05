@@ -2,7 +2,7 @@
   "name": "Field Pea",
   "icon": "tilth:peas",
   "category": "tilth:crops",
-  "sortnum": 13,
+  "sortnum": 15,
   "pages": [
     {
       "type": "patchouli:spotlight",

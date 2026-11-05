@@ -16,6 +16,10 @@ public final class SimSettings {
     public static volatile boolean droughtKillsCrops = true;
     public static volatile boolean waterloggingKillsCrops = true;
     public static volatile double overripeDaysBeforeDeath = 45.0;
+    public static volatile boolean pollinationEnabled = true;
+    public static volatile double pollinationStrength = 1.0;
+    public static volatile double cropMutationChance = 0.03;
+    public static volatile double cropMutationStep = 0.04;
 
     // Soil
     public static volatile double mineralizationMultiplier = 1.0;
@@ -33,4 +37,8 @@ public final class SimSettings {
     // Afflictions (diseases, pests, fungi) are modelled but inactive by default.
     public static volatile boolean afflictionsEnabled = false;
     public static volatile double afflictionPressureMultiplier = 1.0;
+
+    // Livestock genetics
+    public static volatile double livestockMutationChance = 0.02;
+    public static volatile double livestockMutationStep = 0.035;
 }

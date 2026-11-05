@@ -2,7 +2,10 @@ package com.claudacious.tilth.registry;
 
 import com.claudacious.tilth.Tilth;
 import com.claudacious.tilth.block.CropBlockEntity;
+import com.claudacious.tilth.block.DryingRackBlockEntity;
 import com.claudacious.tilth.block.FarmlandBlockEntity;
+import com.claudacious.tilth.block.GrainSiloBlockEntity;
+import com.claudacious.tilth.block.IncubatorBlockEntity;
 import com.claudacious.tilth.block.SoilLabBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Block;
@@ -27,6 +30,18 @@ public final class TilthBlockEntities {
     @SuppressWarnings("DataFlowIssue")
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SoilLabBlockEntity>> SOIL_LAB = BLOCK_ENTITIES.register("soil_lab",
             () -> BlockEntityType.Builder.of(SoilLabBlockEntity::new, TilthBlocks.SOIL_LAB.get()).build(null));
+
+    @SuppressWarnings("DataFlowIssue")
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<IncubatorBlockEntity>> INCUBATOR = BLOCK_ENTITIES.register("incubator",
+            () -> BlockEntityType.Builder.of(IncubatorBlockEntity::new, TilthBlocks.INCUBATOR.get()).build(null));
+
+    @SuppressWarnings("DataFlowIssue")
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DryingRackBlockEntity>> DRYING_RACK = BLOCK_ENTITIES.register("drying_rack",
+            () -> BlockEntityType.Builder.of(DryingRackBlockEntity::new, TilthBlocks.DRYING_RACK.get()).build(null));
+
+    @SuppressWarnings("DataFlowIssue")
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<GrainSiloBlockEntity>> GRAIN_SILO = BLOCK_ENTITIES.register("grain_silo",
+            () -> BlockEntityType.Builder.of(GrainSiloBlockEntity::new, TilthBlocks.GRAIN_SILO.get()).build(null));
 
     private TilthBlockEntities() {
     }

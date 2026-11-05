@@ -4,6 +4,7 @@ import com.claudacious.tilth.sim.Noise;
 import com.claudacious.tilth.sim.SimSettings;
 import com.claudacious.tilth.sim.climate.ClimateMath;
 import com.claudacious.tilth.sim.climate.DailyWeather;
+import com.claudacious.tilth.sim.genetics.CropGenome;
 import com.claudacious.tilth.sim.soil.Hydraulics;
 import com.claudacious.tilth.sim.soil.Nutrient;
 import com.claudacious.tilth.sim.soil.SoilState;
@@ -67,15 +68,20 @@ public final class CropGrowthModel {
         return 1.0 / (1.0 + Math.exp(-10.0 * (x - 0.42)));
     }
 
+    private static boolean pollinationActive() {
+        return SimSettings.pollinationEnabled && SimSettings.pollinationStrength > 0;
+    }
+
     public static void step(CropSpecies sp, CropState cs, SoilState s, Hydraulics h, DailyWeather w, SoilWater.Step water) {
         if (cs.dead) {
             return;
         }
         cs.daysSinceSowing++;
+        CropGenome genetics = cs.genome(sp);
         double tMean = w.tMean();
         double rw = (s.moisture - h.wiltingPoint()) / Math.max(0.01, h.fieldCapacity() - h.wiltingPoint());
         double gddToday = ClimateMath.growingDegreeDays(w.tMin(), w.tMax(), sp.tBase, sp.tCutoff)
-                * SimSettings.growthRateMultiplier;
+                * SimSettings.growthRateMultiplier * genetics.growthMultiplier();
 
         if (!cs.germinated) {
             germinate(sp, cs, s, h, w, rw, gddToday);
@@ -130,7 +136,6 @@ public final class CropGrowthModel {
         cs.waterFactor = 0.8 * cs.waterFactor + 0.2 * (fW * fWL);
         double fN = cs.minSufficiency();
         double fPh = sp.phSuitability(s.ph);
-        double fMicro = Math.min(1.0, Nutrient.micronutrientAvailability(s.ph) / 0.8);
         double fC = 1.0 - 0.35 * s.compaction;
         double fD = cs.afflictionGrowthFactor;
 
@@ -143,10 +148,6 @@ public final class CropGrowthModel {
         if (fPh < limiting) {
             limiting = fPh;
             limitingName = "soil pH";
-        }
-        if (fMicro < limiting) {
-            limiting = fMicro;
-            limitingName = "micronutrients (high pH)";
         }
         double fL = Noise.clamp(cs.lightFactor, 0, 1);
         if (fL < limiting) {
@@ -168,13 +169,22 @@ public final class CropGrowthModel {
             cs.stressWeight[win] += dDev;
         }
 
+        if (sp.pollinationDependence > 0 && cs.dev >= 0.45 && cs.dev <= 0.95 && dDev > 0) {
+            double pollination = sp.pollinationMultiplier(cs.pollinationToday);
+            cs.pollinationSum += pollination * dDev;
+            cs.pollinationWeight += dDev;
+            cs.pollinationFactor = Noise.clamp(cs.pollinationSum / Math.max(1e-6, cs.pollinationWeight), 0.2, 1.0);
+        } else if (sp.pollinationDependence <= 0 || cs.pollinationWeight <= 0) {
+            cs.pollinationFactor = 1.0;
+        }
+
         // Heat at anthesis sterilises florets.
         if (cs.dev >= 0.55 && cs.dev <= 0.75 && w.tMax() > sp.heatStress) {
             cs.eventFactor *= Math.max(0.5, 1.0 - 0.04 * (w.tMax() - sp.heatStress));
         }
 
-        frost(sp, cs, w);
-        survival(sp, cs, water);
+        frost(sp, cs, w, genetics);
+        survival(sp, cs, water, genetics);
 
         if (cs.dev >= 1.0) {
             cs.daysSinceMature += 1;
@@ -188,8 +198,10 @@ public final class CropGrowthModel {
         }
 
         double weight = Math.max(0.05, Math.min(cs.dev, 1.0) * Math.min(cs.dev, 1.0));
-        double q = 0.4 * fN + 0.3 * Math.min(1.0, fW * fWL) + 0.2 * fPh + 0.1 * cs.afflictionQualityFactor;
-        cs.qualitySum += q * weight;
+        double baseQuality = 0.35 * fN + 0.25 * Math.min(1.0, fW * fWL) + 0.2 * fPh + 0.1 * cs.afflictionQualityFactor;
+        cs.qualityBaseSum += baseQuality * weight;
+        cs.pollinationQualitySum += cs.pollinationFactor * weight;
+        cs.qualitySum = cs.qualityBaseSum + 0.1 * cs.pollinationQualitySum;
         cs.qualityWeight += weight;
         cs.yieldPotential = computeYieldPotential(cs);
     }
@@ -216,9 +228,9 @@ public final class CropGrowthModel {
         }
     }
 
-    private static void frost(CropSpecies sp, CropState cs, DailyWeather w) {
+    private static void frost(CropSpecies sp, CropState cs, DailyWeather w, CropGenome genetics) {
         boolean flowering = cs.dev >= 0.5 && cs.dev <= 0.8;
-        double threshold = flowering ? sp.frostKillReproductive : sp.frostKillVegetative;
+        double threshold = (flowering ? sp.frostKillReproductive : sp.frostKillVegetative) - genetics.frostToleranceC();
         if (cs.dev < 0.1) {
             threshold += 2;
         }
@@ -235,13 +247,13 @@ public final class CropGrowthModel {
         cs.biomass *= 0.95;
     }
 
-    private static void survival(CropSpecies sp, CropState cs, SoilWater.Step water) {
-        if (water.ks() < 0.08) {
+    private static void survival(CropSpecies sp, CropState cs, SoilWater.Step water, CropGenome genetics) {
+        if (water.ks() < 0.08 - genetics.droughtBonusDays() * 0.003) {
             cs.droughtDays++;
         } else {
             cs.droughtDays = Math.max(0, cs.droughtDays - 2);
         }
-        if (SimSettings.droughtKillsCrops && cs.droughtDays > 14 && cs.dev < 1.0) {
+        if (SimSettings.droughtKillsCrops && cs.droughtDays > 14 + genetics.droughtBonusDays() && cs.dev < 1.0) {
             cs.kill("wilted beyond recovery in drought");
         }
         if (water.waterlogged() && !sp.needsFlooding) {
@@ -268,7 +280,10 @@ public final class CropGrowthModel {
 
     /** Relative yield (1 = reference yield) if harvested now. */
     public static double yieldFactor(CropState cs) {
-        return cs.yieldPotential * cs.afflictionYieldFactor * (1.0 - 0.3 * cs.frostDamage) * SimSettings.yieldMultiplier;
+        double pollination = pollinationActive() ? cs.pollinationFactor : 1.0;
+        double geneYield = cs.genome == null ? 1.0 : cs.genome.yieldMultiplier();
+        return cs.yieldPotential * cs.afflictionYieldFactor * pollination * (1.0 - 0.3 * cs.frostDamage) * SimSettings.yieldMultiplier
+                * geneYield;
     }
 
     public static int grade(CropState cs) {
@@ -319,7 +334,13 @@ public final class CropGrowthModel {
         java.util.Arrays.fill(cs.stressWeight, 0);
         cs.eventFactor = 1.0;
         cs.yieldPotential = 1.0;
+        cs.pollinationToday = 1.0;
+        cs.pollinationFactor = 1.0;
+        cs.pollinationSum = 0;
+        cs.pollinationWeight = 0;
+        cs.pollinationQualitySum = 0;
         cs.daysSinceMature = 0;
+        cs.qualityBaseSum = 0;
         cs.qualitySum = 0;
         cs.qualityWeight = 0;
     }

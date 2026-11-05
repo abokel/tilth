@@ -1,0 +1,20 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "loaded": "false"
+      },
+      "apply": {
+        "model": "tilth:block/drying_rack"
+      }
+    },
+    {
+      "when": {
+        "loaded": "true"
+      },
+      "apply": {
+        "model": "tilth:block/drying_rack_loaded"
+      }
+    }
+  ]
+}

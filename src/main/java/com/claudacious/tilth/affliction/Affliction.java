@@ -143,4 +143,22 @@ public record Affliction(String name, String scientificName, Category category, 
         }
         return false;
     }
+
+    /**
+     * Animal host entries use {@code animal:<id>} (for example {@code animal:cow}) or
+     * {@code animal:*}.
+     */
+    public boolean infectsAnimal(String animalId) {
+        if (animalId == null || animalId.isBlank()) {
+            return false;
+        }
+        String id = animalId.toLowerCase(Locale.ROOT);
+        for (String h : hosts) {
+            String host = h.toLowerCase(Locale.ROOT);
+            if (host.equals("animal:*") || host.equals("animal:" + id)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

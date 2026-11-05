@@ -1,0 +1,54 @@
+{
+  "name": "Swine Influenza",
+  "scientific_name": "Influenza A virus (H1/H3)",
+  "category": "virus",
+  "hosts": [
+    "animal:pig"
+  ],
+  "transmission": [
+    "airborne_spores",
+    "migration"
+  ],
+  "envelope": {
+    "temp_min": 0,
+    "temp_opt": 12,
+    "temp_max": 26,
+    "min_humidity": 60,
+    "leaf_wetness_hours": 2,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 2,
+    "spread_rate": 0.65,
+    "overwintering": "carriers",
+    "survival_years": 0.15
+  },
+  "impact": {
+    "max_yield_loss": 0.3,
+    "growth_penalty": 0.35,
+    "quality_penalty": 0.2,
+    "can_kill_host": false,
+    "from_stage": 0,
+    "to_stage": 9,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 0,
+    "tillage_reduction": 0.0,
+    "resistant_varieties": false,
+    "methods": [
+      "Isolate coughing pigs",
+      "Improve airflow in pens",
+      "Use veterinary draught on diagnosed cases"
+    ]
+  },
+  "symptoms": [
+    "Fever and coughing",
+    "Reduced feed intake",
+    "Poor weight gain"
+  ],
+  "notes": "Fast spread in crowded groups; quarantine and rotation slow transmission."
+}

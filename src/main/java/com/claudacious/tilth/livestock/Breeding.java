@@ -3,6 +3,8 @@ package com.claudacious.tilth.livestock;
 import com.claudacious.tilth.network.SexSync;
 import com.claudacious.tilth.registry.TilthAttachments;
 import com.claudacious.tilth.sim.calendar.CalendarMath;
+import com.claudacious.tilth.sim.genetics.GeneticsModel;
+import com.claudacious.tilth.sim.livestock.LivestockBreedingModel;
 import com.claudacious.tilth.world.TilthCalendar;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
@@ -22,6 +24,8 @@ import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.BabyEntitySpawnEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
+
+import java.util.Random;
 
 /**
  * Sexes and breeding. Every farm animal is male or female; only a male and a female breed. Sheep and goats are
@@ -79,20 +83,34 @@ public final class Breeding {
             return;
         }
         LivestockState s = Livestock.state(animal);
-        if (s.sex == LivestockState.UNKNOWN) {
+        boolean founder = s.sex == LivestockState.UNKNOWN;
+        if (founder) {
             s.sex = animal.getRandom().nextBoolean() ? LivestockState.FEMALE : LivestockState.MALE;
-            animal.setData(TilthAttachments.LIVESTOCK.get(), s);
+            s.genome = GeneticsModel.randomLivestock(new java.util.Random(((ServerLevel) event.getLevel()).getSeed() ^ animal.getUUID().getLeastSignificantBits()));
         }
+        // Animals from before breeds existed, and founders, take a breed that suits the climate they live in.
+        Breed.Species species = Breed.speciesOf(animal);
+        if (s.breed.isEmpty() && species != null) {
+            Breed breed = Breed.choose(species, (ServerLevel) event.getLevel(), animal.blockPosition(), animal.getRandom());
+            if (breed != null) {
+                s.breed = breed.id();
+                if (founder) {
+                    s.genome = breed.bias(s.genome);
+                }
+                breed.applyLook(animal, animal.getRandom());
+            }
+        }
+        animal.setData(TilthAttachments.LIVESTOCK.get(), s);
     }
 
     public static void onStartTracking(PlayerEvent.StartTracking event) {
         if (event.getTarget() instanceof Animal animal && Livestock.isLivestock(animal) && event.getEntity() instanceof ServerPlayer player) {
-            PacketDistributor.sendToPlayer(player, new SexSync(animal.getId(), Livestock.state(animal).female()));
+            PacketDistributor.sendToPlayer(player, new SexSync(animal.getId(), Livestock.state(animal).female(), Livestock.state(animal).breed));
         }
     }
 
     public static void sync(Animal animal) {
-        PacketDistributor.sendToPlayersTrackingEntity(animal, new SexSync(animal.getId(), Livestock.state(animal).female()));
+        PacketDistributor.sendToPlayersTrackingEntity(animal, new SexSync(animal.getId(), Livestock.state(animal).female(), Livestock.state(animal).breed));
     }
 
     private static void tell(BabyEntitySpawnEvent event, String message) {
@@ -117,6 +135,12 @@ public final class Breeding {
         }
         Animal mother = sa.female() ? a : b;
         LivestockState sm = sa.female() ? sa : sb;
+        LivestockState father = sa.female() ? sb : sa;
+        if (Livestock.breedingBlockedByDisease(sm) || Livestock.breedingBlockedByDisease(father)) {
+            tell(event, "Breeding paused: diagnose, treat and clear quarantine first.");
+            event.setCanceled(true);
+            return;
+        }
         if (seasonal(mother)) {
             int month = CalendarMath.month(CalendarMath.dayOfYear(TilthCalendar.realDay(level)));
             if (month < 9) {
@@ -126,6 +150,19 @@ public final class Breeding {
             }
         }
         if (!carriesYoung(mother)) {
+            if (event.getChild() instanceof Animal child && Livestock.isLivestock(child)) {
+                LivestockState childState = Livestock.state(child);
+                LivestockBreedingModel.OffspringInheritance inherited = LivestockBreedingModel.inheritOffspring(sm.genome, father.genome,
+                        new Random(child.getRandom().nextLong()));
+                childState.sex = inherited.sex();
+                childState.genome = inherited.genome();
+                childState.breed = inheritBreed(sm.breed, father.breed, child.getRandom());
+                Breed breed = Breed.byId(childState.breed);
+                if (breed != null) {
+                    breed.applyLook(child, child.getRandom());
+                }
+                child.setData(TilthAttachments.LIVESTOCK.get(), childState);
+            }
             return;
         }
         event.setCanceled(true);
@@ -134,10 +171,23 @@ public final class Breeding {
             return;
         }
         sm.due = level.getGameTime() + gestation(mother);
+        sm.sireGenome = father.genome;
+        sm.sireBreed = father.breed;
         mother.setData(TilthAttachments.LIVESTOCK.get(), sm);
         level.sendParticles(ParticleTypes.HEART, mother.getX(), mother.getY() + 1.2, mother.getZ(), 4, 0.4, 0.3, 0.4, 0.0);
         tell(event, "The " + sexName(mother, true) + " is expecting. She will give birth in about "
                 + gestation(mother) / 24000 + " days.");
+    }
+
+    /** Young take the breed of one parent or the other; a cross shows whichever parent it favours. */
+    static String inheritBreed(String mother, String father, net.minecraft.util.RandomSource random) {
+        if (mother.isEmpty()) {
+            return father;
+        }
+        if (father.isEmpty()) {
+            return mother;
+        }
+        return random.nextBoolean() ? mother : father;
     }
 
     /** Called from the livestock tick: a pregnant female whose time has come gives birth. */
@@ -157,6 +207,9 @@ public final class Breeding {
         if (s.condition < 0.3) {
             young = Math.max(1, young - 1);
         }
+        if (s.diseaseBurden() > 0.45) {
+            young = Math.max(1, young - 1);
+        }
         for (int i = 0; i < young; i++) {
             AgeableMob baby = mother.getBreedOffspring(level, mother);
             if (baby == null) {
@@ -165,9 +218,24 @@ public final class Breeding {
             baby.setBaby(true);
             baby.moveTo(mother.getX() + (mother.getRandom().nextDouble() - 0.5), mother.getY(), mother.getZ() + (mother.getRandom().nextDouble() - 0.5),
                     mother.getRandom().nextFloat() * 360f, 0f);
+            if (baby instanceof Animal animalBaby && Livestock.isLivestock(animalBaby)) {
+                LivestockState bs = Livestock.state(animalBaby);
+                LivestockBreedingModel.OffspringInheritance inherited = LivestockBreedingModel.inheritOffspring(s.genome, s.sireGenome,
+                        new Random(animalBaby.getRandom().nextLong()));
+                bs.sex = inherited.sex();
+                bs.genome = inherited.genome();
+                bs.breed = inheritBreed(s.breed, s.sireBreed, animalBaby.getRandom());
+                Breed breed = Breed.byId(bs.breed);
+                if (breed != null) {
+                    breed.applyLook(animalBaby, animalBaby.getRandom());
+                }
+                animalBaby.setData(TilthAttachments.LIVESTOCK.get(), bs);
+            }
             level.addFreshEntityWithPassengers(baby);
         }
         s.add(-0.15);
+        s.sireGenome = com.claudacious.tilth.sim.genetics.LivestockGenome.baseline();
+        s.sireBreed = "";
         level.sendParticles(ParticleTypes.HAPPY_VILLAGER, mother.getX(), mother.getY() + 1.0, mother.getZ(), 10, 0.6, 0.4, 0.6, 0.0);
     }
 }

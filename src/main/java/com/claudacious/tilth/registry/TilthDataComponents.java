@@ -23,6 +23,20 @@ public final class TilthDataComponents {
             () -> DataComponentType.<List<BlockPos>>builder().persistent(BlockPos.CODEC.listOf())
                     .networkSynchronized(BlockPos.STREAM_CODEC.apply(ByteBufCodecs.list())).build());
 
+    /** Encoded crop cultivar/genome for saved seed and splicing. */
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<String>> CROP_GENOME = COMPONENTS.register("crop_genome",
+            () -> DataComponentType.<String>builder().persistent(Codec.STRING).networkSynchronized(ByteBufCodecs.STRING_UTF8).build());
+
+    /** Grain moisture fraction (0.06 = very dry, 0.35 = very wet). */
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Float>> GRAIN_MOISTURE = COMPONENTS.register("grain_moisture",
+            () -> DataComponentType.<Float>builder().persistent(Codec.floatRange(0.06f, 0.35f)).networkSynchronized(ByteBufCodecs.FLOAT).build());
+
+    /** Grain carried on a silo block item whose controller was broken while full. */
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<com.claudacious.tilth.postharvest.SiloContents>> SILO_CONTENTS =
+            COMPONENTS.register("silo_contents", () -> DataComponentType.<com.claudacious.tilth.postharvest.SiloContents>builder()
+                    .persistent(com.claudacious.tilth.postharvest.SiloContents.CODEC)
+                    .networkSynchronized(com.claudacious.tilth.postharvest.SiloContents.STREAM_CODEC).build());
+
     private TilthDataComponents() {
     }
 }

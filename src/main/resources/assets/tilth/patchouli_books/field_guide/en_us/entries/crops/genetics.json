@@ -1,0 +1,20 @@
+{
+  "name": "Cultivars & Seed Saving",
+  "icon": "tilth:gene_splicer",
+  "category": "tilth:crops",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Every crop is of a $(thing)cultivar$() with its own traits: how fast it grows, how much it yields, and how well it stands drought and frost. Seed saved from a harvest keeps its cultivar, so you can select the best of your own fields. Now and then a trait mutates."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Crops that need $(thing)pollinators$() set more seed with flowers nearby and bees working them: keep flower strips and a hive near beans, sunflowers and other insect-pollinated crops."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "A $(thing)Gene Splicer$() combines two seeds into a $(thing)Spliced Embryo$(), which grows into new seed in a $(thing)Genetic Incubator$(). Watch it: once in a while something else grows in there, breaks out and slimes about for a few blocks before it falls apart."
+    }
+  ]
+}

@@ -6,11 +6,11 @@ nav_order: 3
 
 # Calendar & Seasons
 
-Tilth keeps a real 365-day calendar. By default a month lasts 6 game days, so one game day covers about five calendar days and a year passes in 72 game days. Sleeping moves the calendar forward with the night.
+The seasons come from **Serene Seasons**, which Tilth requires. Its twelve sub-seasons are the twelve months: early spring is March, mid-summer July, late winter February. With Serene Seasons' default eight days a sub-season, one game day covers about four calendar days.
 
 Each biome has a real-world climate: plains are like the US Corn Belt, deserts like the Sonoran, jungles like the Amazon, taiga like inland Canada. Weather varies from day to day, with cold snaps, heat waves, rain and snow, and it is colder at altitude.
 
-The land shows the season. Oak and birch leaves turn gold, orange and red through autumn and hang brown through winter; grass yellows and browns. In winter, snow settles wherever it is below freezing and ponds freeze over, then thaw in spring.
+Serene Seasons shows the season on the land: leaf and grass colours change, and in winter snow falls, settles and freezes water, then thaws in spring. Tilth's crops feel the same season: the daily temperature, frost and rain they grow in follow its calendar. Use /season set to change it.
 
 Use **/tilth calendar** for the date and **/tilth climate** for the local climate, today's weather and degree days.
 

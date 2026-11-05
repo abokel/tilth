@@ -1,9 +1,15 @@
 package com.claudacious.tilth.sim;
 
 import com.claudacious.tilth.sim.soil.Hydraulics;
+import com.claudacious.tilth.sim.soil.Nutrient;
 import com.claudacious.tilth.sim.soil.Pedotransfer;
+import com.claudacious.tilth.sim.soil.SoilChemistry;
+import com.claudacious.tilth.sim.soil.SoilState;
 import com.claudacious.tilth.sim.soil.SoilTexture;
 import com.claudacious.tilth.sim.soil.TextureTriangle;
+import com.claudacious.tilth.sim.climate.BiomeClimate;
+import com.claudacious.tilth.sim.climate.BiomeClimateTable;
+import com.claudacious.tilth.sim.climate.DailyWeather;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -49,5 +55,38 @@ class SoilScienceTest {
         assertEquals(SoilTexture.SANDY_LOAM, SoilTexture.LOAM.coarser());
         assertTrue(SoilTexture.LOAM.finer().clay() >= SoilTexture.LOAM.clay());
         assertEquals(SoilTexture.PEAT, SoilTexture.PEAT.coarser());
+    }
+
+    @Test
+    void micronutrientAvailabilityRespondsToPh() {
+        assertTrue(Nutrient.FE.availability(5.8) > Nutrient.FE.availability(8.2));
+        assertTrue(Nutrient.ZN.availability(5.8) > Nutrient.ZN.availability(8.2));
+        assertTrue(Nutrient.MN.availability(5.8) > Nutrient.MN.availability(8.2));
+        assertTrue(Nutrient.CU.availability(5.8) > Nutrient.CU.availability(8.2));
+        assertTrue(Nutrient.B.availability(5.8) > Nutrient.B.availability(8.2));
+        assertTrue(Nutrient.MO.availability(8.2) > Nutrient.MO.availability(5.8));
+    }
+
+    @Test
+    void chemistryRecoversMicronutrientsTowardEquilibrium() {
+        BiomeClimate climate = BiomeClimateTable.lookup("minecraft:plains").orElseThrow();
+        SoilState s = new SoilState();
+        s.ph = 6.6;
+        s.organicMatter = 3.0;
+        s.moisture = 0.28;
+        s.iron = 0.1;
+        s.zinc = 0.01;
+        s.manganese = 0.1;
+        s.copper = 0.01;
+        s.boron = 0.01;
+        s.molybdenum = 0.001;
+        double startZn = s.zinc;
+        for (int i = 0; i < 120; i++) {
+            SoilChemistry.step(s, SoilTexture.LOAM, SoilTexture.LOAM.hydraulics(s.organicMatter), new DailyWeather(0, 12, 22, 1.5, 0, 3, 65, 0),
+                    0.2, false, climate);
+        }
+        assertTrue(s.zinc > startZn);
+        assertTrue(s.iron > 0.1);
+        assertTrue(s.molybdenum > 0.001);
     }
 }

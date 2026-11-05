@@ -12,6 +12,8 @@ How crops grow, when to plant, harvest and quality, and every crop in detail.
 - [Planting Calendar](planting_calendar.html)
 - [Reading Your Crops](symptoms.html)
 - [Harvest & Quality](harvest.html)
+- [Cultivars & Seed Saving](genetics.html)
+- [Drying & Storing Grain](grain_storage.html)
 - [Common Wheat](common_wheat.html)
 - [Durum Wheat](durum_wheat.html)
 - [Barley](barley.html)

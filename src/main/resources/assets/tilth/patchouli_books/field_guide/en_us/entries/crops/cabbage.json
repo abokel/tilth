@@ -2,7 +2,7 @@
   "name": "Cabbage",
   "icon": "tilth:cabbage_seeds",
   "category": "tilth:crops",
-  "sortnum": 27,
+  "sortnum": 29,
   "pages": [
     {
       "type": "patchouli:spotlight",

@@ -1,0 +1,10 @@
+{
+  "block.tilth.drying_rack": "Drying Rack",
+  "block.tilth.incubator": "Genetic Incubator",
+  "entity.tilth.homunculus": "Escaped Homunculus",
+  "item.tilth.gene_splicer": "Gene Splicer",
+  "item.tilth.incubator": "Genetic Incubator",
+  "item.tilth.spoiled_grain": "Spoiled Grain",
+  "item.tilth.spliced_embryo": "Spliced Embryo",
+  "item.tilth.veterinary_draught": "Veterinary Draught"
+}

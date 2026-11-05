@@ -34,11 +34,34 @@ All notable changes to Tilth are documented here. The format follows
   `/tilth animal <target>` shows it.
 - **Visible symptoms:** crops yellow when short of nitrogen, purple when short of phosphorus, wilt in drought and
   brown after frost. Farmland cracks when dry and shows standing water when saturated.
-- **Seasons you can see:** oak and birch leaves colour through autumn and brown in winter, grass yellows, snow
-  falls (drawn as snow, not rain, whenever the Tilth climate is freezing), settles, ponds freeze, and everything
-  thaws in spring.
+- **Seasons from Serene Seasons** (now a required mod): its sub-seasons are Tilth's months, so the colours, snow
+  and ice you see and the climate crops grow in agree. Tilth's own snow, ice, leaf colours and calendar settings are
+  gone, as are `/tilth time skip` and `/tilth time set` (use `/season set`).
 - **Jade and WTHIT** tooltips for crops (growth stage, ripeness, what is wrong), farmland (texture, moisture)
   and animals (sex, condition, and how long until a pregnant female gives birth).
+- **Breeds** of cattle, pigs, sheep, chickens and horses, each with its own coat: Holstein, Jersey, Highland, Angus,
+  Hereford and Brahman cattle; Large White, Berkshire, Tamworth, Old Spot and Mangalica pigs; Merino, Suffolk,
+  Hebridean, Soay and Herdwick sheep (with their natural wool colours); Leghorn, Rhode Island Red, Australorp, Light
+  Sussex and Barred Rock chickens; Shire, Arabian, Friesian, Fjord and Mustang horses. Animals take a breed that suits
+  their biome's climate, young inherit one, and a breed shapes the genome (milk, eggs, size, thrift). Kept outside its
+  climate an animal loses condition faster.
+- **Genetics and cultivars:** crops have heritable cultivars (growth, yield, drought and frost tolerance) and animals
+  heritable traits, with occasional mutations. Seed saved from a harvest keeps its cultivar.
+- **Gene splicing:** a Gene Splicer combines two seeds into a Spliced Embryo, grown into new seed in a Genetic
+  Incubator. Rarely, something else grows in there, escapes and slimes about for a few blocks before falling apart.
+- **Pollinators:** insect-pollinated crops set more seed with flowers and working bees nearby.
+- **Post-harvest:** grain comes off the field with a moisture content (shown in its tooltip). Dry it on a Drying Rack.
+  Grain above 14% moisture goes mouldy in store, and grain in chests, barrels and inventories also loses a little each
+  day to rodents and weevils (worked out when the chest is next opened).
+- **Grain Silo** multiblock: twenty segments built as a 2x2 tower five blocks high form one corrugated steel silo with
+  a conical roof. It holds over 40,000 grain, dries it by aeration, cuts spoilage to a quarter and keeps rodents out.
+  Fill and empty it by hand or with hoppers; comparators read how full it is; a broken controller keeps its grain on
+  the dropped item.
+- **Pasture and veterinary care:** grazing wears pasture down, so rotate paddocks. Cattle, pigs and poultry can catch
+  diseases (bovine respiratory disease, swine influenza, coccidiosis). Diagnose with the microscope, treat with a
+  Veterinary Draught, and quarantine with a sneak-right-click of a lead.
+- **Farm Wagon:** a horse-drawn wagon that holds as much as a chest. Hitch it from the saddle like the plough.
+- **Bench microscope:** sneak-use the microscope on a block to set it down, then right-click it with a plant sample.
 - Option `plots.farmOnlyInPlots`: ground can only be tilled inside a surveyed plot by its owner or members.
 - `/tilth bench plots <count>` for testing plot lookups at scale; `/tilth fillfield` now takes a radius up to 64.
 
@@ -55,7 +78,6 @@ All notable changes to Tilth are documented here. The format follows
 
 ### Planned
 - Pumps and wells for irrigation.
-- Seed genetics and saved seed; disease-resistant cultivars.
 - A multi-layer soil profile under each block; rainfall-intensity erosion.
 - Seed drills, harrows and harvesters.
 

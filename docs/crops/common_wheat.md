@@ -1,7 +1,7 @@
 ---
 title: "Common Wheat"
 parent: Crops
-nav_order: 5
+nav_order: 7
 ---
 
 # Common Wheat

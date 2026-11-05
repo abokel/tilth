@@ -1,0 +1,56 @@
+{
+  "name": "Bovine Respiratory Disease",
+  "scientific_name": "Mannheimia haemolytica complex",
+  "category": "bacterium",
+  "hosts": [
+    "animal:cow",
+    "animal:goat",
+    "animal:sheep"
+  ],
+  "transmission": [
+    "airborne_spores",
+    "mechanical_contact"
+  ],
+  "envelope": {
+    "temp_min": -5,
+    "temp_opt": 8,
+    "temp_max": 24,
+    "min_humidity": 70,
+    "leaf_wetness_hours": 4,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 3,
+    "spread_rate": 0.55,
+    "overwintering": "carriers",
+    "survival_years": 0.25
+  },
+  "impact": {
+    "max_yield_loss": 0.35,
+    "growth_penalty": 0.4,
+    "quality_penalty": 0.25,
+    "can_kill_host": true,
+    "from_stage": 0,
+    "to_stage": 9,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 0,
+    "tillage_reduction": 0.0,
+    "resistant_varieties": false,
+    "methods": [
+      "Quarantine new arrivals",
+      "Reduce stocking density and damp bedding",
+      "Treat diagnosed animals promptly"
+    ]
+  },
+  "symptoms": [
+    "Coughing and laboured breathing",
+    "Nasal discharge",
+    "Drop in appetite and milk"
+  ],
+  "notes": "Stress and overgrazed paddocks increase susceptibility."
+}

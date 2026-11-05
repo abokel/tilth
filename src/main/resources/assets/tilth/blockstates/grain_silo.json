@@ -1,0 +1,124 @@
+{
+  "variants": {
+    "formed=false,quad=0,tier=0": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=0,tier=0": {
+      "model": "tilth:block/grain_silo_0_bottom"
+    },
+    "formed=false,quad=0,tier=1": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=0,tier=1": {
+      "model": "tilth:block/grain_silo_0_middle"
+    },
+    "formed=false,quad=0,tier=2": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=0,tier=2": {
+      "model": "tilth:block/grain_silo_0_middle"
+    },
+    "formed=false,quad=0,tier=3": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=0,tier=3": {
+      "model": "tilth:block/grain_silo_0_middle"
+    },
+    "formed=false,quad=0,tier=4": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=0,tier=4": {
+      "model": "tilth:block/grain_silo_0_top"
+    },
+    "formed=false,quad=1,tier=0": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=1,tier=0": {
+      "model": "tilth:block/grain_silo_1_bottom"
+    },
+    "formed=false,quad=1,tier=1": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=1,tier=1": {
+      "model": "tilth:block/grain_silo_1_middle"
+    },
+    "formed=false,quad=1,tier=2": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=1,tier=2": {
+      "model": "tilth:block/grain_silo_1_middle"
+    },
+    "formed=false,quad=1,tier=3": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=1,tier=3": {
+      "model": "tilth:block/grain_silo_1_middle"
+    },
+    "formed=false,quad=1,tier=4": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=1,tier=4": {
+      "model": "tilth:block/grain_silo_1_top"
+    },
+    "formed=false,quad=2,tier=0": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=2,tier=0": {
+      "model": "tilth:block/grain_silo_2_bottom"
+    },
+    "formed=false,quad=2,tier=1": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=2,tier=1": {
+      "model": "tilth:block/grain_silo_2_middle"
+    },
+    "formed=false,quad=2,tier=2": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=2,tier=2": {
+      "model": "tilth:block/grain_silo_2_middle"
+    },
+    "formed=false,quad=2,tier=3": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=2,tier=3": {
+      "model": "tilth:block/grain_silo_2_middle"
+    },
+    "formed=false,quad=2,tier=4": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=2,tier=4": {
+      "model": "tilth:block/grain_silo_2_top"
+    },
+    "formed=false,quad=3,tier=0": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=3,tier=0": {
+      "model": "tilth:block/grain_silo_3_bottom"
+    },
+    "formed=false,quad=3,tier=1": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=3,tier=1": {
+      "model": "tilth:block/grain_silo_3_middle"
+    },
+    "formed=false,quad=3,tier=2": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=3,tier=2": {
+      "model": "tilth:block/grain_silo_3_middle"
+    },
+    "formed=false,quad=3,tier=3": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=3,tier=3": {
+      "model": "tilth:block/grain_silo_3_middle"
+    },
+    "formed=false,quad=3,tier=4": {
+      "model": "tilth:block/grain_silo"
+    },
+    "formed=true,quad=3,tier=4": {
+      "model": "tilth:block/grain_silo_3_top"
+    }
+  }
+}

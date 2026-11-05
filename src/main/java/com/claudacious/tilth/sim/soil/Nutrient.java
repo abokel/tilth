@@ -7,10 +7,13 @@ public enum Nutrient {
     K("Potassium", "K", new double[]{4.5, 5.5, 6.0, 9.0}, new double[]{0.5, 0.8, 1.0, 1.0}),
     S("Sulfur", "S", new double[]{4.5, 5.5, 6.0, 9.0}, new double[]{0.6, 0.9, 1.0, 1.0}),
     CA("Calcium", "Ca", new double[]{4.5, 5.5, 6.5, 9.0}, new double[]{0.3, 0.6, 1.0, 1.0}),
-    MG("Magnesium", "Mg", new double[]{4.5, 5.5, 6.5, 9.0}, new double[]{0.3, 0.6, 1.0, 1.0});
-
-    private static final double[] MICRO_PH = {4.5, 6.5, 7.5, 8.5};
-    private static final double[] MICRO_AVAIL = {1.0, 1.0, 0.75, 0.45};
+    MG("Magnesium", "Mg", new double[]{4.5, 5.5, 6.5, 9.0}, new double[]{0.3, 0.6, 1.0, 1.0}),
+    FE("Iron", "Fe", new double[]{4.5, 5.5, 6.5, 7.5, 8.5}, new double[]{1.0, 1.0, 0.75, 0.4, 0.2}),
+    ZN("Zinc", "Zn", new double[]{4.5, 5.5, 6.5, 7.5, 8.5}, new double[]{1.0, 1.0, 0.8, 0.45, 0.22}),
+    MN("Manganese", "Mn", new double[]{4.5, 5.5, 6.3, 7.2, 8.2}, new double[]{1.0, 1.0, 0.8, 0.42, 0.2}),
+    CU("Copper", "Cu", new double[]{4.5, 5.5, 6.5, 7.5, 8.5}, new double[]{1.0, 1.0, 0.78, 0.5, 0.28}),
+    B("Boron", "B", new double[]{4.5, 5.5, 6.5, 7.5, 8.5}, new double[]{0.95, 1.0, 0.85, 0.6, 0.35}),
+    MO("Molybdenum", "Mo", new double[]{4.5, 5.5, 6.5, 7.5, 8.5}, new double[]{0.22, 0.35, 0.65, 0.9, 1.0});
 
     private final String displayName;
     private final String symbol;
@@ -37,9 +40,9 @@ public enum Nutrient {
         return curve(ph, phPoints, availability);
     }
 
-    /** Availability of Fe, Mn, Zn, Cu and B, which drop sharply in alkaline soils. */
+    /** Mean micronutrient availability (Fe, Zn, Mn, Cu, B and Mo) at this pH. */
     public static double micronutrientAvailability(double ph) {
-        return curve(ph, MICRO_PH, MICRO_AVAIL);
+        return (FE.availability(ph) + ZN.availability(ph) + MN.availability(ph) + CU.availability(ph) + B.availability(ph) + MO.availability(ph)) / 6.0;
     }
 
     static double curve(double x, double[] xs, double[] ys) {

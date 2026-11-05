@@ -2,7 +2,7 @@
   "name": "Peanut",
   "icon": "tilth:peanuts",
   "category": "tilth:crops",
-  "sortnum": 17,
+  "sortnum": 19,
   "pages": [
     {
       "type": "patchouli:spotlight",

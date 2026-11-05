@@ -104,6 +104,9 @@ dependencies {
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
     localRuntime "vazkii.patchouli:Patchouli:${patchouli_version}"
+    // Serene Seasons is required: it owns the seasons, snow and ice. GlitchCore is its library.
+    implementation "maven.modrinth:serene-seasons:${serene_seasons_version}"
+    implementation "maven.modrinth:glitchcore:${glitchcore_version}"
     compileOnly "maven.modrinth:jade:${jade_version}"
     compileOnly "mcp.mobius.waila:wthit-api:${wthit_version}"
     // Dev runs load one look-at overlay: Jade by default, WTHIT with -Poverlay=wthit.
@@ -139,6 +142,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             mod_version            : mod_version,
             mod_authors            : mod_authors,
             mod_description        : mod_description,
+            serene_seasons_min     : serene_seasons_min,
     ]
     inputs.properties replaceProperties
     expand replaceProperties

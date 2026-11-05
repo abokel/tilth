@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/crop",
+  "parent": "tilth:block/tinted_crop",
   "render_type": "minecraft:cutout",
   "textures": {
     "crop": "tilth:block/crop/rice_stage4_chlorotic"

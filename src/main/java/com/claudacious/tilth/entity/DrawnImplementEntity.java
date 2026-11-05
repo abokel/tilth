@@ -171,7 +171,7 @@ public abstract class DrawnImplementEntity extends Entity {
         playSound(SoundEvents.LEASH_KNOT_PLACE, 1.0f, 1.0f);
     }
 
-    private void unhitch() {
+    protected void unhitch() {
         releaseDrag();
         pullerId = null;
         entityData.set(PULLER, -1);

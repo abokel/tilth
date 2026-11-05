@@ -1,7 +1,7 @@
 ---
 title: "Field Pea"
 parent: Crops
-nav_order: 14
+nav_order: 16
 ---
 
 # Field Pea

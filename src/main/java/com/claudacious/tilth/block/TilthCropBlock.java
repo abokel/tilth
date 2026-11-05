@@ -6,11 +6,14 @@ import com.claudacious.tilth.item.SoilProbeItem;
 import com.claudacious.tilth.item.KnifeItem;
 import com.claudacious.tilth.item.MoistureMeterItem;
 import com.claudacious.tilth.TilthConfig;
+import com.claudacious.tilth.genetics.SeedGenetics;
 import com.claudacious.tilth.sim.crop.Bbch;
 import com.claudacious.tilth.sim.crop.CropSpecies;
 import com.claudacious.tilth.sim.crop.CropState;
 import com.claudacious.tilth.sim.crop.Crops;
 import com.claudacious.tilth.sim.crop.GrowthForm;
+import com.claudacious.tilth.sim.SimSettings;
+import com.claudacious.tilth.sim.genetics.CropGenome;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -38,6 +41,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -117,9 +121,8 @@ public class TilthCropBlock extends BushBlock implements EntityBlock, Bonemealab
     @Override
     protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
         super.onPlace(state, level, pos, oldState, movedByPiston);
-        // Bring the soil up to today before the seed goes in, so the crop starts its life now.
         if (level instanceof ServerLevel server && !oldState.is(this) && level.getBlockEntity(pos.below()) instanceof FarmlandBlockEntity farmland) {
-            farmland.advance(server);
+            farmland.advanceSoilOnly(server);
         }
     }
 
@@ -160,7 +163,11 @@ public class TilthCropBlock extends BushBlock implements EntityBlock, Bonemealab
             text = species.name + ": sown, waiting to germinate (" + Math.round(100 * cs.germinationGdd / species.germinationGdd) + "%)";
         } else {
             int pct = (int) Math.round(100 * Math.min(1.0, cs.dev));
-            text = String.format("%s: %s | %d%% to maturity | limiting: %s", species.name, Bbch.describe(species.bbchFor(stage)), pct, cs.limitingFactor);
+            String pollination = SimSettings.pollinationEnabled && species.pollinationDependence > 0
+                    ? String.format(" | pollination %.0f%%", 100 * cs.pollinationFactor)
+                    : "";
+            text = String.format("%s: %s | %d%% to maturity | limiting: %s%s",
+                    species.name, Bbch.describe(species.bbchFor(stage)), pct, cs.limitingFactor, pollination);
         }
         return Component.literal(text).withStyle(cs.lastGrowthFactor > 0.7 ? ChatFormatting.GREEN : ChatFormatting.YELLOW);
     }
@@ -187,7 +194,25 @@ public class TilthCropBlock extends BushBlock implements EntityBlock, Bonemealab
 
     @Override
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
-        return new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(species.seedItem)));
+        CropBlockEntity crop = level.getBlockEntity(pos) instanceof CropBlockEntity c ? c : null;
+        return cloneSeedStack(crop);
+    }
+
+    @Override
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+        CropBlockEntity crop = level.getBlockEntity(pos) instanceof CropBlockEntity c ? c : null;
+        return cloneSeedStack(crop);
+    }
+
+    private ItemStack cloneSeedStack(CropBlockEntity crop) {
+        ItemStack seed = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(species.seedItem)));
+        if (crop != null) {
+            CropGenome genome = crop.genome();
+            if (genome != null) {
+                SeedGenetics.setGenome(seed, genome);
+            }
+        }
+        return seed;
     }
 
     @Override

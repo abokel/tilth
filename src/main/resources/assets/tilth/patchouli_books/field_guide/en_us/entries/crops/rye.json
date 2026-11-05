@@ -2,7 +2,7 @@
   "name": "Rye",
   "icon": "tilth:rye_seeds",
   "category": "tilth:crops",
-  "sortnum": 8,
+  "sortnum": 10,
   "pages": [
     {
       "type": "patchouli:spotlight",

@@ -14,11 +14,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "$(thing)Debugging$() (operators):$(li)/tilth time skip <days>$(li)/tilth time set <month> <day>$(li)/tilth soil set <property> <value>$(li)/tilth soil amend <type>$(li)/tilth crop setstage|grow|kill$(li)/tilth fillfield <crop> <radius>"
-    },
-    {
-      "type": "patchouli:text",
-      "text": "$(li)/tilth debug hud"
+      "text": "$(thing)Debugging$() (operators):$(li)/season set <sub-season> (Serene Seasons)$(li)/tilth soil set <property> <value>$(li)/tilth soil amend <type>$(li)/tilth crop setstage|grow|kill$(li)/tilth fillfield <crop> <radius>$(li)/tilth debug hud"
     }
   ]
 }

@@ -48,6 +48,15 @@ public final class AfflictionEngine {
         return fT * fH * fWet * fSoil * fPh;
     }
 
+    /** Suitability for livestock diseases: temperature, humidity and wetness only. */
+    public static double suitability(Affliction a, DailyWeather w) {
+        Affliction.Envelope e = a.envelope();
+        double fT = ClimateMath.temperatureResponse(w.tMean(), e.tempMin(), e.tempOpt(), e.tempMax());
+        double fH = e.minHumidity() <= 0 ? 1.0 : Noise.clamp((w.relativeHumidity() - e.minHumidity()) / 15.0 + 0.5, 0, 1);
+        double fWet = e.leafWetnessHours() <= 0 ? 1.0 : Noise.clamp(w.leafWetnessHours() / e.leafWetnessHours(), 0, 1);
+        return fT * fH * fWet;
+    }
+
     /** Inoculum pressure from field history and tillage, 0.02 (clean) to ~1. */
     public static double inoculum(Affliction a, CropSpecies host, SoilState soil, int year) {
         double pressure = 0.02;

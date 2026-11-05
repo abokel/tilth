@@ -22,6 +22,13 @@ public final class TilthAttachments {
     public static final Supplier<AttachmentType<LivestockState>> LIVESTOCK = ATTACHMENTS.register("livestock",
             () -> AttachmentType.builder(() -> new LivestockState()).serialize(LivestockState.CODEC).build());
 
+    /**
+     * Game time grain in this container (or player's inventory) was last aged. Open storage ages lazily: the losses
+     * since then are worked out when the container is next opened.
+     */
+    public static final Supplier<AttachmentType<Long>> GRAIN_AGED = ATTACHMENTS.register("grain_aged",
+            () -> AttachmentType.builder(() -> -1L).serialize(com.mojang.serialization.Codec.LONG).build());
+
     private TilthAttachments() {
     }
 }

@@ -232,11 +232,16 @@ public class SoilSurveyItem extends Item {
         // One page per sample.
         for (int i = 0; i < samples.size(); i++) {
             CompoundTag s = samples.get(i);
+            String micros = s.contains("Fe")
+                    ? String.format("Fe %.1f, Zn %.2f, Mn %.1f ppm\nCu %.2f, B %.2f, Mo %.3f ppm\n",
+                    s.getDouble("Fe"), s.getDouble("Zn"), s.getDouble("Mn"), s.getDouble("Cu"), s.getDouble("B"), s.getDouble("Mo"))
+                    : "Micronutrients not recorded (legacy sample)\n";
             pages.add(Component.empty().append(bold("Sample " + (i + 1) + "\n", HEAD)).append(text(spot(s) + "\n" + shortDate(s.getString("When")) + "\n\n", NOTE))
                     .append(text(s.getString("Texture") + (s.getBoolean("Farmland") ? " farmland" : ", untilled") + "\n", INK))
                     .append(text(String.format("pH %.1f, OM %.1f%%\nN %.0f, P %.0f, K %.0f ppm\nS %.0f, Ca %.0f, Mg %.0f ppm\n",
                             s.getDouble("PH"), s.getDouble("OM"), s.getDouble("N"), s.getDouble("P"), s.getDouble("K"),
                             s.getDouble("S"), s.getDouble("Ca"), s.getDouble("Mg")), INK))
+                    .append(text(micros, INK))
                     .append(text(String.format("Water %.0f%% of available\nCompaction %.0f%%", 100 * s.getDouble("Water"),
                             100 * s.getDouble("Compaction")), INK)));
         }

@@ -20,8 +20,7 @@ nav_order: 1
 Most act on the block you look at.
 
 **Debugging** (operators):
-- /tilth time skip <days>
-- /tilth time set <month> <day>
+- /season set <sub-season> (Serene Seasons)
 - /tilth soil set <property> <value>
 - /tilth soil amend <type>
 - /tilth crop setstage|grow|kill

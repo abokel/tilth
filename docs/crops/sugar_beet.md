@@ -1,7 +1,7 @@
 ---
 title: "Sugar Beet"
 parent: Crops
-nav_order: 25
+nav_order: 27
 ---
 
 # Sugar Beet

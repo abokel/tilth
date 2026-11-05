@@ -84,15 +84,15 @@ CATEGORIES = [
                      "straw or residue on the field to return organic matter, then rotate to a different crop."),
             ]},
             {"id": "calendar", "name": "Calendar & Seasons", "icon": "minecraft:clock", "pages": [
-                text("Tilth keeps a real 365-day calendar. By default a month lasts 6 game days, so one game day covers "
-                     "about five calendar days and a year passes in 72 game days. Sleeping moves the calendar forward "
-                     "with the night."),
+                text("The seasons come from **Serene Seasons**, which Tilth requires. Its twelve sub-seasons are the "
+                     "twelve months: early spring is March, mid-summer July, late winter February. With Serene Seasons' "
+                     "default eight days a sub-season, one game day covers about four calendar days."),
                 text("Each biome has a real-world climate: plains are like the US Corn Belt, deserts like the Sonoran, "
                      "jungles like the Amazon, taiga like inland Canada. Weather varies from day to day, with cold "
                      "snaps, heat waves, rain and snow, and it is colder at altitude."),
-                text("The land shows the season. Oak and birch leaves turn gold, orange and red through autumn and hang "
-                     "brown through winter; grass yellows and browns. In winter, snow settles wherever it is below "
-                     "freezing and ponds freeze over, then thaw in spring."),
+                text("Serene Seasons shows the season on the land: leaf and grass colours change, and in winter snow "
+                     "falls, settles and freezes water, then thaws in spring. Tilth's crops feel the same season: the "
+                     "daily temperature, frost and rain they grow in follow its calendar. Use /season set to change it."),
                 text("Use **/tilth calendar** for the date and **/tilth climate** for the local climate, today's weather "
                      "and degree days.\n\nThe days and month length are configurable. Shorter months make crops grow "
                      "faster in play time."),
@@ -106,6 +106,8 @@ CATEGORIES = [
                                              "content, how much plants can still draw, whether it is waterlogged, and how "
                                              "many mm of water would refill the root zone."),
                 craft("tilth:moisture_meter"),
+                text("The **microscope** can also stand on a bench: sneak-use it on a block to set it down, then right-click "
+                     "it holding a plant sample. Use it on an animal to diagnose disease."),
             ]},
             {"id": "tools", "name": "Tools of the Trade", "icon": "tilth:quern", "pages": [
                 spot("tilth:quern", "The **Quern** grinds grain into flour, oilseeds into oil and limestone into lime. "
@@ -338,6 +340,28 @@ CATEGORIES = [
                 text("The grade carries through milling and cooking. Premium food gives 20% more nutrition, Poor food 20% "
                      "less. Cereals also give **straw**, useful for compost, hay or mulch."),
             ]},
+            {"id": "genetics", "name": "Cultivars & Seed Saving", "icon": "tilth:gene_splicer", "pages": [
+                text("Every crop is of a **cultivar** with its own traits: how fast it grows, how much it yields, and how "
+                     "well it stands drought and frost. Seed saved from a harvest keeps its cultivar, so you can select "
+                     "the best of your own fields. Now and then a trait mutates."),
+                text("Crops that need **pollinators** set more seed with flowers nearby and bees working them: keep "
+                     "flower strips and a hive near beans, sunflowers and other insect-pollinated crops."),
+                text("A **Gene Splicer** combines two seeds into a **Spliced Embryo**, which grows into new seed in a "
+                     "**Genetic Incubator**. Watch it: once in a while something else grows in there, breaks out and "
+                     "slimes about for a few blocks before it falls apart."),
+            ]},
+            {"id": "grain_storage", "name": "Drying & Storing Grain", "icon": "tilth:grain_silo", "pages": [
+                text("Grain comes off the field damp. Above **14%** moisture it goes mouldy in store: dry it first on a "
+                     "**Drying Rack**, which works best in warm, dry weather. The tooltip shows how wet grain is."),
+                text("Grain kept in chests, barrels or your pockets spoils if it is wet, and rodents and weevils take a "
+                     "little from every chest each day. Losses are worked out when the chest is next opened."),
+                spot("tilth:grain_silo", "A **Grain Silo** is built from twenty segments as a 2x2 tower five blocks "
+                                         "high. Built, it holds over forty thousand grain, dries it by aeration, keeps it "
+                                         "four times longer and keeps the rodents out."),
+                text("Pour grain in with right-click (sneak to pour every sack you carry), take a stack with an empty hand, "
+                     "and sneak with an empty hand to clear spoiled grain. Hoppers fill and empty it, and a comparator reads "
+                     "how full it is. Break the bottom corner and it keeps its grain, like a shulker box."),
+            ]},
         ],
         "auto": "CROPS",
     },
@@ -372,6 +396,12 @@ CATEGORIES = [
                      "the saddle** to open or close the hopper."),
                 text("Pulled across a field, it spreads one dose on every block of a three-block swath, under growing "
                      "crops too. Opening or closing it tells you what is left. Break it to get the load back."),
+            ]},
+            {"id": "wagon", "name": "Farm Wagon", "icon": "tilth:wagon", "pages": [
+                spot("tilth:wagon", "The **Farm Wagon** carries as much as a chest. Hitch it like the plough, from the "
+                                    "saddle of a horse, donkey or mule, and it follows your team."),
+                text("From the ground, right-click it to load or unload it, and sneak-right-click to unhitch. From the "
+                     "saddle, right-click sets or releases the brake. A full wagon is heavier to pull than an empty one."),
             ]},
             {"id": "compaction", "name": "Compaction & Wet Clay", "icon": "tilth:clay_farmland", "pages": [
                 text("Feet, hooves and landing on farmland compact it, and wet soil compacts far more. Compacted soil "
@@ -502,6 +532,31 @@ CATEGORIES = [
                      "**two** for ewes, nannies and sows. Sows have litters of two to four; ewes and nannies often twins. "
                      "Giving birth costs the mother condition."),
             ]},
+            {"id": "breeds", "name": "Breeds", "icon": "minecraft:leather", "pages": [
+                text("Every cow, pig, sheep, chicken and horse is of a **breed**, and each breed looks its own. Animals "
+                     "that turn up in the wild take a breed that suits the local climate; young take a parent's breed."),
+                text("- **Cattle:** Holstein (black and white, most milk), Jersey (fawn, rich milk, small), Highland "
+                     "(shaggy ginger, hardy in the cold), Aberdeen Angus (black, beef), Hereford (red with a white face, "
+                     "beef), Brahman (grey, for hot country).\n- **Pigs:** Large White, Berkshire (black with white "
+                     "points), Tamworth (ginger), Gloucester Old Spot, Mangalica (woolly, for cold country)."),
+                text("- **Sheep:** Merino (fine white wool, warm and dry country), Suffolk (black face), Hebridean "
+                     "(black wool, cold), Soay (brown), Herdwick (grey wool, white face, cold hills).\n- **Chickens:** "
+                     "Leghorn (most eggs), Rhode Island Red, Australorp, Light Sussex, Barred Rock (cold hardy).\n- "
+                     "**Horses:** Shire (big draught horse), Arabian, Friesian, Fjord, Mustang."),
+                text("A breed sets what an animal was bred for: more milk or eggs, a bigger frame, or keeping condition "
+                     "on less feed. Kept outside the climate it suits, an animal loses condition up to half as fast "
+                     "again. /tilth animal and Jade show the breed and whether it suits its climate."),
+            ]},
+            {"id": "health", "name": "Pasture & Animal Health", "icon": "tilth:veterinary_draught", "pages": [
+                text("Grazing wears a pasture down. Move animals between paddocks so the grass can recover: a rested "
+                     "pasture feeds them far better than a bare one. Jade shows how good the grazing is underfoot."),
+                text("Animals can fall sick, more easily when thin, crowded or on worn pasture: **bovine respiratory "
+                     "disease** in cattle, **swine influenza** in pigs and **coccidiosis** in poultry. Sick animals lose "
+                     "condition, give less and breed less."),
+                text("Look at a sick animal through the **microscope** (right-click it) to diagnose it. A **Veterinary "
+                     "Draught** then treats it, far better soon after a diagnosis. Sneak-right-click with a **lead** to "
+                     "quarantine it: a quarantined animal spreads disease far less, but neither breeds nor grazes, so feed it by hand."),
+            ]},
         ],
     },
     {
@@ -512,13 +567,13 @@ CATEGORIES = [
                 text("**Look things up:**\n- /tilth calendar\n- /tilth climate\n- /tilth soil\n- /tilth catena\n- "
                      "/tilth water\n- /tilth crop\n- /tilth diet\n- /tilth plot ...\n- /tilth affliction ...\n\nMost act "
                      "on the block you look at."),
-                text("**Debugging** (operators):\n- /tilth time skip <days>\n- /tilth time set <month> <day>\n- /tilth "
+                text("**Debugging** (operators):\n- /season set <sub-season> (Serene Seasons)\n- /tilth "
                      "soil set <property> <value>\n- /tilth soil amend <type>\n- /tilth crop setstage|grow|kill\n- "
                      "/tilth fillfield <crop> <radius>\n- /tilth debug hud"),
             ]},
             {"id": "config", "name": "Configuration", "icon": "minecraft:comparator", "pages": [
-                text("config/tilth-common.toml (also Mods > Tilth > Config):\n- **calendar:** days per month, start "
-                     "month.\n- **climate:** temperature offset, rain, latitude bands.\n- **water:** source rules, ponds, "
+                text("config/tilth-common.toml (also Mods > Tilth > Config):\n- **climate:** temperature offset, rain, "
+                     "latitude bands. Season length is set in Serene Seasons' own config.\n- **water:** source rules, ponds, "
                      "puddles, evaporation."),
                 text("- **soil:** worldgen, morphing, erosion, leaching, trampling.\n- **crops:** growth speed, yield, "
                      "frost and drought deaths, bone meal.\n- **diet**, **plots**, **livestock** (manure), and "

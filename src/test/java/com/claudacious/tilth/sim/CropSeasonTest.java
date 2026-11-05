@@ -12,6 +12,7 @@ import com.claudacious.tilth.sim.crop.CropState;
 import com.claudacious.tilth.sim.crop.Crops;
 import com.claudacious.tilth.sim.crop.HarvestResult;
 import com.claudacious.tilth.sim.soil.DrainageClass;
+import com.claudacious.tilth.sim.soil.Nutrient;
 import com.claudacious.tilth.sim.soil.SoilBaseline;
 import com.claudacious.tilth.sim.soil.SoilHorizon;
 import com.claudacious.tilth.sim.soil.SoilState;
@@ -32,11 +33,17 @@ class CropSeasonTest {
 
     private static Outcome grow(CropSpecies sp, BiomeClimate climate, SoilState soil, SoilTexture tex, int sowMonth, int sowDay,
                                 double irrigation) {
+        return grow(sp, climate, soil, tex, sowMonth, sowDay, irrigation, 1.0);
+    }
+
+    private static Outcome grow(CropSpecies sp, BiomeClimate climate, SoilState soil, SoilTexture tex, int sowMonth, int sowDay,
+                                double irrigation, double pollinationService) {
         CropState cs = new CropState();
         long day = CalendarMath.firstDayOfMonth(sowMonth) + sowDay - 1 + 365L * 10;
         int matured = -1;
         for (int i = 0; i < 300 && !cs.dead; i++) {
             DailyWeather w = WeatherGenerator.generate(SEED, climate, day + i, 100, 100, 0, false);
+            cs.pollinationToday = pollinationService;
             FieldSimulator.step(soil, tex, climate, w, new FieldSimulator.Inputs(irrigation, false, 1, 1), sp, cs, null);
             if (matured < 0 && cs.dev >= 1.0) {
                 matured = i;
@@ -146,5 +153,110 @@ class CropSeasonTest {
         assertTrue(o.crop().dead || CropGrowthModel.yieldFactor(o.crop()) < 0.3,
                 "unirrigated lettuce in desert sand should fail: " + o.crop().deathCause + " yf="
                         + CropGrowthModel.yieldFactor(o.crop()));
+    }
+
+    @Test
+    void alkalineMicronutrientStressCutsYieldAndDepletesPools() {
+        SoilState good = loam(PLAINS);
+        good.ph = 6.6;
+        good.nitrogen = 80;
+        good.phosphorus = 45;
+        good.potassium = 260;
+        good.sulfur = 25;
+        SoilState stressed = good.copy();
+        stressed.ph = 8.4;
+        stressed.iron = 4;
+        stressed.zinc = 0.3;
+        stressed.manganese = 1.5;
+        stressed.copper = 0.15;
+        stressed.boron = 0.2;
+        stressed.molybdenum = 0.02;
+
+        double startZn = good.zinc;
+        Outcome strong = grow(Crops.BARLEY, PLAINS, good, SoilTexture.LOAM, 4, 1, 0.3);
+        Outcome weak = grow(Crops.BARLEY, PLAINS, stressed, SoilTexture.LOAM, 4, 1, 0.3);
+
+        assertTrue(CropGrowthModel.yieldFactor(weak.crop()) < CropGrowthModel.yieldFactor(strong.crop()) * 0.85,
+                "alkaline micro-stressed " + CropGrowthModel.yieldFactor(weak.crop()) + " vs adequate " + CropGrowthModel.yieldFactor(strong.crop()));
+        assertTrue(Nutrient.ZN.availability(stressed.ph) < Nutrient.ZN.availability(good.ph));
+        assertTrue(good.zinc < startZn, "crop did not remove zinc from soil");
+    }
+
+    @Test
+    void insectPollinatedCropBenefitsFromPollinationService() {
+        SoilState poorPoll = loam(PLAINS);
+        SoilState strongPoll = loam(PLAINS);
+        Outcome low = grow(Crops.SUNFLOWER, PLAINS, poorPoll, SoilTexture.LOAM, 5, 1, 0.3, 0.05);
+        Outcome high = grow(Crops.SUNFLOWER, PLAINS, strongPoll, SoilTexture.LOAM, 5, 1, 0.3, 1.0);
+        assertTrue(CropGrowthModel.yieldFactor(high.crop()) > CropGrowthModel.yieldFactor(low.crop()) * 1.25,
+                "low " + CropGrowthModel.yieldFactor(low.crop()) + " vs high " + CropGrowthModel.yieldFactor(high.crop()));
+        assertTrue(high.crop().pollinationFactor > low.crop().pollinationFactor);
+    }
+
+    @Test
+    void selfPollinatedCropIsStableWithoutPollinators() {
+        SoilState noPoll = loam(PLAINS);
+        SoilState highPoll = loam(PLAINS);
+        Outcome low = grow(Crops.COMMON_WHEAT, PLAINS, noPoll, SoilTexture.LOAM, 4, 1, 0.3, 0.0);
+        Outcome high = grow(Crops.COMMON_WHEAT, PLAINS, highPoll, SoilTexture.LOAM, 4, 1, 0.3, 1.0);
+        assertTrue(CropGrowthModel.yieldFactor(low.crop()) > CropGrowthModel.yieldFactor(high.crop()) * 0.95,
+                "self-pollinated crop should not fail without pollinators");
+    }
+
+    @Test
+    void disablingPollinationClearsAccumulatedYieldAndQualityPenalty() {
+        boolean wasEnabled = SimSettings.pollinationEnabled;
+        double wasStrength = SimSettings.pollinationStrength;
+        try {
+            CropState cs = new CropState();
+            cs.yieldPotential = 1.0;
+            cs.afflictionYieldFactor = 1.0;
+            cs.pollinationFactor = 0.3;
+            cs.qualityWeight = 1.0;
+            cs.qualityBaseSum = 0.68;
+            cs.pollinationQualitySum = 0.3;
+            cs.qualitySum = cs.qualityBaseSum + 0.1 * cs.pollinationQualitySum;
+
+            SimSettings.pollinationEnabled = true;
+            SimSettings.pollinationStrength = 1.0;
+            double penalizedYield = CropGrowthModel.yieldFactor(cs);
+            double penalizedQuality = cs.qualityScore();
+
+            SimSettings.pollinationEnabled = false;
+            double bypassYield = CropGrowthModel.yieldFactor(cs);
+            double bypassQuality = cs.qualityScore();
+
+            assertTrue(penalizedYield < bypassYield, "expected pollination penalty while enabled");
+            assertEquals(1.0, bypassYield, 1.0e-9, "yield penalty should be bypassed when pollination is disabled");
+            assertTrue(penalizedQuality < bypassQuality, "quality penalty should be bypassed when pollination is disabled");
+            assertEquals(0.78, bypassQuality, 1.0e-9);
+        } finally {
+            SimSettings.pollinationEnabled = wasEnabled;
+            SimSettings.pollinationStrength = wasStrength;
+        }
+    }
+
+    @Test
+    void zeroPollinationStrengthBypassesLegacyAccumulatedPenalty() {
+        boolean wasEnabled = SimSettings.pollinationEnabled;
+        double wasStrength = SimSettings.pollinationStrength;
+        try {
+            CropState cs = new CropState();
+            cs.yieldPotential = 1.0;
+            cs.afflictionYieldFactor = 1.0;
+            cs.pollinationFactor = 0.3;
+            cs.qualityWeight = 1.0;
+            cs.qualityBaseSum = 0.67;
+            cs.pollinationQualitySum = 0.3;
+            cs.qualitySum = cs.qualityBaseSum + 0.1 * cs.pollinationQualitySum;
+
+            SimSettings.pollinationEnabled = true;
+            SimSettings.pollinationStrength = 0.0;
+            assertEquals(1.0, CropGrowthModel.yieldFactor(cs), 1.0e-9);
+            assertEquals(0.77, cs.qualityScore(), 1.0e-9);
+        } finally {
+            SimSettings.pollinationEnabled = wasEnabled;
+            SimSettings.pollinationStrength = wasStrength;
+        }
     }
 }

@@ -90,6 +90,12 @@ public class SoilSampleItem extends Item {
         d.putDouble("S", s.sulfur);
         d.putDouble("Ca", s.calcium);
         d.putDouble("Mg", s.magnesium);
+        d.putDouble("Fe", s.iron);
+        d.putDouble("Zn", s.zinc);
+        d.putDouble("Mn", s.manganese);
+        d.putDouble("Cu", s.copper);
+        d.putDouble("B", s.boron);
+        d.putDouble("Mo", s.molybdenum);
         d.putDouble("Compaction", s.compaction);
         d.putDouble("Water", (s.moisture - h.wiltingPoint()) / Math.max(0.01, h.fieldCapacity() - h.wiltingPoint()));
         ListTag history = new ListTag();

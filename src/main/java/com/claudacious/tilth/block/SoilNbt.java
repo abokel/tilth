@@ -19,6 +19,12 @@ public final class SoilNbt {
         t.putDouble("s", s.sulfur);
         t.putDouble("ca", s.calcium);
         t.putDouble("mg", s.magnesium);
+        t.putDouble("fe", s.iron);
+        t.putDouble("zn", s.zinc);
+        t.putDouble("mn", s.manganese);
+        t.putDouble("cu", s.copper);
+        t.putDouble("b", s.boron);
+        t.putDouble("mo", s.molybdenum);
         t.putDouble("ph", s.ph);
         t.putDouble("om", s.organicMatter);
         t.putDouble("theta", s.moisture);
@@ -48,6 +54,24 @@ public final class SoilNbt {
         s.sulfur = t.getDouble("s");
         s.calcium = t.getDouble("ca");
         s.magnesium = t.getDouble("mg");
+        if (t.contains("fe")) {
+            s.iron = t.getDouble("fe");
+        }
+        if (t.contains("zn")) {
+            s.zinc = t.getDouble("zn");
+        }
+        if (t.contains("mn")) {
+            s.manganese = t.getDouble("mn");
+        }
+        if (t.contains("cu")) {
+            s.copper = t.getDouble("cu");
+        }
+        if (t.contains("b")) {
+            s.boron = t.getDouble("b");
+        }
+        if (t.contains("mo")) {
+            s.molybdenum = t.getDouble("mo");
+        }
         s.ph = t.getDouble("ph");
         s.organicMatter = t.getDouble("om");
         s.moisture = t.getDouble("theta");

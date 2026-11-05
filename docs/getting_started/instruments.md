@@ -15,3 +15,5 @@ nav_order: 4
 > Push the **Soil Moisture Meter** into soil, farmland or a crop's roots: water content, how much plants can still draw, whether it is waterlogged, and how many mm of water would refill the root zone.
 
 **Recipe (crafting table, shaped):** Copper Ingot + 2 × Iron Ingot → Soil Moisture Meter
+
+The **microscope** can also stand on a bench: sneak-use it on a block to set it down, then right-click it holding a plant sample. Use it on an animal to diagnose disease.

@@ -134,6 +134,12 @@ def generate(lang, h):
     generate_microscope(lang, h)
     generate_instruments(lang, h)
     generate_farmyard(lang, h)
+    import silo
+    silo.generate(lang, h)
+    import breeds
+    breeds.generate(lang, h)
+    import wagon
+    wagon.generate(lang, h)
 
 
 # ---------------------------------------------------------------- fertiliser spreader

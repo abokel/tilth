@@ -21,6 +21,10 @@
     {
       "type": "patchouli:crafting",
       "recipe": "tilth:moisture_meter"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The $(thing)microscope$() can also stand on a bench: sneak-use it on a block to set it down, then right-click it holding a plant sample. Use it on an animal to diagnose disease."
     }
   ]
 }

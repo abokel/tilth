@@ -3,10 +3,13 @@ package com.claudacious.tilth.registry;
 import net.minecraft.world.level.block.HayBlock;
 import com.claudacious.tilth.block.ManureLayerBlock;
 import com.claudacious.tilth.Tilth;
+import com.claudacious.tilth.block.DryingRackBlock;
 import com.claudacious.tilth.block.DeadCropBlock;
+import com.claudacious.tilth.block.GrainSiloBlock;
 import com.claudacious.tilth.block.PuddleBlock;
 import com.claudacious.tilth.block.SoilBlock;
 import com.claudacious.tilth.block.SoilGrassBlock;
+import com.claudacious.tilth.block.IncubatorBlock;
 import com.claudacious.tilth.block.SoilLabBlock;
 import com.claudacious.tilth.block.TilthCropBlock;
 import com.claudacious.tilth.block.TilthFarmlandBlock;
@@ -45,6 +48,16 @@ public final class TilthBlocks {
                     .sound(SoundType.MUD).randomTicks().pushReaction(PushReaction.DESTROY)));
     public static final DeferredBlock<SoilLabBlock> SOIL_LAB = BLOCKS.register("soil_lab",
             () -> new SoilLabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(2.0f).sound(SoundType.WOOD).noOcclusion()));
+    public static final DeferredBlock<IncubatorBlock> INCUBATOR = BLOCKS.register("incubator",
+            () -> new IncubatorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(2.5f).sound(SoundType.COPPER).noOcclusion()));
+    public static final DeferredBlock<DryingRackBlock> DRYING_RACK = BLOCKS.register("drying_rack",
+            () -> new DryingRackBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(1.2f).sound(SoundType.WOOD).noOcclusion()));
+    public static final DeferredBlock<com.claudacious.tilth.block.MicroscopeBlock> MICROSCOPE = BLOCKS.register("microscope",
+            () -> new com.claudacious.tilth.block.MicroscopeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(1.0f)
+                    .sound(SoundType.LANTERN).noOcclusion()));
+    public static final DeferredBlock<GrainSiloBlock> GRAIN_SILO = BLOCKS.register("grain_silo",
+            () -> new GrainSiloBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(3.0f, 6.0f).sound(SoundType.COPPER)
+                    .requiresCorrectToolForDrops()));
 
     static {
         for (SoilTexture t : SoilTexture.values()) {

@@ -1,0 +1,20 @@
+{
+  "type": "tilth:gene_splicing",
+  "category": "misc",
+  "group": "tilth_gene_splicing",
+  "ingredients": [
+    {
+      "tag": "c:seeds"
+    },
+    {
+      "tag": "c:seeds"
+    },
+    {
+      "item": "tilth:gene_splicer"
+    }
+  ],
+  "result": {
+    "id": "tilth:spliced_embryo",
+    "count": 1
+  }
+}

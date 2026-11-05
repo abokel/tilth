@@ -73,6 +73,30 @@ public final class Reports {
         return ppm < 90 ? "low" : ppm < 130 ? "medium" : ppm < 200 ? "optimum" : "high";
     }
 
+    public static String rateFe(double ppm) {
+        return ppm < 4 ? "low" : ppm < 8 ? "medium" : ppm < 25 ? "optimum" : "high";
+    }
+
+    public static String rateZn(double ppm) {
+        return ppm < 0.6 ? "low" : ppm < 1.0 ? "medium" : ppm < 3.0 ? "optimum" : "high";
+    }
+
+    public static String rateMn(double ppm) {
+        return ppm < 2 ? "low" : ppm < 5 ? "medium" : ppm < 20 ? "optimum" : "high";
+    }
+
+    public static String rateCu(double ppm) {
+        return ppm < 0.2 ? "low" : ppm < 0.5 ? "medium" : ppm < 2.0 ? "optimum" : "high";
+    }
+
+    public static String rateB(double ppm) {
+        return ppm < 0.25 ? "low" : ppm < 0.5 ? "medium" : ppm < 1.5 ? "optimum" : "high";
+    }
+
+    public static String rateMo(double ppm) {
+        return ppm < 0.03 ? "low" : ppm < 0.06 ? "medium" : ppm < 0.2 ? "optimum" : "high";
+    }
+
     public static String ratePh(double ph) {
         if (ph < 5.0) {
             return "strongly acid";
@@ -212,6 +236,27 @@ public final class Reports {
         if (s.potassium < 130) {
             out.add(note("Potassium " + rateK(s.potassium) + ": wood ash or compost."));
         }
+        if (s.iron * Nutrient.FE.availability(s.ph) < 4) {
+            String ironAdvice = s.ph > 7.2
+                    ? "high pH locks it up; add organic matter and consider elemental sulfur."
+                    : "add compost or manure and retest.";
+            out.add(note("Iron " + rateFe(s.iron) + ": " + ironAdvice));
+        }
+        if (s.zinc * Nutrient.ZN.availability(s.ph) < 0.6) {
+            out.add(note("Zinc " + rateZn(s.zinc) + ": compost or manure helps; avoid over-liming."));
+        }
+        if (s.manganese * Nutrient.MN.availability(s.ph) < 2) {
+            out.add(note("Manganese " + rateMn(s.manganese) + ": high pH locks it up; sulfur can improve availability."));
+        }
+        if (s.copper * Nutrient.CU.availability(s.ph) < 0.2) {
+            out.add(note("Copper " + rateCu(s.copper) + ": add organic matter and keep pH near neutral."));
+        }
+        if (s.boron * Nutrient.B.availability(s.ph) < 0.25) {
+            out.add(note("Boron " + rateB(s.boron) + ": deficiency risk on alkaline, sandy soils."));
+        }
+        if (s.molybdenum * Nutrient.MO.availability(s.ph) < 0.03) {
+            out.add(note("Molybdenum " + rateMo(s.molybdenum) + ": deficiency risk in strongly acid soil."));
+        }
         if (s.organicMatter < 2.0) {
             out.add(note(String.format("Organic matter is low (%.1f%%): leave residue on the field and add compost.", s.organicMatter)));
         }
@@ -234,6 +279,10 @@ public final class Reports {
                 s.nitrogen, rateN(s.nitrogen), s.phosphorus, rateP(s.phosphorus), s.potassium, rateK(s.potassium))));
         out.add(line("Secondary", String.format("S %.0f | Ca %.0f | Mg %.0f ppm | micronutrient availability %.0f%%",
                 s.sulfur, s.calcium, s.magnesium, 100 * Nutrient.micronutrientAvailability(s.ph))));
+        out.add(line("Micronutrients", String.format("Fe %.1f (%s) | Zn %.2f (%s) | Mn %.1f (%s) ppm",
+                s.iron, rateFe(s.iron), s.zinc, rateZn(s.zinc), s.manganese, rateMn(s.manganese))));
+        out.add(line("Micros (cont.)", String.format("Cu %.2f (%s) | B %.2f (%s) | Mo %.3f (%s) ppm",
+                s.copper, rateCu(s.copper), s.boron, rateB(s.boron), s.molybdenum, rateMo(s.molybdenum))));
         double avail = (s.moisture - h.wiltingPoint()) / Math.max(0.01, h.fieldCapacity() - h.wiltingPoint());
         out.add(line("Water", String.format("θ %.2f (FC %.2f, WP %.2f) = %.0f%% of available | Ksat %.1f mm/h | water table %.1f m",
                 s.moisture, h.fieldCapacity(), h.wiltingPoint(), 100 * avail, h.ksat(), s.waterTableDepth)));
@@ -267,6 +316,10 @@ public final class Reports {
         }
         out.add(line("Growth", String.format("%.0f%% of potential today | limiting: %s | light %.0f%%",
                 100 * cs.lastGrowthFactor, cs.limitingFactor, 100 * cs.lightFactor)));
+        if (sp.pollinationDependence > 0) {
+            out.add(line("Pollination", String.format("dependence %.0f%% | today %.0f%% service | set %.0f%%",
+                    100 * sp.pollinationDependence, 100 * cs.pollinationToday, 100 * cs.pollinationFactor)));
+        }
         StringBuilder suff = new StringBuilder();
         for (Nutrient n : Nutrient.values()) {
             suff.append(n.symbol()).append(String.format(" %.2f ", cs.sufficiency[n.ordinal()]));
@@ -362,9 +415,9 @@ public final class Reports {
         if (state.getBlock() instanceof TilthCropBlock && level.getBlockEntity(pos) instanceof CropBlockEntity crop) {
             CropState cs = crop.cropState();
             CropSpecies sp = crop.species();
-            return Component.literal(String.format("%s BBCH %02d %.0f%% | grow %.0f%% | lim %s | Y %.0f%%",
+            return Component.literal(String.format("%s BBCH %02d %.0f%% | grow %.0f%% | lim %s | poll %.0f%% | Y %.0f%%",
                     sp.name, sp.bbchFor(sp.visualStage(cs)), 100 * Math.min(1, cs.dev), 100 * cs.lastGrowthFactor, cs.limitingFactor,
-                    100 * CropGrowthModel.yieldFactor(cs))).withStyle(ChatFormatting.GREEN);
+                    100 * cs.pollinationFactor, 100 * CropGrowthModel.yieldFactor(cs))).withStyle(ChatFormatting.GREEN);
         }
         if (level.getBlockEntity(pos) instanceof FarmlandBlockEntity farmland) {
             SoilState s = farmland.soil();

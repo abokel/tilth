@@ -60,10 +60,22 @@ public final class SoilBaseline {
         s.sulfur = Math.max(2, 6 + 2 * om1 + 2 * noise);
         s.calcium = 300 + 25 * tex.clay() * Math.max(0.2, (s.ph - 4.0) / 4.0) + (s.ph > 7.5 ? 1500 : 0);
         s.magnesium = s.calcium / 6.5;
+        s.iron = Math.max(2, 14 + 0.35 * tex.clay() + 2.5 * om1 + 6 * noise - Math.max(0, s.ph - 6.8) * 6);
+        s.zinc = Math.max(0.1, 0.7 + 0.02 * tex.clay() + 0.05 * om1 + 0.25 * noise - Math.max(0, s.ph - 7.0) * 0.35);
+        s.manganese = Math.max(0.5, 6 + 0.15 * tex.clay() + 0.8 * om1 + 1.5 * noise - Math.max(0, s.ph - 6.8) * 4);
+        s.copper = Math.max(0.08, 0.5 + 0.008 * tex.clay() + 0.03 * om1 + 0.12 * noise - Math.max(0, s.ph - 7.0) * 0.08);
+        s.boron = Math.max(0.05, 0.35 + 0.02 * om1 + 0.12 * noise - Math.max(0, s.ph - 7.2) * 0.06);
+        s.molybdenum = Math.max(0.005, 0.03 + Math.max(0, s.ph - 5.5) * 0.02 + 0.005 * noise);
         if (horizon != SoilHorizon.TOPSOIL) {
             s.nitrogen *= 0.4;
             s.phosphorus *= 0.5;
             s.sulfur *= 0.6;
+            s.iron *= 0.75;
+            s.zinc *= 0.75;
+            s.manganese *= 0.75;
+            s.copper *= 0.75;
+            s.boron *= 0.7;
+            s.molybdenum *= 0.7;
         }
 
         Hydraulics h = tex.hydraulics(s.organicMatter);

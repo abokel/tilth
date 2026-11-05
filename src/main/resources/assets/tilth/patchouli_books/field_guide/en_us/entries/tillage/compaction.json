@@ -2,7 +2,7 @@
   "name": "Compaction & Wet Clay",
   "icon": "tilth:clay_farmland",
   "category": "tilth:tillage",
-  "sortnum": 3,
+  "sortnum": 4,
   "pages": [
     {
       "type": "patchouli:text",

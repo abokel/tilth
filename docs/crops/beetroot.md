@@ -1,7 +1,7 @@
 ---
 title: "Beetroot"
 parent: Crops
-nav_order: 23
+nav_order: 25
 ---
 
 # Beetroot

@@ -60,7 +60,8 @@ import static net.minecraft.commands.Commands.literal;
  * the config) for testing the simulation without waiting for seasons.
  */
 public final class TilthCommands {
-    private static final List<String> SOIL_PROPERTIES = List.of("n", "p", "k", "s", "ca", "mg", "ph", "om", "moisture", "compaction", "residue");
+    private static final List<String> SOIL_PROPERTIES = List.of("n", "p", "k", "s", "ca", "mg", "fe", "zn", "mn", "cu", "b", "mo",
+            "ph", "om", "moisture", "compaction", "residue");
 
     private TilthCommands() {
     }
@@ -96,10 +97,6 @@ public final class TilthCommands {
                 .then(literal("grow").requires(TilthCommands::op)
                         .then(argument("days", IntegerArgumentType.integer(1, 3650)).executes(TilthCommands::cropGrow)))
                 .then(literal("kill").requires(TilthCommands::op).executes(TilthCommands::cropKill)));
-        root.then(literal("time").requires(TilthCommands::op)
-                .then(literal("skip").then(argument("days", DoubleArgumentType.doubleArg(0.01, 36500)).executes(TilthCommands::timeSkip)))
-                .then(literal("set").then(argument("month", IntegerArgumentType.integer(1, 12))
-                        .then(argument("day", IntegerArgumentType.integer(1, 31)).executes(TilthCommands::timeSet)))));
         root.then(literal("debug").then(literal("hud").executes(ctx -> {
             boolean on = DebugHud.toggle(ctx.getSource().getPlayerOrException());
             ctx.getSource().sendSuccess(() -> Component.literal("Tilth debug HUD " + (on ? "on" : "off")), false);
@@ -114,6 +111,10 @@ public final class TilthCommands {
                 .then(literal("set").requires(TilthCommands::op)
                         .then(argument("condition", DoubleArgumentType.doubleArg(0, 1)).executes(TilthCommands::animalSet)))
                 .then(literal("birth").requires(TilthCommands::op).executes(TilthCommands::animalBirth))
+                .then(literal("breed").requires(TilthCommands::op)
+                        .then(argument("breed", StringArgumentType.word()).suggests((c, b) -> net.minecraft.commands.SharedSuggestionProvider.suggest(
+                                java.util.Arrays.stream(com.claudacious.tilth.livestock.Breed.values()).map(com.claudacious.tilth.livestock.Breed::id), b))
+                                .executes(TilthCommands::animalBreed)))
                 .then(literal("sex").requires(TilthCommands::op)
                         .then(literal("female").executes(ctx -> animalSex(ctx, true)))
                         .then(literal("male").executes(ctx -> animalSex(ctx, false))))));
@@ -221,6 +222,12 @@ public final class TilthCommands {
             case "s" -> s.sulfur = value;
             case "ca" -> s.calcium = value;
             case "mg" -> s.magnesium = value;
+            case "fe" -> s.iron = value;
+            case "zn" -> s.zinc = value;
+            case "mn" -> s.manganese = value;
+            case "cu" -> s.copper = value;
+            case "b" -> s.boron = value;
+            case "mo" -> s.molybdenum = value;
             case "ph" -> s.ph = value;
             case "om" -> s.organicMatter = value;
             case "moisture" -> s.moisture = value;
@@ -335,32 +342,6 @@ public final class TilthCommands {
         return planted;
     }
 
-    // ------------------------------------------------------------------ time
-
-    private static int timeSkip(CommandContext<CommandSourceStack> ctx) {
-        double days = DoubleArgumentType.getDouble(ctx, "days");
-        TilthCalendar.skipRealDays(ctx.getSource().getServer(), days);
-        ServerLevel level = ctx.getSource().getLevel();
-        ctx.getSource().sendSuccess(() -> Component.literal(String.format("Calendar advanced %.1f days to %s. Fields catch up as they tick.",
-                days, TilthCalendar.describeToday(level))), true);
-        return 1;
-    }
-
-    private static int timeSet(CommandContext<CommandSourceStack> ctx) {
-        ServerLevel level = ctx.getSource().getLevel();
-        int month = IntegerArgumentType.getInteger(ctx, "month");
-        int day = IntegerArgumentType.getInteger(ctx, "day");
-        double now = TilthCalendar.realDay(level);
-        int year = CalendarMath.year(now);
-        double target = (year - 1) * 365.0 + CalendarMath.firstDayOfMonth(month) + day - 1;
-        while (target <= now) {
-            target += 365;
-        }
-        TilthCalendar.skipRealDays(ctx.getSource().getServer(), target - now);
-        ctx.getSource().sendSuccess(() -> Component.literal("Calendar moved forward to " + TilthCalendar.describeToday(level)), true);
-        return 1;
-    }
-
     // ------------------------------------------------------------------ diet
 
     private static int animalShow(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
@@ -371,19 +352,56 @@ public final class TilthCommands {
         }
         com.claudacious.tilth.livestock.LivestockState s = com.claudacious.tilth.livestock.Livestock.state(animal);
         long sinceMilked = animal.level().getGameTime() - s.lastMilked;
+        double disease = s.diseaseBurden();
         ctx.getSource().sendSuccess(() -> Reports.header(animal.getName().getString()), false);
         ctx.getSource().sendSuccess(() -> Reports.line("Condition", String.format("%.0f%% (%s)", s.condition * 100, s.describe())), false);
+        ctx.getSource().sendSuccess(() -> Reports.line("Pasture", String.format("%.0f%% (%s)", s.pastureQuality * 100,
+                com.claudacious.tilth.livestock.Livestock.pastureStatus(s))), false);
+        ctx.getSource().sendSuccess(() -> Reports.line("Disease", disease <= 0 ? "none"
+                : String.format("%.0f%% burden (%s)", disease * 100,
+                com.claudacious.tilth.livestock.Livestock.diseaseStatus(ctx.getSource().getLevel(), s))), false);
+        if (s.quarantine) {
+            ctx.getSource().sendSuccess(() -> Reports.line("Quarantine", "active"), false);
+        }
         ctx.getSource().sendSuccess(() -> Reports.line("Sex", s.sex == com.claudacious.tilth.livestock.LivestockState.UNKNOWN ? "unknown"
                 : com.claudacious.tilth.livestock.Breeding.sexName(animal, s.female())), false);
-        ctx.getSource().sendSuccess(() -> Reports.line("Breeds", s.condition >= 0.55 ? "yes" : "no, too thin"), false);
+        com.claudacious.tilth.livestock.Breed breedInfo = com.claudacious.tilth.livestock.Breed.byId(s.breed);
+        if (breedInfo != null) {
+            double temperature = animal.level().getBiome(animal.blockPosition()).value().getBaseTemperature();
+            ctx.getSource().sendSuccess(() -> Reports.line("Breed", breedInfo.displayName + (breedInfo.fit(temperature) >= 1 ? " (suits this climate)"
+                    : " (out of its climate: loses condition faster)")), false);
+        }
+        ctx.getSource().sendSuccess(() -> Reports.line("Breeds", s.condition >= 0.55 && !com.claudacious.tilth.livestock.Livestock.breedingBlockedByDisease(s)
+                ? "yes" : "no, too thin or unwell"), false);
         if (s.pregnant()) {
             ctx.getSource().sendSuccess(() -> Reports.line("Pregnant", String.format("due in %.1f days",
                     Math.max(0, s.due - animal.level().getGameTime()) / 24000.0)), false);
         }
         if (animal instanceof net.minecraft.world.entity.animal.Cow || animal instanceof net.minecraft.world.entity.animal.goat.Goat) {
             ctx.getSource().sendSuccess(() -> Reports.line("Milk", s.male() ? "none (males give no milk)" : s.condition < 0.4 ? "dry (too thin)"
+                    : s.quarantine ? "withheld (quarantine)"
+                    : disease > 0.55 ? "withheld (animal unwell)"
                     : sinceMilked < 24000 ? "milked today" : "ready"), false);
         }
+        return 1;
+    }
+
+    /** Testing: makes an animal a given breed, with that breed's look. */
+    private static int animalBreed(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+        if (!(EntityArgument.getEntity(ctx, "target") instanceof net.minecraft.world.entity.animal.Animal animal)) {
+            return 0;
+        }
+        com.claudacious.tilth.livestock.Breed breed = com.claudacious.tilth.livestock.Breed.byId(StringArgumentType.getString(ctx, "breed"));
+        if (breed == null || breed.species != com.claudacious.tilth.livestock.Breed.speciesOf(animal)) {
+            ctx.getSource().sendFailure(Component.literal("No such breed for this animal"));
+            return 0;
+        }
+        com.claudacious.tilth.livestock.LivestockState s = com.claudacious.tilth.livestock.Livestock.state(animal);
+        s.breed = breed.id();
+        animal.setData(com.claudacious.tilth.registry.TilthAttachments.LIVESTOCK.get(), s);
+        breed.applyLook(animal, animal.getRandom());
+        com.claudacious.tilth.livestock.Breeding.sync(animal);
+        ctx.getSource().sendSuccess(() -> Component.literal("Now a " + breed.displayName), true);
         return 1;
     }
 

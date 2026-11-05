@@ -7,8 +7,7 @@ nav_order: 2
 # Configuration
 
 config/tilth-common.toml (also Mods > Tilth > Config):
-- **calendar:** days per month, start month.
-- **climate:** temperature offset, rain, latitude bands.
+- **climate:** temperature offset, rain, latitude bands. Season length is set in Serene Seasons' own config.
 - **water:** source rules, ponds, puddles, evaporation.
 
 - **soil:** worldgen, morphing, erosion, leaching, trampling.

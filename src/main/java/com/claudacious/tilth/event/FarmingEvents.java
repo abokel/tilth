@@ -2,9 +2,12 @@ package com.claudacious.tilth.event;
 
 import com.claudacious.tilth.plot.PlotRules;
 import com.claudacious.tilth.TilthConfig;
+import com.claudacious.tilth.block.CropBlockEntity;
+import com.claudacious.tilth.block.FarmlandBlockEntity;
 import com.claudacious.tilth.block.PendingTill;
 import com.claudacious.tilth.block.TilthCropBlock;
 import com.claudacious.tilth.block.TilthFarmlandBlock;
+import com.claudacious.tilth.genetics.SeedGenetics;
 import com.claudacious.tilth.item.AmendmentItem;
 import com.claudacious.tilth.registry.TilthBlocks;
 import com.claudacious.tilth.registry.TilthItems;
@@ -98,12 +101,20 @@ public final class FarmingEvents {
             return;
         }
 
-        // Vanilla seeds plant the realistic Tilth crop on Tilth farmland.
-        CropSpecies species = VANILLA_SEEDS.get(stack.getItem());
-        if (species != null && TilthConfig.REDIRECT_VANILLA_SEEDS.getAsBoolean() && state.getBlock() instanceof TilthFarmlandBlock
+        // Crop seeds keep cultivar identity; planting transfers that genome into the crop state.
+        CropSpecies species = speciesOf(stack);
+        boolean vanillaRedirect = VANILLA_SEEDS.containsKey(stack.getItem());
+        if (species != null && (!vanillaRedirect || TilthConfig.REDIRECT_VANILLA_SEEDS.getAsBoolean())
+                && state.getBlock() instanceof TilthFarmlandBlock
                 && event.getFace() == Direction.UP && level.getBlockState(pos.above()).isAir()) {
-            if (!level.isClientSide) {
+            if (level instanceof ServerLevel server) {
+                if (level.getBlockEntity(pos) instanceof FarmlandBlockEntity farmland) {
+                    farmland.advance(server);
+                }
                 level.setBlockAndUpdate(pos.above(), TilthBlocks.crop(species).get().defaultBlockState());
+                if (level.getBlockEntity(pos.above()) instanceof CropBlockEntity crop) {
+                    crop.setGenome(SeedGenetics.genomeOrDefault(stack, species, level, pos.above()));
+                }
                 level.playSound(null, pos.above(), SoundEvents.CROP_PLANTED, SoundSource.BLOCKS, 1.0f, 1.0f);
                 if (!player.getAbilities().instabuild) {
                     stack.shrink(1);
@@ -112,6 +123,14 @@ public final class FarmingEvents {
             event.setCancellationResult(InteractionResult.sidedSuccess(level.isClientSide));
             event.setCanceled(true);
         }
+    }
+
+    private static CropSpecies speciesOf(ItemStack stack) {
+        CropSpecies species = VANILLA_SEEDS.get(stack.getItem());
+        if (species != null) {
+            return species;
+        }
+        return SeedGenetics.speciesOf(stack);
     }
 
     /** Adult livestock leave manure behind. */

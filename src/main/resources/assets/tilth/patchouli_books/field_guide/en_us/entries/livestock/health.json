@@ -1,0 +1,20 @@
+{
+  "name": "Pasture & Animal Health",
+  "icon": "tilth:veterinary_draught",
+  "category": "tilth:livestock",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Grazing wears a pasture down. Move animals between paddocks so the grass can recover: a rested pasture feeds them far better than a bare one. Jade shows how good the grazing is underfoot."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Animals can fall sick, more easily when thin, crowded or on worn pasture: $(thing)bovine respiratory disease$() in cattle, $(thing)swine influenza$() in pigs and $(thing)coccidiosis$() in poultry. Sick animals lose condition, give less and breed less."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Look at a sick animal through the $(thing)microscope$() (right-click it) to diagnose it. A $(thing)Veterinary Draught$() then treats it, far better soon after a diagnosis. Sneak-right-click with a $(thing)lead$() to quarantine it: a quarantined animal spreads disease far less, but neither breeds nor grazes, so feed it by hand."
+    }
+  ]
+}

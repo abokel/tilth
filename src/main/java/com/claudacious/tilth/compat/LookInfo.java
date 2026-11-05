@@ -61,12 +61,24 @@ public final class LookInfo {
         List<Component> lines = new ArrayList<>();
         if (s.sex != LivestockState.UNKNOWN) {
             String name = Breeding.sexName(animal, s.female());
+            com.claudacious.tilth.livestock.Breed breed = com.claudacious.tilth.livestock.Breed.byId(s.breed);
+            if (breed != null) {
+                name = breed.displayName + " " + name;
+            }
             lines.add(Component.literal((s.female() ? "♀ " : "♂ ") + Character.toUpperCase(name.charAt(0)) + name.substring(1))
                     .withStyle(s.female() ? ChatFormatting.LIGHT_PURPLE : ChatFormatting.AQUA));
             data.putBoolean(MALE, s.male());
         }
         lines.add(Component.literal(String.format("Condition %.0f%%", s.condition * 100))
                 .withStyle(s.condition >= 0.55 ? ChatFormatting.GREEN : s.condition >= 0.3 ? ChatFormatting.YELLOW : ChatFormatting.RED));
+        lines.add(Component.literal(String.format("Pasture %.0f%% (%s)", s.pastureQuality * 100, Livestock.pastureStatus(s)))
+                .withStyle(s.pastureQuality >= 0.5 ? ChatFormatting.DARK_GREEN : ChatFormatting.GOLD));
+        double burden = s.diseaseBurden();
+        lines.add(Component.literal("Disease " + (burden <= 0 ? "none" : String.format("%.0f%% (%s)", burden * 100, Livestock.diseaseStatus(level, s))))
+                .withStyle(burden <= 0 ? ChatFormatting.GREEN : burden < 0.4 ? ChatFormatting.YELLOW : ChatFormatting.RED));
+        if (s.quarantine) {
+            lines.add(Component.literal("Quarantine active").withStyle(ChatFormatting.GOLD));
+        }
         if (s.pregnant()) {
             lines.add(Component.literal(String.format("Pregnant, due in %.1f days", Math.max(0, s.due - level.getGameTime()) / 24000.0))
                     .withStyle(ChatFormatting.GOLD));
@@ -117,6 +129,10 @@ public final class LookInfo {
         };
         if (look != null) {
             lines.add(Component.literal(look).withStyle(condition == CropCondition.HEALTHY ? ChatFormatting.YELLOW : ChatFormatting.RED));
+        }
+        if (sp.pollinationDependence > 0) {
+            lines.add(Component.literal(String.format("Pollination set %.0f%% (today %.0f%% service)",
+                    100 * cs.pollinationFactor, 100 * cs.pollinationToday)).withStyle(ChatFormatting.DARK_GREEN));
         }
     }
 

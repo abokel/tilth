@@ -1,0 +1,54 @@
+{
+  "name": "Avian Coccidiosis",
+  "scientific_name": "Eimeria spp.",
+  "category": "protist",
+  "hosts": [
+    "animal:chicken"
+  ],
+  "transmission": [
+    "soilborne",
+    "mechanical_contact"
+  ],
+  "envelope": {
+    "temp_min": 8,
+    "temp_opt": 24,
+    "temp_max": 34,
+    "min_humidity": 65,
+    "leaf_wetness_hours": 4,
+    "soil_moisture_min": 0.0,
+    "soil_moisture_max": 2.0,
+    "ph_min": 3.0,
+    "ph_max": 10.0
+  },
+  "lifecycle": {
+    "latent_days": 5,
+    "spread_rate": 0.5,
+    "overwintering": "oocysts_in_litter",
+    "survival_years": 0.5
+  },
+  "impact": {
+    "max_yield_loss": 0.25,
+    "growth_penalty": 0.3,
+    "quality_penalty": 0.15,
+    "can_kill_host": true,
+    "from_stage": 0,
+    "to_stage": 9,
+    "benefit": 0.0
+  },
+  "control": {
+    "rotation_break_years": 0,
+    "tillage_reduction": 0.0,
+    "resistant_varieties": false,
+    "methods": [
+      "Rotate birds onto fresh pasture",
+      "Keep bedding dry",
+      "Treat and quarantine diagnosed birds"
+    ]
+  },
+  "symptoms": [
+    "Listlessness and poor appetite",
+    "Drop in laying and growth",
+    "Bloody droppings in severe cases"
+  ],
+  "notes": "Overgrazed, wet pasture increases oocyst survival."
+}

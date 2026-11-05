@@ -1,6 +1,8 @@
 package com.claudacious.tilth.block;
 
 import com.claudacious.tilth.TilthConfig;
+import com.claudacious.tilth.genetics.SeedGenetics;
+import com.claudacious.tilth.postharvest.GrainStacks;
 import com.claudacious.tilth.quality.Quality;
 import com.claudacious.tilth.registry.TilthBlockEntities;
 import com.claudacious.tilth.registry.TilthBlocks;
@@ -10,11 +12,16 @@ import com.claudacious.tilth.sim.crop.CropSpecies;
 import com.claudacious.tilth.sim.crop.CropState;
 import com.claudacious.tilth.sim.crop.GrowthForm;
 import com.claudacious.tilth.sim.crop.HarvestResult;
+import com.claudacious.tilth.sim.genetics.CropGenome;
+import com.claudacious.tilth.sim.genetics.GeneticsModel;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -52,6 +59,15 @@ public class CropBlockEntity extends BlockEntity {
 
     public CropState cropState() {
         return crop;
+    }
+
+    public CropGenome genome() {
+        return crop.genome(species());
+    }
+
+    public void setGenome(CropGenome genome) {
+        crop.genome = genome.normalized();
+        syncToClients();
     }
 
     public void markInitialized() {
@@ -165,20 +181,34 @@ public class CropBlockEntity extends BlockEntity {
             return harvestStacks(level, sp, CropGrowthModel.harvest(sp, crop, new Random(level.random.nextLong())));
         }
         if (!crop.germinated) {
-            return List.of(new ItemStack(item(sp.seedItem)));
+            ItemStack seeds = new ItemStack(item(sp.seedItem));
+            SeedGenetics.setGenome(seeds, genome());
+            return List.of(seeds);
         }
         return List.of();
     }
 
-    private static List<ItemStack> harvestStacks(ServerLevel level, CropSpecies sp, HarvestResult r) {
+    private List<ItemStack> harvestStacks(ServerLevel level, CropSpecies sp, HarvestResult r) {
         List<ItemStack> out = new ArrayList<>();
+        CropGenome saved = GeneticsModel.mutateCrop(genome(), new Random(level.random.nextLong()));
         if (r.produce() > 0) {
             ItemStack produce = new ItemStack(item(sp.produceItem), r.produce());
             Quality.set(produce, r.grade());
+            if (sp.seedIsProduce()) {
+                SeedGenetics.setGenome(produce, saved);
+            }
+            if (GrainStacks.isStorableGrain(produce)) {
+                GrainStacks.setMoisture(produce, GrainStacks.harvestMoisture(level, worldPosition));
+            }
             out.add(produce);
         }
         if (r.seeds() > 0) {
-            out.add(new ItemStack(item(sp.seedItem), r.seeds()));
+            ItemStack seeds = new ItemStack(item(sp.seedItem), r.seeds());
+            SeedGenetics.setGenome(seeds, saved);
+            if (GrainStacks.isStorableGrain(seeds)) {
+                GrainStacks.setMoisture(seeds, GrainStacks.harvestMoisture(level, worldPosition));
+            }
+            out.add(seeds);
         }
         if ((sp.form == GrowthForm.CEREAL || sp.form == GrowthForm.TALL_GRASS) && r.residueKgM2() > 0.1) {
             out.add(new ItemStack(TilthItems.STRAW.get(), r.residueKgM2() > 0.4 ? 2 : 1));
@@ -201,11 +231,28 @@ public class CropBlockEntity extends BlockEntity {
     }
 
     @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        return saveWithoutMetadata(registries);
+    }
+
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
         if (tag.contains("crop")) {
             crop = CropNbt.read(tag.getCompound("crop"));
         }
         initialized = tag.getBoolean("initialized");
+    }
+
+    private void syncToClients() {
+        setChanged();
+        if (level instanceof ServerLevel server) {
+            server.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
+        }
     }
 }

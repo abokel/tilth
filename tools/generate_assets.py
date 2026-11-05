@@ -221,13 +221,13 @@ def gen_crops(lang):
         "textures": {"particle": "#cross"},
         "elements": [
             {"from": [0.8, 0, 8], "to": [15.2, 32, 8], "rotation": {"origin": [8, 8, 8], "axis": "y", "angle": 45, "rescale": True},
-             "shade": False, "faces": {"north": {"uv": [0, 0, 16, 16], "texture": "#cross"}, "south": {"uv": [0, 0, 16, 16], "texture": "#cross"}}},
+             "shade": False, "faces": {"north": {"uv": [0, 0, 16, 16], "texture": "#cross", "tintindex": 0}, "south": {"uv": [0, 0, 16, 16], "texture": "#cross", "tintindex": 0}}},
             {"from": [8, 0, 0.8], "to": [8, 32, 15.2], "rotation": {"origin": [8, 8, 8], "axis": "y", "angle": 45, "rescale": True},
-             "shade": False, "faces": {"west": {"uv": [0, 0, 16, 16], "texture": "#cross"}, "east": {"uv": [0, 0, 16, 16], "texture": "#cross"}}}
+             "shade": False, "faces": {"west": {"uv": [0, 0, 16, 16], "texture": "#cross", "tintindex": 0}, "east": {"uv": [0, 0, 16, 16], "texture": "#cross", "tintindex": 0}}}
         ]})
     plane = lambda frm, to, rot, faces: {"from": frm, "to": to, "shade": False,
                                          **({"rotation": {"origin": [8, 8, 8], "axis": "y", "angle": 45, "rescale": True}} if rot else {}),
-                                         "faces": {f: {"uv": [0, 0, 16, 16], "texture": "#cross"} for f in faces}}
+                                         "faces": {f: {"uv": [0, 0, 16, 16], "texture": "#cross", "tintindex": 0} for f in faces}}
     model("block/bushy_cross", {
         "ambientocclusion": False, "render_type": "minecraft:cutout", "textures": {"particle": "#cross"},
         "elements": [plane([0.8, 0, 8], [15.2, 16, 8], True, ("north", "south")),
@@ -248,7 +248,7 @@ def gen_crops(lang):
                     if tall:
                         model(f"block/crop/{tex}", {"parent": f"{MOD}:block/tall_cross", "textures": {"cross": f"{MOD}:block/crop/{tex}"}})
                     elif crop["form"] == "cereal":
-                        model(f"block/crop/{tex}", {"parent": "minecraft:block/crop", "render_type": "minecraft:cutout",
+                        model(f"block/crop/{tex}", {"parent": f"{MOD}:block/tinted_crop", "render_type": "minecraft:cutout",
                                                     "textures": {"crop": f"{MOD}:block/crop/{tex}"}})
                     else:
                         model(f"block/crop/{tex}", {"parent": f"{MOD}:block/bushy_cross",
@@ -380,6 +380,7 @@ def gen_tags():
     tag("minecraft", "block", "dirt", blocks["topsoil"] + blocks["subsoil"] + blocks["grass"])
     tag("minecraft", "block", "mineable/shovel", all_soil + blocks["farmland"] + [f"{MOD}:manure_layer"])
     tag("minecraft", "block", "mineable/hoe", [f"{MOD}:alfalfa_bale"])
+    tag("minecraft", "block", "mineable/pickaxe", [f"{MOD}:grain_silo"])
     tag("minecraft", "block", "crops", blocks["crops"])
     for t in ("animals_spawnable_on", "valid_spawn", "wolves_spawnable_on", "rabbits_spawnable_on", "foxes_spawnable_on",
               "goats_spawnable_on", "parrots_spawnable_on"):
@@ -427,6 +428,23 @@ def gen_afflictions():
         write_json(os.path.join(adir, aid + ".json"), obj)
 
 
+def copy_static(lang):
+    """Hand-authored files in tools/static are copied over the generated ones last, so wiping folders never loses them.
+    tools/static/lang_en_us.json adds language entries."""
+    static = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static")
+    for root, _, files in os.walk(static):
+        for name in files:
+            src = os.path.join(root, name)
+            rel = os.path.relpath(src, static)
+            if rel == "lang_en_us.json":
+                with open(src, encoding="utf-8") as f:
+                    lang.update(json.load(f))
+                continue
+            dst = os.path.join(ROOT, "src", "main", "resources", rel)
+            os.makedirs(os.path.dirname(dst), exist_ok=True)
+            shutil.copyfile(src, dst)
+
+
 def main():
     lang = {}
     gen_soils(lang)
@@ -441,6 +459,7 @@ def main():
     gen_loot_modifiers()
     gen_data_maps()
     gen_afflictions()
+    copy_static(lang)
     lang = dict(sorted(lang.items()))
     write_json(os.path.join(ASSETS, "lang", "en_us.json"), lang)
     wiki_dir = sys.argv[sys.argv.index("--wiki") + 1] if "--wiki" in sys.argv else None

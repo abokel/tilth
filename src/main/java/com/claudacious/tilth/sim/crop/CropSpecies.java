@@ -1,6 +1,7 @@
 package com.claudacious.tilth.sim.crop;
 
 import com.claudacious.tilth.sim.Noise;
+import com.claudacious.tilth.sim.SimSettings;
 import com.claudacious.tilth.sim.soil.Nutrient;
 
 /** Agronomic parameters of a crop species. Built with {@link #builder}. */
@@ -48,6 +49,8 @@ public final class CropSpecies {
     public final boolean needsFlooding;
     /** Best harvest grade (1-5) the crop can reach. */
     public final int maxGrade;
+    /** 0 for self/wind-pollinated crops, 1 for highly insect-dependent crops. */
+    public final double pollinationDependence;
 
     private CropSpecies(Builder b) {
         this.id = b.id;
@@ -94,6 +97,7 @@ public final class CropSpecies {
         this.residueNPercent = b.residueN;
         this.needsFlooding = b.flooded;
         this.maxGrade = b.maxGrade;
+        this.pollinationDependence = b.pollinationDependence;
     }
 
     public static Builder builder(String id, String name, String scientificName, CropFamily family, GrowthForm form) {
@@ -176,6 +180,20 @@ public final class CropSpecies {
         return bbch[Math.max(0, Math.min(STAGES - 1, stage))];
     }
 
+    /** Pollination multiplier applied during flowering and final yield formation. */
+    public double pollinationMultiplier(double service) {
+        if (!SimSettings.pollinationEnabled || SimSettings.pollinationStrength <= 0) {
+            return 1.0;
+        }
+        double dep = Noise.clamp(pollinationDependence, 0, 1);
+        if (dep <= 0) {
+            return 1.0;
+        }
+        double s = Noise.clamp(service, 0, 1);
+        double penalty = 0.65 * dep * (1.0 - s) * Noise.clamp(SimSettings.pollinationStrength, 0, 3.0);
+        return Noise.clamp(1.0 - penalty, 0.2, 1.0);
+    }
+
     public static final class Builder {
         private final String id;
         private final String name;
@@ -203,6 +221,7 @@ public final class CropSpecies {
         private double residueKg = 0.2, residueN = 1.0;
         private boolean flooded;
         private int maxGrade = 5;
+        private double pollinationDependence;
 
         private Builder(String id, String name, String scientificName, CropFamily family, GrowthForm form) {
             this.id = id;
@@ -210,6 +229,13 @@ public final class CropSpecies {
             this.scientificName = scientificName;
             this.family = family;
             this.form = form;
+            this.pollinationDependence = defaultPollinationDependence(form);
+            uptake[Nutrient.FE.ordinal()] = 1.5;
+            uptake[Nutrient.ZN.ordinal()] = 0.3;
+            uptake[Nutrient.MN.ordinal()] = 0.8;
+            uptake[Nutrient.CU.ordinal()] = 0.1;
+            uptake[Nutrient.B.ordinal()] = 0.25;
+            uptake[Nutrient.MO.ordinal()] = 0.02;
         }
 
         public Builder temps(double base, double opt, double max, double cutoff) {
@@ -265,6 +291,16 @@ public final class CropSpecies {
             return this;
         }
 
+        public Builder uptakeMicros(double fe, double zn, double mn, double cu, double b, double mo) {
+            uptake[Nutrient.FE.ordinal()] = fe;
+            uptake[Nutrient.ZN.ordinal()] = zn;
+            uptake[Nutrient.MN.ordinal()] = mn;
+            uptake[Nutrient.CU.ordinal()] = cu;
+            uptake[Nutrient.B.ordinal()] = b;
+            uptake[Nutrient.MO.ordinal()] = mo;
+            return this;
+        }
+
         public Builder fixation(double share) {
             this.fixation = share;
             return this;
@@ -313,6 +349,11 @@ public final class CropSpecies {
             return this;
         }
 
+        public Builder pollination(double dependence) {
+            this.pollinationDependence = Noise.clamp(dependence, 0.0, 1.0);
+            return this;
+        }
+
         public Builder flooded() {
             this.flooded = true;
             return this;
@@ -320,6 +361,17 @@ public final class CropSpecies {
 
         public CropSpecies build() {
             return new CropSpecies(this);
+        }
+
+        private static double defaultPollinationDependence(GrowthForm form) {
+            return switch (form) {
+                case CEREAL, TALL_GRASS, ROOT, BULB, TUBER, HEAD_VEGETABLE -> 0.0;
+                case LEGUME -> 0.2;
+                case FORAGE -> 0.35;
+                case FRUITING -> 0.3;
+                case TALL_FLOWER -> 0.8;
+                case FIBER -> 0.25;
+            };
         }
     }
 }

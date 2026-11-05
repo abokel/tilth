@@ -1,7 +1,7 @@
 ---
 title: "Tomato"
 parent: Crops
-nav_order: 30
+nav_order: 32
 ---
 
 # Tomato

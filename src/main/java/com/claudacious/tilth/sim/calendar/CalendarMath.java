@@ -79,6 +79,20 @@ public final class CalendarMath {
         return dayOfYear - MONTH_START[month(dayOfYear) - 1] + 1;
     }
 
+    /**
+     * Day counted from 1 January of the year a twelve-sub-season year (starting in early spring) began in, for a
+     * position {@code fraction} (0..1) through it: each sub-season fills its
+     * month exactly (early spring is 1 to 31 March), and January and February run on past 365.
+     */
+    public static double dayOfSeasonYear(double fraction) {
+        double months = fraction * 12;
+        int sub = Math.min(11, (int) Math.floor(months));
+        int month = (2 + sub) % 12 + 1;
+        int start = firstDayOfMonth(month);
+        int length = (month == 12 ? DAYS_PER_YEAR : firstDayOfMonth(month + 1)) - start;
+        return start + (months - sub) * length + (month <= 2 ? DAYS_PER_YEAR : 0);
+    }
+
     public static int firstDayOfMonth(int month) {
         return MONTH_START[Math.min(12, Math.max(1, month)) - 1];
     }

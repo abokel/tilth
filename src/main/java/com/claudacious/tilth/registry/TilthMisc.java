@@ -5,6 +5,7 @@ import com.claudacious.tilth.Tilth;
 import com.claudacious.tilth.affliction.Affliction;
 import com.claudacious.tilth.diet.DietEffect;
 import com.claudacious.tilth.diet.NutrientProfile;
+import com.claudacious.tilth.genetics.GeneSplicingRecipe;
 import com.claudacious.tilth.loot.GrassSeedModifier;
 import com.claudacious.tilth.quality.QualityCookingRecipes;
 import com.claudacious.tilth.quality.QualityShapelessRecipe;
@@ -44,6 +45,8 @@ public final class TilthMisc {
             RECIPE_SERIALIZERS.register("consuming_shapeless", ConsumingShapelessRecipe.Serializer::new);
     public static final DeferredHolder<RecipeSerializer<?>, QualityShapelessRecipe.Serializer> QUALITY_SHAPELESS =
             RECIPE_SERIALIZERS.register("quality_shapeless", QualityShapelessRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeSerializer<?>, GeneSplicingRecipe.Serializer> GENE_SPLICING =
+            RECIPE_SERIALIZERS.register("gene_splicing", GeneSplicingRecipe.Serializer::new);
     public static final DeferredHolder<RecipeSerializer<?>, SimpleCookingSerializer<QualityCookingRecipes.Smelting>> QUALITY_SMELTING =
             RECIPE_SERIALIZERS.register("quality_smelting", () -> new SimpleCookingSerializer<>(QualityCookingRecipes.Smelting::new, 200));
     public static final DeferredHolder<RecipeSerializer<?>, SimpleCookingSerializer<QualityCookingRecipes.Smoking>> QUALITY_SMOKING =

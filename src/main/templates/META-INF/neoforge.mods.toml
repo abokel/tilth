@@ -24,6 +24,14 @@ description='''${mod_description}'''
     ordering="NONE"
     side="BOTH"
 
+# Required: seasons, snow, ice and seasonal colours all come from Serene Seasons; Tilth's crop climate follows its calendar.
+[[dependencies.${mod_id}]]
+    modId="sereneseasons"
+    type="required"
+    versionRange="[${serene_seasons_min},)"
+    ordering="AFTER"
+    side="BOTH"
+
 # Optional: recipe and mechanic pages in JEI.
 [[dependencies.${mod_id}]]
     modId="jei"

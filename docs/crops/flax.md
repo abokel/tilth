@@ -1,7 +1,7 @@
 ---
 title: "Flax"
 parent: Crops
-nav_order: 32
+nav_order: 34
 ---
 
 # Flax

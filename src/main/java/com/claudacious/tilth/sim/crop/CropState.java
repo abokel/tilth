@@ -1,5 +1,7 @@
 package com.claudacious.tilth.sim.crop;
 
+import com.claudacious.tilth.sim.SimSettings;
+import com.claudacious.tilth.sim.genetics.CropGenome;
 import com.claudacious.tilth.sim.soil.Nutrient;
 
 import java.util.Arrays;
@@ -30,8 +32,19 @@ public final class CropState {
     /** Smoothed nutrient sufficiency (supply/demand), indexed by {@link Nutrient#ordinal()}. */
     public final double[] sufficiency = new double[Nutrient.values().length];
     public double waterFactor = 1.0;
+    /** Legacy aggregate quality; kept for save compatibility. */
     public double qualitySum;
+    /** Cumulative non-pollination quality contribution, weighted by development. */
+    public double qualityBaseSum;
+    /** Cumulative pollination quality contribution, weighted by development. */
+    public double pollinationQualitySum;
     public double qualityWeight;
+    /** Pollination service sampled for the current simulated day (0-1). */
+    public double pollinationToday = 1.0;
+    /** Development-weighted pollination multiplier through flowering/fruit set. */
+    public double pollinationFactor = 1.0;
+    public double pollinationSum;
+    public double pollinationWeight;
     public int droughtDays;
     public int waterlogDays;
     public int coldWetDays;
@@ -54,6 +67,8 @@ public final class CropState {
     public double afflictionQualityFactor = 1.0;
     /** Active afflictions: id to severity (0-1). */
     public final Map<String, Double> afflictions = new LinkedHashMap<>();
+    /** Heritable cultivar traits. Null in old saves until first normalisation. */
+    public CropGenome genome;
 
     public CropState() {
         Arrays.fill(sufficiency, 1.0);
@@ -68,7 +83,14 @@ public final class CropState {
     }
 
     public double qualityScore() {
-        return qualityWeight <= 0 ? 0.6 : qualitySum / qualityWeight;
+        if (qualityWeight <= 0) {
+            return 0.6;
+        }
+        double base = qualityBaseSum / qualityWeight;
+        double pollination = SimSettings.pollinationEnabled && SimSettings.pollinationStrength > 0
+                ? pollinationQualitySum / qualityWeight
+                : 1.0;
+        return base + 0.1 * pollination;
     }
 
     public void kill(String cause) {
@@ -76,5 +98,12 @@ public final class CropState {
             dead = true;
             deathCause = cause;
         }
+    }
+
+    public CropGenome genome(CropSpecies species) {
+        if (genome == null || !species.id.equals(genome.speciesId())) {
+            genome = CropGenome.landrace(species.id);
+        }
+        return genome.normalized();
     }
 }

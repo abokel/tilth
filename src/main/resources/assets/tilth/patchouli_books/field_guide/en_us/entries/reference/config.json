@@ -6,7 +6,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "config/tilth-common.toml (also Mods > Tilth > Config):$(li)$(thing)calendar:$() days per month, start month.$(li)$(thing)climate:$() temperature offset, rain, latitude bands.$(li)$(thing)water:$() source rules, ponds, puddles, evaporation."
+      "text": "config/tilth-common.toml (also Mods > Tilth > Config):$(li)$(thing)climate:$() temperature offset, rain, latitude bands. Season length is set in Serene Seasons' own config.$(li)$(thing)water:$() source rules, ponds, puddles, evaporation."
     },
     {
       "type": "patchouli:text",

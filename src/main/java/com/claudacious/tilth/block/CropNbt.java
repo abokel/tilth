@@ -1,6 +1,7 @@
 package com.claudacious.tilth.block;
 
 import com.claudacious.tilth.sim.crop.CropState;
+import com.claudacious.tilth.sim.genetics.CropGenome;
 import net.minecraft.nbt.CompoundTag;
 
 /** NBT (de)serialisation of {@link CropState}. */
@@ -22,7 +23,13 @@ public final class CropNbt {
         t.putDouble("event_factor", c.eventFactor);
         t.putDouble("water_factor", c.waterFactor);
         t.putDouble("quality_sum", c.qualitySum);
+        t.putDouble("quality_base_sum", c.qualityBaseSum);
+        t.putDouble("pollination_quality_sum", c.pollinationQualitySum);
         t.putDouble("quality_weight", c.qualityWeight);
+        t.putDouble("pollination_today", c.pollinationToday);
+        t.putDouble("pollination_factor", c.pollinationFactor);
+        t.putDouble("pollination_sum", c.pollinationSum);
+        t.putDouble("pollination_weight", c.pollinationWeight);
         t.putInt("drought_days", c.droughtDays);
         t.putInt("waterlog_days", c.waterlogDays);
         t.putInt("cold_wet_days", c.coldWetDays);
@@ -41,6 +48,9 @@ public final class CropNbt {
         CompoundTag aff = new CompoundTag();
         c.afflictions.forEach(aff::putDouble);
         t.put("afflictions", aff);
+        if (c.genome != null) {
+            t.putString("genome", c.genome.encode());
+        }
         return t;
     }
 
@@ -59,6 +69,20 @@ public final class CropNbt {
         c.waterFactor = t.getDouble("water_factor");
         c.qualitySum = t.getDouble("quality_sum");
         c.qualityWeight = t.getDouble("quality_weight");
+        c.pollinationToday = t.contains("pollination_today") ? t.getDouble("pollination_today") : 1.0;
+        c.pollinationFactor = t.contains("pollination_factor") ? t.getDouble("pollination_factor") : 1.0;
+        c.pollinationSum = t.getDouble("pollination_sum");
+        c.pollinationWeight = t.getDouble("pollination_weight");
+        if (t.contains("quality_base_sum")) {
+            c.qualityBaseSum = t.getDouble("quality_base_sum");
+            c.pollinationQualitySum = t.contains("pollination_quality_sum") ? t.getDouble("pollination_quality_sum")
+                    : c.qualityWeight;
+            c.qualitySum = c.qualityBaseSum + 0.1 * c.pollinationQualitySum;
+        } else {
+            double legacyPollination = c.qualityWeight <= 0 ? 1.0 : Math.max(0.0, Math.min(1.0, c.pollinationFactor));
+            c.pollinationQualitySum = legacyPollination * c.qualityWeight;
+            c.qualityBaseSum = c.qualitySum - 0.1 * c.pollinationQualitySum;
+        }
         c.droughtDays = t.getInt("drought_days");
         c.waterlogDays = t.getInt("waterlog_days");
         c.coldWetDays = t.getInt("cold_wet_days");
@@ -77,6 +101,9 @@ public final class CropNbt {
         CompoundTag aff = t.getCompound("afflictions");
         for (String key : aff.getAllKeys()) {
             c.afflictions.put(key, aff.getDouble(key));
+        }
+        if (t.contains("genome")) {
+            c.genome = CropGenome.decode(t.getString("genome"));
         }
         return c;
     }

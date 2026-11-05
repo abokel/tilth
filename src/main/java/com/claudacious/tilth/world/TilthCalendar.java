@@ -1,29 +1,28 @@
 package com.claudacious.tilth.world;
 
-import com.claudacious.tilth.network.CalendarSync;
 import com.claudacious.tilth.sim.calendar.CalendarMath;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.event.level.SleepFinishedTimeEvent;
 import net.neoforged.neoforge.event.server.ServerStoppedEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
+import sereneseasons.api.season.ISeasonState;
+import sereneseasons.api.season.SeasonHelper;
 
 /**
- * The world calendar. Calendar time is the overworld's total game time plus an offset that grows
- * when players sleep through the night and when an operator skips days, so it never runs backwards
- * (unlike the day-time clock, which /time set can rewind).
+ * The world calendar, read from Serene Seasons. Its year of twelve sub-seasons maps onto the twelve months, early
+ * spring being March and late winter February, so the crop climate (daily temperature, rain, day length) always
+ * matches the season Serene Seasons shows. Use {@code /season set} to change the date.
+ *
+ * <p>Serene Seasons counts time within the current year only, so the number of years completed is kept here: the
+ * calendar day never runs backwards while the seasons move forward.
  */
 public final class TilthCalendar {
-    private static volatile CalendarMath math = new CalendarMath(6, 3);
+    private static volatile CalendarMath math = new CalendarMath(8, 3);
     private static CalendarData cached;
     private static MinecraftServer cachedServer;
 
     private TilthCalendar() {
-    }
-
-    public static void reconfigure(int daysPerMonth, int startMonth) {
-        math = new CalendarMath(daysPerMonth, startMonth);
     }
 
     public static CalendarMath math() {
@@ -38,17 +37,19 @@ public final class TilthCalendar {
         return cached;
     }
 
-    public static long ticks(Level level) {
-        MinecraftServer server = level.getServer();
-        if (server == null) {
-            return level.getGameTime();
-        }
-        return server.overworld().getGameTime() + data(server).offsetTicks;
+    /** How far through the Serene Seasons year the world is, 0 at the start of early spring. */
+    static double yearFraction(Level level) {
+        ISeasonState s = SeasonHelper.getSeasonState(level);
+        int cycle = Math.max(1, s.getCycleDuration());
+        return Math.floorMod(s.getSeasonCycleTicks(), cycle) / (double) cycle;
     }
 
     /** Real calendar days since 1 January of year 1 (fractional). */
     public static double realDay(Level level) {
-        return math.realDay(ticks(level));
+        MinecraftServer server = level.getServer();
+        Level clock = server != null ? server.overworld() : level;
+        long years = server != null ? data(server).years() : 0;
+        return years * (double) CalendarMath.DAYS_PER_YEAR + CalendarMath.dayOfSeasonYear(yearFraction(clock));
     }
 
     public static long today(Level level) {
@@ -61,31 +62,29 @@ public final class TilthCalendar {
         return CalendarMath.describe(d) + " (" + CalendarMath.seasonPhase(doy) + " " + CalendarMath.season(doy).displayName().toLowerCase() + ")";
     }
 
-    public static void skipRealDays(MinecraftServer server, double realDays) {
-        data(server).addOffset(math.ticksForRealDays(realDays));
-        CalendarSync.sendToAll(server);
-    }
-
     public static boolean rainedOn(Level level, long day) {
         MinecraftServer server = level.getServer();
         return server != null && data(server).rained(day);
     }
 
-    public static void onSleepFinished(SleepFinishedTimeEvent event) {
-        if (event.getLevel() instanceof ServerLevel level && level == level.getServer().overworld()) {
-            long skipped = event.getNewTime() - level.getDayTime();
-            if (skipped > 0) {
-                data(level.getServer()).addOffset(skipped);
-                CalendarSync.sendToAll(level.getServer());
-            }
-        }
-    }
-
     public static void onServerTick(ServerTickEvent.Post event) {
         MinecraftServer server = event.getServer();
         ServerLevel overworld = server.overworld();
+        if (overworld.getGameTime() % 20 != 0) {
+            return;
+        }
+        CalendarData data = data(server);
+        // A new Serene Seasons year: its clock wrapped from late winter back to early spring.
+        double fraction = yearFraction(overworld);
+        data.observe(fraction);
+        // Each sub-season is a month, so a month lasts as many game days as a sub-season does.
+        ISeasonState s = SeasonHelper.getSeasonState(overworld);
+        int daysPerMonth = Math.max(1, s.getSubSeasonDuration() / Math.max(1, s.getDayDuration()));
+        if (math.daysPerMonth() != daysPerMonth) {
+            math = new CalendarMath(daysPerMonth, 3);
+        }
         if (overworld.getGameTime() % 100 == 0 && overworld.isRaining()) {
-            data(server).markRain(today(overworld));
+            data.markRain(today(overworld));
         }
     }
 

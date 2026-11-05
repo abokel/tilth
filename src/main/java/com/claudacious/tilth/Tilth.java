@@ -9,9 +9,6 @@ import com.claudacious.tilth.diet.DietEvents;
 import com.claudacious.tilth.event.FarmingEvents;
 import com.claudacious.tilth.event.StarterKit;
 import com.claudacious.tilth.livestock.Livestock;
-import com.claudacious.tilth.network.CalendarSync;
-import com.claudacious.tilth.network.WeatherSync;
-import com.claudacious.tilth.world.WinterWeather;
 import com.claudacious.tilth.plot.PlotEvents;
 import com.claudacious.tilth.registry.TilthAttachments;
 import com.claudacious.tilth.registry.TilthBlockEntities;
@@ -61,16 +58,19 @@ public final class Tilth {
         TilthMisc.TABS.register(modBus);
         modBus.addListener(TilthMisc::registerDataMaps);
         modBus.addListener(TilthMisc::registerDatapackRegistries);
-        modBus.addListener(CalendarSync::register);
-        modBus.addListener(WeatherSync::register);
         modBus.addListener(SexSync::register);
         modBus.addListener(ModConfigEvent.Loading.class, TilthConfig::onLoad);
         modBus.addListener(ModConfigEvent.Reloading.class, TilthConfig::onLoad);
+        modBus.addListener(TilthEntities::registerAttributes);
+        modBus.addListener((net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent e) -> e.registerBlock(
+                net.neoforged.neoforge.capabilities.Capabilities.ItemHandler.BLOCK, (level, pos, state, be, side) -> {
+                    com.claudacious.tilth.block.GrainSiloBlockEntity silo = com.claudacious.tilth.block.GrainSiloBlock.storage(level, pos);
+                    return silo == null ? null : silo.itemHandler();
+                }, TilthBlocks.GRAIN_SILO.get()));
         container.registerConfig(ModConfig.Type.COMMON, TilthConfig.SPEC);
 
         IEventBus game = NeoForge.EVENT_BUS;
         game.addListener(TilthCommands::register);
-        game.addListener(TilthCalendar::onSleepFinished);
         game.addListener(TilthCalendar::onServerTick);
         game.addListener(Tilth::onServerStopped);
         game.addListener(WaterSourceRules::onCreateSource);
@@ -89,14 +89,14 @@ public final class Tilth {
         game.addListener(DebugHud::onPlayerTick);
         game.addListener(FieldGuide::onPlayerLoggedIn);
         game.addListener(StarterKit::onPlayerLoggedIn);
+        game.addListener(com.claudacious.tilth.postharvest.GrainKeeping::onContainerOpen);
+        game.addListener(com.claudacious.tilth.postharvest.GrainKeeping::onPlayerTick);
         game.addListener(Livestock::onEntityTick);
         game.addListener(Livestock::onInteract);
         game.addListener(Livestock::onDrops);
         game.addListener(Breeding::onJoin);
         game.addListener(Breeding::onStartTracking);
         game.addListener(Breeding::onBabySpawn);
-        game.addListener(CalendarSync::onPlayerLoggedIn);
-        game.addListener(WinterWeather::onLevelTick);
     }
 
     private static void onServerStopped(ServerStoppedEvent event) {

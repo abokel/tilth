@@ -6,18 +6,20 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.saveddata.SavedData;
 
-/** Calendar offset (from sleeping and /tilth time) and the real days on which Minecraft weather rained. */
+/** Years of Serene Seasons completed (its own clock only counts within a year), and the days Minecraft weather rained. */
 public final class CalendarData extends SavedData {
     public static final SavedData.Factory<CalendarData> FACTORY = new SavedData.Factory<>(CalendarData::new, CalendarData::load);
     public static final String NAME = "tilth_calendar";
     private static final int RAIN_MEMORY_DAYS = 800;
 
-    long offsetTicks;
+    private long years;
+    private double lastFraction = -1;
     private final LongSet rainDays = new LongOpenHashSet();
 
     public static CalendarData load(CompoundTag tag, HolderLookup.Provider registries) {
         CalendarData d = new CalendarData();
-        d.offsetTicks = tag.getLong("offset");
+        d.years = tag.getLong("years");
+        d.lastFraction = tag.contains("fraction") ? tag.getDouble("fraction") : -1;
         for (long day : tag.getLongArray("rain_days")) {
             d.rainDays.add(day);
         }
@@ -26,18 +28,25 @@ public final class CalendarData extends SavedData {
 
     @Override
     public CompoundTag save(CompoundTag tag, HolderLookup.Provider registries) {
-        tag.putLong("offset", offsetTicks);
+        tag.putLong("years", years);
+        tag.putDouble("fraction", lastFraction);
         tag.putLongArray("rain_days", rainDays.toLongArray());
         return tag;
     }
 
-    public long offsetTicks() {
-        return offsetTicks;
+    public long years() {
+        return years;
     }
 
-    public void addOffset(long ticks) {
-        offsetTicks += ticks;
-        setDirty();
+    /** Notes where Serene Seasons is in its year; a jump from late winter back to spring is a new year. */
+    public void observe(double fraction) {
+        if (lastFraction >= 0 && fraction < lastFraction - 0.5) {
+            years++;
+        }
+        if (Math.abs(fraction - lastFraction) > 1e-6) {
+            lastFraction = fraction;
+            setDirty();
+        }
     }
 
     public boolean rained(long day) {

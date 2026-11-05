@@ -28,15 +28,20 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.animal.Bee;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 
 /** Soil state of one block of farmland and the driver of the daily field simulation. */
 public class FarmlandBlockEntity extends BlockEntity {
+    private static final int FLOWER_RADIUS = 6;
+    private static final int BEE_RADIUS = 12;
     private SoilState soil = new SoilState();
     private boolean initialized;
     private double simDay;
@@ -45,6 +50,10 @@ public class FarmlandBlockEntity extends BlockEntity {
     private int bareDays;
     private double lastPonding;
     private double lastIrrigation;
+
+    private record PollinationSnapshot(double habitatScore, double beeScore) {
+        private static final PollinationSnapshot NONE = new PollinationSnapshot(0, 0);
+    }
 
     public FarmlandBlockEntity(BlockPos pos, BlockState state) {
         super(TilthBlockEntities.FARMLAND.get(), pos, state);
@@ -128,6 +137,22 @@ public class FarmlandBlockEntity extends BlockEntity {
 
     /** Catches the soil (and any crop on it) up to the current calendar day. */
     public void advance(ServerLevel level) {
+        advance(level, true);
+    }
+
+    /**
+     * Catches soil up to today while excluding the crop currently above this farmland.
+     * Used before a newly placed crop should begin accumulating growth.
+     */
+    public void advanceSoilOnly(ServerLevel level) {
+        advance(level, false);
+        if (bareDays != 0) {
+            bareDays = 0;
+            setChanged();
+        }
+    }
+
+    private void advance(ServerLevel level, boolean includeCrop) {
         ensureInitialized(level);
         double target = TilthCalendar.realDay(level);
         int maxCatchUp = TilthConfig.MAX_CATCH_UP_DAYS.getAsInt();
@@ -137,17 +162,17 @@ public class FarmlandBlockEntity extends BlockEntity {
         if (target - simDay < 1.0) {
             return;
         }
-        simulate(level, target);
+        simulate(level, target, includeCrop);
     }
 
     /** Debug: simulate {@code days} extra days immediately, borrowing the weather of the days ahead. */
     public void simulateExtraDays(ServerLevel level, int days) {
         advance(level);
-        simulate(level, simDay + days);
+        simulate(level, simDay + days, true);
     }
 
-    private void simulate(ServerLevel level, double target) {
-        CropBlockEntity crop = level.getBlockEntity(worldPosition.above()) instanceof CropBlockEntity c ? c : null;
+    private void simulate(ServerLevel level, double target, boolean includeCrop) {
+        CropBlockEntity crop = includeCrop && level.getBlockEntity(worldPosition.above()) instanceof CropBlockEntity c ? c : null;
         CropSpecies species = crop != null ? crop.species() : null;
         CropState cropState = crop != null ? crop.cropState() : null;
         if (crop != null) {
@@ -159,9 +184,13 @@ public class FarmlandBlockEntity extends BlockEntity {
         FieldSimulator.Inputs inputs = computeInputs(level, species);
         lastIrrigation = inputs.irrigation();
         FieldSimulator.AfflictionHook hook = crop != null ? AfflictionEngine.hook(level, worldPosition, soil) : null;
+        PollinationSnapshot pollination = crop != null ? pollinationSnapshot(level) : PollinationSnapshot.NONE;
         SoilTexture tex = texture();
         while (simDay + 1.0 <= target) {
             long day = (long) Math.floor(simDay);
+            if (cropState != null) {
+                cropState.pollinationToday = pollinationService(day, target, pollination);
+            }
             DailyWeather weather = ClimateService.weather(level, worldPosition, climate, day);
             FieldSimulator.Report report = FieldSimulator.step(soil, tex, climate, weather, inputs, species, cropState, hook);
             lastPonding = report.water().ponding();
@@ -223,6 +252,58 @@ public class FarmlandBlockEntity extends BlockEntity {
         double slopeFactor = 1.0 + slopeDegrees / 12.0;
         double capillary = 0.5 + tex.silt() / 100.0 + (tex.isOrganic() ? 0.5 : 0);
         return new FieldSimulator.Inputs(irrigation, flooded, slopeFactor, capillary);
+    }
+
+    private PollinationSnapshot pollinationSnapshot(ServerLevel level) {
+        if (!TilthConfig.POLLINATION.getAsBoolean()) {
+            return PollinationSnapshot.NONE;
+        }
+        double flowers = flowerHabitat(level);
+        AABB box = new AABB(worldPosition).inflate(BEE_RADIUS, 4, BEE_RADIUS);
+        int bees = level.getEntitiesOfClass(Bee.class, box, bee -> bee.isAlive() && !bee.isBaby() && !bee.isNoAi() && !bee.isInWaterRainOrBubble()).size();
+        double beeScore = Noise.clamp(bees / 3.0, 0, 1);
+        return new PollinationSnapshot(flowers, beeScore);
+    }
+
+    private double pollinationService(long day, double target, PollinationSnapshot snapshot) {
+        if (!TilthConfig.POLLINATION.getAsBoolean()) {
+            return 1.0;
+        }
+        double service = snapshot.habitatScore();
+        long lastFullyElapsedDay = (long) Math.floor(target) - 1;
+        // Do not project today's bee count backwards across catch-up days after a chunk was unloaded.
+        if (day >= lastFullyElapsedDay) {
+            service = pollinationCombined(snapshot.habitatScore(), snapshot.beeScore());
+        }
+        return service;
+    }
+
+    private double flowerHabitat(ServerLevel level) {
+        int flowers = 0;
+        int samples = 0;
+        BlockPos.MutableBlockPos m = new BlockPos.MutableBlockPos();
+        for (int dy = -1; dy <= 1; dy++) {
+            for (int dx = -FLOWER_RADIUS; dx <= FLOWER_RADIUS; dx++) {
+                for (int dz = -FLOWER_RADIUS; dz <= FLOWER_RADIUS; dz++) {
+                    m.set(worldPosition.getX() + dx, worldPosition.getY() + dy, worldPosition.getZ() + dz);
+                    if (!level.isLoaded(m)) {
+                        continue;
+                    }
+                    samples++;
+                    if (level.getBlockState(m).is(BlockTags.FLOWERS)) {
+                        flowers++;
+                    }
+                }
+            }
+        }
+        if (samples <= 0) {
+            return 0;
+        }
+        return Noise.clamp(flowers / 12.0, 0, 1);
+    }
+
+    private static double pollinationCombined(double habitat, double bees) {
+        return Noise.clamp(0.55 * habitat + 0.55 * bees + 0.2 * Math.min(habitat, bees), 0, 1);
     }
 
     private void updateMoistureState(ServerLevel level) {

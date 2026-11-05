@@ -1,7 +1,7 @@
 ---
 title: "Durum Wheat"
 parent: Crops
-nav_order: 6
+nav_order: 8
 ---
 
 # Durum Wheat

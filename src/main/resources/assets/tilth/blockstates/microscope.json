@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "tilth:block/microscope",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "tilth:block/microscope",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "tilth:block/microscope",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tilth:block/microscope",
+      "y": 270
+    }
+  }
+}

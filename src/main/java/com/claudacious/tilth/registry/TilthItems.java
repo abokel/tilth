@@ -79,6 +79,9 @@ public final class TilthItems {
         }
         ITEMS.registerSimpleBlockItem(TilthBlocks.GLEY);
         ITEMS.registerSimpleBlockItem(TilthBlocks.SOIL_LAB);
+        ITEMS.registerSimpleBlockItem(TilthBlocks.INCUBATOR);
+        ITEMS.registerSimpleBlockItem(TilthBlocks.DRYING_RACK);
+        ITEMS.registerSimpleBlockItem(TilthBlocks.GRAIN_SILO);
         ITEMS.registerSimpleBlockItem(TilthBlocks.ALFALFA_BALE);
         for (CropSpecies sp : Crops.all()) {
             registerCropItem(sp, sp.seedItem, true);
@@ -92,13 +95,16 @@ public final class TilthItems {
     public static final DeferredItem<CraftingToolItem> QUERN = ITEMS.register("quern", () -> new CraftingToolItem(new Item.Properties().durability(256)));
     public static final DeferredItem<KnifeItem> KITCHEN_KNIFE = ITEMS.register("kitchen_knife", () -> new KnifeItem(new Item.Properties().durability(160)));
     public static final DeferredItem<PlantSampleItem> PLANT_SAMPLE = ITEMS.register("plant_sample", () -> new PlantSampleItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<MicroscopeItem> MICROSCOPE = ITEMS.register("microscope", () -> new MicroscopeItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<MicroscopeItem> MICROSCOPE = ITEMS.register("microscope", () -> new MicroscopeItem(TilthBlocks.MICROSCOPE.get(), new Item.Properties().stacksTo(1)));
     public static final DeferredItem<SoilProbeItem> SOIL_PROBE = ITEMS.register("soil_probe", () -> new SoilProbeItem(new Item.Properties().durability(63)));
     public static final DeferredItem<SoilSampleItem> SOIL_SAMPLE = ITEMS.register("soil_sample", () -> new SoilSampleItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<SoilSurveyItem> SOIL_SURVEY = ITEMS.register("soil_survey", () -> new SoilSurveyItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<ThermometerItem> THERMOMETER = ITEMS.register("thermometer", () -> new ThermometerItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<MoistureMeterItem> MOISTURE_METER = ITEMS.register("moisture_meter", () -> new MoistureMeterItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<SurveyorsChainItem> SURVEYORS_CHAIN = ITEMS.register("surveyors_chain", () -> new SurveyorsChainItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> VETERINARY_DRAUGHT = ITEMS.register("veterinary_draught", () -> new Item(new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<CraftingToolItem> GENE_SPLICER = ITEMS.register("gene_splicer", () -> new CraftingToolItem(new Item.Properties().durability(192)));
+    public static final DeferredItem<Item> SPLICED_EMBRYO = ITEMS.register("spliced_embryo", () -> new Item(new Item.Properties().stacksTo(16)));
     public static final DeferredItem<ArdItem> ARD = ITEMS.register("ard", () -> new ArdItem(new Item.Properties().durability(200)));
     public static final DeferredItem<ImplementItem> PLOW = ITEMS.register("plow", () -> new ImplementItem(new Item.Properties().stacksTo(1),
             TilthEntities.PLOW, "Three-bottom moldboard plough", "Right-click while riding a horse, donkey or mule to hitch it",
@@ -106,6 +112,10 @@ public final class TilthItems {
     public static final DeferredItem<ImplementItem> SPREADER = ITEMS.register("spreader", () -> new ImplementItem(new Item.Properties().stacksTo(1),
             TilthEntities.SPREADER, "Horse-drawn fertiliser spreader", "Right-click with fertiliser to fill the hopper",
             "Hitch it while riding; right-click again to open the hopper"));
+
+    public static final DeferredItem<ImplementItem> WAGON = ITEMS.register("wagon", () -> new ImplementItem(new Item.Properties().stacksTo(1),
+            TilthEntities.WAGON, "Four-wheeled farm wagon: holds as much as a chest", "Right-click it from the ground to load or unload it",
+            "Hitch it while riding; sneak-right-click from the ground to unhitch"));
 
     // ------------------------------------------------------------------ soil amendments
     public static final DeferredItem<ManureItem> MANURE = ITEMS.register("manure", () -> new ManureItem(new Item.Properties()));
@@ -141,6 +151,7 @@ public final class TilthItems {
     public static final DeferredItem<Item> RAW_FRIES = simple("raw_fries");
     public static final DeferredItem<Item> UNCOOKED_RICE = ITEMS.register("uncooked_rice", () -> new Item(new Item.Properties().stacksTo(16)));
     public static final DeferredItem<Item> SOAKED_BEANS = ITEMS.register("soaked_beans", () -> new Item(new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> SPOILED_GRAIN = ITEMS.register("spoiled_grain", () -> new Item(new Item.Properties()));
 
     // ------------------------------------------------------------------ foods
     public static final DeferredItem<Item> ROLLED_OATS = food("rolled_oats", 2, 0.3f);

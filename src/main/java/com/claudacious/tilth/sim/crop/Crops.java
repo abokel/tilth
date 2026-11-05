@@ -81,12 +81,12 @@ public final class Crops {
             .temps(5, 25, 37, 30).gdd(70, 550).frost(-20, -3).heat(38).ph(6.5, 7.5, 6.0, 8.5)
             .water(0.4, 0.95, 0.9, 1.5, 0.55, 0.05).uptake(75, 7, 55, 6, 35, 7).fixation(0.85)
             .yield(2.5, TON, 0).items("tilth:alfalfa", 3, "tilth:alfalfa_seeds", 1).residue(0.15, 3.0)
-            .harvestAt(7).perennial(3, 8).build());
+            .harvestAt(7).perennial(3, 8).pollination(0.75).build());
     public static final CropSpecies CLOVER = register(CropSpecies.builder("clover", "Red Clover", "Trifolium pratense", FABACEAE, FORAGE)
             .temps(4, 22, 33, 27).gdd(60, 600).frost(-15, -3).heat(32).ph(6.0, 7.0, 5.5, 7.8)
             .water(0.4, 0.9, 0.85, 0.8, 0.5, 0.4).uptake(60, 6, 50, 5, 25, 6).fixation(0.8)
             .yield(2.0, TON, 0).items("tilth:clover", 2, "tilth:clover_seeds", 1).residue(0.15, 3.0)
-            .harvestAt(7).perennial(3, 6).build());
+            .harvestAt(7).perennial(3, 6).pollination(0.7).build());
 
     // ---------------------------------------------------------------- Roots, tubers and bulbs
     public static final CropSpecies POTATO = register(CropSpecies.builder("potato", "Potato", "Solanum tuberosum", SOLANACEAE, TUBER)
@@ -135,13 +135,13 @@ public final class Crops {
             .temps(10, 25, 35, 30).gdd(70, 1250).frost(0, 0.5).heat(32).ph(6.0, 6.8, 5.5, 7.5)
             .water(0.6, 1.15, 0.8, 1.0, 0.4, 0.1).uptake(150, 25, 250, 25, 120, 25)
             .yield(60, TON, 0).items("tilth:tomato", 3, "tilth:tomato_seeds", 1).residue(0.2, 2.0)
-            .perennial(7, 3).build());
+            .perennial(7, 3).pollination(0.35).build());
 
     // ---------------------------------------------------------------- Oil and fibre crops
     public static final CropSpecies SUNFLOWER = register(CropSpecies.builder("sunflower", "Sunflower", "Helianthus annuus", ASTERACEAE, TALL_FLOWER)
             .temps(6, 25, 38, 30).gdd(80, 1500).frost(-3, -2).heat(36).ph(6.0, 7.5, 5.5, 8.5)
             .water(0.35, 1.1, 0.35, 1.2, 0.45, 0.15).uptake(110, 22, 150, 15, 40, 20)
-            .yield(2.5, POUND, 0).items("tilth:sunflower_seeds", 4, "tilth:sunflower_seeds", 0).residue(0.5, 0.9).tall(4).build());
+            .yield(2.5, POUND, 0).items("tilth:sunflower_seeds", 4, "tilth:sunflower_seeds", 0).residue(0.5, 0.9).tall(4).pollination(0.85).build());
     public static final CropSpecies FLAX = register(CropSpecies.builder("flax", "Flax", "Linum usitatissimum", LINACEAE, FIBER)
             .temps(3, 20, 32, 26).gdd(90, 1150).frost(-4, -2).heat(30).ph(6.0, 7.0, 5.0, 8.0)
             .water(0.35, 1.1, 0.25, 0.8, 0.5, 0.2).uptake(70, 12, 60, 12, 15, 8)
@@ -149,7 +149,7 @@ public final class Crops {
     public static final CropSpecies COTTON = register(CropSpecies.builder("cotton", "Cotton", "Gossypium hirsutum", MALVACEAE, FIBER)
             .temps(15.5, 30, 40, 32).gdd(40, 1150).frost(-0.5, 0).heat(38).ph(5.8, 8.0, 5.0, 8.5)
             .water(0.35, 1.15, 0.6, 1.3, 0.65, 0.15).uptake(130, 22, 120, 15, 30, 15)
-            .yield(2.5, BALE, 0.38).items("tilth:cotton_boll", 2, "tilth:cotton_seeds", 1).residue(0.4, 1.0).build());
+            .yield(2.5, BALE, 0.38).items("tilth:cotton_boll", 2, "tilth:cotton_seeds", 1).residue(0.4, 1.0).pollination(0.45).build());
 
     private Crops() {
     }

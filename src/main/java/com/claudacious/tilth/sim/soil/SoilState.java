@@ -23,6 +23,18 @@ public final class SoilState {
     public double calcium = 1200;
     /** Exchangeable magnesium (ppm). */
     public double magnesium = 180;
+    /** DTPA-extractable iron (ppm). */
+    public double iron = 18;
+    /** DTPA-extractable zinc (ppm). */
+    public double zinc = 1.2;
+    /** DTPA-extractable manganese (ppm). */
+    public double manganese = 10;
+    /** DTPA-extractable copper (ppm). */
+    public double copper = 0.9;
+    /** Hot-water-soluble boron (ppm). */
+    public double boron = 0.7;
+    /** Available molybdenum (ppm). */
+    public double molybdenum = 0.08;
 
     public double ph = 6.5;
     /** Soil organic matter (% by weight). */
@@ -59,6 +71,12 @@ public final class SoilState {
             case S -> sulfur;
             case CA -> calcium;
             case MG -> magnesium;
+            case FE -> iron;
+            case ZN -> zinc;
+            case MN -> manganese;
+            case CU -> copper;
+            case B -> boron;
+            case MO -> molybdenum;
         };
     }
 
@@ -71,6 +89,12 @@ public final class SoilState {
             case S -> sulfur = v;
             case CA -> calcium = v;
             case MG -> magnesium = v;
+            case FE -> iron = v;
+            case ZN -> zinc = v;
+            case MN -> manganese = v;
+            case CU -> copper = v;
+            case B -> boron = v;
+            case MO -> molybdenum = v;
         }
     }
 
@@ -125,6 +149,12 @@ public final class SoilState {
         c.sulfur = sulfur;
         c.calcium = calcium;
         c.magnesium = magnesium;
+        c.iron = iron;
+        c.zinc = zinc;
+        c.manganese = manganese;
+        c.copper = copper;
+        c.boron = boron;
+        c.molybdenum = molybdenum;
         c.ph = ph;
         c.organicMatter = organicMatter;
         c.moisture = moisture;

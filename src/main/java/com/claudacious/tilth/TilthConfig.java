@@ -23,8 +23,6 @@ public final class TilthConfig {
     private static final ModConfigSpec.Builder B = new ModConfigSpec.Builder();
 
     // ------------------------------------------------------------------ calendar
-    public static final ModConfigSpec.IntValue DAYS_PER_MONTH;
-    public static final ModConfigSpec.IntValue START_MONTH;
     // ------------------------------------------------------------------ climate
     public static final ModConfigSpec.DoubleValue TEMPERATURE_OFFSET;
     public static final ModConfigSpec.DoubleValue PRECIPITATION_MULTIPLIER;
@@ -68,11 +66,22 @@ public final class TilthConfig {
     public static final ModConfigSpec.BooleanValue FROST_KILLS;
     public static final ModConfigSpec.BooleanValue DROUGHT_KILLS;
     public static final ModConfigSpec.BooleanValue WATERLOGGING_KILLS;
+    public static final ModConfigSpec.BooleanValue POLLINATION;
+    public static final ModConfigSpec.DoubleValue POLLINATION_STRENGTH;
     public static final ModConfigSpec.BooleanValue BONE_MEAL_GROWS_CROPS;
     public static final ModConfigSpec.BooleanValue REDIRECT_VANILLA_SEEDS;
     public static final ModConfigSpec.BooleanValue GRASS_DROPS_SEEDS;
     public static final ModConfigSpec.IntValue STARTER_SEEDS;
     public static final ModConfigSpec.BooleanValue CROPS_NEED_LIGHT;
+    public static final ModConfigSpec.DoubleValue CROP_MUTATION_CHANCE;
+    public static final ModConfigSpec.DoubleValue CROP_MUTATION_STEP;
+    public static final ModConfigSpec.DoubleValue GRAIN_DRYING_RATE_PER_DAY;
+    public static final ModConfigSpec.DoubleValue GRAIN_SAFE_STORAGE_MOISTURE;
+    public static final ModConfigSpec.IntValue GRAIN_SILO_CAPACITY;
+    public static final ModConfigSpec.DoubleValue GRAIN_SPOILAGE_RATE_MULTIPLIER;
+    public static final ModConfigSpec.DoubleValue SILO_AERATION_PER_DAY;
+    public static final ModConfigSpec.DoubleValue SILO_SPOILAGE_FACTOR;
+    public static final ModConfigSpec.DoubleValue OPEN_STORAGE_PEST_LOSS;
     // ------------------------------------------------------------------ diet
     public static final ModConfigSpec.BooleanValue DIET;
     public static final ModConfigSpec.BooleanValue DIET_EFFECTS;
@@ -87,6 +96,16 @@ public final class TilthConfig {
     public static final ModConfigSpec.IntValue MANURE_INTERVAL;
     public static final ModConfigSpec.BooleanValue LIVESTOCK;
     public static final ModConfigSpec.DoubleValue LIVESTOCK_APPETITE;
+    public static final ModConfigSpec.DoubleValue LIVESTOCK_PASTURE_DECAY;
+    public static final ModConfigSpec.DoubleValue LIVESTOCK_PASTURE_RECOVERY;
+    public static final ModConfigSpec.DoubleValue LIVESTOCK_OVERGRAZE_THRESHOLD;
+    public static final ModConfigSpec.BooleanValue LIVESTOCK_DISEASES;
+    public static final ModConfigSpec.DoubleValue LIVESTOCK_DISEASE_PRESSURE;
+    public static final ModConfigSpec.DoubleValue LIVESTOCK_DISEASE_IMPACT_CAP;
+    public static final ModConfigSpec.DoubleValue LIVESTOCK_MUTATION_CHANCE;
+    public static final ModConfigSpec.DoubleValue LIVESTOCK_MUTATION_STEP;
+    public static final ModConfigSpec.DoubleValue HOMUNCULUS_ESCAPE_CHANCE;
+    public static final ModConfigSpec.IntValue INCUBATOR_TICKS;
     // ------------------------------------------------------------------ afflictions
     public static final ModConfigSpec.BooleanValue AFFLICTIONS;
     public static final ModConfigSpec.DoubleValue AFFLICTION_PRESSURE;
@@ -95,21 +114,8 @@ public final class TilthConfig {
     public static final ModConfigSpec.IntValue HUD_INTERVAL;
     // ------------------------------------------------------------------ integrations
     public static final ModConfigSpec.BooleanValue GIVE_GUIDE;
-    public static final ModConfigSpec.BooleanValue SEASONAL_COLORS;
-    public static final ModConfigSpec.BooleanValue WINTER_SNOW;
 
     static {
-        B.comment("Calendar. Agronomy runs on a real 365-day calendar; a Minecraft day covers 365/(12*daysPerMonth) real days.").push("calendar");
-        SEASONAL_COLORS = B.comment("Leaves and grass change colour with the season (autumn colours, brown winter leaves). Client side.")
-                .define("seasonalColors", true);
-        WINTER_SNOW = B.comment("Snow settles and ponds freeze wherever the Tilth climate is below freezing, then thaw in spring.")
-                .define("winterSnowAndIce", true);
-        DAYS_PER_MONTH = B.comment("Minecraft days per calendar month (6 -> a 72-day year, each game day ~5 real days).")
-                .defineInRange("daysPerMonth", 6, 1, 90);
-        START_MONTH = B.comment("Month a new world starts in (1 = January). March gives time to prepare for spring sowing.")
-                .defineInRange("startMonth", 3, 1, 12);
-        B.pop();
-
         B.comment("Climate model.").push("climate");
         TEMPERATURE_OFFSET = B.comment("Degrees C added to every temperature (negative = colder world).")
                 .defineInRange("temperatureOffset", 0.0, -30.0, 30.0);
@@ -197,6 +203,10 @@ public final class TilthConfig {
         FROST_KILLS = B.define("frostKillsCrops", true);
         DROUGHT_KILLS = B.define("droughtKillsCrops", true);
         WATERLOGGING_KILLS = B.define("waterloggingKillsCrops", true);
+        POLLINATION = B.comment("If true, flowering crops benefit from nearby pollinators and flower habitat.")
+                .define("pollinationEnabled", true);
+        POLLINATION_STRENGTH = B.comment("How strongly pollination affects yield and quality (0 disables effects).")
+                .defineInRange("pollinationStrength", 1.0, 0.0, 3.0);
         BONE_MEAL_GROWS_CROPS = B.comment("If false, bone meal on Tilth crops or farmland acts as a phosphorus and calcium fertiliser instead of instant growth.")
                 .define("boneMealGrowsCrops", false);
         REDIRECT_VANILLA_SEEDS = B.comment("Vanilla wheat seeds, potatoes, carrots and beetroot seeds plant Tilth crops on Tilth farmland.")
@@ -207,6 +217,26 @@ public final class TilthConfig {
                 .defineInRange("starterRadishSeeds", 8, 0, 64);
         CROPS_NEED_LIGHT = B.comment("Crops grow slowly without sunlight (strong artificial light gives partial growth).")
                 .define("cropsNeedLight", true);
+        CROP_MUTATION_CHANCE = B.comment("Chance each heritable crop trait mutates when saving seed or splicing.")
+                .defineInRange("mutationChance", 0.03, 0.0, 1.0);
+        CROP_MUTATION_STEP = B.comment("Maximum change in a crop trait from one mutation event.")
+                .defineInRange("mutationStep", 0.04, 0.0, 0.45);
+        GRAIN_DRYING_RATE_PER_DAY = B.comment("How quickly drying racks move grain moisture toward ambient equilibrium each real day.")
+                .defineInRange("grainDryingRatePerDay", 0.45, 0.01, 4.0);
+        GRAIN_SAFE_STORAGE_MOISTURE = B.comment("Moisture fraction considered safe for long-term grain storage (0.14 = 14%).")
+                .defineInRange("grainSafeStorageMoisture", 0.14, 0.08, 0.2);
+        GRAIN_SILO_CAPACITY = B.comment("How many grain items a built silo (a 2x2 tower five blocks high) holds.")
+                .defineInRange("grainSiloCapacity", 40960, 1024, 1000000);
+        GRAIN_SPOILAGE_RATE_MULTIPLIER = B.comment("Multiplier on moisture-driven grain spoilage wherever grain is stored.")
+                .defineInRange("grainSpoilageRateMultiplier", 1.0, 0.0, 10.0);
+        SILO_AERATION_PER_DAY = B.comment("How much a built silo's aeration dries its grain per day (0.01 = one percentage point),",
+                        "down to just below the safe storage moisture.")
+                .defineInRange("siloAerationPerDay", 0.01, 0.0, 0.1);
+        SILO_SPOILAGE_FACTOR = B.comment("Spoilage in a built silo as a fraction of spoilage in open storage: sealed and cool.")
+                .defineInRange("siloSpoilageFactor", 0.25, 0.0, 1.0);
+        OPEN_STORAGE_PEST_LOSS = B.comment("Fraction of grain lost to rodents and weevils per day in chests, barrels and other",
+                        "open storage. Grain in a built silo is safe from them. 0 disables.")
+                .defineInRange("openStoragePestLoss", 0.004, 0.0, 0.1);
         B.pop();
 
         B.comment("Player diet and nutrition.").push("diet");
@@ -234,6 +264,26 @@ public final class TilthConfig {
                 .define("husbandry", true);
         LIVESTOCK_APPETITE = B.comment("Multiplier on how fast animals lose condition (1 = from top condition to starving in about two game days).")
                 .defineInRange("appetiteMultiplier", 1.0, 0.0, 10.0);
+        LIVESTOCK_PASTURE_DECAY = B.comment("Pasture quality lost per animal per day while grazing one paddock.")
+                .defineInRange("pastureDecayPerDay", 0.12, 0.0, 1.0);
+        LIVESTOCK_PASTURE_RECOVERY = B.comment("Pasture quality recovered per day while resting or rotating paddocks.")
+                .defineInRange("pastureRecoveryPerDay", 0.08, 0.0, 1.0);
+        LIVESTOCK_OVERGRAZE_THRESHOLD = B.comment("Pasture quality below this is treated as overgrazed.")
+                .defineInRange("overgrazedThreshold", 0.35, 0.0, 1.0);
+        LIVESTOCK_DISEASES = B.comment("Enable livestock disease susceptibility, transmission, diagnosis and treatment.")
+                .define("diseasesEnabled", true);
+        LIVESTOCK_DISEASE_PRESSURE = B.comment("Multiplier on livestock disease infection pressure.")
+                .defineInRange("diseasePressureMultiplier", 1.0, 0.0, 10.0);
+        LIVESTOCK_DISEASE_IMPACT_CAP = B.comment("Maximum fraction of produce/condition penalties from disease burden.")
+                .defineInRange("diseaseImpactCap", 0.6, 0.0, 1.0);
+        LIVESTOCK_MUTATION_CHANCE = B.comment("Chance each heritable livestock trait mutates in offspring.")
+                .defineInRange("mutationChance", 0.02, 0.0, 1.0);
+        LIVESTOCK_MUTATION_STEP = B.comment("Maximum change in a livestock trait from one mutation event.")
+                .defineInRange("mutationStep", 0.035, 0.0, 0.45);
+        HOMUNCULUS_ESCAPE_CHANCE = B.comment("Chance an incubated spliced embryo escapes as a transient homunculus instead of stabilising as seed.")
+                .defineInRange("homunculusEscapeChance", 0.02, 0.0, 1.0);
+        INCUBATOR_TICKS = B.comment("Ticks an incubator needs to stabilise one spliced embryo.")
+                .defineInRange("incubatorTicks", 240, 20, 72000);
         MANURE_INTERVAL = B.comment("Average ticks between manure drops from each adult farm animal. 0 disables.")
                 .defineInRange("manureInterval", 9600, 0, 1000000);
         B.pop();
@@ -269,12 +319,15 @@ public final class TilthConfig {
 
     /** Copies config values into the pure simulation settings and the calendar. */
     public static void apply() {
-        TilthCalendar.reconfigure(DAYS_PER_MONTH.getAsInt(), START_MONTH.getAsInt());
         SimSettings.growthRateMultiplier = GROWTH_RATE.getAsDouble();
         SimSettings.yieldMultiplier = YIELD.getAsDouble();
         SimSettings.frostKillsCrops = FROST_KILLS.getAsBoolean();
         SimSettings.droughtKillsCrops = DROUGHT_KILLS.getAsBoolean();
         SimSettings.waterloggingKillsCrops = WATERLOGGING_KILLS.getAsBoolean();
+        SimSettings.pollinationEnabled = POLLINATION.getAsBoolean();
+        SimSettings.pollinationStrength = POLLINATION_STRENGTH.getAsDouble();
+        SimSettings.cropMutationChance = CROP_MUTATION_CHANCE.getAsDouble();
+        SimSettings.cropMutationStep = CROP_MUTATION_STEP.getAsDouble();
         SimSettings.mineralizationMultiplier = MINERALIZATION.getAsDouble();
         SimSettings.leachingMultiplier = LEACHING.getAsDouble();
         SimSettings.nutrientDemandMultiplier = NUTRIENT_DEMAND.getAsDouble();
@@ -286,5 +339,7 @@ public final class TilthConfig {
         SimSettings.latitudeDegrees = LATITUDE.getAsDouble();
         SimSettings.afflictionsEnabled = AFFLICTIONS.getAsBoolean();
         SimSettings.afflictionPressureMultiplier = AFFLICTION_PRESSURE.getAsDouble();
+        SimSettings.livestockMutationChance = LIVESTOCK_MUTATION_CHANCE.getAsDouble();
+        SimSettings.livestockMutationStep = LIVESTOCK_MUTATION_STEP.getAsDouble();
     }
 }

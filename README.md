@@ -90,10 +90,13 @@ Amendments: compost, manure (dropped by livestock), bone meal (P and Ca rather t
 ### Seeing your farm
 - Crops show what they lack: **yellow** leaves when short of nitrogen, **purple** when short of phosphorus, **wilting** in drought and **browned edges** after frost.
 - Farmland **cracks** when dry and shows **standing water** when saturated.
-- **Seasons:** oak and birch leaves turn gold, orange and red through autumn and hang brown through winter; grass yellows and browns. Snow settles and ponds freeze wherever the Tilth climate is below freezing, and thaw in spring.
+- **Seasons** come from [Serene Seasons](https://modrinth.com/mod/serene-seasons), which Tilth requires: its sub-seasons are Tilth's months, so the colours, snow and ice you see and the climate your crops grow in always agree.
 
 ### Livestock
 - Cows, sheep, goats, pigs, chickens and horses have a **body condition**. It falls over about two game days and rises with **grazing** (heavy grazing wears pasture to bare soil), **hay bales** within two blocks, and hand feeding. Grass barely grows in cold weather, so winter needs hay.
+- Grazing now tracks **pasture quality** per paddock. Overstocking one area causes overgrazing and poorer forage; moving animals to a fresh area lets the sward recover (rotational grazing loop).
+- Livestock can catch **animal diseases** (data-driven afflictions), with susceptibility tied to condition and pasture stress. Nearby infected stock spread disease unless you isolate them.
+- Use a **Microscope** on an animal to diagnose active disease, give a **Veterinary Draught** to treat it, and sneak-right-click with a **Lead** to toggle quarantine.
 - Every animal is **male or female**, and males look it: bull nose ring and heavy horns, ram horns, boar tusks, rooster comb and tail. Only pairs breed, sheep and goats only in autumn, and mammals carry their young for two to four days before giving birth (litters for pigs, twins for sheep and goats).
 - **Alfalfa hay bales** feed better than grass hay. Animals leave **manure** on the ground in layers: shovel it up and mix it with water into **slurry** to spread by hand or with the spreader.
 - Condition decides **breeding** (thin animals turn feed into condition instead), **milk** (once a day, not when thin), **eggs**, **wool** regrowth, **manure**, and **meat** yield and quality (Poor to Premium).
@@ -148,7 +151,7 @@ Amendments: compost, manure (dropped by livestock), bone meal (P and Ca rather t
 The risk engine combines today's weather with **field history** (inoculum builds up when the same host is grown again) and tillage. Set `afflictions.enabled = true` to let them spread, or use `/tilth affliction ...` to inspect and test them.
 
 ## Getting started (players)
-1. Install NeoForge 21.1.x for Minecraft 1.21.1.
+1. Install NeoForge 21.1.x for Minecraft 1.21.1, and [Serene Seasons](https://modrinth.com/mod/serene-seasons) (with its library GlitchCore), which Tilth requires.
 2. Put `tilth-1.21.1-0.1.0.jar` in your `mods` folder.
 3. Create a **new world**. Catena soils only generate in newly generated chunks; in old chunks, tilling vanilla dirt converts it to the soil the terrain implies.
 
@@ -186,7 +189,7 @@ Inspection commands are open to everyone. World-changing ones need permission le
 | `/tilth water [pos]` / `/tilth water pond` | Hydrology report / test whether a hollow would hold water |
 | `/tilth crop [pos]` | Full crop report |
 | `/tilth crop setstage <0-9>` / `grow <days>` / `kill` | Debug the crop you look at |
-| `/tilth time skip <days>` / `time set <month> <day>` | Move the calendar forward (fields catch up) |
+| `/season set <sub-season>` | Change the season (a Serene Seasons command; fields catch up) |
 | `/tilth fillfield <species> <radius>` | Till and plant a test field around you |
 | `/tilth debug hud` | Live action-bar readout of what you look at |
 | `/tilth diet` / `diet set <nutrient> <0-1>` | Your nutrient stores |
@@ -205,7 +208,7 @@ All settings are in `config/tilth-common.toml`, and also in the in-game Mods →
 | Crops | growth rate, yield, nutrient demand, frost/drought/waterlogging deaths, bone meal behaviour, seed redirection, light requirement |
 | Diet | on/off, effects, decay |
 | Plots | metres per block, protection, farm only inside plots, limits |
-| Livestock | husbandry on/off, appetite, manure interval |
+| Livestock | husbandry on/off, appetite, pasture decay/recovery, overgrazed threshold, disease toggles/pressure/impact cap, manure interval |
 | Afflictions | on/off, pressure |
 | Debug | command permission level |
 | Integrations | give the Field Guide on first join, seasonal colours, winter snow and ice |

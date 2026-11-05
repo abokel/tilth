@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " I ",
+    "RKR",
+    " I "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "K": {
+      "item": "tilth:kitchen_knife"
+    }
+  },
+  "result": {
+    "id": "tilth:gene_splicer"
+  }
+}
