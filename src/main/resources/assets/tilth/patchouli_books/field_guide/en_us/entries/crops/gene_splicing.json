@@ -1,0 +1,30 @@
+{
+  "name": "Gene Splicing & the Incubator",
+  "icon": "tilth:incubator",
+  "category": "tilth:crops",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:gene_splicer",
+      "text": "The $(thing)Gene Splicer$() (iron, redstone and a kitchen knife) makes a controlled cross: craft it with $(thing)two seeds of the same crop$() into a $(thing)Spliced Embryo$(). Each parent gives the embryo one copy of each of its genes. The splicer wears a little with each use."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:incubator",
+      "text": "Right-click a $(thing)Genetic Incubator$() with the embryo. Its window glows green while it works; then it holds $(thing)two seeds$() of the new F1 (right-click to take them). Now and then a gene mutates."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Breeding a better line$() is how real plant breeders work: cross two parents with the traits you want, grow the F1, then save seed and keep the best plants each generation. In a self-pollinating crop the line settles and breeds true in five or six generations."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "In cross-pollinating crops, keep two inbred lines apart and cross them for $(thing)F1 hybrid$() seed each year; the hybrid's own seed is a mixed lot. The travelling merchant sells both: pure lines of wheat and the like, and F1 hybrids of maize and sunflowers."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Very occasionally an embryo grows into something else: a pale, fleshy $(thing)homunculus$() breaks out of the incubator, slimes about for a few blocks and falls apart. It does no harm, but you lose that embryo."
+    }
+  ]
+}

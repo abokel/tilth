@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:copper_penny"
+    },
+    {
+      "item": "tilth:copper_penny"
+    },
+    {
+      "item": "tilth:copper_penny"
+    },
+    {
+      "item": "tilth:copper_penny"
+    },
+    {
+      "item": "tilth:copper_penny"
+    },
+    {
+      "item": "tilth:copper_penny"
+    },
+    {
+      "item": "tilth:copper_penny"
+    },
+    {
+      "item": "tilth:copper_penny"
+    },
+    {
+      "item": "tilth:copper_penny"
+    }
+  ],
+  "result": {
+    "id": "tilth:silver_shilling",
+    "count": 1
+  }
+}

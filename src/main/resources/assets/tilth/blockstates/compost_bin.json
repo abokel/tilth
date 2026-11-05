@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "fill=0,ready=false": {
+      "model": "tilth:block/compost_bin_0"
+    },
+    "fill=0,ready=true": {
+      "model": "tilth:block/compost_bin_0_ready"
+    },
+    "fill=1,ready=false": {
+      "model": "tilth:block/compost_bin_1"
+    },
+    "fill=1,ready=true": {
+      "model": "tilth:block/compost_bin_1_ready"
+    },
+    "fill=2,ready=false": {
+      "model": "tilth:block/compost_bin_2"
+    },
+    "fill=2,ready=true": {
+      "model": "tilth:block/compost_bin_2_ready"
+    },
+    "fill=3,ready=false": {
+      "model": "tilth:block/compost_bin_3"
+    },
+    "fill=3,ready=true": {
+      "model": "tilth:block/compost_bin_3_ready"
+    },
+    "fill=4,ready=false": {
+      "model": "tilth:block/compost_bin_4"
+    },
+    "fill=4,ready=true": {
+      "model": "tilth:block/compost_bin_4_ready"
+    }
+  }
+}

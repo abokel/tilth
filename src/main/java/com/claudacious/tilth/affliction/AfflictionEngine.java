@@ -103,7 +103,9 @@ public final class AfflictionEngine {
                 continue;
             }
             String id = entry.getKey().location().toString();
-            double suit = suitability(a, w, soil, h);
+            // A resistance gene (where resistant varieties exist for this disease) keeps most infections from taking hold.
+            boolean resistant = a.control().resistantVarieties() && crop.genome != null && crop.genome.resistant();
+            double suit = suitability(a, w, soil, h) * (resistant ? 0.4 : 1.0);
             Double severity = crop.afflictions.get(id);
             if (severity == null) {
                 double p = suit * inoculum(a, species, soil, year) * a.lifecycle().spreadRate() * 0.2 * SimSettings.afflictionPressureMultiplier;

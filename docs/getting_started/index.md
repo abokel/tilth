@@ -11,5 +11,6 @@ What Tilth changes, your first field step by step, the calendar and the tools.
 - [What Tilth Changes](introduction.html)
 - [Your First Field](first_field.html)
 - [Calendar & Seasons](calendar.html)
+- [Selling at Market](market.html)
 - [Field Instruments](instruments.html)
 - [Tools of the Trade](tools.html)

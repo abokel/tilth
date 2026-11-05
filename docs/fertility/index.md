@@ -12,4 +12,5 @@ Nutrients, pH, organic matter, amendments and rotation.
 - [Soil pH](ph.html)
 - [Organic Matter & Residue](organic_matter.html)
 - [Amendments](amendments.html)
+- [Composting](composting.html)
 - [Crop Rotation](rotation.html)

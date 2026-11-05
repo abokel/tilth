@@ -1,7 +1,7 @@
 ---
 title: "Crop Rotation"
 parent: Fertility
-nav_order: 5
+nav_order: 6
 ---
 
 # Crop Rotation

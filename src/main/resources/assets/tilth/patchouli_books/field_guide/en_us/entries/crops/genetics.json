@@ -6,15 +6,27 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Every crop is of a $(thing)cultivar$() with its own traits: how fast it grows, how much it yields, and how well it stands drought and frost. Seed saved from a harvest keeps its cultivar, so you can select the best of your own fields. Now and then a trait mutates."
+      "text": "Every plant carries $(thing)genes$(), two copies of each: four genes each for growth, yield, drought tolerance and frost tolerance, a $(thing)resistance$() gene and a $(thing)semi-dwarfing$() gene. Each seed gets one copy of every gene from each parent, at random, as Mendel found."
     },
     {
       "type": "patchouli:text",
-      "text": "Crops that need $(thing)pollinators$() set more seed with flowers nearby and bees working them: keep flower strips and a hive near beans, sunflowers and other insect-pollinated crops."
+      "text": "Seed you save at harvest inherits by how the crop sets seed. $(thing)Self-pollinating$() crops (wheat, barley, oats, rice, peas, beans, lentils, tomatoes) fertilise themselves: each generation is more uniform, and a line soon $(thing)breeds true$()."
     },
     {
       "type": "patchouli:text",
-      "text": "A $(thing)Gene Splicer$() combines two seeds into a $(thing)Spliced Embryo$(), which grows into new seed in a $(thing)Genetic Incubator$(). Watch it: once in a while something else grows in there, breaks out and slimes about for a few blocks before it falls apart."
+      "text": "$(thing)Cross-pollinating$() crops (maize, rye, sunflowers, cabbages, onions, beets, carrots, clovers) take pollen from plants of the same crop within four blocks. A cross of two distinct lines shows $(thing)hybrid vigour$(); a lone plant that can only pollinate itself loses vigour generation by generation. Seed saved from an F1 hybrid $(thing)segregates$() and is not as good."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Potatoes and garlic$() grow from tubers and cloves: each is a copy of its parent."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Resistance$() is dominant: one copy keeps most infection of the diseases that have resistant varieties (the rusts, blights, mildews, cyst nematodes and more) from taking hold. $(thing)Semi-dwarfing$() is recessive: only plants with both copies are short-strawed, and in wheat, barley, oats and rice they put more into grain."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "A seed's tooltip shows its cultivar and generation (F1 hybrid, F3 segregating, true-breeding), its traits, and whether it carries resistance or is a semi-dwarf. $(thing)Pollinators$() matter too: insect-pollinated crops set more seed with flowers and working bees nearby."
     }
   ]
 }

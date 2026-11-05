@@ -443,6 +443,14 @@ public final class Livestock {
             }
             s.lastMilked = now;
             animal.setData(TilthAttachments.LIVESTOCK.get(), s);
+            // Buckets fill with graded milk (by breed and condition); bowls are left to vanilla.
+            if (held.is(Items.BUCKET)) {
+                if (!animal.level().isClientSide) {
+                    WoolAndDairy.milk(animal, player, event.getHand(), held, s);
+                }
+                event.setCanceled(true);
+                event.setCancellationResult(InteractionResult.sidedSuccess(animal.level().isClientSide));
+            }
             return;
         }
         if (!animal.isFood(held) && !held.is(FODDER)) {

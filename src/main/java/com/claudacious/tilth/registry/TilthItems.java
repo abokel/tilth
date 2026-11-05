@@ -82,6 +82,11 @@ public final class TilthItems {
         ITEMS.registerSimpleBlockItem(TilthBlocks.INCUBATOR);
         ITEMS.registerSimpleBlockItem(TilthBlocks.DRYING_RACK);
         ITEMS.registerSimpleBlockItem(TilthBlocks.GRAIN_SILO);
+        ITEMS.registerSimpleBlockItem(TilthBlocks.COMPOST_BIN);
+        ITEMS.registerSimpleBlockItem(TilthBlocks.SPINNING_WHEEL);
+        ITEMS.registerSimpleBlockItem(TilthBlocks.BUTTER_CHURN);
+        ITEMS.registerSimpleBlockItem(TilthBlocks.CHEESE_PRESS);
+        ITEMS.registerSimpleBlockItem(TilthBlocks.MARKET_STALL);
         ITEMS.registerSimpleBlockItem(TilthBlocks.ALFALFA_BALE);
         for (CropSpecies sp : Crops.all()) {
             registerCropItem(sp, sp.seedItem, true);
@@ -151,6 +156,29 @@ public final class TilthItems {
     public static final DeferredItem<Item> RAW_FRIES = simple("raw_fries");
     public static final DeferredItem<Item> UNCOOKED_RICE = ITEMS.register("uncooked_rice", () -> new Item(new Item.Properties().stacksTo(16)));
     public static final DeferredItem<Item> SOAKED_BEANS = ITEMS.register("soaked_beans", () -> new Item(new Item.Properties().stacksTo(16)));
+    // ------------------------------------------------------------------ money: nine of each make the next
+    public static final DeferredItem<com.claudacious.tilth.market.CoinItem> COPPER_PENNY = ITEMS.register("copper_penny",
+            () -> new com.claudacious.tilth.market.CoinItem(new Item.Properties(), 1));
+    public static final DeferredItem<com.claudacious.tilth.market.CoinItem> SILVER_SHILLING = ITEMS.register("silver_shilling",
+            () -> new com.claudacious.tilth.market.CoinItem(new Item.Properties(), 9));
+    public static final DeferredItem<com.claudacious.tilth.market.CoinItem> GOLD_CROWN = ITEMS.register("gold_crown",
+            () -> new com.claudacious.tilth.market.CoinItem(new Item.Properties(), 81));
+    public static final DeferredItem<com.claudacious.tilth.market.CoinItem> GOLD_SOVEREIGN = ITEMS.register("gold_sovereign",
+            () -> new com.claudacious.tilth.market.CoinItem(new Item.Properties().rarity(net.minecraft.world.item.Rarity.UNCOMMON), 729));
+
+    // ------------------------------------------------------------------ hay, wool and dairy
+    public static final DeferredItem<com.claudacious.tilth.item.CutGrassItem> CUT_GRASS = ITEMS.register("cut_grass",
+            () -> new com.claudacious.tilth.item.CutGrassItem(new Item.Properties()));
+    public static final DeferredItem<Item> DRIED_HAY = ITEMS.register("dried_hay", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MOULDY_HAY = ITEMS.register("mouldy_hay", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> FLEECE = ITEMS.register("fleece", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> YARN = ITEMS.register("yarn", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> WOOLLEN_CLOTH = ITEMS.register("woollen_cloth", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BUTTER = ITEMS.register("butter", () -> new Item(new Item.Properties()
+            .food(new net.minecraft.world.food.FoodProperties.Builder().nutrition(2).saturationModifier(0.4f).build())));
+    public static final DeferredItem<Item> CHEESE = ITEMS.register("cheese", () -> new Item(new Item.Properties()
+            .food(new net.minecraft.world.food.FoodProperties.Builder().nutrition(5).saturationModifier(0.8f).build())));
+
     public static final DeferredItem<Item> SPOILED_GRAIN = ITEMS.register("spoiled_grain", () -> new Item(new Item.Properties()));
 
     // ------------------------------------------------------------------ foods

@@ -1,0 +1,29 @@
+{
+  "name": "Selling at Market",
+  "icon": "tilth:market_stall",
+  "category": "tilth:getting_started",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:market_stall",
+      "text": "$(thing)Market Stalls$() stand in many villages, or build your own. Right-click one with an empty hand for today's prices and news; right-click with goods to sell the stack for coins (sneak to sell one)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Money comes in steps of nine: nine copper $(thing)pennies$() make a silver $(thing)shilling$(), nine shillings a gold $(thing)crown$(), and nine crowns a gold $(thing)sovereign$(). Craft nine coins into the next one up, or one into nine of the coin below. The market pays in the fewest coins it can."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Prices move with the seasons: grain is cheap after harvest and dear before the next, hay dearest at the end of winter, milk cheap in the spring flush. $(thing)Events$() push them further for a few days: a drought, a bumper harvest, a cloth fair, murrain among the herds, a hard winter."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Better produce pays more, from 60% for Poor up to 160% for Premium. Damp grain sells at a discount."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Now and then a $(thing)Travelling Farm Merchant$() in a straw hat comes by. He buys produce at the day's prices and sells seed of named cultivars, veterinary draughts, compost and tack, then moves on after two days."
+    }
+  ]
+}

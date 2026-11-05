@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "WWW",
+    "PEP",
+    "P P"
+  ],
+  "key": {
+    "W": {
+      "tag": "minecraft:wool"
+    },
+    "E": {
+      "item": "minecraft:emerald"
+    },
+    "P": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "id": "tilth:market_stall",
+    "count": 1
+  }
+}

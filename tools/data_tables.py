@@ -127,7 +127,7 @@ TAGS = {
     ("minecraft", "rabbit_food"): ["lettuce", "cabbage", "radish"],
     ("c", "seeds"): SEEDS + ["soybeans", "peas", "chickpeas", "lentils", "beans", "peanuts", "garlic"],
     ("c", "crops"): PRODUCE,
-    ("tilth", "fodder"): ["alfalfa", "clover", "oats", "barley", "maize", "sorghum", "minecraft:wheat", "minecraft:hay_block", "straw"],
+    ("tilth", "fodder"): ["alfalfa", "clover", "oats", "barley", "maize", "sorghum", "minecraft:wheat", "minecraft:hay_block", "straw", "dried_hay"],
     ("tilth", "milling_grains"): ["minecraft:wheat", "durum_wheat", "rye", "oats", "maize", "paddy_rice"],
 }
 

@@ -379,8 +379,9 @@ def gen_tags():
 
     tag("minecraft", "block", "dirt", blocks["topsoil"] + blocks["subsoil"] + blocks["grass"])
     tag("minecraft", "block", "mineable/shovel", all_soil + blocks["farmland"] + [f"{MOD}:manure_layer"])
-    tag("minecraft", "block", "mineable/hoe", [f"{MOD}:alfalfa_bale"])
+    tag("minecraft", "block", "mineable/hoe", [f"{MOD}:alfalfa_bale", f"{MOD}:hay_windrow"])
     tag("minecraft", "block", "mineable/pickaxe", [f"{MOD}:grain_silo"])
+    tag("minecraft", "block", "mineable/axe", [f"{MOD}:{b}" for b in ("compost_bin", "spinning_wheel", "butter_churn", "cheese_press", "market_stall")])
     tag("minecraft", "block", "crops", blocks["crops"])
     for t in ("animals_spawnable_on", "valid_spawn", "wolves_spawnable_on", "rabbits_spawnable_on", "foxes_spawnable_on",
               "goats_spawnable_on", "parrots_spawnable_on"):

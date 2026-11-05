@@ -50,6 +50,9 @@ public class FarmlandBlockEntity extends BlockEntity {
     private int bareDays;
     private double lastPonding;
     private double lastIrrigation;
+    /** Weed pressure, 0 clean .. 1 overrun (see {@link com.claudacious.tilth.sim.crop.WeedModel}). */
+    private double weeds;
+    private boolean greenhouse;
 
     private record PollinationSnapshot(double habitatScore, double beeScore) {
         private static final PollinationSnapshot NONE = new PollinationSnapshot(0, 0);
@@ -81,6 +84,23 @@ public class FarmlandBlockEntity extends BlockEntity {
 
     public double lastPonding() {
         return lastPonding;
+    }
+
+    public double weeds() {
+        return weeds;
+    }
+
+    /** Whether the field is under a glass roof (a greenhouse), as of its last simulated day. */
+    public boolean greenhouse() {
+        return greenhouse;
+    }
+
+    /** Hoeing or tillage: the weeds are cut out or buried. */
+    public void clearWeeds() {
+        if (weeds > 0) {
+            weeds = 0;
+            setChanged();
+        }
     }
 
     public double lastIrrigation() {
@@ -121,6 +141,7 @@ public class FarmlandBlockEntity extends BlockEntity {
     public void retill(ServerLevel level, Tillage.Implement implement, @Nullable Player player) {
         advance(level);
         String warning = Tillage.apply(implement, soil, texture(), hydraulics());
+        weeds = 0;
         if (warning != null && player != null) {
             player.displayClientMessage(Component.literal(warning).withStyle(ChatFormatting.GOLD), true);
         }
@@ -186,12 +207,29 @@ public class FarmlandBlockEntity extends BlockEntity {
         FieldSimulator.AfflictionHook hook = crop != null ? AfflictionEngine.hook(level, worldPosition, soil) : null;
         PollinationSnapshot pollination = crop != null ? pollinationSnapshot(level) : PollinationSnapshot.NONE;
         SoilTexture tex = texture();
+        greenhouse = underGlass(level);
+        Hydraulics h = hydraulics();
+        boolean cover = species != null && com.claudacious.tilth.sim.crop.CoverCrops.isCover(species);
+        double baseLight = cropState != null ? cropState.lightFactor : 1.0;
         while (simDay + 1.0 <= target) {
             long day = (long) Math.floor(simDay);
             if (cropState != null) {
                 cropState.pollinationToday = pollinationService(day, target, pollination);
             }
             DailyWeather weather = ClimateService.weather(level, worldPosition, climate, day);
+            if (greenhouse) {
+                weather = com.claudacious.tilth.sim.crop.WeedModel.underGlass(weather);
+            }
+            // Weeds come up, shaded out by the crop's canopy, and take a share of light, water and nitrogen.
+            double canopy = cropState != null && cropState.germinated ? Math.min(1.0, cropState.dev * 1.6) : 0.0;
+            double relMoisture = (soil.moisture - h.wiltingPoint()) / Math.max(0.01, h.fieldCapacity() - h.wiltingPoint());
+            weeds = com.claudacious.tilth.sim.crop.WeedModel.grow(weeds, weather.tMean(), relMoisture, soil.nitrogen, soil.residue, canopy, cover);
+            double keep = com.claudacious.tilth.sim.crop.WeedModel.competition(weeds);
+            if (cropState != null) {
+                cropState.lightFactor = baseLight * keep;
+            }
+            soil.nitrogen *= 1.0 - 0.03 * (1.0 - keep);
+            soil.moisture -= 0.006 * (1.0 - keep);
             FieldSimulator.Report report = FieldSimulator.step(soil, tex, climate, weather, inputs, species, cropState, hook);
             lastPonding = report.water().ponding();
             simDay += 1.0;
@@ -202,6 +240,20 @@ public class FarmlandBlockEntity extends BlockEntity {
         if (crop != null) {
             crop.afterSimulation(level);
         }
+    }
+
+    /** A glass roof within eight blocks straight above the crop: the field is a greenhouse. */
+    private boolean underGlass(ServerLevel level) {
+        BlockPos.MutableBlockPos m = worldPosition.mutable();
+        for (int dy = 2; dy <= 9; dy++) {
+            m.setY(worldPosition.getY() + dy);
+            BlockState above = level.getBlockState(m);
+            if (above.isAir()) {
+                continue;
+            }
+            return above.is(net.neoforged.neoforge.common.Tags.Blocks.GLASS_BLOCKS) || above.is(net.neoforged.neoforge.common.Tags.Blocks.GLASS_PANES);
+        }
+        return false;
     }
 
     private void refreshTerrain(ServerLevel level, boolean force) {
@@ -337,6 +389,8 @@ public class FarmlandBlockEntity extends BlockEntity {
         tag.putDouble("slope", slopeDegrees);
         tag.putDouble("terrain_day", terrainCheckedDay);
         tag.putInt("bare_days", bareDays);
+        tag.putDouble("weeds", weeds);
+        tag.putBoolean("greenhouse", greenhouse);
     }
 
     @Override
@@ -350,5 +404,7 @@ public class FarmlandBlockEntity extends BlockEntity {
         slopeDegrees = tag.getDouble("slope");
         terrainCheckedDay = tag.contains("terrain_day") ? tag.getDouble("terrain_day") : Double.NEGATIVE_INFINITY;
         bareDays = tag.getInt("bare_days");
+        weeds = tag.getDouble("weeds");
+        greenhouse = tag.getBoolean("greenhouse");
     }
 }

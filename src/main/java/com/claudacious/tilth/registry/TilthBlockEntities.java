@@ -40,6 +40,12 @@ public final class TilthBlockEntities {
             () -> BlockEntityType.Builder.of(DryingRackBlockEntity::new, TilthBlocks.DRYING_RACK.get()).build(null));
 
     @SuppressWarnings("DataFlowIssue")
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<com.claudacious.tilth.block.CompostBinBlockEntity>> COMPOST_BIN =
+            BLOCK_ENTITIES.register("compost_bin", () -> BlockEntityType.Builder.of(com.claudacious.tilth.block.CompostBinBlockEntity::new,
+                    TilthBlocks.COMPOST_BIN.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<com.claudacious.tilth.block.CheesePressBlockEntity>> CHEESE_PRESS =
+            BLOCK_ENTITIES.register("cheese_press", () -> BlockEntityType.Builder.of(com.claudacious.tilth.block.CheesePressBlockEntity::new,
+                    TilthBlocks.CHEESE_PRESS.get()).build(null));
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<GrainSiloBlockEntity>> GRAIN_SILO = BLOCK_ENTITIES.register("grain_silo",
             () -> BlockEntityType.Builder.of(GrainSiloBlockEntity::new, TilthBlocks.GRAIN_SILO.get()).build(null));
 

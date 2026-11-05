@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:gold_sovereign"
+    }
+  ],
+  "result": {
+    "id": "tilth:gold_crown",
+    "count": 9
+  }
+}

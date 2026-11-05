@@ -2,7 +2,7 @@
   "name": "Pasture & Animal Health",
   "icon": "tilth:veterinary_draught",
   "category": "tilth:livestock",
-  "sortnum": 4,
+  "sortnum": 6,
   "pages": [
     {
       "type": "patchouli:text",

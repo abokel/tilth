@@ -1,10 +1,12 @@
 {
   "variants": {
     "facing=north,working=false": {
-      "model": "tilth:block/incubator"
+      "model": "tilth:block/incubator",
+      "y": 0
     },
     "facing=north,working=true": {
-      "model": "tilth:block/incubator_working"
+      "model": "tilth:block/incubator_working",
+      "y": 0
     },
     "facing=east,working=false": {
       "model": "tilth:block/incubator",

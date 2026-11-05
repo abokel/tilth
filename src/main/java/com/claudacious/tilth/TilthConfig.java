@@ -82,6 +82,10 @@ public final class TilthConfig {
     public static final ModConfigSpec.DoubleValue SILO_AERATION_PER_DAY;
     public static final ModConfigSpec.DoubleValue SILO_SPOILAGE_FACTOR;
     public static final ModConfigSpec.DoubleValue OPEN_STORAGE_PEST_LOSS;
+    // ------------------------------------------------------------------ market
+    public static final ModConfigSpec.BooleanValue MARKET;
+    public static final ModConfigSpec.DoubleValue MERCHANT_CHANCE;
+    public static final ModConfigSpec.IntValue VILLAGE_STALL_WEIGHT;
     // ------------------------------------------------------------------ diet
     public static final ModConfigSpec.BooleanValue DIET;
     public static final ModConfigSpec.BooleanValue DIET_EFFECTS;
@@ -237,6 +241,14 @@ public final class TilthConfig {
         OPEN_STORAGE_PEST_LOSS = B.comment("Fraction of grain lost to rodents and weevils per day in chests, barrels and other",
                         "open storage. Grain in a built silo is safe from them. 0 disables.")
                 .defineInRange("openStoragePestLoss", 0.004, 0.0, 0.1);
+        B.pop();
+
+        B.comment("The farm market: prices that move with the seasons and with events, market stalls and the travelling merchant.").push("market");
+        MARKET = B.comment("Run the market (prices, events, stalls buying goods, the farm merchant).").define("enabled", true);
+        MERCHANT_CHANCE = B.comment("Chance each game day that a travelling farm merchant visits a player.")
+                .defineInRange("merchantChancePerDay", 0.25, 0.0, 1.0);
+        VILLAGE_STALL_WEIGHT = B.comment("How often villages generate a market stall among their houses (0 = never). Takes effect for new chunks.")
+                .defineInRange("villageStallWeight", 3, 0, 50);
         B.pop();
 
         B.comment("Player diet and nutrition.").push("diet");

@@ -2,7 +2,7 @@
   "name": "Breeds",
   "icon": "minecraft:leather",
   "category": "tilth:livestock",
-  "sortnum": 3,
+  "sortnum": 5,
   "pages": [
     {
       "type": "patchouli:text",
@@ -23,6 +23,10 @@
     {
       "type": "patchouli:text",
       "text": "$(li)$(thing)Chickens:$() Leghorn (most eggs), Rhode Island Red, Australorp, Light Sussex, Barred Rock (cold hardy).$(li)$(thing)Horses:$() Shire (big draught horse), Arabian, Friesian, Fjord, Mustang."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Some breeds have a shape of their own: a Highland's long shaggy coat, forelock and wide horns, a Brahman's hump, dewlap and drooping ears, a Mangalica's curly fleece, a Merino's full fleece and a Shire's feathered hooves."
     },
     {
       "type": "patchouli:text",

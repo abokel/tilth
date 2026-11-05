@@ -2,7 +2,7 @@
   "name": "Rice",
   "icon": "tilth:paddy_rice",
   "category": "tilth:crops",
-  "sortnum": 11,
+  "sortnum": 13,
   "pages": [
     {
       "type": "patchouli:spotlight",

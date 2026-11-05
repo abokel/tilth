@@ -2,7 +2,7 @@
   "name": "Cotton",
   "icon": "tilth:cotton_seeds",
   "category": "tilth:crops",
-  "sortnum": 34,
+  "sortnum": 36,
   "pages": [
     {
       "type": "patchouli:spotlight",

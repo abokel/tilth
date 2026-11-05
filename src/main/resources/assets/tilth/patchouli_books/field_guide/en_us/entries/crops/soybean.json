@@ -2,7 +2,7 @@
   "name": "Soybean",
   "icon": "tilth:soybeans",
   "category": "tilth:crops",
-  "sortnum": 14,
+  "sortnum": 16,
   "pages": [
     {
       "type": "patchouli:spotlight",

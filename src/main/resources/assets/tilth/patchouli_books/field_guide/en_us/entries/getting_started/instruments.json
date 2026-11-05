@@ -2,7 +2,7 @@
   "name": "Field Instruments",
   "icon": "tilth:thermometer",
   "category": "tilth:getting_started",
-  "sortnum": 3,
+  "sortnum": 4,
   "pages": [
     {
       "type": "patchouli:spotlight",

@@ -50,9 +50,16 @@ All notable changes to Tilth are documented here. The format follows
   Sussex and Barred Rock chickens; Shire, Arabian, Friesian, Fjord and Mustang horses. Animals take a breed that suits
   their biome's climate, young inherit one, and a breed shapes the genome (milk, eggs, size, thrift). Kept outside its
   climate an animal loses condition faster.
-- **Genetics and cultivars:** crops have heritable cultivars (growth, yield, drought and frost tolerance) and animals
-  heritable traits, with occasional mutations. Seed saved from a harvest keeps its cultivar.
-- **Gene splicing:** a Gene Splicer combines two seeds into a Spliced Embryo, grown into new seed in a Genetic
+- **Mendelian crop genetics:** every plant has a diploid genotype: four additive genes each for growth, yield,
+  drought and frost tolerance, a dominant disease-resistance gene (cuts infection by the 17 diseases with resistant
+  varieties) and a recessive semi-dwarfing gene (more grain in wheat, barley, oats and rice). Seeds inherit one copy of
+  each gene from each parent. Saved seed follows the crop's mating system: self-pollinated crops self and soon breed
+  true; cross-pollinated crops (maize, rye, sunflowers, brassicas...) take pollen from neighbouring plants, with hybrid
+  vigour from wide crosses and inbreeding depression from selfing; potatoes and garlic are clones. Tooltips show the
+  generation (F1 hybrid, F3 segregating, true-breeding) and the resistance and semi-dwarf genes.
+- **Livestock genetics** follow the infinitesimal model: young take their parents' average plus a random Mendelian
+  deviation, so selection shifts a herd over generations.
+- **Gene splicing:** a Gene Splicer makes a controlled cross of two seeds into a Spliced Embryo, grown into F1 seed in a Genetic
   Incubator. Rarely, something else grows in there, escapes and slimes about for a few blocks before falling apart.
 - **Pollinators:** insect-pollinated crops set more seed with flowers and working bees nearby.
 - **Post-harvest:** grain comes off the field with a moisture content (shown in its tooltip). Dry it on a Drying Rack.
@@ -65,6 +72,23 @@ All notable changes to Tilth are documented here. The format follows
 - **Pasture and veterinary care:** grazing wears pasture down, so rotate paddocks. Cattle, pigs and poultry can catch
   diseases (bovine respiratory disease, swine influenza, coccidiosis). Diagnose with the microscope, treat with a
   Veterinary Draught, and quarantine with a sneak-right-click of a lead.
+- **Weeds:** fields grow weeds that compete with crops for light, water and nitrogen, held back by canopy, mulch
+  and cover crops. Hoe a crop to weed a 3x3 patch; tillage clears them too.
+- **Cover crops and green manure:** rye, oats, clover and alfalfa smother weeds; sneak-hoe a green crop to work it in
+  as nitrogen-rich residue.
+- **Greenhouses:** a glass roof over a crop keeps off frost and warms it, but keeps out the rain.
+- **Compost Bin:** greens and browns rot into compost, fastest at two browns to a green; turn it with a shovel.
+- **Hay making:** hoe grass for cut grass, lay it in windrows to dry (rain can spoil it), gather dried hay for bales.
+- **Wool and dairy:** shearing gives graded, coloured fleece (Merinos best); a Spinning Wheel makes yarn, four yarn
+  make woollen cloth. Milk is graded by breed and condition; a Butter Churn makes butter and a Cheese Press ages cheese.
+- **Market:** commodity prices move with the seasons and with announced events (droughts, gluts, fairs, hard
+  winters). Market Stalls, built or found in villages, buy goods for coins, paying more for better quality.
+- **Coins** in steps of nine: 9 copper pennies make a silver shilling, 9 shillings a gold crown, 9 crowns a gold
+  sovereign. Nine craft into the next coin up and one breaks into nine. The market and the farm merchant deal in them.
+- **Travelling Farm Merchant:** an occasional visitor in a straw hat who buys produce at market prices and sells
+  named cultivar seed, veterinary draughts, compost and tack.
+- **Breed shapes:** Highland cattle have long shaggy coats, forelocks and wide horns; Brahman a hump, dewlap and
+  drooping ears; Mangalica pigs a curly fleece; Merinos a full fleece; Shire horses feathered hooves.
 - **Farm Wagon:** a horse-drawn wagon that holds as much as a chest. Hitch it from the saddle like the plough.
 - **Bench microscope:** sneak-use the microscope on a block to set it down, then right-click it with a plant sample.
 - Option `plots.farmOnlyInPlots`: ground can only be tilled inside a surveyed plot by its owner or members.
@@ -85,6 +109,12 @@ All notable changes to Tilth are documented here. The format follows
 - Pumps and wells for irrigation.
 - A multi-layer soil profile under each block; rainfall-intensity erosion.
 - Seed drills, harrows and harvesters.
+
+### Fixed
+- The Gene Splicer, Spliced Embryo, Veterinary Draught and Spoiled Grain have their own icons instead of borrowed
+  vanilla ones; the Genetic Incubator is a steel cabinet with a window that glows while it works; the escaped
+  homunculus is pale and fleshy instead of a green slime.
+- Chicken breed coats now keep vanilla's thin legs and toes, and their eyes sit above the beak where they show.
 
 ## [0.1.0] - 2026-10-22
 

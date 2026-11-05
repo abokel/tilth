@@ -2,7 +2,7 @@
   "name": "Tools of the Trade",
   "icon": "tilth:quern",
   "category": "tilth:getting_started",
-  "sortnum": 4,
+  "sortnum": 5,
   "pages": [
     {
       "type": "patchouli:spotlight",

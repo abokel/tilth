@@ -13,6 +13,8 @@ How crops grow, when to plant, harvest and quality, and every crop in detail.
 - [Reading Your Crops](symptoms.html)
 - [Harvest & Quality](harvest.html)
 - [Cultivars & Seed Saving](genetics.html)
+- [Gene Splicing & the Incubator](gene_splicing.html)
+- [Weeds, Glass & Green Manure](weeds.html)
 - [Drying & Storing Grain](grain_storage.html)
 - [Common Wheat](common_wheat.html)
 - [Durum Wheat](durum_wheat.html)

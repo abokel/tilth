@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "tilth:block/market_stall",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "tilth:block/market_stall",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "tilth:block/market_stall",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tilth:block/market_stall",
+      "y": 270
+    }
+  }
+}

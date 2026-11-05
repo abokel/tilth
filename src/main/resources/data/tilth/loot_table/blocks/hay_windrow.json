@@ -1,0 +1,454 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "tilth:mouldy_hay",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 1
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "true",
+                    "layers": "1"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tilth:mouldy_hay",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 2
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "true",
+                    "layers": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tilth:mouldy_hay",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 3
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "true",
+                    "layers": "3"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tilth:mouldy_hay",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 4
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "true",
+                    "layers": "4"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "tilth:dried_hay",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 2
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "false",
+                    "dryness": "3",
+                    "layers": "1"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tilth:dried_hay",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 4
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "false",
+                    "dryness": "3",
+                    "layers": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tilth:dried_hay",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 6
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "false",
+                    "dryness": "3",
+                    "layers": "3"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tilth:dried_hay",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 8
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "false",
+                    "dryness": "3",
+                    "layers": "4"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "tilth:cut_grass",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 1
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "false",
+                    "dryness": "0",
+                    "layers": "1"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tilth:cut_grass",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 1
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "false",
+                    "dryness": "1",
+                    "layers": "1"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tilth:cut_grass",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 1
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "false",
+                    "dryness": "2",
+                    "layers": "1"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tilth:cut_grass",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 2
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "false",
+                    "dryness": "0",
+                    "layers": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tilth:cut_grass",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 2
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "false",
+                    "dryness": "1",
+                    "layers": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tilth:cut_grass",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 2
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "false",
+                    "dryness": "2",
+                    "layers": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tilth:cut_grass",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 3
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "false",
+                    "dryness": "0",
+                    "layers": "3"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tilth:cut_grass",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 3
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "false",
+                    "dryness": "1",
+                    "layers": "3"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tilth:cut_grass",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 3
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "false",
+                    "dryness": "2",
+                    "layers": "3"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tilth:cut_grass",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 4
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "false",
+                    "dryness": "0",
+                    "layers": "4"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tilth:cut_grass",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 4
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "false",
+                    "dryness": "1",
+                    "layers": "4"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tilth:cut_grass",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 4
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "tilth:hay_windrow",
+                  "properties": {
+                    "spoiled": "false",
+                    "dryness": "2",
+                    "layers": "4"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

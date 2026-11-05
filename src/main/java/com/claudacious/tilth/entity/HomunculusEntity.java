@@ -23,7 +23,30 @@ public class HomunculusEntity extends Slime {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Slime.createMobAttributes().add(Attributes.MAX_HEALTH, 4.0).add(Attributes.MOVEMENT_SPEED, 0.18);
+        // Monster defaults include the attack damage that Slime.setSize writes; without it the entity cannot be made.
+        return net.minecraft.world.entity.monster.Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 4.0).add(Attributes.MOVEMENT_SPEED, 0.18);
+    }
+
+    /** It is harmless, so Peaceful does not clear it away like a hostile slime. */
+    @Override
+    protected boolean shouldDespawnInPeaceful() {
+        return false;
+    }
+
+    @Override
+    protected boolean isDealsDamage() {
+        return false;
+    }
+
+    @Override
+    public net.minecraft.world.entity.SpawnGroupData finalizeSpawn(net.minecraft.world.level.ServerLevelAccessor level,
+                                                                  net.minecraft.world.DifficultyInstance difficulty,
+                                                                  net.minecraft.world.entity.MobSpawnType spawnType,
+                                                                  net.minecraft.world.entity.SpawnGroupData data) {
+        net.minecraft.world.entity.SpawnGroupData out = super.finalizeSpawn(level, difficulty, spawnType, data);
+        // Always the smallest size, whatever a slime would roll.
+        setSize(1, true);
+        return out;
     }
 
     @Override

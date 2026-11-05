@@ -140,6 +140,10 @@ def generate(lang, h):
     breeds.generate(lang, h)
     import wagon
     wagon.generate(lang, h)
+    import farmstead
+    farmstead.generate(lang, h)
+    import genetics_assets
+    genetics_assets.generate(lang, h)
 
 
 # ---------------------------------------------------------------- fertiliser spreader

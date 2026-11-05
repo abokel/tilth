@@ -1,0 +1,100 @@
+{
+  "variants": {
+    "dryness=0,layers=1,spoiled=false": {
+      "model": "tilth:block/hay_windrow_1_fresh"
+    },
+    "dryness=0,layers=1,spoiled=true": {
+      "model": "tilth:block/hay_windrow_1_spoiled"
+    },
+    "dryness=1,layers=1,spoiled=false": {
+      "model": "tilth:block/hay_windrow_1_wilted"
+    },
+    "dryness=1,layers=1,spoiled=true": {
+      "model": "tilth:block/hay_windrow_1_spoiled"
+    },
+    "dryness=2,layers=1,spoiled=false": {
+      "model": "tilth:block/hay_windrow_1_curing"
+    },
+    "dryness=2,layers=1,spoiled=true": {
+      "model": "tilth:block/hay_windrow_1_spoiled"
+    },
+    "dryness=3,layers=1,spoiled=false": {
+      "model": "tilth:block/hay_windrow_1_dry"
+    },
+    "dryness=3,layers=1,spoiled=true": {
+      "model": "tilth:block/hay_windrow_1_spoiled"
+    },
+    "dryness=0,layers=2,spoiled=false": {
+      "model": "tilth:block/hay_windrow_2_fresh"
+    },
+    "dryness=0,layers=2,spoiled=true": {
+      "model": "tilth:block/hay_windrow_2_spoiled"
+    },
+    "dryness=1,layers=2,spoiled=false": {
+      "model": "tilth:block/hay_windrow_2_wilted"
+    },
+    "dryness=1,layers=2,spoiled=true": {
+      "model": "tilth:block/hay_windrow_2_spoiled"
+    },
+    "dryness=2,layers=2,spoiled=false": {
+      "model": "tilth:block/hay_windrow_2_curing"
+    },
+    "dryness=2,layers=2,spoiled=true": {
+      "model": "tilth:block/hay_windrow_2_spoiled"
+    },
+    "dryness=3,layers=2,spoiled=false": {
+      "model": "tilth:block/hay_windrow_2_dry"
+    },
+    "dryness=3,layers=2,spoiled=true": {
+      "model": "tilth:block/hay_windrow_2_spoiled"
+    },
+    "dryness=0,layers=3,spoiled=false": {
+      "model": "tilth:block/hay_windrow_3_fresh"
+    },
+    "dryness=0,layers=3,spoiled=true": {
+      "model": "tilth:block/hay_windrow_3_spoiled"
+    },
+    "dryness=1,layers=3,spoiled=false": {
+      "model": "tilth:block/hay_windrow_3_wilted"
+    },
+    "dryness=1,layers=3,spoiled=true": {
+      "model": "tilth:block/hay_windrow_3_spoiled"
+    },
+    "dryness=2,layers=3,spoiled=false": {
+      "model": "tilth:block/hay_windrow_3_curing"
+    },
+    "dryness=2,layers=3,spoiled=true": {
+      "model": "tilth:block/hay_windrow_3_spoiled"
+    },
+    "dryness=3,layers=3,spoiled=false": {
+      "model": "tilth:block/hay_windrow_3_dry"
+    },
+    "dryness=3,layers=3,spoiled=true": {
+      "model": "tilth:block/hay_windrow_3_spoiled"
+    },
+    "dryness=0,layers=4,spoiled=false": {
+      "model": "tilth:block/hay_windrow_4_fresh"
+    },
+    "dryness=0,layers=4,spoiled=true": {
+      "model": "tilth:block/hay_windrow_4_spoiled"
+    },
+    "dryness=1,layers=4,spoiled=false": {
+      "model": "tilth:block/hay_windrow_4_wilted"
+    },
+    "dryness=1,layers=4,spoiled=true": {
+      "model": "tilth:block/hay_windrow_4_spoiled"
+    },
+    "dryness=2,layers=4,spoiled=false": {
+      "model": "tilth:block/hay_windrow_4_curing"
+    },
+    "dryness=2,layers=4,spoiled=true": {
+      "model": "tilth:block/hay_windrow_4_spoiled"
+    },
+    "dryness=3,layers=4,spoiled=false": {
+      "model": "tilth:block/hay_windrow_4_dry"
+    },
+    "dryness=3,layers=4,spoiled=true": {
+      "model": "tilth:block/hay_windrow_4_spoiled"
+    }
+  }
+}

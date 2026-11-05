@@ -1,0 +1,16 @@
+{
+  "name": "Wool & Dairy",
+  "icon": "tilth:cheese",
+  "category": "tilth:livestock",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Shearing gives graded $(thing)fleece$() in the sheep's colour: a Merino's is the finest and most, a thin or sick sheep's the poorest. Spin it into $(thing)yarn$() on a $(thing)Spinning Wheel$() (sneak to felt it into wool instead), and weave four yarn into $(thing)Woollen Cloth$()."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Milk is graded too, richest from a Jersey in good condition. A $(thing)Butter Churn$() turns a bucket of milk into butter at once; a $(thing)Cheese Press$() takes up to four buckets and ages them into cheese over three days. Graded produce fetches more at market."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "tilth:compost_bin",
+    "tilth:spinning_wheel",
+    "tilth:butter_churn",
+    "tilth:cheese_press",
+    "tilth:market_stall"
+  ]
+}

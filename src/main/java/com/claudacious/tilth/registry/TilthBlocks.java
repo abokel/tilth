@@ -55,6 +55,25 @@ public final class TilthBlocks {
     public static final DeferredBlock<com.claudacious.tilth.block.MicroscopeBlock> MICROSCOPE = BLOCKS.register("microscope",
             () -> new com.claudacious.tilth.block.MicroscopeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(1.0f)
                     .sound(SoundType.LANTERN).noOcclusion()));
+    public static final DeferredBlock<com.claudacious.tilth.block.CompostBinBlock> COMPOST_BIN = BLOCKS.register("compost_bin",
+            () -> new com.claudacious.tilth.block.CompostBinBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(1.5f)
+                    .sound(SoundType.WOOD).noOcclusion()));
+    public static final DeferredBlock<com.claudacious.tilth.block.HayWindrowBlock> HAY_WINDROW = BLOCKS.register("hay_windrow",
+            () -> new com.claudacious.tilth.block.HayWindrowBlock(BlockBehaviour.Properties.of().mapColor(MapColor.GRASS).strength(0.2f)
+                    .sound(SoundType.GRASS).noOcclusion().randomTicks().pushReaction(net.minecraft.world.level.material.PushReaction.DESTROY)
+                    .replaceable()));
+    public static final DeferredBlock<com.claudacious.tilth.block.CraftStationBlock> SPINNING_WHEEL = BLOCKS.register("spinning_wheel",
+            () -> new com.claudacious.tilth.block.CraftStationBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(1.5f)
+                    .sound(SoundType.WOOD).noOcclusion(), com.claudacious.tilth.block.CraftStationBlock.Kind.SPINNING_WHEEL));
+    public static final DeferredBlock<com.claudacious.tilth.block.CraftStationBlock> BUTTER_CHURN = BLOCKS.register("butter_churn",
+            () -> new com.claudacious.tilth.block.CraftStationBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(1.5f)
+                    .sound(SoundType.WOOD).noOcclusion(), com.claudacious.tilth.block.CraftStationBlock.Kind.CHURN));
+    public static final DeferredBlock<com.claudacious.tilth.block.CheesePressBlock> CHEESE_PRESS = BLOCKS.register("cheese_press",
+            () -> new com.claudacious.tilth.block.CheesePressBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(1.5f)
+                    .sound(SoundType.WOOD).noOcclusion()));
+    public static final DeferredBlock<com.claudacious.tilth.market.MarketStallBlock> MARKET_STALL = BLOCKS.register("market_stall",
+            () -> new com.claudacious.tilth.market.MarketStallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(2.0f)
+                    .sound(SoundType.WOOD).noOcclusion()));
     public static final DeferredBlock<GrainSiloBlock> GRAIN_SILO = BLOCKS.register("grain_silo",
             () -> new GrainSiloBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(3.0f, 6.0f).sound(SoundType.COPPER)
                     .requiresCorrectToolForDrops()));

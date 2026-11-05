@@ -2,7 +2,7 @@
   "name": "Sunflower",
   "icon": "tilth:sunflower_seeds",
   "category": "tilth:crops",
-  "sortnum": 32,
+  "sortnum": 34,
   "pages": [
     {
       "type": "patchouli:spotlight",

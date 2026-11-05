@@ -97,6 +97,21 @@ CATEGORIES = [
                      "and degree days.\n\nThe days and month length are configurable. Shorter months make crops grow "
                      "faster in play time."),
             ]},
+            {"id": "market", "name": "Selling at Market", "icon": "tilth:market_stall", "pages": [
+                spot("tilth:market_stall", "**Market Stalls** stand in many villages, or build your own. Right-click "
+                                           "one with an empty hand for today's prices and news; right-click with goods "
+                                           "to sell the stack for coins (sneak to sell one)."),
+                text("Money comes in steps of nine: nine copper **pennies** make a silver **shilling**, nine "
+                     "shillings a gold **crown**, and nine crowns a gold **sovereign**. Craft nine coins into the next one "
+                     "up, or one into nine of the coin below. The market pays in the fewest coins it can."),
+                text("Prices move with the seasons: grain is cheap after harvest and dear before the next, hay dearest "
+                     "at the end of winter, milk cheap in the spring flush. **Events** push them further for a few "
+                     "days: a drought, a bumper harvest, a cloth fair, murrain among the herds, a hard winter."),
+                text("Better produce pays more, from 60% for Poor up to 160% for Premium. Damp grain sells at a discount."),
+                text("Now and then a **Travelling Farm Merchant** in a straw hat comes by. He buys produce at the day's "
+                     "prices and sells seed of named cultivars, veterinary draughts, compost and tack, then moves on "
+                     "after two days."),
+            ]},
             {"id": "instruments", "name": "Field Instruments", "icon": "tilth:thermometer", "pages": [
                 spot("tilth:thermometer", "Hold the **Thermometer** to read the air temperature: coldest at dawn, warmest "
                                           "in mid-afternoon. Use it for today's low and high, a frost warning and "
@@ -261,6 +276,14 @@ CATEGORIES = [
                 text("Right-click farmland (or a crop on it) with an amendment to spread one dose per block. Alfalfa and "
                      "clover hay work as **green manure**: nitrogen-rich residue for the next crop."),
             ]},
+            {"id": "composting", "name": "Composting", "icon": "tilth:compost_bin", "pages": [
+                spot("tilth:compost_bin", "A **Compost Bin** turns farm waste into compost. Put in **greens** (manure, "
+                                          "cut grass, spoiled grain, mouldy hay, scraps) and **browns** (straw, dried "
+                                          "hay, leaves, sticks)."),
+                text("About **two browns to one green** rots fastest, in roughly three days. An all-green heap goes slimy "
+                     "and an all-brown one barely rots. **Turn** it with a shovel, up to three times, to speed it up. "
+                     "Right-click with an empty hand to dig out the compost: half the volume that went in."),
+            ]},
             {"id": "rotation", "name": "Crop Rotation", "icon": "tilth:clover", "pages": [
                 text("Farmland remembers its last six crops. Rotating crop families breaks the cycles of soil-borne "
                      "diseases and pests (take-all in wheat, rootworm in maize, clubroot in cabbage)."),
@@ -341,14 +364,53 @@ CATEGORIES = [
                      "less. Cereals also give **straw**, useful for compost, hay or mulch."),
             ]},
             {"id": "genetics", "name": "Cultivars & Seed Saving", "icon": "tilth:gene_splicer", "pages": [
-                text("Every crop is of a **cultivar** with its own traits: how fast it grows, how much it yields, and how "
-                     "well it stands drought and frost. Seed saved from a harvest keeps its cultivar, so you can select "
-                     "the best of your own fields. Now and then a trait mutates."),
-                text("Crops that need **pollinators** set more seed with flowers nearby and bees working them: keep "
-                     "flower strips and a hive near beans, sunflowers and other insect-pollinated crops."),
-                text("A **Gene Splicer** combines two seeds into a **Spliced Embryo**, which grows into new seed in a "
-                     "**Genetic Incubator**. Watch it: once in a while something else grows in there, breaks out and "
-                     "slimes about for a few blocks before it falls apart."),
+                text("Every plant carries **genes**, two copies of each: four genes each for growth, yield, drought "
+                     "tolerance and frost tolerance, a **resistance** gene and a **semi-dwarfing** gene. Each seed gets "
+                     "one copy of every gene from each parent, at random, as Mendel found."),
+                text("Seed you save at harvest inherits by how the crop sets seed. **Self-pollinating** crops (wheat, "
+                     "barley, oats, rice, peas, beans, lentils, tomatoes) fertilise themselves: each generation is more "
+                     "uniform, and a line soon **breeds true**."),
+                text("**Cross-pollinating** crops (maize, rye, sunflowers, cabbages, onions, beets, carrots, clovers) take "
+                     "pollen from plants of the same crop within four blocks. A cross of two distinct lines shows "
+                     "**hybrid vigour**; a lone plant that can only pollinate itself loses vigour generation by generation. "
+                     "Seed saved from an F1 hybrid **segregates** and is not as good."),
+                text("**Potatoes and garlic** grow from tubers and cloves: each is a copy of its parent."),
+                text("**Resistance** is dominant: one copy keeps most infection of the diseases that have resistant "
+                     "varieties (the rusts, blights, mildews, cyst nematodes and more) from taking hold. **Semi-dwarfing** "
+                     "is recessive: only plants with both copies are short-strawed, and in wheat, barley, oats and rice "
+                     "they put more into grain."),
+                text("A seed's tooltip shows its cultivar and generation (F1 hybrid, F3 segregating, true-breeding), its "
+                     "traits, and whether it carries resistance or is a semi-dwarf. **Pollinators** matter too: "
+                     "insect-pollinated crops set more seed with flowers and working bees nearby."),
+            ]},
+            {"id": "gene_splicing", "name": "Gene Splicing & the Incubator", "icon": "tilth:incubator", "pages": [
+                spot("tilth:gene_splicer", "The **Gene Splicer** (iron, redstone and a kitchen knife) makes a controlled "
+                                           "cross: craft it with **two seeds of the same crop** into a **Spliced Embryo**. "
+                                           "Each parent gives the embryo one copy of each of its genes. The splicer wears "
+                                           "a little with each use."),
+                spot("tilth:incubator", "Right-click a **Genetic Incubator** with the embryo. Its window glows green "
+                                        "while it works; then it holds **two seeds** of the new F1 (right-click to take "
+                                        "them). Now and then a gene mutates."),
+                text("**Breeding a better line** is how real plant breeders work: cross two parents with the traits you "
+                     "want, grow the F1, then save seed and keep the best plants each generation. In a self-pollinating "
+                     "crop the line settles and breeds true in five or six generations."),
+                text("In cross-pollinating crops, keep two inbred lines apart and cross them for **F1 hybrid** seed each "
+                     "year; the hybrid's own seed is a mixed lot. The travelling merchant sells both: pure lines of "
+                     "wheat and the like, and F1 hybrids of maize and sunflowers."),
+                text("Very occasionally an embryo grows into something else: a pale, fleshy **homunculus** breaks out "
+                     "of the incubator, slimes about for a few blocks and falls apart. It does no harm, but you lose "
+                     "that embryo."),
+            ]},
+            {"id": "weeds", "name": "Weeds, Glass & Green Manure", "icon": "minecraft:short_grass", "pages": [
+                text("**Weeds** come up on every field: fastest on warm, moist, fertile ground, held back by a mulch of "
+                     "residue and shaded out once a crop's canopy closes. They take light, water and nitrogen from the "
+                     "crop. Jade warns when a field is getting weedy."),
+                text("Right-click a crop with a **hoe** to weed it and its neighbours (a 3x3 patch). Tilling clears "
+                     "weeds too. Rye, oats, clover and alfalfa grown as a **cover crop** smother them."),
+                text("Sneak-right-click a growing crop with a hoe to cut it down green and work it into the soil as "
+                     "**green manure**: fresh, nitrogen-rich residue, richest from a legume such as clover."),
+                text("A **glass roof** (glass blocks or panes up to eight blocks above the crop) makes a **greenhouse**: "
+                     "no frost, warmer days and a longer season, but no rain gets in, so water it."),
             ]},
             {"id": "grain_storage", "name": "Drying & Storing Grain", "icon": "tilth:grain_silo", "pages": [
                 text("Grain comes off the field damp. Above **14%** moisture it goes mouldy in store: dry it first on a "
@@ -532,6 +594,20 @@ CATEGORIES = [
                      "**two** for ewes, nannies and sows. Sows have litters of two to four; ewes and nannies often twins. "
                      "Giving birth costs the mother condition."),
             ]},
+            {"id": "hay", "name": "Making Hay", "icon": "tilth:dried_hay", "pages": [
+                text("Cut grass with a **hoe** for **Cut Grass**, and lay it on the ground in a **windrow**. Over about "
+                     "a game day of fair weather it wilts, cures and dries; turn it with a hoe to hurry it along."),
+                text("Rain on hay that has started to cure can spoil it into **mouldy hay**, only fit for compost. "
+                     "Gather dry windrows for **Dried Hay**: nine make a hay bale, and animals eat it too."),
+            ]},
+            {"id": "wool_dairy", "name": "Wool & Dairy", "icon": "tilth:cheese", "pages": [
+                text("Shearing gives graded **fleece** in the sheep's colour: a Merino's is the finest and most, a thin "
+                     "or sick sheep's the poorest. Spin it into **yarn** on a **Spinning Wheel** (sneak to felt it into "
+                     "wool instead), and weave four yarn into **Woollen Cloth**."),
+                text("Milk is graded too, richest from a Jersey in good condition. A **Butter Churn** turns a bucket of "
+                     "milk into butter at once; a **Cheese Press** takes up to four buckets and ages them into cheese "
+                     "over three days. Graded produce fetches more at market."),
+            ]},
             {"id": "breeds", "name": "Breeds", "icon": "minecraft:leather", "pages": [
                 text("Every cow, pig, sheep, chicken and horse is of a **breed**, and each breed looks its own. Animals "
                      "that turn up in the wild take a breed that suits the local climate; young take a parent's breed."),
@@ -543,6 +619,9 @@ CATEGORIES = [
                      "(black wool, cold), Soay (brown), Herdwick (grey wool, white face, cold hills).\n- **Chickens:** "
                      "Leghorn (most eggs), Rhode Island Red, Australorp, Light Sussex, Barred Rock (cold hardy).\n- "
                      "**Horses:** Shire (big draught horse), Arabian, Friesian, Fjord, Mustang."),
+                text("Some breeds have a shape of their own: a Highland's long shaggy coat, forelock and wide horns, a "
+                     "Brahman's hump, dewlap and drooping ears, a Mangalica's curly fleece, a Merino's full fleece and a "
+                     "Shire's feathered hooves."),
                 text("A breed sets what an animal was bred for: more milk or eggs, a bigger frame, or keeping condition "
                      "on less feed. Kept outside the climate it suits, an animal loses condition up to half as fast "
                      "again. /tilth animal and Jade show the breed and whether it suits its climate."),

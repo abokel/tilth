@@ -1,7 +1,7 @@
 ---
 title: "Drying & Storing Grain"
 parent: Crops
-nav_order: 6
+nav_order: 8
 ---
 
 # Drying & Storing Grain

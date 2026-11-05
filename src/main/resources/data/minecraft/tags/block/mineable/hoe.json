@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "tilth:alfalfa_bale"
+    "tilth:alfalfa_bale",
+    "tilth:hay_windrow"
   ]
 }

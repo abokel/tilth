@@ -188,9 +188,21 @@ public class CropBlockEntity extends BlockEntity {
         return List.of();
     }
 
+    /** A neighbouring plant of the same crop (within four blocks) to pollinate this one, or null if none grows near. */
+    @org.jetbrains.annotations.Nullable
+    private CropGenome pollenDonor(ServerLevel level) {
+        List<CropGenome> donors = new ArrayList<>();
+        for (BlockPos p : BlockPos.betweenClosed(worldPosition.offset(-4, -1, -4), worldPosition.offset(4, 1, 4))) {
+            if (!p.equals(worldPosition) && level.getBlockEntity(p) instanceof CropBlockEntity other && other.species() == species()) {
+                donors.add(other.genome());
+            }
+        }
+        return donors.isEmpty() ? null : donors.get(level.random.nextInt(donors.size()));
+    }
+
     private List<ItemStack> harvestStacks(ServerLevel level, CropSpecies sp, HarvestResult r) {
         List<ItemStack> out = new ArrayList<>();
-        CropGenome saved = GeneticsModel.mutateCrop(genome(), new Random(level.random.nextLong()));
+        CropGenome saved = GeneticsModel.saveSeed(genome(), pollenDonor(level), new Random(level.random.nextLong()));
         if (r.produce() > 0) {
             ItemStack produce = new ItemStack(item(sp.produceItem), r.produce());
             Quality.set(produce, r.grade());

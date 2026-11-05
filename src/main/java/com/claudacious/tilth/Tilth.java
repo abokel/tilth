@@ -72,11 +72,15 @@ public final class Tilth {
         IEventBus game = NeoForge.EVENT_BUS;
         game.addListener(TilthCommands::register);
         game.addListener(TilthCalendar::onServerTick);
+        game.addListener(com.claudacious.tilth.market.Market::onServerTick);
+        game.addListener(com.claudacious.tilth.entity.FarmMerchant::onServerTick);
+        game.addListener(com.claudacious.tilth.market.VillageStalls::onServerAboutToStart);
         game.addListener(Tilth::onServerStopped);
         game.addListener(WaterSourceRules::onCreateSource);
         game.addListener(SurfaceWater::onLevelTick);
         game.addListener(FarmingEvents::onToolModify);
         game.addListener(EventPriority.HIGH, PlotEvents::onRightClick);
+        game.addListener(EventPriority.HIGH, com.claudacious.tilth.event.FieldWork::onRightClickBlock);
         game.addListener(FarmingEvents::onRightClickBlock);
         game.addListener(FarmingEvents::onEntityTick);
         game.addListener(PlotEvents::onPlayerTick);
@@ -92,7 +96,9 @@ public final class Tilth {
         game.addListener(com.claudacious.tilth.postharvest.GrainKeeping::onContainerOpen);
         game.addListener(com.claudacious.tilth.postharvest.GrainKeeping::onPlayerTick);
         game.addListener(Livestock::onEntityTick);
+        game.addListener(EventPriority.HIGH, com.claudacious.tilth.livestock.WoolAndDairy::onInteract);
         game.addListener(Livestock::onInteract);
+        game.addListener(com.claudacious.tilth.event.FieldWork::onBreak);
         game.addListener(Livestock::onDrops);
         game.addListener(Breeding::onJoin);
         game.addListener(Breeding::onStartTracking);

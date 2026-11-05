@@ -270,8 +270,10 @@ def features(species, breed, p, img, layout):
             put(img, face, i, 4, p["nose"])
             put(img, face, i, 5, scale((*p["nose"], 255), 0.8))
     elif species == "chicken":
+        # Row 1, as in vanilla: the beak sits in front of rows 2-3 of the face. Dark birds get amber eyes to show.
+        dark = sum(p["base"]) < 200
         for i in (0, 3):
-            put(img, face, i, 2, eye)
+            put(img, face, i, 1, (214, 150, 40) if dark else eye)
     # Hooves and feet: the soles too.
     if species in ("cow", "pig", "sheep"):
         sole = rects["leg"]["bottom"]
@@ -294,7 +296,25 @@ def coat(species, breed):
                     a = animal_coords(local(i, j), turned)
                     img.set(x0 + i, y0 + j, (*colour(breed, p, part, a, rng), 255))
     features(species, breed, p, img, layout)
+    if species == "chicken":
+        chicken_legs(img, p["legs"])
     return img
+
+
+# The chicken's leg box (texOffs 26,0; 3x5x3) is mostly transparent in vanilla: a one-pixel shank on its back face
+# and three toes underneath. Coats keep exactly that shape (in the breed's leg colour) so legs stay thin.
+CHICKEN_LEG_PIXELS = {(33, 0), (32, 1), (33, 1), (34, 1), (32, 2), (33, 2), (34, 2)} | {(36, y) for y in range(3, 8)}
+
+
+def chicken_legs(img, colour):
+    for y in range(0, 8):
+        for x in range(26, 38):
+            if (x, y) in CHICKEN_LEG_PIXELS:
+                toe = y <= 2
+                img.px[y][x] = (*scale((*colour, 255), 0.85 if toe else 1.0)[:3], 255)
+            else:
+                # Written directly: Img.set blends, so a clear pixel would leave the old colour in place.
+                img.px[y][x] = (0, 0, 0, 0)
 
 
 def generate(lang, h):

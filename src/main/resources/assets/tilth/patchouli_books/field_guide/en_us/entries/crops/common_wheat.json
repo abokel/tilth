@@ -2,7 +2,7 @@
   "name": "Common Wheat",
   "icon": "minecraft:wheat_seeds",
   "category": "tilth:crops",
-  "sortnum": 6,
+  "sortnum": 8,
   "pages": [
     {
       "type": "patchouli:spotlight",

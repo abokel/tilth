@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tilth:gold_crown"
+    },
+    {
+      "item": "tilth:gold_crown"
+    },
+    {
+      "item": "tilth:gold_crown"
+    },
+    {
+      "item": "tilth:gold_crown"
+    },
+    {
+      "item": "tilth:gold_crown"
+    },
+    {
+      "item": "tilth:gold_crown"
+    },
+    {
+      "item": "tilth:gold_crown"
+    },
+    {
+      "item": "tilth:gold_crown"
+    },
+    {
+      "item": "tilth:gold_crown"
+    }
+  ],
+  "result": {
+    "id": "tilth:gold_sovereign",
+    "count": 1
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "tilth:block/compost_bin_slats",
+    "slats": "tilth:block/compost_bin_slats",
+    "heap": "tilth:block/compost_heap",
+    "ready": "tilth:block/compost_ready"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        1,
+        16
+      ],
+      "faces": {
+        "north": {
+          "texture": "#slats"
+        },
+        "south": {
+          "texture": "#slats"
+        },
+        "east": {
+          "texture": "#slats"
+        },
+        "west": {
+          "texture": "#slats"
+        },
+        "up": {
+          "texture": "#slats"
+        },
+        "down": {
+          "texture": "#slats"
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        1,
+        0
+      ],
+      "to": [
+        16,
+        14,
+        1
+      ],
+      "faces": {
+        "north": {
+          "texture": "#slats"
+        },
+        "south": {
+          "texture": "#slats"
+        },
+        "east": {
+          "texture": "#slats"
+        },
+        "west": {
+          "texture": "#slats"
+        },
+        "up": {
+          "texture": "#slats"
+        },
+        "down": {
+          "texture": "#slats"
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        1,
+        15
+      ],
+      "to": [
+        16,
+        14,
+        16
+      ],
+      "faces": {
+        "north": {
+          "texture": "#slats"
+        },
+        "south": {
+          "texture": "#slats"
+        },
+        "east": {
+          "texture": "#slats"
+        },
+        "west": {
+          "texture": "#slats"
+        },
+        "up": {
+          "texture": "#slats"
+        },
+        "down": {
+          "texture": "#slats"
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        1,
+        1
+      ],
+      "to": [
+        1,
+        14,
+        15
+      ],
+      "faces": {
+        "north": {
+          "texture": "#slats"
+        },
+        "south": {
+          "texture": "#slats"
+        },
+        "east": {
+          "texture": "#slats"
+        },
+        "west": {
+          "texture": "#slats"
+        },
+        "up": {
+          "texture": "#slats"
+        },
+        "down": {
+          "texture": "#slats"
+        }
+      }
+    },
+    {
+      "from": [
+        15,
+        1,
+        1
+      ],
+      "to": [
+        16,
+        14,
+        15
+      ],
+      "faces": {
+        "north": {
+          "texture": "#slats"
+        },
+        "south": {
+          "texture": "#slats"
+        },
+        "east": {
+          "texture": "#slats"
+        },
+        "west": {
+          "texture": "#slats"
+        },
+        "up": {
+          "texture": "#slats"
+        },
+        "down": {
+          "texture": "#slats"
+        }
+      }
+    },
+    {
+      "from": [
+        1,
+        1,
+        1
+      ],
+      "to": [
+        15,
+        7,
+        15
+      ],
+      "faces": {
+        "up": {
+          "texture": "#heap"
+        }
+      }
+    }
+  ]
+}

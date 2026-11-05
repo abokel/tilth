@@ -2,7 +2,7 @@
   "name": "Sorghum",
   "icon": "tilth:sorghum_seeds",
   "category": "tilth:crops",
-  "sortnum": 13,
+  "sortnum": 15,
   "pages": [
     {
       "type": "patchouli:spotlight",

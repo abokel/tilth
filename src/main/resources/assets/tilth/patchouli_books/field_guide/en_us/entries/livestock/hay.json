@@ -1,0 +1,16 @@
+{
+  "name": "Making Hay",
+  "icon": "tilth:dried_hay",
+  "category": "tilth:livestock",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Cut grass with a $(thing)hoe$() for $(thing)Cut Grass$(), and lay it on the ground in a $(thing)windrow$(). Over about a game day of fair weather it wilts, cures and dries; turn it with a hoe to hurry it along."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Rain on hay that has started to cure can spoil it into $(thing)mouldy hay$(), only fit for compost. Gather dry windrows for $(thing)Dried Hay$(): nine make a hay bale, and animals eat it too."
+    }
+  ]
+}

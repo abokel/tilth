@@ -144,5 +144,13 @@ public final class LookInfo {
                 : avail > 0.15 ? "drying" : "dry";
         lines.add(Component.literal(be.texture().displayName() + ", " + water
                 + (s.compaction > 0.4 ? ", compacted" : "") + (s.residue > 0.3 ? ", mulched" : "")).withStyle(ChatFormatting.DARK_AQUA));
+        double w = be.weeds();
+        if (w >= 0.15) {
+            lines.add(Component.literal(w >= 0.6 ? "Overrun with weeds: hoe it" : w >= 0.35 ? "Weedy: hoe soon" : "A few weeds coming up")
+                    .withStyle(w >= 0.6 ? ChatFormatting.RED : ChatFormatting.GOLD));
+        }
+        if (be.greenhouse()) {
+            lines.add(Component.literal("Under glass: frost-free, but water it").withStyle(ChatFormatting.AQUA));
+        }
     }
 }

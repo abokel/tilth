@@ -663,6 +663,20 @@
       "fiber": 12,
       "iron": 12,
       "calcium": 6
+    },
+    "tilth:butter": {
+      "protein": 1,
+      "fat": 40,
+      "vitamin_a": 14,
+      "calcium": 1
+    },
+    "tilth:cheese": {
+      "carbohydrate": 1,
+      "protein": 25,
+      "fat": 30,
+      "vitamin_a": 10,
+      "iron": 1,
+      "calcium": 40
     }
   }
 }

@@ -11,5 +11,7 @@ Animal condition, grazing, hay, sexes, breeding, milk, eggs and meat.
 - [Animal Condition](condition.html)
 - [Milk, Eggs & Meat](produce.html)
 - [Sexes & Breeding](breeding.html)
+- [Making Hay](hay.html)
+- [Wool & Dairy](wool_dairy.html)
 - [Breeds](breeds.html)
 - [Pasture & Animal Health](health.html)

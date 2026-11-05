@@ -1,7 +1,7 @@
 ---
 title: "Breeds"
 parent: Livestock
-nav_order: 4
+nav_order: 6
 ---
 
 # Breeds
@@ -14,5 +14,7 @@ Every cow, pig, sheep, chicken and horse is of a **breed**, and each breed looks
 - **Sheep:** Merino (fine white wool, warm and dry country), Suffolk (black face), Hebridean (black wool, cold), Soay (brown), Herdwick (grey wool, white face, cold hills).
 - **Chickens:** Leghorn (most eggs), Rhode Island Red, Australorp, Light Sussex, Barred Rock (cold hardy).
 - **Horses:** Shire (big draught horse), Arabian, Friesian, Fjord, Mustang.
+
+Some breeds have a shape of their own: a Highland's long shaggy coat, forelock and wide horns, a Brahman's hump, dewlap and drooping ears, a Mangalica's curly fleece, a Merino's full fleece and a Shire's feathered hooves.
 
 A breed sets what an animal was bred for: more milk or eggs, a bigger frame, or keeping condition on less feed. Kept outside the climate it suits, an animal loses condition up to half as fast again. /tilth animal and Jade show the breed and whether it suits its climate.

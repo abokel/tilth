@@ -9,6 +9,7 @@
     "tilth:sorghum",
     "minecraft:wheat",
     "minecraft:hay_block",
-    "tilth:straw"
+    "tilth:straw",
+    "tilth:dried_hay"
   ]
 }

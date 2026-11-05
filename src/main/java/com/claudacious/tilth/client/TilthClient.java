@@ -49,6 +49,8 @@ public final class TilthClient {
         modBus.addListener((EntityRenderersEvent.RegisterLayerDefinitions e) -> MaleFeaturesLayer.layers(e));
         // Coats first, so a bull's horns and ring are added on top of his breed's coat.
         modBus.addListener((EntityRenderersEvent.AddLayers e) -> BreedCoatLayer.addLayers(e));
+        modBus.addListener((EntityRenderersEvent.RegisterLayerDefinitions e) -> BreedFeaturesLayer.layers(e));
+        modBus.addListener((EntityRenderersEvent.AddLayers e) -> BreedFeaturesLayer.addLayers(e));
         modBus.addListener((EntityRenderersEvent.AddLayers e) -> MaleFeaturesLayer.addLayers(e));
         NeoForge.EVENT_BUS.addListener(ClientSexes::clear);
         NeoForge.EVENT_BUS.addListener(TilthClient::tooltip);
@@ -84,13 +86,17 @@ public final class TilthClient {
     private static void itemColors(RegisterColorHandlersEvent.Item event) {
         ItemLike[] grass = TilthBlocks.GRASS.values().stream().map(b -> (ItemLike) b.get()).toArray(ItemLike[]::new);
         event.register((stack, tint) -> tint == 0 ? 0xFF000000 | GrassColor.getDefaultColor() : -1, grass);
+        // Fleece and yarn take the colour of the sheep they came from.
+        event.register((stack, tint) -> tint == 0 ? 0xFF000000 | stack.getOrDefault(net.minecraft.core.component.DataComponents.BASE_COLOR,
+                net.minecraft.world.item.DyeColor.WHITE).getTextureDiffuseColor() : -1, com.claudacious.tilth.registry.TilthItems.FLEECE.get(), com.claudacious.tilth.registry.TilthItems.YARN.get());
     }
 
     private static void renderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(TilthEntities.PLOW.get(), PlowRenderer::new);
         event.registerEntityRenderer(TilthEntities.SPREADER.get(), SpreaderRenderer::new);
         event.registerEntityRenderer(TilthEntities.WAGON.get(), WagonRenderer::new);
-        event.registerEntityRenderer(TilthEntities.HOMUNCULUS.get(), SlimeRenderer::new);
+        event.registerEntityRenderer(TilthEntities.FARM_MERCHANT.get(), FarmMerchantRenderer::new);
+        event.registerEntityRenderer(TilthEntities.HOMUNCULUS.get(), HomunculusRenderer::new);
     }
 
     private static void layers(EntityRenderersEvent.RegisterLayerDefinitions event) {
@@ -116,12 +122,18 @@ public final class TilthClient {
         CropSpecies species = SeedGenetics.speciesOf(stack);
         if (species != null) {
             var genome = SeedGenetics.genomeOrLandrace(stack, species);
-            tooltip.add(Component.literal("Cultivar: " + genome.cultivar()).withStyle(ChatFormatting.DARK_GREEN));
+            tooltip.add(Component.literal("Cultivar: " + genome.cultivar() + " (" + genome.breedingStatus() + ")").withStyle(ChatFormatting.DARK_GREEN));
             tooltip.add(Component.literal(String.format("Traits G%+.0f%% Y%+.0f%% D%+.0f F%+.1f°C",
                     (genome.growthMultiplier() - 1.0) * 100.0,
                     (genome.yieldMultiplier() - 1.0) * 100.0,
                     genome.droughtBonusDays(),
                     genome.frostToleranceC())).withStyle(ChatFormatting.GRAY));
+            if (genome.resistant()) {
+                tooltip.add(Component.literal("Carries a disease-resistance gene").withStyle(ChatFormatting.GREEN));
+            }
+            if (genome.semiDwarf()) {
+                tooltip.add(Component.literal("Semi-dwarf: short, stiff straw").withStyle(ChatFormatting.AQUA));
+            }
         }
         NutrientProfile profile = TilthMisc.nutrition(stack.getItem());
         if (profile == null || profile.values().isEmpty()) {

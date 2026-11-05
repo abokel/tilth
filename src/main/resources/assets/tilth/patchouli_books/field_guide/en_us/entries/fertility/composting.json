@@ -1,0 +1,17 @@
+{
+  "name": "Composting",
+  "icon": "tilth:compost_bin",
+  "category": "tilth:fertility",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "tilth:compost_bin",
+      "text": "A $(thing)Compost Bin$() turns farm waste into compost. Put in $(thing)greens$() (manure, cut grass, spoiled grain, mouldy hay, scraps) and $(thing)browns$() (straw, dried hay, leaves, sticks)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "About $(thing)two browns to one green$() rots fastest, in roughly three days. An all-green heap goes slimy and an all-brown one barely rots. $(thing)Turn$() it with a shovel, up to three times, to speed it up. Right-click with an empty hand to dig out the compost: half the volume that went in."
+    }
+  ]
+}
